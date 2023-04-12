@@ -26,6 +26,9 @@ module.exports = {
       "altOrange": {
         DEFAULT: "#f0a202"
       },
+      "altBlack": {
+        DEFAULT: "#080807"
+      },
       ...colors
     },
     screens: {
