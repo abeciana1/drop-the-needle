@@ -1,61 +1,60 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("DATABASE_URL")
 }
 
 model User {
-  id  Int @id @default(autoincrement())
-  name String
-  email String @unique
-  hosted Host[]
+  id           Int           @id @default(autoincrement())
+  name         String
+  email        String        @unique
+  hosted       Host[]
   participants Participant[]
 }
 
 model Host {
-  id  Int @id @default(autoincrement())
-  userId Int
-  user User @relation(fields: [userId], references: [id])
+  id          Int       @id @default(autoincrement())
+  userId      Int
   powerHourId Int
-  powerHour PowerHour @relation(fields: [powerHourId], references: [id])
+  powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 model Participant {
-  id Int @id @default(autoincrement())
-  userId Int
-  user User @relation(fields: [userId], references: [id])
+  id          Int       @id @default(autoincrement())
+  userId      Int
   powerHourId Int
-  powerHour PowerHour @relation(fields: [powerHourId], references: [id])
+  powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 model PowerHour {
-  id Int @id @default(autoincrement())
-  title String
-  description String
-  cover_image String
-  date_time DateTime
-  createdAt DateTime @default(now())
-  hosts Host[]
+  id           Int              @id @default(autoincrement())
+  title        String
+  description  String
+  cover_image  String
+  date_time    DateTime
+  createdAt    DateTime         @default(now())
+  hosts        Host[]
   participants Participant[]
-  songs PowerHourSongs[]
+  songs        PowerHourSongs[]
+
   @@map("powerHours")
 }
 
 model PowerHourSongs {
-  id  Int @id @default(autoincrement())
-  title String
-  artist String
+  id          Int       @id @default(autoincrement())
+  title       String
+  artist      String
   youtubeLink String
-  startTime String
-  endTime String
+  startTime   String
+  endTime     String
   powerHourId Int
-  powerHour PowerHour @relation(fields: [powerHourId], references: [id])
   orderNumber Int
-  createdAt DateTime @default(now())
+  createdAt   DateTime  @default(now())
+  powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
 }
