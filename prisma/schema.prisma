@@ -4,8 +4,7 @@ generator client {
 
 datasource db {
   provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("DATABASE_URL")
+  url               = env("DEV_DATABASE_URL")
 }
 
 model User {
@@ -33,28 +32,28 @@ model Participant {
 }
 
 model PowerHour {
-  id           Int              @id @default(autoincrement())
-  title        String
-  description  String
-  cover_image  String
-  date_time    DateTime
-  createdAt    DateTime         @default(now())
-  hosts        Host[]
-  participants Participant[]
-  songs        PowerHourSongs[]
+  id             Int              @id @default(autoincrement())
+  title          String
+  description    String
+  cover_image    String
+  date_time      DateTime
+  createdAt      DateTime         @default(now())
+  hosts          Host[]
+  participants   Participant[]
+  PowerHourSongs PowerHourSong[]
 
   @@map("powerHours")
 }
 
-model PowerHourSongs {
+model PowerHourSong {
   id          Int       @id @default(autoincrement())
   title       String
   artist      String
   youtubeLink String
   startTime   String
   endTime     String
-  powerHourId Int
+  powerHourId Int @unique
   orderNumber Int
   createdAt   DateTime  @default(now())
-  powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
+  powerHour  PowerHour @relation(fields: [powerHourId], references: [id])
 }
