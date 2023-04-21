@@ -10,7 +10,7 @@ datasource db {
 model User {
   id           Int           @id @default(autoincrement())
   name         String
-  email        String        @unique
+  email        String @unique
   hosted       Host[]
   participants Participant[]
 }
@@ -29,6 +29,7 @@ model Participant {
   powerHourId Int
   powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
   user        User      @relation(fields: [userId], references: [id])
+  PowerHourSongs PowerHourSong[]
 }
 
 model PowerHour {
@@ -52,8 +53,10 @@ model PowerHourSong {
   youtubeLink String
   startTime   String
   endTime     String
-  powerHourId Int @unique
+  powerHourId Int
   orderNumber Int
   createdAt   DateTime  @default(now())
   powerHour  PowerHour @relation(fields: [powerHourId], references: [id])
+  participantId Int
+  participant Participant @relation(fields: [participantId], references: [id])
 }
