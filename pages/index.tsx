@@ -7,6 +7,7 @@ export default function Home() {
     <React.Fragment>
       <NextSeo
         title='Drop The Needle'
+        description=""
       />
       <main>
       </main>
