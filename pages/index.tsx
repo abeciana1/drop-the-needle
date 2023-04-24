@@ -1,5 +1,8 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
+import { 
+  NavBar 
+} from '@/components/common/Navigation'
 
 export default function Home() {
 
@@ -9,6 +12,7 @@ export default function Home() {
         title='Drop The Needle'
         description=""
       />
+      <NavBar/>
       <main>
       </main>
     </React.Fragment>

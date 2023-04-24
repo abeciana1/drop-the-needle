@@ -4,7 +4,8 @@ const NavBar = () => {
 
     return (
         <React.Fragment>
-            <nav></nav>
+            <nav>
+            </nav>
         </React.Fragment>
     )
 }
