@@ -12,7 +12,7 @@ export default function Home() {
         title='Drop The Needle'
         description=""
       />
-      <NavBar/>
+      {/* <NavBar/> */}
       <main>
       </main>
     </React.Fragment>
