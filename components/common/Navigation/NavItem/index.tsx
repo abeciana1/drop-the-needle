@@ -9,14 +9,13 @@ const NavItem = ({
 }: NavItemI) => {
 
     return (
+        <li>
             <Link
-                // href={href}
                 href={`/${encodeURIComponent(href)}`}
             >
                 {linkText}
             </Link>
-        // <li>
-        // </li>
+        </li>
     )
 }
 
