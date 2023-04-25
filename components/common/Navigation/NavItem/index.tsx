@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { NavItemI } from '@/interfaces'
+import cx from 'classnames'
 
 const NavItem = ({
     href,
@@ -12,6 +13,8 @@ const NavItem = ({
         <li>
             <Link
                 href={`/${encodeURIComponent(href)}`}
+                title={`Navigate to ${linkText} page`}
+                className=""
             >
                 {linkText}
             </Link>
