@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavBarI } from '@/interfaces'
 import NavItem from '../NavItem'
 
 const NavBar = () => {
