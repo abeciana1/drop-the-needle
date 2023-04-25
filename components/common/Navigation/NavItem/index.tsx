@@ -4,18 +4,19 @@ import { NavItemI } from '@/interfaces'
 
 const NavItem = ({
     href,
-    color,
+    color = "altBlack",
     linkText
 }: NavItemI) => {
 
     return (
-        <li>
             <Link
+                // href={href}
                 href={`/${encodeURIComponent(href)}`}
             >
                 {linkText}
             </Link>
-        </li>
+        // <li>
+        // </li>
     )
 }
 

@@ -7,6 +7,6 @@ export interface NavBarI {
 
 export interface NavItemI {
     href: string;
-    color: string;
+    color?: string;
     linkText: string;
 }
