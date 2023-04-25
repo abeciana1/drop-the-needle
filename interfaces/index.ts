@@ -2,7 +2,7 @@ import React from 'react'
 import { NavItemType } from '@/types';
 
 export interface NavBarI {
-    children: React.ReactElement<NavItemType>[]
+    children: React.ReactElement<NavItemType> | React.ReactElement<NavItemType>[]
 }
 
 export interface NavItemI {
