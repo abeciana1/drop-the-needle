@@ -1,15 +1,28 @@
 import React from 'react'
 import { NavBarI } from '@/interfaces'
+import NavItem from '../NavItem'
 
-const NavBar = ({
-    children
-}: NavBarI) => {
+const NavBar = () => {
 
     return (
         <React.Fragment>
             <nav>
                 <ul>
-                    {children}
+                    <NavItem
+                        href='/'
+                        color='jaffa'
+                        linkText='Home'
+                    />
+                    <NavItem
+                        href='/participate'
+                        color='vermillion'
+                        linkText='Participate'
+                    />
+                    <NavItem
+                        href='/listen'
+                        color='altGreen'
+                        linkText='Listen'
+                    />
                 </ul>
             </nav>
         </React.Fragment>
