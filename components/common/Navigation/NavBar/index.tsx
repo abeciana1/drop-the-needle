@@ -8,17 +8,17 @@ const NavBar = () => {
             <nav>
                 <ul>
                     <NavItem
-                        href='/'
+                        href=''
                         color='jaffa'
                         linkText='Home'
                     />
                     <NavItem
-                        href='/participate'
+                        href='participate'
                         color='vermillion'
                         linkText='Participate'
                     />
                     <NavItem
-                        href='/listen'
+                        href='listen'
                         color='altGreen'
                         linkText='Listen'
                     />

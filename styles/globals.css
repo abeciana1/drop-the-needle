@@ -24,3 +24,65 @@ div, p, li, a {
   @apply text-altBlack;
   @apply font-montserrat;
 }
+
+.anim-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+}
+
+.anim-text.jaffa {
+  background-image: -webkit-gradient(linear, left top, right top, from(#f3a13b), color-stop(50%, #f3a13b), color-stop(50%, #343434));
+  background-image: linear-gradient(to right, #f3a13b, #f3a13b 50%, #343434 50%);
+}
+.anim-text.vermillion {
+  background-image: -webkit-gradient(linear, left top, right top, from(#f24333), color-stop(50%, #f24333), color-stop(50%, #343434));
+  background-image: linear-gradient(to right, #f24333, #f24333 50%, #343434 50%);
+}
+.anim-text.altGreen {
+  background-image: -webkit-gradient(linear, left top, right top, from(#618b4a), color-stop(50%, #618b4a), color-stop(50%, #343434));
+  background-image: linear-gradient(to right, #618b4a, #618b4a 50%, #343434 50%);
+}
+
+.anim-text:hover {
+  -webkit-transition: all 0.8s cubic-bezier(0, 0, 0.23, 1);
+  transition: all 0.8s cubic-bezier(0, 0, 0.23, 1);
+  background-position: 0%;
+}
+
+.expand-btn {
+  height: 40px;
+  width: 40px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.expand-btn:hover {
+  width: 185px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  @apply h-1;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  transition: transform 0.8s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
