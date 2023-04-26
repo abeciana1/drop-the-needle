@@ -14,7 +14,7 @@ const NavItem = ({
         <li>
             <Link
                 href={`/${encodeURIComponent(href)}`}
-                title={`Navigate to ${linkText} page`}
+                title={`${linkText} page`}
                 className={cx('flex flex-col font-medium text-2xl anim-text z-50 hover-underline-animation', {
                     ['hover:text-jaffa jaffa text-jaffa after:bg-jaffa']: color === 'jaffa',
                     ['hover:text-vermillion vermillion  text-vermillion after:bg-vermillion']: color === 'vermillion',
