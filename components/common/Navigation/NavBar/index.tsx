@@ -7,16 +7,19 @@ const NavBar = () => {
 
     return (
         <React.Fragment>
-            <nav>
+            <nav
+                className='flex'
+            >
                 <Link
                     href='/'
                     title='Navigate to homepage'
                 >
                     <Image
                         src='/drop-the-needle-logo.webp'
-                        height={200}
-                        width={200}
+                        height={100}
+                        width={100}
                         alt='Drop The Needle logo'
+                        priority
                     />
                 </Link>
                 <ul>
