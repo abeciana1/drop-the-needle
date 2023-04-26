@@ -2,13 +2,14 @@ import React from 'react'
 import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
+import { LinkLookLikeButton } from '@/components/common'
 
 const NavBar = () => {
 
     return (
         <React.Fragment>
             <nav
-                className='flex'
+                className='flex justify-between items-center'
             >
                 <Link
                     href='/'
@@ -22,7 +23,9 @@ const NavBar = () => {
                         priority
                     />
                 </Link>
-                <ul>
+                <ul
+                    className='flex gap-12'
+                >
                     <NavItem
                         href=''
                         color='jaffa'
@@ -39,6 +42,12 @@ const NavBar = () => {
                         linkText='Listen'
                     />
                 </ul>
+                <LinkLookLikeButton
+                    linkText='Signin'
+                    bgColor='vermillion'
+                    textColor='altWhite'
+                    href='signin'
+                />
             </nav>
         </React.Fragment>
     )

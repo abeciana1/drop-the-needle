@@ -10,3 +10,10 @@ export interface NavItemI {
     color?: string;
     linkText: string;
 }
+
+export interface LinkButtonI {
+    href: string;
+    linkText: string;
+    textColor?: string;
+    bgColor?: string;
+}
