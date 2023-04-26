@@ -20,7 +20,7 @@ test('Navbar logo renders with anchor tag pointing to homepage', () => {
     expect(link).toHaveAttribute('href', '/')
 })
 
-test('Signin link that looks like a button renders in NavBar', () => {
+test('[Not signed in user] Signin link that looks like a button renders in NavBar', () => {
     render(<NavBar/>)
     const signinLink = screen.getByRole('link', {
         name: /signin/i
