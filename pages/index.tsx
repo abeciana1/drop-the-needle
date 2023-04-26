@@ -2,7 +2,7 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 import { 
   NavBar 
-} from '@/components/common/Navigation'
+} from '@/components/common'
 
 export default function Home() {
 
