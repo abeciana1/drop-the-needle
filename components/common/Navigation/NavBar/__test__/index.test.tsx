@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import NavBar from '..'
+import { Context as ResponsiveContext } from 'react-responsive'
+
 
 test('NavBar renders without issues', () => {
     render(<NavBar/>)
@@ -20,12 +22,17 @@ test('Navbar logo renders with anchor tag pointing to homepage', () => {
     expect(link).toHaveAttribute('href', '/')
 })
 
-test('[Not signed in user] Signin link that looks like a button renders in NavBar', () => {
-    render(<NavBar/>)
+test('[guest user && desktop] Signin link that looks like a button renders in NavBar', () => {
+    const { container: desktop } = render(
+        <ResponsiveContext.Provider value={{ width: 2000 }}>
+            <NavBar/>
+        </ResponsiveContext.Provider>
+    )
     const signinLink = screen.getByRole('link', {
         name: /signin/i
     })
 
     expect(signinLink).toBeInTheDocument()
     expect(signinLink).toHaveAttribute('href', '/signin')
+    expect(desktop).toMatchSnapshot()
 })

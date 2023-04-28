@@ -15,7 +15,6 @@ const NavBar = () => {
         isTablet,
         isDesktop
     } = useResponsiveness() || {}
-    console.log(isDesktop)
 
     return (
         <React.Fragment>
@@ -38,7 +37,7 @@ const NavBar = () => {
                         className='mx-auto'
                     />
                 </Link>
-                {isOpen &&
+                {(isOpen || isDesktop) &&
                     <React.Fragment>
                         <ul
                             className={cx('flex', {
@@ -76,7 +75,7 @@ const NavBar = () => {
                         </div>
                     </React.Fragment>
                 }
-                <div className='absolute top-5 right-5'>
+                <div data-testid='hamburger-btn' className='absolute top-5 right-5'>
                     <Hamburger
                         toggled={isOpen}
                         toggle={setOpen}
