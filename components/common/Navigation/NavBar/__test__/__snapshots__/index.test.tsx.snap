@@ -63,40 +63,6 @@ exports[`[guest user && desktop] Signin link that looks like a button renders in
         Signin
       </a>
     </div>
-    <div
-      class="absolute top-5 right-5"
-      data-testid="hamburger-btn"
-    >
-      <div
-        aria-expanded="false"
-        class="hamburger-react"
-        role="button"
-        style="cursor: pointer; height: 48px; position: relative; transition: 0.4s cubic-bezier(0, 0, 0, 1); user-select: none; width: 48px; outline: none;"
-        tabindex="0"
-      >
-        <div
-          style="transition: 0.2s cubic-bezier(0, 0, 0, 1) 0.2s; transform: none;"
-        >
-          <div
-            style="background: rgb(52, 52, 52); height: 3px; left: 8px; position: absolute; width: 32px; top: 13px; transition: 0.2s cubic-bezier(0, 0, 0, 1) 0s; transform: none;"
-          />
-        </div>
-        <div
-          style="transition: 0.2s cubic-bezier(0, 0, 0, 1); opacity: 1;"
-        >
-          <div
-            style="background: rgb(52, 52, 52); height: 3px; left: 8px; position: absolute; width: 32px; top: 23px; transition: 0.2s cubic-bezier(0, 0, 0, 1);"
-          />
-        </div>
-        <div
-          style="transition: 0.2s cubic-bezier(0, 0, 0, 1) 0.2s; transform: none;"
-        >
-          <div
-            style="background: rgb(52, 52, 52); height: 3px; left: 8px; position: absolute; width: 32px; top: 33px; transition: 0.2s cubic-bezier(0, 0, 0, 1) 0s; transform: none;"
-          />
-        </div>
-      </div>
-    </div>
   </nav>
 </div>
 `;
