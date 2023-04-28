@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -8,6 +8,7 @@ import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 
 const NavBar = () => {
+    const [ isOpen, setOpen ] = useState(false)
 
     const {
         isMobile,
@@ -21,7 +22,7 @@ const NavBar = () => {
             <nav
                 className={cx('z-50 pt-5', {
                     ['flex justify-between items-center ']: isDesktop,
-                    ['bg-altWhite h-screen']: isMobile || isTablet
+                    ['bg-altWhite h-screen']: ((isMobile || isTablet) && isOpen)
                 })}
             >
                 <Link
@@ -37,42 +38,50 @@ const NavBar = () => {
                         className='mx-auto'
                     />
                 </Link>
-                <ul
-                    className={cx('flex', {
-                        ['flex-col pt-6 gap-6 pl-6']: isMobile || isTablet,
-                        ['pt-0 gap-12']: isDesktop
-                    })}
-                >
-                    <NavItem
-                        href=''
-                        color='jaffa'
-                        linkText='Home'
-                    />
-                    <NavItem
-                        href='participate'
-                        color='vermillion'
-                        linkText='Participate'
-                    />
-                    <NavItem
-                        href='listen'
-                        color='altGreen'
-                        linkText='Listen'
-                    />
-                </ul>
-                <div 
-                    className={cx({
-                        ['pt-6 pl-6']: isMobile || isTablet 
-                    })}
-                >
-                    <LinkLookLikeButton
-                        linkText='Signin'
-                        bgColor='vermillion'
-                        textColor='altWhite'
-                        href='signin'
-                    />
-                </div>
+                {isOpen &&
+                    <React.Fragment>
+                        <ul
+                            className={cx('flex', {
+                                ['flex-col pt-6 gap-6 pl-6']: isMobile || isTablet,
+                                ['pt-0 gap-12']: isDesktop
+                            })}
+                        >
+                            <NavItem
+                                href=''
+                                color='jaffa'
+                                linkText='Home'
+                            />
+                            <NavItem
+                                href='participate'
+                                color='vermillion'
+                                linkText='Participate'
+                            />
+                            <NavItem
+                                href='listen'
+                                color='altGreen'
+                                linkText='Listen'
+                            />
+                        </ul>
+                        <div 
+                            className={cx({
+                                ['pt-6 pl-6']: isMobile || isTablet 
+                            })}
+                        >
+                            <LinkLookLikeButton
+                                linkText='Signin'
+                                bgColor='vermillion'
+                                textColor='altWhite'
+                                href='signin'
+                            />
+                        </div>
+                    </React.Fragment>
+                }
                 <div className='absolute top-5 right-5'>
-                    <Hamburger />
+                    <Hamburger
+                        toggled={isOpen}
+                        toggle={setOpen}
+                        color='#343434'
+                    />
                 </div>
             </nav>
         </React.Fragment>
