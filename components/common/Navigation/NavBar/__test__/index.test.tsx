@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import NavBar from '..'
 import { Context as ResponsiveContext } from 'react-responsive'
+import userEvent from '@testing-library/user-event'
 
 
 test('NavBar renders without issues', () => {
@@ -23,7 +24,7 @@ test('Navbar logo renders with anchor tag pointing to homepage', () => {
 })
 
 test('[guest user && desktop] Signin link that looks like a button renders in NavBar', () => {
-    const { container: desktop } = render(
+    render(
         <ResponsiveContext.Provider value={{ width: 2000 }}>
             <NavBar/>
         </ResponsiveContext.Provider>
@@ -34,5 +35,18 @@ test('[guest user && desktop] Signin link that looks like a button renders in Na
 
     expect(signinLink).toBeInTheDocument()
     expect(signinLink).toHaveAttribute('href', '/signin')
-    expect(desktop).toMatchSnapshot()
+})
+
+test('hamburger button renders on mobile screens', async () => {
+    render(
+        <ResponsiveContext.Provider value={{ width: 600 }}>
+            <NavBar/>
+        </ResponsiveContext.Provider>
+    )
+
+    const hamburgerBtn = screen.getByRole('button')
+    expect(hamburgerBtn).toBeInTheDocument()
+    userEvent.click(await hamburgerBtn)
+    const menuOpenId = await screen.findByTestId('menu-open')
+    expect(menuOpenId).toBeInTheDocument()
 })

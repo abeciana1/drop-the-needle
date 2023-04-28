@@ -40,6 +40,7 @@ const NavBar = () => {
                 {(isOpen || isDesktop) &&
                     <React.Fragment>
                         <ul
+                            data-testid={isOpen ? 'menu-open': 'menu-closed'}
                             className={cx('flex', {
                                 ['flex-col pt-6 gap-6 pl-6']: isMobile || isTablet,
                                 ['pt-0 gap-12']: isDesktop
