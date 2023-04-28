@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { LinkLookLikeButton } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
+import { Squash as Hamburger } from 'hamburger-react'
 
 const NavBar = () => {
 
@@ -69,6 +70,9 @@ const NavBar = () => {
                         textColor='altWhite'
                         href='signin'
                     />
+                </div>
+                <div className='absolute top-5 right-5'>
+                    <Hamburger />
                 </div>
             </nav>
         </React.Fragment>
