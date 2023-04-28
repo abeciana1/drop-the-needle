@@ -3,13 +3,25 @@ import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LinkLookLikeButton } from '@/components/common'
+import useResponsiveness from '@/hooks/useResponsiveness'
+import cx from 'classnames'
 
 const NavBar = () => {
+
+    const {
+        isMobile,
+        isTablet,
+        isDesktop
+    } = useResponsiveness() || {}
+    console.log(isDesktop)
 
     return (
         <React.Fragment>
             <nav
-                className='flex justify-between items-center'
+                className={cx('z-50 pt-5', {
+                    ['flex justify-between items-center ']: isDesktop,
+                    ['bg-altWhite h-screen']: isMobile || isTablet
+                })}
             >
                 <Link
                     href='/'
@@ -21,10 +33,14 @@ const NavBar = () => {
                         width={100}
                         alt='Drop The Needle logo'
                         priority
+                        className='mx-auto'
                     />
                 </Link>
                 <ul
-                    className='flex gap-12'
+                    className={cx('flex', {
+                        ['flex-col pt-6 gap-6 pl-6']: isMobile || isTablet,
+                        ['pt-0 gap-12']: isDesktop
+                    })}
                 >
                     <NavItem
                         href=''
@@ -42,12 +58,18 @@ const NavBar = () => {
                         linkText='Listen'
                     />
                 </ul>
-                <LinkLookLikeButton
-                    linkText='Signin'
-                    bgColor='vermillion'
-                    textColor='altWhite'
-                    href='signin'
-                />
+                <div 
+                    className={cx({
+                        ['pt-6 pl-6']: isMobile || isTablet 
+                    })}
+                >
+                    <LinkLookLikeButton
+                        linkText='Signin'
+                        bgColor='vermillion'
+                        textColor='altWhite'
+                        href='signin'
+                    />
+                </div>
             </nav>
         </React.Fragment>
     )
