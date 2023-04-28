@@ -88,5 +88,5 @@ div, p, li, a {
 }
 
 h1 {
-   @apply text-7xl;
+    @apply text-7xl;
 }
