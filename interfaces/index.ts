@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavItemType } from '@/types';
+import { NavItemType, imageType } from '@/types';
 
 export interface NavBarI {
     children: React.ReactElement<NavItemType> | React.ReactElement<NavItemType>[]
@@ -16,4 +16,10 @@ export interface LinkButtonI {
     linkText: string;
     textColor?: string;
     bgColor?: string;
+}
+
+export interface HeroSectionI {
+    heading: string;
+    bodyTagline: string;
+    image: imageType
 }

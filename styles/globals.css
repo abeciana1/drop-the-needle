@@ -86,3 +86,7 @@ div, p, li, a {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+h1 {
+   @apply text-7xl;
+}
