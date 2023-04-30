@@ -1,6 +1,6 @@
 import { ChildrenI } from "@/interfaces"
 
-export const Grid2 = ({
+export const Grid2Col = ({
     children
 }: ChildrenI) => {
 
