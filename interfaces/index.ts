@@ -1,6 +1,10 @@
 import React from 'react'
 import { NavItemType, imageType } from '@/types';
 
+export interface ChildrenI {
+    children: React.ReactElement | React.ReactElement[]
+}
+
 export interface NavBarI {
     children: React.ReactElement<NavItemType> | React.ReactElement<NavItemType>[]
 }
