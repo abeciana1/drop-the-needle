@@ -20,8 +20,8 @@ export default function Home() {
           bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
           image={{
             src: '/Scripps.webp',
-            width: 600,
-            height: 338,
+            width: 800,
+            height: 450,
             alt: 'Scripps Institute - San Diego, CA'
           }}
         />
