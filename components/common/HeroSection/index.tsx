@@ -19,9 +19,9 @@ export const HeroSectionBlendImage = ({
     return (
         <section className='relative mt-10'>
             <section className="flex flex-col md:flex-row lg:gap-10 items-center">
-                <section className="basis-1/2 lg:basis-1/3">
+                <section className="basis-1/2 lg:basis-1/3 space-y-5">
                     <h1 className=' text-altBlack'>{heading}</h1>
-                    <div className='text-xl font-semiBold md:w-4/5'>{bodyTagline}</div>
+                    <div className='text-2xl font-semiBold'>{bodyTagline}</div>
                 </section>
                 <section className="basis-1/2 lg:basis-2/3">
                     <Image
