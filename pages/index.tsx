@@ -2,7 +2,8 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 import { 
   NavBar,
-  HeroSectionBlendImage 
+  HeroSectionBlendImage,
+  Grid2Column
 } from '@/components/common'
 
 export default function Home() {
@@ -25,6 +26,9 @@ export default function Home() {
             alt: 'Scripps Institute - San Diego, CA'
           }}
         />
+        <Grid2Column>
+          
+        </Grid2Column>
       </main>
     </React.Fragment>
   )
