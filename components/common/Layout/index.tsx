@@ -6,7 +6,7 @@ export const Grid2Col = ({
 
     return (
         <section
-            className="grid grid-cols-1 md:grid-cols-2"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 my-10"
         >
             {children}
         </section>
