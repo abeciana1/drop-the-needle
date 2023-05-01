@@ -31,5 +31,5 @@ export interface HeroSectionI {
 export interface FeatureI {
     title: string;
     body: string;
-    icon: React.ReactElement;
+    icon: React.ElementType;
 }
