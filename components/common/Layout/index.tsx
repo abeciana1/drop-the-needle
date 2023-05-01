@@ -12,3 +12,14 @@ export const Grid2Column = ({
         </section>
     )
 }
+
+export const WavySection = ({
+    children
+}: ChildrenI) => {
+
+    return (
+        <section>
+            {children}
+        </section>
+    )
+}
