@@ -27,3 +27,9 @@ export interface HeroSectionI {
     bodyTagline: string;
     image: imageType
 }
+
+export interface FeatureI {
+    title: string;
+    body: string;
+    icon: React.ElementType;
+}
