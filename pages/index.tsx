@@ -3,7 +3,8 @@ import { NextSeo } from 'next-seo';
 import { 
   NavBar,
   HeroSectionBlendImage,
-  Grid2Column
+  Grid2Column,
+  Feature
 } from '@/components/common'
 
 export default function Home() {
@@ -27,7 +28,10 @@ export default function Home() {
           }}
         />
         <Grid2Column>
-          
+          <Feature
+            title='YouTube Search'
+            body='Search for YouTube videos with ease.'
+          />
         </Grid2Column>
       </main>
     </React.Fragment>
