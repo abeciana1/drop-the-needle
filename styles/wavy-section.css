@@ -1,0 +1,34 @@
+
+section.section-a {
+    background-image: url("data:image/svg+xml;utf8, /public/.section-bubble-b");
+    fill: attr(data-current-color);
+}
+
+.section-a.bubble-next {
+    fill: attr(data-next-color);
+}
+
+section.section-b {
+    background-image: url("data:image/svg+xml;utf8, /public/.section-bubble-b");
+    fill: attr(data-current-color);
+}
+
+.section-b.bubble-prev {
+    fill: attr(data-prev-color);
+}
+
+.section-bubble {
+    margin-bottom: 20vw;
+    position: relative;
+}
+
+.section-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vw;
+    /* background: url('') green; */
+    background-size: 100%;
+    transform: translate(0, 100%);
+}
