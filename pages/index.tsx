@@ -5,7 +5,8 @@ import {
   HeroSectionBlendImage,
   Grid2Column,
   Feature,
-  WavySectionA
+  WavySectionA,
+  WavySectionC
 } from '@/components/common'
 import { 
   FaYoutube,
@@ -25,8 +26,8 @@ export default function Home() {
       />
       <NavBar/>
       <main>
-          <WavySectionA color='#a4c690'>
-          </WavySectionA>
+          <WavySectionC color='#a4c690'>
+          </WavySectionC>
             <HeroSectionBlendImage
               heading='Drop The Needle'
               bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
