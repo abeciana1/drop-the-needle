@@ -6,6 +6,7 @@ import {
   Grid2Column,
   Feature,
   WavySectionA,
+  WavySectionB,
   WavySectionC
 } from '@/components/common'
 import { 
