@@ -25,40 +25,40 @@ export default function Home() {
       />
       <NavBar/>
       <main>
-        <WavySectionA color1='altWhite' color2='altGreen-300'>
-          <HeroSectionBlendImage
-            heading='Drop The Needle'
-            bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
-            image={{
-              src: '/Scripps.webp',
-              width: 800,
-              height: 450,
-              alt: 'Scripps Institute - San Diego, CA'
-            }}
-          />
-        </WavySectionA>
-        <Grid2Column>
-          <Feature
-            title='YouTube Search (coming soon)'
-            body='Search for YouTube videos with ease.'
-            icon={FaYoutube}
-          />
-          <Feature
-            title='Power Hour Management'
-            body='Create, host, share, and edit power hours.'
-            icon={FaRegCalendarAlt}
-          />
-          <Feature
-            title='Participate'
-            body='Add YouTube videos to power hours that you join.'
-            icon={FaUsers}
-          />
-          <Feature
-            title='Share and Present'
-            body='Share and present power hours with everyone!'
-            icon={FaShareAlt}
-          />
-        </Grid2Column>
+          <WavySectionA color1='#f8f8f8' color2='#a4c690'>
+          </WavySectionA>
+            <HeroSectionBlendImage
+              heading='Drop The Needle'
+              bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
+              image={{
+                src: '/Scripps.webp',
+                width: 800,
+                height: 450,
+                alt: 'Scripps Institute - San Diego, CA'
+              }}
+              />
+            <Grid2Column>
+              <Feature
+                title='YouTube Search (coming soon)'
+                body='Search for YouTube videos with ease.'
+                icon={FaYoutube}
+                />
+              <Feature
+                title='Power Hour Management'
+                body='Create, host, share, and edit power hours.'
+                icon={FaRegCalendarAlt}
+                />
+              <Feature
+                title='Participate'
+                body='Add YouTube videos to power hours that you join.'
+                icon={FaUsers}
+                />
+              <Feature
+                title='Share and Present'
+                body='Share and present power hours with everyone!'
+                icon={FaShareAlt}
+                />
+            </Grid2Column>
       </main>
     </React.Fragment>
   )

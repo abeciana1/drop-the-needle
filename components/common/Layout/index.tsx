@@ -19,9 +19,14 @@ export const WavySectionA = ({
     color2
 }: WavySectionI) => {
 
+    // <section className="section-a section-bubble" data-current-color={color1} data-next-color={color2} >
+    //     {children}
+    // </section>
     return (
-        <section className="section-a" data-current-color={color1} data-next-color={color2} >
-            {children}
+        <section className="wavy-container pb-32">
+        <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" className="wavy">
+            <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style={{stroke: 'none', fill:'red'}}></path>
+        </svg>
         </section>
     )
 }
