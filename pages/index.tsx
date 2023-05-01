@@ -4,7 +4,8 @@ import {
   NavBar,
   HeroSectionBlendImage,
   Grid2Column,
-  Feature
+  Feature,
+  WavySectionA
 } from '@/components/common'
 import { 
   FaYoutube,
@@ -24,16 +25,18 @@ export default function Home() {
       />
       <NavBar/>
       <main>
-        <HeroSectionBlendImage
-          heading='Drop The Needle'
-          bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
-          image={{
-            src: '/Scripps.webp',
-            width: 800,
-            height: 450,
-            alt: 'Scripps Institute - San Diego, CA'
-          }}
-        />
+        <WavySectionA color1='altWhite' color2='altGreen-300'>
+          <HeroSectionBlendImage
+            heading='Drop The Needle'
+            bodyTagline='Start curating and compiling power hours with ease from YouTube videos.'
+            image={{
+              src: '/Scripps.webp',
+              width: 800,
+              height: 450,
+              alt: 'Scripps Institute - San Diego, CA'
+            }}
+          />
+        </WavySectionA>
         <Grid2Column>
           <Feature
             title='YouTube Search (coming soon)'

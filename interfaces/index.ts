@@ -1,8 +1,11 @@
 import React from 'react'
-import { NavItemType, imageType } from '@/types';
+import {
+    NavItemType,
+    ImageType
+} from '@/types';
 
 export interface ChildrenI {
-    children: React.ReactElement | React.ReactElement[]
+    children: React.ReactElement | React.ReactElement[];
 }
 
 export interface NavBarI {
@@ -25,11 +28,17 @@ export interface LinkButtonI {
 export interface HeroSectionI {
     heading: string;
     bodyTagline: string;
-    image: imageType
+    image: ImageType
 }
 
 export interface FeatureI {
     title: string;
     body: string;
     icon: React.ElementType;
+}
+
+export interface WavySectionI {
+    children: React.ReactElement | React.ReactElement[];
+    color1: string;
+    color2: string;
 }

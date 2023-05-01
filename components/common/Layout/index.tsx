@@ -1,4 +1,4 @@
-import { ChildrenI } from "@/interfaces"
+import { ChildrenI, WavySectionI } from "@/interfaces"
 
 export const Grid2Column = ({
     children
@@ -13,12 +13,14 @@ export const Grid2Column = ({
     )
 }
 
-export const WavySection = ({
-    children
-}: ChildrenI) => {
+export const WavySectionA = ({
+    children,
+    color1,
+    color2
+}: WavySectionI) => {
 
     return (
-        <section>
+        <section className="section-a" data-current-color={color1} data-next-color={color2} >
             {children}
         </section>
     )

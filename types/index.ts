@@ -2,7 +2,7 @@ import NavItem from '@/components/common/Navigation/NavItem';
 
 export type NavItemType = typeof NavItem;
 
-export type imageType = {
+export type ImageType = {
     src: string;
     width: number;
     height: number;
