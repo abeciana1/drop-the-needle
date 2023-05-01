@@ -25,7 +25,7 @@ export default function Home() {
       />
       <NavBar/>
       <main>
-          <WavySectionA color1='#f8f8f8' color2='#a4c690'>
+          <WavySectionA color='#a4c690'>
           </WavySectionA>
             <HeroSectionBlendImage
               heading='Drop The Needle'

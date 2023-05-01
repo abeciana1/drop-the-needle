@@ -39,6 +39,5 @@ export interface FeatureI {
 
 export interface WavySectionI {
     children: React.ReactElement | React.ReactElement[];
-    color1: string;
-    color2: string;
+    color: string;
 }
