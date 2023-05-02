@@ -47,21 +47,25 @@ export default function Home() {
               title='YouTube Search (coming soon)'
               body='Search for YouTube videos with ease.'
               icon={FaYoutube}
+              color='altWhite'
               />
             <Feature
               title='Power Hour Management'
               body='Create, host, share, and edit power hours.'
               icon={FaRegCalendarAlt}
+              color='altWhite'
               />
             <Feature
               title='Participate'
               body='Add YouTube videos to power hours that you join.'
               icon={FaUsers}
+              color='altWhite'
               />
             <Feature
               title='Share and Present'
               body='Share and present power hours with everyone!'
               icon={FaShareAlt}
+              color='altWhite'
               />
           </Grid2Column>
         </ComponentMargin>

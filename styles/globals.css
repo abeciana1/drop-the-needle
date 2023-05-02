@@ -22,7 +22,7 @@ body {
 }
 
 div, p, li, a {
-  @apply text-altBlack;
+  @apply text-inherit;
   @apply font-montserrat;
 }
 
