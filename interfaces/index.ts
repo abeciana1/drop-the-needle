@@ -38,6 +38,13 @@ export interface FeatureI {
 }
 
 export interface WavySectionI {
-    children: React.ReactElement | React.ReactElement[];
+    // children: React.ReactElement | React.ReactElement[];
     color: string;
+    bgColor?: string;
+    type: 1 | 2 | 3 | 4;
+}
+
+export interface ComponentMarginI {
+    children: React.ReactElement | React.ReactElement[];
+    bgColor?: string;
 }

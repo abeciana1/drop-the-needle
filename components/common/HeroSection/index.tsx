@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import { HeroSectionI } from '@/interfaces'
-import cx from 'classnames'
 
 export const HeroSectionBlendImage = ({
     heading,
@@ -17,7 +16,7 @@ export const HeroSectionBlendImage = ({
     } = image
 
     return (
-        <section className='relative mt-10'>
+        <section className='relative my-10'>
             <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 items-center">
                 <section className="space-y-5">
                     <h1 className=' text-altBlack'>{heading}</h1>
