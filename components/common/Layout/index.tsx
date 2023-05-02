@@ -18,6 +18,16 @@ export const Grid2Column = ({
     )
 }
 
+export const Grid3Column = ({
+    children
+}: ChildrenI) => {
+    return (
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-10 my-20">
+            {children}
+        </section>
+    )
+}
+
 export const WavySection = ({
     color,
     bgColor,
@@ -28,14 +38,16 @@ export const WavySection = ({
         <section className={cx({
             ['bg-vermillion-200']: bgColor === 'vermillion-200',
             ['bg-jaffa-200']: bgColor === 'jaffa-200',
-            ['bg-ceruleanBlue']: bgColor === 'ceruleanBlue'
+            ['bg-ceruleanBlue']: bgColor === 'ceruleanBlue',
+            ['bg-altGreen-300']: bgColor === 'altGreen-300'
         })}>
             <svg viewBox="0 0 1185 248" xmlns="http://www.w3.org/2000/svg" className={cx({
                 ['fill-jaffa-200']: color === 'jaffa-200',
                 ['fill-ceruleanBlue']: color === 'ceruleanBlue',
                 ['fill-altWhite']: color === 'altWhite',
                 ['fill-altBlack']: color === 'altBlack',
-                ['fill-vermillion-200']: color === 'vermillion-200'
+                ['fill-vermillion-200']: color === 'vermillion-200',
+                ['fill-altGreen-300']: color === 'altGreen-300'
             })}>
             {type === 1 &&
                 <path d="M1134.5 48.2C1022.1 48.2 1047 97.2 945.8 107.5C844.6 117.8 799.1 69.2 726.3 69.2C653.5 69.2 618.4 91.1 515.5 138.5C412.7 185.8 241.5 147.2 90.7 69.2C53 49.7 22.7 32.5 0 17.7V248H1185V55C1170 50.8 1153.4 48.2 1134.5 48.2ZM76 141.1C65 141.1 56 132.1 56 121.1C56 110.1 65 101.1 76 101.1C87 101.1 96 110.1 96 121.1C96 132.1 87 141.1 76 141.1ZM814.5 190.1C801 190.1 790 179.1 790 165.6C790 152.1 801 141.1 814.5 141.1C828 141.1 839 152.1 839 165.6C839 179.1 828 190.1 814.5 190.1ZM870 212.1C863.9 212.1 859 207.2 859 201.1C859 195 863.9 190.1 870 190.1C876.1 190.1 881 195 881 201.1C881 207.2 876.1 212.1 870 212.1Z" />
@@ -74,6 +86,7 @@ export const ComponentMargin = ({
             ['bg-vermillion-200 text-altBlack']: bgColor === 'vermillion-200',
             ['bg-jaffa-200 text-altBlack']: bgColor === 'jaffa-200',
             ['bg-ceruleanBlue text-altWhite']: bgColor === 'ceruleanBlue',
+            ['bg-altGreen-300 text-altWhite']: bgColor === 'altGreen-300'
         })}>
             {children}
         </section>

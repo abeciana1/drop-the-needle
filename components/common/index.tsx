@@ -3,6 +3,7 @@ export { LinkLookLikeButton } from '@/components/common/Link'
 export { HeroSectionBlendImage } from '@/components/common/HeroSection'
 export { 
     Grid2Column,
+    Grid3Column,
     WavySection,
     ComponentMargin
 } from '@/components/common/Layout'
