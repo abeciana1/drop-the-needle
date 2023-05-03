@@ -7,7 +7,8 @@ import {
   Grid3Column,
   Feature,
   WavySection,
-  ComponentMargin
+  ComponentMargin,
+  Footer
 } from '@/components/common'
 import { 
   FaYoutube,
@@ -40,8 +41,7 @@ export default function Home() {
             />
         </ComponentMargin>
         <WavySection color='jaffa-200' type={1} />
-        <WavySection color='jaffa-200' type={2} bgColor='altGreen-300' />
-        <ComponentMargin bgColor='altGreen-300'>
+        <ComponentMargin bgColor='jaffa-200'>
           <h1>Upcoming and recent power hours</h1>
           <Grid3Column>
             <div className='bg-altBlack h-56 w-56 mx-auto'></div>
@@ -49,7 +49,7 @@ export default function Home() {
             <div className='bg-altBlack h-56 w-56 mx-auto'></div>
           </Grid3Column>
         </ComponentMargin>
-        <WavySection color='altGreen-300' type={3} bgColor='ceruleanBlue' />
+        <WavySection color='jaffa-200' type={2} bgColor='ceruleanBlue' />
         <ComponentMargin bgColor='ceruleanBlue'>
           <h1>Features</h1>
           <Grid2Column>
@@ -80,6 +80,9 @@ export default function Home() {
           </Grid2Column>
         </ComponentMargin>
         <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
+        <ComponentMargin bgColor='vermillion-200'>
+          <Footer/>
+        </ComponentMargin>
       </main>
     </React.Fragment>
   )
