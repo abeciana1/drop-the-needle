@@ -12,7 +12,7 @@ const SEO = ({
         <NextSeo
             title={title}
             titleTemplate='Drop The Needle | %s'
-            defaultTitle={title}
+            defaultTitle='Drop The Needle'
             description={description}
             noindex={noIndex}
             nofollow={noFollow}

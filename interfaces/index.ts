@@ -1,7 +1,8 @@
 import React from 'react'
 import {
     NavItemType,
-    ImageType
+    ImageType,
+    OpenGraphType
 } from '@/types';
 
 export interface ChildrenI {
