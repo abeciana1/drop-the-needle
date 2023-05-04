@@ -1,5 +1,4 @@
 import React from 'react';
-import { NextSeo } from 'next-seo';
 import { 
   NavBar,
   HeroSectionBlendImage,
@@ -8,7 +7,8 @@ import {
   Feature,
   WavySection,
   ComponentMargin,
-  Footer
+  Footer,
+  SEO
 } from '@/components/common'
 import { 
   FaYoutube,
@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <NextSeo
+      <SEO
         title='Drop The Needle'
         description=''
       />

@@ -9,3 +9,4 @@ export {
 } from '@/components/common/Layout'
 export {default as Feature} from '@/components/common/Feature'
 export {default as Footer} from '@/components/common/Footer'
+export {default as SEO} from '@/components/common/SEO'

@@ -48,3 +48,8 @@ export interface ComponentMarginI {
     children: React.ReactElement | React.ReactElement[];
     bgColor?: string;
 }
+
+export interface SeoI {
+    title: string;
+    description: string;
+}
