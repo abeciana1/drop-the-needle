@@ -1,11 +1,13 @@
 import React from 'react'
-import { NextSeo } from 'next-seo'
+import { 
+    SEO
+} from '@/components/common'
 
 const SigninPage = () => {
 
     return (
         <React.Fragment>
-            <NextSeo
+            <SEO
                 title='Drop The Needle'
             />
         </React.Fragment>

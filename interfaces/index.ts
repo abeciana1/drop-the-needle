@@ -51,5 +51,5 @@ export interface ComponentMarginI {
 
 export interface SeoI {
     title: string;
-    description: string;
+    description?: string;
 }

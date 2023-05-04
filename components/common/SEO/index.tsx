@@ -3,7 +3,7 @@ import { SeoI } from "@/interfaces"
 
 const SEO = ({
     title,
-    description
+    description = ''
 }: SeoI) => {
 
     return (
