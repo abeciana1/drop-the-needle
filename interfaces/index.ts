@@ -50,6 +50,8 @@ export interface ComponentMarginI {
 }
 
 export interface SeoI {
-    title: string;
+    title?: string;
     description?: string;
+    noIndex?: boolean;
+    noFollow?: boolean;
 }

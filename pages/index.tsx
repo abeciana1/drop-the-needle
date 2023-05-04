@@ -23,7 +23,6 @@ export default function Home() {
   return (
     <React.Fragment>
       <SEO
-        title='Drop The Needle'
         description=''
       />
       <NavBar/>
