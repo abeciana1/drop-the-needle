@@ -18,16 +18,14 @@ const SigninPage = () => {
             />
             <NavBar />
             <main>
-            <ComponentMargin>
-                <h1 className='text-altBlack'>Signin</h1>
-            </ComponentMargin>
             <WavySection type={4} bgColor='altWhite' color='vermillion-200' />
             <ComponentMargin bgColor='vermillion-200'>
+                <h1 className='text-altBlack'>Signin</h1>
                 <Grid2Column>
                     <Image
                         src='/music-phone.webp'
-                        width={633}
-                        height={714}
+                        width={500}
+                        height={564}
                         alt='Signin'
                     />
                 </Grid2Column>
