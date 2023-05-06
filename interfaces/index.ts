@@ -28,7 +28,11 @@ export interface LinkButtonI {
 export interface HeroSectionI {
     heading: string;
     bodyTagline: string;
-    image: ImageType
+    image: ImageType;
+    ctaButton: boolean;
+    ctaText?: string;
+    ctaLink?: string;
+    ctaColor?: string;
 }
 
 export interface FeatureI {

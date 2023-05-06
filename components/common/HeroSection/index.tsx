@@ -1,11 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import { HeroSectionI } from '@/interfaces'
+import { LinkLookLikeButton } from '@/components/common'
 
 export const HeroSectionBlendImage = ({
     heading,
     bodyTagline,
-    image
+    image,
+    ctaButton,
+    ctaColor = '',
+    ctaText = '',
+    ctaLink = ''
 }: HeroSectionI) => {
 
     const { 
@@ -21,6 +26,16 @@ export const HeroSectionBlendImage = ({
                 <section className="space-y-5">
                     <h1 className=' text-altBlack'>{heading}</h1>
                     <div className='text-2xl font-semiBold'>{bodyTagline}</div>
+                    {ctaButton &&
+                        <>
+                            <LinkLookLikeButton
+                                linkText={ctaText}
+                                bgColor={ctaColor}
+                                textColor='altBlack'
+                                href={ctaLink}
+                            />
+                        </>
+                    }
                 </section>
                 <section className="mt-5 lg:mt-0">
                     <Image

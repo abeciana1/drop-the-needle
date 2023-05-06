@@ -37,7 +37,11 @@ export default function Home() {
               height: 450,
               alt: 'Scripps Institute - San Diego, CA'
             }}
-            />
+            ctaButton
+            ctaColor='gold'
+            ctaLink='signin'
+            ctaText='Join Now'
+          />
         </ComponentMargin>
         <WavySection color='jaffa-200' type={1} />
         <ComponentMargin bgColor='jaffa-200'>
