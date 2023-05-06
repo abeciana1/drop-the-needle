@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { LinkButtonI } from '@/interfaces'
 import cx from 'classnames'
+import { FaArrowRight } from 'react-icons/fa'
 
 export const LinkLookLikeButton = ({
     href,
@@ -13,14 +14,19 @@ export const LinkLookLikeButton = ({
     return (
         <Link
             href={`/${encodeURIComponent(href)}`}
-            className={cx('text-2xl font-medium px-3 py-1 rounded-lg', {
+            className={cx('flex flex-row w-fit items-center text-2xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
                 ['text-altWhite bg-vermillion']: bgColor === 'vermillion',
-                ['text altBlack bg-gold']: bgColor === 'gold'
+                ['text-altBlack bg-gold']: bgColor === 'gold'
             })}
         >
             {linkText}
+            {ctaArrow &&
+                <span>
+                    <FaArrowRight className='ml-2' />
+                </span>
+            }
         </Link>
     )
 }
