@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+
 // import { PrismaClient } from '@prisma/client'
 // const prisma = new PrismaClient()
 

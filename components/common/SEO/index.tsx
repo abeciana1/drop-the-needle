@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo"
 import { SeoI } from "@/interfaces"
+import { useRouter } from "next/router"
 
 const SEO = ({
     title = '',
@@ -7,6 +8,8 @@ const SEO = ({
     noIndex = false,
     noFollow = false,
 }: SeoI) => {
+    const router = useRouter()
+    console.log(router)
 
     return (
         <NextSeo
@@ -16,6 +19,19 @@ const SEO = ({
             description={description}
             noindex={noIndex}
             nofollow={noFollow}
+            openGraph={{
+                type: 'website',
+                title: title,
+                description: description,
+                images: [
+                    {
+                        url: 'http://localhost:3000/api/og',
+                        width: 800,
+                        height: 600,
+                        alt: 'Drop The Needle'
+                    }
+                ]
+            }}
         />
     )
 }
