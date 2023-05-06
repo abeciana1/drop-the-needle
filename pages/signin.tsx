@@ -1,7 +1,9 @@
 import React from 'react'
 import {
     NavBar, 
-    SEO
+    SEO,
+    WavySection,
+    ComponentMargin
 } from '@/components/common'
 
 const SigninPage = () => {
@@ -14,7 +16,12 @@ const SigninPage = () => {
             />
             <NavBar />
             <main>
-                <h1>Signin</h1>
+            <ComponentMargin>
+                <h1 className='text-altBlack'>Signin</h1>
+            </ComponentMargin>
+            <WavySection color='altWhite' type={3} bgColor='vermillion-200' />
+            <ComponentMargin bgColor='vermillion-200'>
+            </ComponentMargin>
             </main>
         </React.Fragment>
     )
