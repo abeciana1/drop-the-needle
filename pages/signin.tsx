@@ -14,7 +14,7 @@ const SigninPage = () => {
             />
             <NavBar />
             <main>
-
+                <h1>Signin</h1>
             </main>
         </React.Fragment>
     )
