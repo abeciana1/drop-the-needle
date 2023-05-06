@@ -32,6 +32,7 @@ export const HeroSectionBlendImage = ({
                                 linkText={ctaText}
                                 bgColor={ctaColor}
                                 href={ctaLink}
+                                ctaArrow
                             />
                         </div>
                     }

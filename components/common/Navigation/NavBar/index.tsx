@@ -71,6 +71,7 @@ const NavBar = () => {
                                 linkText='Signin'
                                 bgColor='vermillion'
                                 href='signin'
+                                ctaArrow={false}
                             />
                         </div>
                     </React.Fragment>

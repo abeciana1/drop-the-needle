@@ -6,7 +6,8 @@ import cx from 'classnames'
 export const LinkLookLikeButton = ({
     href,
     linkText,
-    bgColor = 'altBlack'
+    bgColor = 'altBlack',
+    ctaArrow
 }: LinkButtonI) => {
 
     return (

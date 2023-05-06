@@ -22,6 +22,7 @@ export interface LinkButtonI {
     href: string;
     linkText: string;
     bgColor?: string;
+    ctaArrow: boolean
 }
 
 export interface HeroSectionI {
