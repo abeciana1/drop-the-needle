@@ -1,6 +1,6 @@
 import { NextSeo } from "next-seo"
 import { SeoI } from "@/interfaces"
-import { useRouter } from "next/router"
+// import { useRouter } from "next/router"
 
 const SEO = ({
     title = '',
@@ -8,8 +8,7 @@ const SEO = ({
     noIndex = false,
     noFollow = false,
 }: SeoI) => {
-    const router = useRouter()
-    console.log(router)
+    // const router = useRouter()
 
     return (
         <NextSeo
