@@ -27,13 +27,13 @@ export const HeroSectionBlendImage = ({
                     <h1 className=' text-altBlack'>{heading}</h1>
                     <div className='text-2xl font-semiBold'>{bodyTagline}</div>
                     {ctaButton &&
-                        <>
+                        <div>
                             <LinkLookLikeButton
                                 linkText={ctaText}
                                 bgColor={ctaColor}
                                 href={ctaLink}
                             />
-                        </>
+                        </div>
                     }
                 </section>
                 <section className="mt-5 lg:mt-0">
