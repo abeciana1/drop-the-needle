@@ -31,7 +31,6 @@ export const HeroSectionBlendImage = ({
                             <LinkLookLikeButton
                                 linkText={ctaText}
                                 bgColor={ctaColor}
-                                textColor='altBlack'
                                 href={ctaLink}
                             />
                         </>

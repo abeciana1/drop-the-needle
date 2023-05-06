@@ -21,7 +21,6 @@ export interface NavItemI {
 export interface LinkButtonI {
     href: string;
     linkText: string;
-    textColor?: string;
     bgColor?: string;
 }
 

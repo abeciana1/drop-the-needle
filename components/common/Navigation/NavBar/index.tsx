@@ -70,7 +70,6 @@ const NavBar = () => {
                             <LinkLookLikeButton
                                 linkText='Signin'
                                 bgColor='vermillion'
-                                textColor='altWhite'
                                 href='signin'
                             />
                         </div>
