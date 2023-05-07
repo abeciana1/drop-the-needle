@@ -43,6 +43,7 @@ export const HeroSectionBlendImage = ({
                         width={width}
                         height={height}
                         alt={alt}
+                        priority
                     />
                 </section>
             </section>
