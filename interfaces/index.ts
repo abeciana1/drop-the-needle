@@ -63,4 +63,5 @@ export interface SeoI {
 export interface DefaultButtonI {
     text: string;
     ctaArrow: boolean;
+    bgColor: string;
 }

@@ -4,7 +4,8 @@ import { DefaultButtonI } from '@/interfaces'
 
 export const DefaultButton = ({
     text,
-    ctaArrow
+    ctaArrow,
+    bgColor
 }: DefaultButtonI) => {
     return (
         <button
