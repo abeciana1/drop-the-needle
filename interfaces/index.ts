@@ -20,7 +20,7 @@ export interface NavItemI {
 
 export interface LinkButtonI {
     href: string;
-    linkText: string;
+    text: string;
     bgColor?: string;
     ctaArrow: boolean
 }
@@ -68,4 +68,8 @@ export interface DefaultButtonI {
 
 export interface onClickButtonI extends DefaultButtonI {
     onClick: () => void;
+}
+
+export interface eventOnClickBtnI extends DefaultButtonI {
+
 }

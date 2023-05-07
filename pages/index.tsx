@@ -39,7 +39,7 @@ export default function Home() {
             }}
             ctaButton
             ctaColor='gold'
-            ctaLink='signin'
+            ctaLink='/api/auth/signin'
             ctaText='Join Now'
           />
         </ComponentMargin>

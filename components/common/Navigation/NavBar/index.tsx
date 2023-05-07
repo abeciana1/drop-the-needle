@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
-import { DefaultButton } from '@/components/common'
+import { LinkLookLikeButton } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
+import { signIn } from "next-auth/react"
+
 
 const NavBar = () => {
     const [ isOpen, setOpen ] = useState(false)
@@ -67,7 +69,8 @@ const NavBar = () => {
                                 ['pt-6 pl-6']: isMobile || isTablet 
                             })}
                         >
-                            <DefaultButton
+                            <LinkLookLikeButton
+                                href='/api/auth/signin'
                                 text='Signin'
                                 bgColor='vermillion'
                                 ctaArrow={false}

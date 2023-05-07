@@ -29,7 +29,7 @@ export const HeroSectionBlendImage = ({
                     {ctaButton &&
                         <div>
                             <LinkLookLikeButton
-                                linkText={ctaText}
+                                text={ctaText}
                                 bgColor={ctaColor}
                                 href={ctaLink}
                                 ctaArrow
