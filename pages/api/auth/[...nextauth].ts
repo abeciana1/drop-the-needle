@@ -1,17 +1,7 @@
-import NextAuth from "next-auth"
+import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
-// type NextAuthOptions = {
-//     providers: [];
-//     callbacks: any;
-//     session: {
-//         strategy: string;
-//         maxAge: number;
-//         updateAge: number;
-//     }
-// }
-
-const options = {
+const options: AuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
@@ -24,6 +14,14 @@ const options = {
         maxAge: 30 * 24 * 60 * 60,
         updateAge: 24 * 60 * 60
     },
+    callbacks: {
+        async signIn({ account, profile }: any) {
+        if (account.provider === "google") {
+            return profile.email_verified && profile.email.endsWith("@example.com")
+        }
+        return true // Do different verification for other providers that don't have `email_verified`
+        },
+    }
 }
 
 export default NextAuth(options)

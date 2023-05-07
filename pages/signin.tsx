@@ -8,6 +8,8 @@ import {
 } from '@/components/common'
 import Image from 'next/image'
 
+import SigninBtn from '@/components/common/Auth'
+
 const SigninPage = () => {
 
     return (
@@ -28,6 +30,7 @@ const SigninPage = () => {
                         height={564}
                         alt='Signin'
                     />
+                    <SigninBtn />
                 </Grid2Column>
             </ComponentMargin>
             </main>
