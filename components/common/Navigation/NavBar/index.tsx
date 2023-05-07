@@ -70,7 +70,7 @@ const NavBar = () => {
                             })}
                         >
                             <LinkLookLikeButton
-                                href='/api/auth/signin'
+                                href='api/auth/signin'
                                 text='Signin'
                                 bgColor='vermillion'
                                 ctaArrow={false}

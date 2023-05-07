@@ -34,7 +34,7 @@ test('[guest user && desktop] Signin link that looks like a button renders in Na
     })
 
     expect(signinLink).toBeInTheDocument()
-    expect(signinLink).toHaveAttribute('href', '/signin')
+    expect(signinLink).toHaveAttribute('href', '/api/auth/signin')
 })
 
 test('hamburger button renders on mobile screens', async () => {
