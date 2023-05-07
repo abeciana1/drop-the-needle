@@ -25,7 +25,7 @@ export const HeroSectionBlendImage = ({
             <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 items-center">
                 <section className="space-y-5">
                     <h1 className=' text-altBlack'>{heading}</h1>
-                    <div className='text-2xl font-semiBold'>{bodyTagline}</div>
+                    <div className='text-altBlack text-2xl font-semiBold'>{bodyTagline}</div>
                     {ctaButton &&
                         <div>
                             <LinkLookLikeButton
