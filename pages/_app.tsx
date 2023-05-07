@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react"
 // const prisma = new PrismaClient()
 
 export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
+  console.log('session', session)
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />
