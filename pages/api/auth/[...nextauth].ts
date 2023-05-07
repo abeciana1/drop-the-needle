@@ -1,6 +1,7 @@
 import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
+
 const options: AuthOptions = {
     providers: [
         GoogleProvider({
@@ -16,11 +17,11 @@ const options: AuthOptions = {
     },
     callbacks: {
         async signIn({ account, profile }: any) {
-        if (account.provider === "google") {
-            return profile.email_verified && profile.email.endsWith("@example.com")
-        }
-        return true
-        },
+            if (account.provider === "google") {
+                return profile.email_verified && profile.email.endsWith("@example.com")
+            }
+            return true
+            },
     }
 }
 
