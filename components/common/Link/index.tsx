@@ -6,14 +6,14 @@ import { FaArrowRight } from 'react-icons/fa'
 
 export const LinkLookLikeButton = ({
     href,
-    linkText,
+    text,
     bgColor = 'altBlack',
     ctaArrow
 }: LinkButtonI) => {
 
     return (
         <Link
-            href={`/${encodeURIComponent(href)}`}
+            href={`/${href}`}
             className={cx('flex flex-row w-fit items-center text-2xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
@@ -21,7 +21,7 @@ export const LinkLookLikeButton = ({
                 ['text-altBlack bg-gold']: bgColor === 'gold'
             })}
         >
-            {linkText}
+            {text}
             {ctaArrow &&
                 <span>
                     <FaArrowRight className='ml-2' />
