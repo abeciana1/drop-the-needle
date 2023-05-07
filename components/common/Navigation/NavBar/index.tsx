@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
-import { LinkLookLikeButton } from '@/components/common'
+import { DefaultButton } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
@@ -67,10 +67,9 @@ const NavBar = () => {
                                 ['pt-6 pl-6']: isMobile || isTablet 
                             })}
                         >
-                            <LinkLookLikeButton
-                                linkText='Signin'
+                            <DefaultButton
+                                text='Signin'
                                 bgColor='vermillion'
-                                href='signin'
                                 ctaArrow={false}
                             />
                         </div>
