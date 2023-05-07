@@ -59,3 +59,8 @@ export interface SeoI {
     noIndex?: boolean;
     noFollow?: boolean;
 }
+
+export interface DefaultButtonI {
+    text: string;
+    ctaArrow: boolean;
+}

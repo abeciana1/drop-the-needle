@@ -1,7 +1,11 @@
+import cx from 'classnames'
+import { FaArrowRight } from 'react-icons/fa'
+import { DefaultButtonI } from '@/interfaces'
 
-
-
-const DefaultButton = () => {
+export const DefaultButton = ({
+    text,
+    ctaArrow
+}: DefaultButtonI) => {
     return (
         <button
             className={cx('flex flex-row w-fit items-center text-2xl font-medium px-3 py-1 rounded-lg', {
@@ -11,7 +15,7 @@ const DefaultButton = () => {
                 ['text-altBlack bg-gold']: bgColor === 'gold'
             })}
         >
-            {linkText}
+            {text}
             {ctaArrow &&
                 <span>
                     <FaArrowRight className='ml-2' />
