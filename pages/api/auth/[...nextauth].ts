@@ -1,6 +1,16 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 
+// type NextAuthOptions = {
+//     providers: [];
+//     callbacks: any;
+//     session: {
+//         strategy: string;
+//         maxAge: number;
+//         updateAge: number;
+//     }
+// }
+
 const options = {
     providers: [
         GoogleProvider({
@@ -8,14 +18,12 @@ const options = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
         })
     ],
-    callbacks: {
-        async signIn({ account, profile }) {
-        if (account.provider === "google") {
-            return profile.email_verified && profile.email.endsWith("@gmail.com")
-        }
-            return true
-        },
-    }
+    secret: process.env.JWT_SECRET as string,
+    session: {
+        strategy: 'jwt',
+        maxAge: 30 * 24 * 60 * 60,
+        updateAge: 24 * 60 * 60
+    },
 }
 
 export default NextAuth(options)
