@@ -18,11 +18,8 @@ export interface NavItemI {
     linkText: string;
 }
 
-export interface LinkButtonI {
+export interface LinkButtonI extends DefaultButtonI {
     href: string;
-    text: string;
-    bgColor?: string;
-    ctaArrow: boolean
 }
 
 export interface HeroSectionI {
@@ -71,5 +68,7 @@ export interface onClickButtonI extends DefaultButtonI {
 }
 
 export interface eventOnClickBtnI extends DefaultButtonI {
-
+    onClick: (e: Event) => void;
 }
+
+export interface AuthLink extends LinkButtonI, eventOnClickBtnI {}
