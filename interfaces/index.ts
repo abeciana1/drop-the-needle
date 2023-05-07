@@ -65,3 +65,7 @@ export interface DefaultButtonI {
     ctaArrow: boolean;
     bgColor: string;
 }
+
+export interface onClickButtonI extends DefaultButtonI {
+    onClick: () => void;
+}
