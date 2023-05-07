@@ -1,17 +1,19 @@
 import cx from 'classnames'
 import { FaArrowRight } from 'react-icons/fa'
 import {
-    DefaultButtonI,
-    onClickButtonI
+    EventOnClickBtnI,
+    OnClickButtonI
 } from '@/interfaces'
 
-export const DefaultButton = ({
+export const EventClickButton = ({
     text,
     ctaArrow,
-    bgColor
-}: DefaultButtonI) => {
+    bgColor,
+    onClick
+}: EventOnClickBtnI) => {
     return (
         <button
+            onClick={(e: any) => onClick(e)}
             className={cx('flex flex-row w-fit items-center text-2xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
@@ -29,12 +31,12 @@ export const DefaultButton = ({
     )
 }
 
-export const onClickButton = ({
+export const OnClickButton = ({
     text,
     bgColor,
     ctaArrow,
     onClick
-}: onClickButtonI) => {
+}: OnClickButtonI) => {
     return (
         <button
             onClick={onClick}

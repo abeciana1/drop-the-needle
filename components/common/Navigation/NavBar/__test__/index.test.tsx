@@ -29,12 +29,11 @@ test('[guest user && desktop] Signin link that looks like a button renders in Na
             <NavBar/>
         </ResponsiveContext.Provider>
     )
-    const signinLink = screen.getByRole('link', {
+    const signinLink = screen.getByRole('button', {
         name: /signin/i
     })
 
     expect(signinLink).toBeInTheDocument()
-    expect(signinLink).toHaveAttribute('href', '/api/auth/signin')
 })
 
 test('hamburger button renders on mobile screens', async () => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
-import { LinkLookLikeButton } from '@/components/common'
+import { OnClickButton } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
@@ -17,6 +17,11 @@ const NavBar = () => {
         isTablet,
         isDesktop
     } = useResponsiveness() || {}
+
+    const handleGoogleSignin = async () => {
+        // e.preventDefault()
+        await signIn('google',{callbackUrl:"http://localhost:3000/api/auth/callback/google"})
+    }
 
     return (
         <React.Fragment>
@@ -69,8 +74,8 @@ const NavBar = () => {
                                 ['pt-6 pl-6']: isMobile || isTablet 
                             })}
                         >
-                            <LinkLookLikeButton
-                                href='api/auth/signin'
+                            <OnClickButton
+                                onClick={handleGoogleSignin}
                                 text='Signin'
                                 bgColor='vermillion'
                                 ctaArrow={false}

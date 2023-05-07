@@ -57,7 +57,7 @@ export interface SeoI {
     noFollow?: boolean;
 }
 
-export interface DefaultButtonI {
+interface DefaultButtonI {
     text: string;
     ctaArrow: boolean;
     bgColor: string;
