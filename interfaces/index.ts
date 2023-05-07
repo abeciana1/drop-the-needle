@@ -63,12 +63,12 @@ export interface DefaultButtonI {
     bgColor: string;
 }
 
-export interface onClickButtonI extends DefaultButtonI {
+export interface OnClickButtonI extends DefaultButtonI {
     onClick: () => void;
 }
 
-export interface eventOnClickBtnI extends DefaultButtonI {
+export interface EventOnClickBtnI extends DefaultButtonI {
     onClick: (e: Event) => void;
 }
 
-export interface AuthLink extends LinkButtonI, eventOnClickBtnI {}
+export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
