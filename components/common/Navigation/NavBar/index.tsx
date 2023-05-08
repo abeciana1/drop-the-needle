@@ -20,7 +20,7 @@ const NavBar = () => {
 
     const handleGoogleSignin = async () => {
         // e.preventDefault()
-        await signIn('google',{callbackUrl:"http://localhost:3000/api/auth/callback/google"})
+        await signIn('google', {callbackUrl: '/'})
     }
 
     return (
