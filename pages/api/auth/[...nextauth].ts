@@ -27,6 +27,7 @@ const options: AuthOptions = {
             }
         },
         async jwt({ token, account, profile, trigger}: any) {
+
             if (account) {
                 token.accessToken = account.access_token
             }
@@ -40,6 +41,8 @@ const options: AuthOptions = {
                         }
                     })
                 } else if (trigger === 'signIn') {
+                    // ! Create page for signin and signup
+                    // ! - need to have different options so be4 case works
                     await prisma.user.findFirst({
                         where: {
                             email: profile.email
