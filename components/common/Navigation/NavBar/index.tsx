@@ -6,14 +6,12 @@ import { OnClickButton } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
-import { signIn } from "next-auth/react"
-import { useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 
 
 const NavBar = () => {
-    const { data: session, status } = useSession()
     const [ isOpen, setOpen ] = useState(false)
-
+    const { data: session, status } = useSession()
     console.log('session', session)
     console.log('status', status)
 
