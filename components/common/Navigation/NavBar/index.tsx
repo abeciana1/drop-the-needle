@@ -36,8 +36,8 @@ const NavBar = () => {
                 >
                     <Image
                         src='/drop-the-needle-logo.webp'
-                        height={100}
-                        width={100}
+                        height={150}
+                        width={150}
                         alt='Drop The Needle logo'
                         priority
                         className='mx-auto'
