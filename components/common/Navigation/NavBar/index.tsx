@@ -7,10 +7,15 @@ import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
+import { useSession } from "next-auth/react"
 
 
 const NavBar = () => {
+    const { data: session, status } = useSession()
     const [ isOpen, setOpen ] = useState(false)
+
+    console.log('session', session)
+    console.log('status', status)
 
     const {
         isMobile,
@@ -68,18 +73,23 @@ const NavBar = () => {
                                 linkText='Listen'
                             />
                         </ul>
-                        <div 
-                            className={cx({
-                                ['pt-6 pl-6']: isMobile || isTablet 
-                            })}
-                        >
-                            <OnClickButton
-                                onClick={handleGoogleSignin}
-                                text='Signin'
-                                bgColor='vermillion'
-                                ctaArrow={false}
-                            />
-                        </div>
+                        {status === 'unauthenticated' &&
+                            <div 
+                                className={cx({
+                                    ['pt-6 pl-6']: isMobile || isTablet 
+                                })}
+                            >
+                                <OnClickButton
+                                    onClick={handleGoogleSignin}
+                                    text='Signin'
+                                    bgColor='vermillion'
+                                    ctaArrow={false}
+                                />
+                            </div>
+                        }
+                        {status === 'authenticated' &&
+                            <div></div>
+                        }
                     </React.Fragment>
                 }
                 {(isMobile || isTablet) &&
