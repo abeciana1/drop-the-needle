@@ -25,7 +25,7 @@ const NavBar = () => {
     return (
         <React.Fragment>
             <nav
-                className={cx('z-50 pt-5', {
+                className={cx('z-50 pt-5 px-5 sm:px-10 lg:px-20', {
                     ['flex justify-between items-center ']: isDesktop,
                     ['bg-altWhite h-screen']: ((isMobile || isTablet) && isOpen)
                 })}

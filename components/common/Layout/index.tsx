@@ -82,7 +82,7 @@ export const ComponentMargin = ({
 }: ComponentMarginI) => {
 
     return (
-        <section className={cx('relative py-10 px-5 sp:px-10 lg:px-20', {
+        <section className={cx('relative py-10 px-5 sm:px-10 lg:px-20', {
             ['bg-vermillion-200 text-altBlack']: bgColor === 'vermillion-200',
             ['bg-jaffa-200 text-altBlack']: bgColor === 'jaffa-200',
             ['bg-ceruleanBlue text-altWhite']: bgColor === 'ceruleanBlue',
