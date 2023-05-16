@@ -19,7 +19,6 @@ const NavBar = () => {
     } = useResponsiveness() || {}
 
     const handleGoogleSignin = async () => {
-        // e.preventDefault()
         await signIn('google', {callbackUrl: '/'})
     }
 
