@@ -69,7 +69,7 @@ const NavBar = ({ status }: NavBarI) => {
                             />
                         </ul>
                         {status === false &&
-                            <div 
+                            <li 
                                 className={cx({
                                     ['pt-6 pl-6']: isMobile || isTablet 
                                 })}
@@ -80,7 +80,7 @@ const NavBar = ({ status }: NavBarI) => {
                                     bgColor='vermillion'
                                     ctaArrow={false}
                                 />
-                            </div>
+                            </li>
                         }
                         {status &&
                             <div></div>
