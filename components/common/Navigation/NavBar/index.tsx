@@ -68,7 +68,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 linkText='Listen'
                             />
                         </ul>
-                        {status === 'unauthenticated' &&
+                        {status === false &&
                             <div 
                                 className={cx({
                                     ['pt-6 pl-6']: isMobile || isTablet 
@@ -82,7 +82,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 />
                             </div>
                         }
-                        {status === 'authenticated' &&
+                        {status &&
                             <div></div>
                         }
                     </React.Fragment>

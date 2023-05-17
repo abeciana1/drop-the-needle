@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event'
 
 
 test('NavBar renders without issues', () => {
-    render(<NavBar status='unauthenticated' />)
+    render(<NavBar status={false} />)
     const nav = screen.getByRole('navigation')
     expect(nav).toBeInTheDocument()
 })
 
 test('Navbar logo renders with anchor tag pointing to homepage', () => {
-    render(<NavBar status='unauthenticated' />)
+    render(<NavBar status={false} />)
     const logo = screen.getByRole('img')
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('alt', 'Drop The Needle logo')
@@ -26,7 +26,7 @@ test('Navbar logo renders with anchor tag pointing to homepage', () => {
 test('[guest user && desktop] Signin link that looks like a button renders in NavBar', () => {
     render(
         <ResponsiveContext.Provider value={{ width: 2000 }}>
-            <NavBar status='unauthenticated' />
+            <NavBar status={false} />
         </ResponsiveContext.Provider>
     )
     const signinLink = screen.getByRole('button', {
@@ -39,7 +39,7 @@ test('[guest user && desktop] Signin link that looks like a button renders in Na
 test('hamburger button renders on mobile screens', async () => {
     render(
         <ResponsiveContext.Provider value={{ width: 600 }}>
-            <NavBar status='unauthenticated' />
+            <NavBar status={false} />
         </ResponsiveContext.Provider>
     )
 

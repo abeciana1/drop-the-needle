@@ -70,5 +70,5 @@ export interface EventOnClickBtnI extends DefaultButtonI {
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 
 export interface NavBarI {
-    status: string
+    status: boolean;
 }
