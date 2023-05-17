@@ -28,7 +28,7 @@ export default function Home() {
       <SEO
         description=''
       />
-      <NavBar authed={status} />
+      <NavBar status={status} />
       <main>
         <ComponentMargin>
           <HeroSectionBlendImage

@@ -7,9 +7,9 @@ import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
+import { NavBarI } from '@/interfaces'
 
-
-const NavBar = () => {
+const NavBar = ({ status }: NavBarI) => {
     const [ isOpen, setOpen ] = useState(false)
 
     const {

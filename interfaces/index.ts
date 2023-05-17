@@ -8,10 +8,6 @@ export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
 }
 
-export interface NavBarI {
-    children: React.ReactElement<NavItemType> | React.ReactElement<NavItemType>[]
-}
-
 export interface NavItemI {
     href: string;
     color?: string;
@@ -72,3 +68,7 @@ export interface EventOnClickBtnI extends DefaultButtonI {
 }
 
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
+
+export interface NavBarI {
+    status: string
+}
