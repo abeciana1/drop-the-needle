@@ -72,3 +72,9 @@ export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 export interface NavBarI {
     status: boolean;
 }
+
+export interface AccountI {
+    name: string;
+    email: string;
+    image: string;
+}
