@@ -70,7 +70,7 @@ export interface EventOnClickBtnI extends DefaultButtonI {
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 
 export interface NavBarI {
-    user: AccountI;
+    status: boolean;
 }
 
 export interface AccountI {
