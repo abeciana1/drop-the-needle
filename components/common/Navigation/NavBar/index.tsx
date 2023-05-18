@@ -12,7 +12,7 @@ import {
     NavItem
 } from '@/components/common'
 
-const NavBar = ({ status }: NavBarI) => {
+const NavBar = ({ user }: NavBarI) => {
     const [ isOpen, setOpen ] = useState(false)
 
     const {
@@ -71,7 +71,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 linkText='Listen'
                             />
                         </ul>
-                        {status === false &&
+                        {!!user.email === false &&
                             <li 
                                 className={cx({
                                     ['pt-6 pl-6']: isMobile || isTablet 
@@ -85,7 +85,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 />
                             </li>
                         }
-                        {status &&
+                        {user &&
                             <div></div>
                         }
                     </React.Fragment>

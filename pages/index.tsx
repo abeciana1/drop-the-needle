@@ -16,19 +16,18 @@ import {
   FaUsers,
   FaShareAlt
 } from "react-icons/fa";
-import { useSession } from "next-auth/react"
+import { useSession, getSession } from "next-auth/react"
+// import { options } from '@/pages/api/auth/[...nextauth]'
 
-export default function Home() {
-  const { data: session, status } = useSession()
-  console.log('session', session)
-  console.log('status', status)
+
+export default function Home(props: any) {
 
   return (
     <React.Fragment>
       <SEO
         description=''
       />
-      <NavBar status={status === 'authenticated'} />
+      <NavBar user={user} />
       <main>
         <ComponentMargin>
           <HeroSectionBlendImage
@@ -92,4 +91,13 @@ export default function Home() {
       </main>
     </React.Fragment>
   )
+}
+
+export const getServerSideProps = async (context: any) => {
+  const session = await getSession(context)
+  return {
+    props: {
+      user: session?.user,
+    },
+  }
 }
