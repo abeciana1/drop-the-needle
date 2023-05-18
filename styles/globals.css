@@ -45,6 +45,10 @@ div, p, li, a {
   background-image: -webkit-gradient(linear, left top, right top, from(#618b4a), color-stop(50%, #618b4a), color-stop(50%, #343434));
   background-image: linear-gradient(to right, #618b4a, #618b4a 50%, #343434 50%);
 }
+.anim-text.ceruleanBlue {
+  background-image: -webkit-gradient(linear, left top, right top, from(#2b59c3), color-stop(50%, #2b59c3), color-stop(50%, #343434));
+  background-image: linear-gradient(to right, #2b59c3, #2b59c3 50%, #343434 50%);
+}
 
 .anim-text:hover {
   -webkit-transition: all 0.8s cubic-bezier(0, 0, 0.23, 1);

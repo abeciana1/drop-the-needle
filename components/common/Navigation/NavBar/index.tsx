@@ -86,7 +86,7 @@ const NavBar = ({ status }: NavBarI) => {
                             </li>
                         }
                         {status &&
-                            <div></div>
+                            <AccountDD/>
                         }
                     </React.Fragment>
                 }
