@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import NavItem from '../NavItem'
 import Image from 'next/image'
 import Link from 'next/link'
 import { OnClickButton } from '@/components/common'
@@ -8,6 +7,10 @@ import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
 import { NavBarI } from '@/interfaces'
+import {
+    AccountDD,
+    NavItem
+} from '@/components/common'
 
 const NavBar = ({ status }: NavBarI) => {
     const [ isOpen, setOpen ] = useState(false)
