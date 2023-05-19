@@ -1,6 +1,12 @@
 import React from 'react'
+import Link from 'next/link'
+import { signOut } from "next-auth/react"
 
 const AccountDD = () => {
+
+    const handleSignOut = () => {
+        
+    }
 
     return (
         <li className="list-none">
@@ -8,9 +14,29 @@ const AccountDD = () => {
                 My Account
             </div>
             <ul className="absolute">
-                <li>Dashboard</li>
-                <li>My Power Hours</li>
-                <li>Signout</li>
+                <li>
+                    <Link
+                        href={encodeURI('/dashboard')}
+                        className=''
+                    >
+                        Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href={encodeURI('/dashboard/power-hours')}
+                    >
+                        My Power Hours
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        href=''
+                        className=""
+                    >
+                        Signout
+                    </Link>
+                </li>
             </ul>
         </li>
     )
