@@ -4,8 +4,8 @@ import { signOut } from "next-auth/react"
 
 const AccountDD = () => {
 
-    const handleSignOut = () => {
-        
+    const handleSignOut = async () => {
+        await signOut({callbackUrl: '/'})
     }
 
     return (
@@ -30,12 +30,11 @@ const AccountDD = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link
-                        href=''
-                        className=""
+                    <button
+                        onClick={handleSignOut}
                     >
                         Signout
-                    </Link>
+                    </button>
                 </li>
             </ul>
         </li>
