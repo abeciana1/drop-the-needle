@@ -73,7 +73,7 @@ const NavBar = ({ status }: NavBarI) => {
                         </ul>
                         {!!status === false &&
                             <li 
-                                className={cx({
+                                className={cx('list-none',{
                                     ['pt-6 pl-6']: isMobile || isTablet 
                                 })}
                             >
