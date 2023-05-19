@@ -13,7 +13,7 @@ const AccountDD = () => {
             <div className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </div>
-            <ul className="absolute">
+            <ul className="absolute font-medium text-lg space-y-0.5">
                 <li>
                     <Link
                         href={encodeURI('/dashboard')}
