@@ -9,7 +9,7 @@ const AccountDD = () => {
     }
 
     return (
-        <li className="list-none">
+        <li className="list-none z-50">
             <div className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </div>
@@ -17,7 +17,7 @@ const AccountDD = () => {
                 <li>
                     <Link
                         href={encodeURI('/dashboard')}
-                        className=''
+                        className='hover:underline'
                     >
                         Dashboard
                     </Link>
@@ -25,6 +25,7 @@ const AccountDD = () => {
                 <li>
                     <Link
                         href={encodeURI('/dashboard/power-hours')}
+                        className='hover:underline'
                     >
                         My Power Hours
                     </Link>
@@ -32,6 +33,7 @@ const AccountDD = () => {
                 <li>
                     <button
                         onClick={handleSignOut}
+                        className='hover:underline'
                     >
                         Signout
                     </button>
