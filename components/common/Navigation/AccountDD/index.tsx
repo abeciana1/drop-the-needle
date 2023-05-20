@@ -22,7 +22,7 @@ const AccountDD = () => {
             <button onClick={() => setOpen(!open)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </button>
-            {open &&
+            {open || (isTablet || isMobile) &&
                 <ul className={cx('font-medium text-lg',{
                     ["space-y-3 mt-3 ml-3"]: isTablet || isMobile,
                     ["absolute mt-0 ml-0 space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
