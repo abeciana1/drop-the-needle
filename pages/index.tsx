@@ -17,8 +17,6 @@ import {
   FaShareAlt
 } from "react-icons/fa";
 import { useSession } from "next-auth/react"
-// import { options } from '@/pages/api/auth/[...nextauth]'
-
 
 export default function Home() {
 

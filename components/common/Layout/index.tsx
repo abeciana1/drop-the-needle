@@ -4,6 +4,8 @@ import {
     ComponentMarginI
 } from "@/interfaces"
 import cx from 'classnames'
+import { NavBar } from '@/components/common'
+import { useSession } from "next-auth/react"
 
 export const Grid2Column = ({
     children
