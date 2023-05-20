@@ -13,7 +13,7 @@ const AccountDD = () => {
             <div className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </div>
-            <ul className="absolute font-medium text-lg space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right">
+            <ul className="lg:absolute font-medium text-lg lg:space-y-0.5 lg:bg-transparent lg:shadow-xl lg:p-2 lg:right-0 lg:w-44 lg:rounded-lg lg:text-right">
                 <li>
                     <Link
                         href={encodeURI('/dashboard')}
