@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { signOut } from "next-auth/react"
 import useResponsiveness from '@/hooks/useResponsiveness'
@@ -6,6 +6,7 @@ import cx from 'classnames'
 
 const AccountDD = () => {
     const [ open, setOpen ] = useState(false)
+    const ref = useRef(null)
 
     const {
         isMobile,
@@ -17,13 +18,30 @@ const AccountDD = () => {
         await signOut({callbackUrl: '/'})
     }
 
-    const handleDropdown = () => {
+    const handleDropdown = (e: React.MouseEvent) => {
+        e.preventDefault()
         setOpen(!open)
     }
 
+    useEffect(() => {
+        if (document) {
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    setOpen(false)
+                }
+            })
+            document.addEventListener('mousedown', (e) => {
+                if (ref?.current !== e?.target) {
+                    setOpen(false)
+                }
+            })
+        }
+    }, [open])
+
+    console.log(ref?.current)
     return (
         <li className="list-none z-50 relative">
-            <button onClick={handleDropdown} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
+            <button ref={ref} data-testid='account-dd' onClick={(e) => handleDropdown(e)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </button>
             {(open || isTablet || isMobile)  &&
