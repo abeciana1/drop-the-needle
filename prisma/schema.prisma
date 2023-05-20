@@ -39,10 +39,11 @@ model PowerHour {
   cover_image    String
   date_time      DateTime
   createdAt      DateTime         @default(now())
+  privateStatus Boolean @default(false)
+  publishStatus Boolean @default(false)
   hosts          Host[]
   participants   Participant[]
   PowerHourSongs PowerHourSong[]
-
   @@map("powerHours")
 }
 

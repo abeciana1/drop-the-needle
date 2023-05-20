@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { OnClickButton } from '@/components/common'
+import {
+    OnClickButton,
+    AccountDD,
+    NavItem
+} from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
 import { NavBarI } from '@/interfaces'
-import {
-    AccountDD,
-    NavItem
-} from '@/components/common'
 
 const NavBar = ({ status }: NavBarI) => {
     const [ isOpen, setOpen ] = useState(false)
