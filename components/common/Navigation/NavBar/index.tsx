@@ -70,7 +70,6 @@ const NavBar = ({ status }: NavBarI) => {
                                 color='altGreen'
                                 linkText='Listen'
                             />
-                        </ul>
                         {!!status === false &&
                             <li 
                                 className={cx('list-none',{
@@ -88,6 +87,7 @@ const NavBar = ({ status }: NavBarI) => {
                         {status &&
                             <AccountDD/>
                         }
+                        </ul>
                     </React.Fragment>
                 }
                 {(isMobile || isTablet) &&
