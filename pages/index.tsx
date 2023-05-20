@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <SEO
-        description=''
+        description='Start curating and compiling power hours with ease from YouTube videos.'
       />
       <NavBar status={status === 'authenticated'} />
       <main>
