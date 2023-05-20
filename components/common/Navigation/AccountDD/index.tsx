@@ -1,8 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import { signOut } from "next-auth/react"
+import useResponsiveness from '@/hooks/useResponsiveness'
+import cx from 'classnames'
 
 const AccountDD = () => {
+
+    const {
+        isMobile,
+        isTablet,
+        isDesktop
+    } = useResponsiveness() || {}
 
     const handleSignOut = async () => {
         await signOut({callbackUrl: '/'})
@@ -13,7 +21,10 @@ const AccountDD = () => {
             <div className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </div>
-            <ul className="md:absolute font-medium text-lg space-y-3 mt-3 ml-3 md:mt-0 md:ml-0 md:space-y-0.5 md:bg-transparent md:shadow-xl md:p-2 md:right-0 md:w-44 md:rounded-lg md:text-right">
+            <ul className={cx('font-medium text-lg',{
+                ["space-y-3 mt-3 ml-3"]: isTablet || isMobile,
+                ["absolute mt-0 ml-0 space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
+            })}>
                 <li>
                     <Link
                         href={encodeURI('/dashboard')}
