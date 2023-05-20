@@ -2,16 +2,33 @@ import { render, screen } from '@testing-library/react'
 import NavBar from '../'
 import { Context as ResponsiveContext } from 'react-responsive'
 import userEvent from '@testing-library/user-event'
+import { SessionProvider } from "next-auth/react"
 
+const session = {
+    user: {
+        name: 'Alex Beciana',
+        email: 'alexander.beciana@gmail.com',
+        image: 'https://lh3.googleusercontent.com/a/AGNmyxZLR5M3zkX59pf7YzgWV7lmrgKjEOE-NRvwbRoz=s96-c'
+    },
+    expires: '2023-06-07T00:45:43.741Z'
+}
 
 test('NavBar renders without issues', () => {
-    render(<NavBar status={false} />)
+    render(
+        <SessionProvider session={session}>
+            <NavBar/>
+        </SessionProvider>
+    )
     const nav = screen.getByRole('navigation')
     expect(nav).toBeInTheDocument()
 })
 
 test('Navbar logo renders with anchor tag pointing to homepage', () => {
-    render(<NavBar status={false} />)
+    render(
+        <SessionProvider session={session}>
+            <NavBar />
+        </SessionProvider>
+    )
     const logo = screen.getByRole('img')
     expect(logo).toBeInTheDocument()
     expect(logo).toHaveAttribute('alt', 'Drop The Needle logo')
@@ -23,24 +40,28 @@ test('Navbar logo renders with anchor tag pointing to homepage', () => {
     expect(link).toHaveAttribute('href', '/')
 })
 
-test('[guest user && desktop] Signin link that looks like a button renders in NavBar', () => {
+test('[AUTHED USER] Signin link that looks like a button DOES NOT renders in NavBar', () => {
     render(
-        <ResponsiveContext.Provider value={{ width: 2000 }}>
-            <NavBar status={false} />
-        </ResponsiveContext.Provider>
+        <SessionProvider session={session}>
+            <ResponsiveContext.Provider value={{ width: 2000 }}>
+                <NavBar />
+            </ResponsiveContext.Provider>
+        </SessionProvider>
     )
-    const signinLink = screen.getByRole('button', {
+    const signinLink = screen.queryByRole('button', {
         name: /signin/i
     })
 
-    expect(signinLink).toBeInTheDocument()
+    expect(signinLink).not.toBeInTheDocument()
 })
 
 test('hamburger button renders on mobile screens', async () => {
     render(
-        <ResponsiveContext.Provider value={{ width: 600 }}>
-            <NavBar status={false} />
-        </ResponsiveContext.Provider>
+        <SessionProvider session={session}>
+            <ResponsiveContext.Provider value={{ width: 600 }}>
+                <NavBar />
+            </ResponsiveContext.Provider>
+        </SessionProvider>
     )
 
     const hamburgerBtn = screen.getByRole('button')

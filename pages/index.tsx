@@ -15,19 +15,16 @@ import {
   FaRegCalendarAlt,
   FaUsers,
   FaShareAlt
-} from "react-icons/fa";
-import { useSession } from "next-auth/react"
+} from "react-icons/fa"
 
 export default function Home() {
-
-  const { data: session, status } = useSession()
 
   return (
     <React.Fragment>
       <SEO
         description='Start curating and compiling power hours with ease from YouTube videos.'
       />
-      <NavBar status={status === 'authenticated'} />
+      <NavBar/>
       <main>
         <ComponentMargin>
           <HeroSectionBlendImage

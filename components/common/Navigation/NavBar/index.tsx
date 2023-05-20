@@ -11,8 +11,11 @@ import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
 import { NavBarI } from '@/interfaces'
+import { useSession } from "next-auth/react"
 
-const NavBar = ({ status }: NavBarI) => {
+// const NavBar = ({ status }: NavBarI) => {
+const NavBar = () => {
+    const { data: session, status } = useSession()
     const [ isOpen, setOpen ] = useState(false)
 
     const {
@@ -70,7 +73,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 color='altGreen'
                                 linkText='Listen'
                             />
-                        {!!status === false &&
+                        {!!session?.user === false &&
                             <li 
                                 className={cx('list-none',{
                                     ['pt-6 pl-6']: isMobile || isTablet 
@@ -84,7 +87,7 @@ const NavBar = ({ status }: NavBarI) => {
                                 />
                             </li>
                         }
-                        {status &&
+                        {session?.user &&
                             <AccountDD/>
                         }
                         </ul>
