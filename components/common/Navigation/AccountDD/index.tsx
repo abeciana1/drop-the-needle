@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { signOut } from "next-auth/react"
 import useResponsiveness from '@/hooks/useResponsiveness'
@@ -17,14 +17,18 @@ const AccountDD = () => {
         await signOut({callbackUrl: '/'})
     }
 
+    const handleDropdown = () => {
+        setOpen(!open)
+    }
+
     return (
         <li className="list-none z-50 relative">
-            <button onClick={() => setOpen(!open)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
+            <button onClick={handleDropdown} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </button>
-            {open || (isTablet || isMobile) &&
+            {(open || isTablet || isMobile)  &&
                 <ul className={cx('font-medium text-lg',{
-                    ["space-y-3 mt-3 ml-3"]: isTablet || isMobile,
+                    ["space-y-3 mt-3 ml-3"]: (isTablet || isMobile),
                     ["absolute mt-0 ml-0 space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
                 })}>
                     <li>

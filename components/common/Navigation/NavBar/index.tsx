@@ -73,23 +73,23 @@ const NavBar = () => {
                                 color='altGreen'
                                 linkText='Listen'
                             />
-                        {!!session?.user === false &&
-                            <li 
-                                className={cx('list-none',{
-                                    ['pt-6 pl-6']: isMobile || isTablet 
-                                })}
-                            >
-                                <OnClickButton
-                                    onClick={handleGoogleSignin}
-                                    text='Signin'
-                                    bgColor='vermillion'
-                                    ctaArrow={false}
-                                />
-                            </li>
-                        }
-                        {session?.user &&
-                            <AccountDD/>
-                        }
+                            {!!session?.user === false &&
+                                <li 
+                                    className={cx('list-none',{
+                                        ['pt-6 pl-6']: isMobile || isTablet 
+                                    })}
+                                >
+                                    <OnClickButton
+                                        onClick={handleGoogleSignin}
+                                        text='Signin'
+                                        bgColor='vermillion'
+                                        ctaArrow={false}
+                                    />
+                                </li>
+                            }
+                            {session?.user &&
+                                <AccountDD/>
+                            }
                         </ul>
                     </React.Fragment>
                 }
