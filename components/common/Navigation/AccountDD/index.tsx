@@ -38,7 +38,6 @@ const AccountDD = () => {
         }
     }, [open])
 
-    console.log(ref?.current)
     return (
         <li className="list-none z-50 relative">
             <button ref={ref} data-testid='account-dd' onClick={(e) => handleDropdown(e)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
