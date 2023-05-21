@@ -15,8 +15,10 @@ export const DrawerItemLink = ({
     return (
         <Link
             href={`/${encodeURI(href)}`}
+            className='text-altWhite'
         >
             {linkText}
+            <Icon size={'4rem'}/>
         </Link>
     )
 }
@@ -32,7 +34,7 @@ export const DrawerItemButton = ({
     return (
         <button onClick={onClick}>
             {text}
-            <Icon size={4} />
+            <Icon size={'4rem'} />
         </button>
     )
 }
