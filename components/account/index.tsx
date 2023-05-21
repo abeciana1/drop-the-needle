@@ -1,11 +1,1 @@
-
-
-const DrawerNav = () => {
-
-    return (
-        <nav>
-        </nav>
-    )
-}
-
-export default DrawerNav
+export { default as DrawerNav} from '@/components/account/DrawerNav'
