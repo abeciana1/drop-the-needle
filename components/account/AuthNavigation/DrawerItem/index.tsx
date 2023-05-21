@@ -1,9 +1,17 @@
 import Link from 'next/link'
+import { NavItemI } from '@/interfaces'
 
-export const DrawerItemLink = () => {
+export const DrawerItemLink = ({
+    href,
+    linkText
+}: NavItemI) => {
 
     return (
-        <Link></Link>
+        <Link
+            href={"/" + encodeURI(href)}
+        >
+            {linkText}
+        </Link>
     )
 }
 
