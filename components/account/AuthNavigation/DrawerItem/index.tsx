@@ -13,13 +13,15 @@ export const DrawerItemLink = ({
     const Icon = icon as React.ElementType
 
     return (
-        <Link
-            href={`/${encodeURI(href)}`}
-            className='text-altWhite flex items-center text-2xl font-medium'
-        >
-            {linkText}
-            <Icon size={'4rem'}/>
-        </Link>
+        <li>
+            <Link
+                href={`/${encodeURI(href)}`}
+                className='text-altWhite flex items-center text-2xl font-medium justify-end'
+            >
+                {linkText}
+                <Icon size={'4rem'}/>
+            </Link>
+        </li>
     )
 }
 
@@ -32,9 +34,11 @@ export const DrawerItemButton = ({
     const Icon = icon as React.ElementType
 
     return (
-        <button onClick={onClick}>
-            {text}
-            <Icon size={'4rem'} />
-        </button>
+        <li>
+            <button onClick={onClick}>
+                {text}
+                <Icon size={'4rem'} />
+            </button>
+        </li>
     )
 }
