@@ -15,7 +15,7 @@ export const DrawerItemLink = ({
     return (
         <Link
             href={`/${encodeURI(href)}`}
-            className='text-altWhite'
+            className='text-altWhite flex items-center text-2xl font-medium'
         >
             {linkText}
             <Icon size={'4rem'}/>
