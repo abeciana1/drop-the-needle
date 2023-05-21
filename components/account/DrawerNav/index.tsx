@@ -1,9 +1,11 @@
-
+import { Fragment, useState } from 'react'
+import { Transition } from '@headlessui/react'
 
 const DrawerNav = () => {
+    // const [ open, setOpen ] = useState(false)
 
     return (
-        <nav>
+        <nav className="bg-altBlack">
         </nav>
     )
 }
