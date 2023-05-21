@@ -14,6 +14,10 @@ export interface NavItemI {
     linkText: string;
 }
 
+export interface NavItemIconI extends NavItemI {
+    icon: React.ElementType;
+}
+
 export interface LinkButtonI extends DefaultButtonI {
     href: string;
 }

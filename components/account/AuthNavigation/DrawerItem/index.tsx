@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import {
-    NavItemI,
+    NavItemIconI,
     OnClickIconButtonI
 } from '@/interfaces'
 
 export const DrawerItemLink = ({
     href,
-    linkText
-}: NavItemI) => {
+    linkText,
+    icon
+}: NavItemIconI) => {
+
+    const Icon = icon as React.ElementType
 
     return (
         <Link
