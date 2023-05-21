@@ -88,7 +88,7 @@ const NavBar = () => {
                                 </li>
                             }
                             {session?.user &&
-                                <AccountDD/>
+                                <AccountDD />
                             }
                         </ul>
                     </React.Fragment>

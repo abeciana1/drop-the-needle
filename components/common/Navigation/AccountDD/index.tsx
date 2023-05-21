@@ -30,21 +30,17 @@ const AccountDD = () => {
                     setOpen(false)
                 }
             })
-            document.addEventListener('mousedown', (e) => {
-                if (ref?.current !== e?.target) {
-                    setOpen(false)
-                }
-            })
         }
     }, [open])
 
     return (
-        <li className="list-none z-50 relative">
-            <button ref={ref} data-testid='account-dd' onClick={(e) => handleDropdown(e)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
+        <li onMouseLeave={() => setOpen(false)} className="list-none z-50 relative">
+            <button data-testid='account-dd' onClick={(e) => handleDropdown(e)} className='flex flex-col font-medium text-2xl anim-text hover-underline-animation hover:text-ceruleanBlue ceruleanBlue text-ceruleanBlue after:bg-ceruleanBlue'>
                 My Account
             </button>
             {(open || isTablet || isMobile)  &&
-                <ul className={cx('font-medium text-lg',{
+                <ul 
+                    data-testid='menu-list' className={cx('font-medium text-lg',{
                     ["space-y-3 mt-3 ml-3"]: (isTablet || isMobile),
                     ["absolute mt-0 ml-0 space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
                 })}>
