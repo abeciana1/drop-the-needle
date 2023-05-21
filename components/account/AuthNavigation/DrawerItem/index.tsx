@@ -20,7 +20,6 @@ export const DrawerItemLink = ({
 
 export const DrawerItemButton = ({
     text,
-    bgColor,
     onClick,
     icon
 }: OnClickIconButtonI) => {
@@ -28,6 +27,9 @@ export const DrawerItemButton = ({
     const Icon = icon as React.ElementType
 
     return (
-        <button></button>
+        <button onClick={onClick}>
+            {text}
+            <Icon size={4} />
+        </button>
     )
 }
