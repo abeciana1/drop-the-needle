@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { signOut } from "next-auth/react"
 import useResponsiveness from '@/hooks/useResponsiveness'
@@ -6,7 +6,6 @@ import cx from 'classnames'
 
 const AccountDD = () => {
     const [ open, setOpen ] = useState(false)
-    const ref = useRef(null)
 
     const {
         isMobile,
