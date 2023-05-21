@@ -1,1 +1,1 @@
-export { default as DrawerNav} from '@/components/account/DrawerNav'
+export { DrawerNav } from '@/components/account/AuthNavigation'
