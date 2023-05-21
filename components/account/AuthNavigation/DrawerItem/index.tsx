@@ -8,7 +8,7 @@ export const DrawerItemLink = ({
 
     return (
         <Link
-            href={"/" + encodeURI(href)}
+            href={`/${encodeURI(href)}`}
         >
             {linkText}
         </Link>
