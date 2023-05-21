@@ -55,12 +55,16 @@ export interface SeoI {
 
 interface DefaultButtonI {
     text: string;
-    ctaArrow: boolean;
+    ctaArrow?: boolean;
     bgColor: string;
 }
 
 export interface OnClickButtonI extends DefaultButtonI {
     onClick: () => void;
+}
+
+export interface OnClickIconButtonI extends OnClickButtonI {
+    icon: React.ElementType;
 }
 
 export interface EventOnClickBtnI extends DefaultButtonI {

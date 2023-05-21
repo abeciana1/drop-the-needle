@@ -1,5 +1,8 @@
 import Link from 'next/link'
-import { NavItemI } from '@/interfaces'
+import {
+    NavItemI,
+    OnClickIconButtonI
+} from '@/interfaces'
 
 export const DrawerItemLink = ({
     href,
@@ -15,7 +18,14 @@ export const DrawerItemLink = ({
     )
 }
 
-export const DrawerItemButton = () => {
+export const DrawerItemButton = ({
+    text,
+    bgColor,
+    onClick,
+    icon
+}: OnClickIconButtonI) => {
+
+    const Icon = icon as React.ElementType
 
     return (
         <button></button>
