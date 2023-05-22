@@ -13,7 +13,7 @@ export const SideNavItemLink = ({
     const Icon = icon as React.ElementType
 
     return (
-        <li>
+        <li className="list-none">
             <Link
                 href={`/${encodeURI(href)}`}
                 className='text-altWhite text-2xl font-medium'
@@ -34,7 +34,7 @@ export const SideNavItemButton = ({
     const Icon = icon as React.ElementType
 
     return (
-        <li>
+        <li className="list-none">
             <button onClick={onClick}>
                 {text}
                 <Icon size={'3rem'} />

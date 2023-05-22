@@ -10,12 +10,10 @@ import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 import { signIn } from "next-auth/react"
-import { NavBarI } from '@/interfaces'
 import { useSession } from "next-auth/react"
 
-// const NavBar = ({ status }: NavBarI) => {
 const NavBar = () => {
-    const { data: session, status } = useSession()
+    const { data: session } = useSession()
     const [ isOpen, setOpen ] = useState(false)
 
     const {
