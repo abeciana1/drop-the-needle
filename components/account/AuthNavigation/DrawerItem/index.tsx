@@ -19,7 +19,7 @@ export const DrawerItemLink = ({
                 className='text-altWhite flex items-center text-2xl font-medium justify-end'
             >
                 {linkText}
-                <Icon size={'4rem'}/>
+                <Icon size={'3rem'}/>
             </Link>
         </li>
     )
@@ -37,7 +37,7 @@ export const DrawerItemButton = ({
         <li>
             <button onClick={onClick}>
                 {text}
-                <Icon size={'4rem'} />
+                <Icon size={'3rem'} />
             </button>
         </li>
     )

@@ -1,8 +1,13 @@
 import { useState } from 'react'
-import { DrawerItemLink } from '@/components/account'
+import {
+    DrawerItemLink,
+    DrawerItemButton
+} from '@/components/account'
 import {
     AiFillLayout,
-    AiOutlineBars
+    AiOutlineBars,
+    AiFillEdit,
+    AiOutlineLogout
 } from 'react-icons/ai'
 
 const DrawerNav = () => {
@@ -21,7 +26,16 @@ const DrawerNav = () => {
                     linkText='My Power Hours'
                     icon={AiOutlineBars}
                 />
+                <DrawerItemLink
+                    href='dashboard/power-hours/create'
+                    linkText='Create New'
+                    icon={AiFillEdit}
+                />
             </ul>
+            {/* <DrawerItemButton
+                text='Signout'
+                icon={AiOutlineLogout}
+            /> */}
         </nav>
     )
 }
