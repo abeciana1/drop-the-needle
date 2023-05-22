@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { SEO } from '@/components/common'
-import { DrawerNav } from '@/components/account'
+import { SideNav } from '@/components/account'
 
 const DashboardIdxPage = () => {
 
@@ -9,7 +9,7 @@ const DashboardIdxPage = () => {
             <SEO
                 title='Dashboard'
             />
-            <DrawerNav/>
+            <SideNav/>
         </Fragment>
     )
 }

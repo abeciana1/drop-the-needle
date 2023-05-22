@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {
-    DrawerItemLink,
-    DrawerItemButton
+    SideNavItemLink,
+    SideNavItemButton
 } from '@/components/account'
 import {
     AiFillLayout,
@@ -10,29 +10,29 @@ import {
     AiOutlineLogout
 } from 'react-icons/ai'
 
-const DrawerNav = () => {
+const SideNav = () => {
     // const [ open, setOpen ] = useState(false)
 
     return (
         <nav className="bg-altBlack max-w-fit h-screen flex items-center px-2">
             <ul className="space-y-5">
-                <DrawerItemLink
+                <SideNavItemLink
                     href='dashboard'
                     linkText='Dashboard'
                     icon={AiFillLayout}
                 />
-                <DrawerItemLink
+                <SideNavItemLink
                     href='dashboard/power-hours'
                     linkText='My Power Hours'
                     icon={AiOutlineBars}
                 />
-                <DrawerItemLink
+                <SideNavItemLink
                     href='dashboard/power-hours/create'
                     linkText='Create New'
                     icon={AiFillEdit}
                 />
             </ul>
-            {/* <DrawerItemButton
+            {/* <SideNavItemButton
                 text='Signout'
                 icon={AiOutlineLogout}
             /> */}
@@ -40,4 +40,4 @@ const DrawerNav = () => {
     )
 }
 
-export default DrawerNav
+export default SideNav

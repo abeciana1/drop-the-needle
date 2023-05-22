@@ -1,5 +1,5 @@
-export { default as DrawerNav } from '@/components/account/AuthNavigation/DrawerNav'
+export { default as SideNav } from '@/components/account/AuthNavigation/SideNav'
 export {
-    DrawerItemLink,
-    DrawerItemButton
-} from '@/components/account/AuthNavigation/DrawerItem'
+    SideNavItemLink,
+    SideNavItemButton
+} from '@/components/account/AuthNavigation/SideNavItem'

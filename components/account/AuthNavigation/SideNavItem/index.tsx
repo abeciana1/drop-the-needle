@@ -4,7 +4,7 @@ import {
     OnClickIconButtonI
 } from '@/interfaces'
 
-export const DrawerItemLink = ({
+export const SideNavItemLink = ({
     href,
     linkText,
     icon
@@ -25,7 +25,7 @@ export const DrawerItemLink = ({
     )
 }
 
-export const DrawerItemButton = ({
+export const SideNavItemButton = ({
     text,
     onClick,
     icon

@@ -1,5 +1,5 @@
 export {
-    DrawerNav,
-    DrawerItemLink,
-    DrawerItemButton
+    SideNav,
+    SideNavItemLink,
+    SideNavItemButton
 } from '@/components/account/AuthNavigation'
