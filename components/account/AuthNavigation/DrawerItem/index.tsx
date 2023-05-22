@@ -16,11 +16,11 @@ export const DrawerItemLink = ({
         <li>
             <Link
                 href={`/${encodeURI(href)}`}
-                className='text-altWhite flex items-center text-2xl font-medium justify-end'
+                className='text-altWhite text-2xl font-medium'
             >
-                {linkText}
                 <Icon size={'3rem'}/>
             </Link>
+            {/* {linkText} */}
         </li>
     )
 }

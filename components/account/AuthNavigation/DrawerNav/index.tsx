@@ -14,8 +14,8 @@ const DrawerNav = () => {
     // const [ open, setOpen ] = useState(false)
 
     return (
-        <nav className="bg-altBlack">
-            <ul>
+        <nav className="bg-altBlack max-w-fit h-screen flex items-center px-2">
+            <ul className="space-y-5">
                 <DrawerItemLink
                     href='dashboard'
                     linkText='Dashboard'
