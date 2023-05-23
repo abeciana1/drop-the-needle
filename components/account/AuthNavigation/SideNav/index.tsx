@@ -30,7 +30,7 @@ const SideNav = () => {
                     width={70}
                     alt='Drop The Needle logo'
                     priority
-                    className='mx-auto'
+                    className='mx-auto bg-altWhite rounded-full'
                 />
             </Link>
             <ul className="space-y-5">
