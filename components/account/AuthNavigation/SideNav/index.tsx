@@ -9,7 +9,7 @@ import {
     AiOutlineLogout
 } from 'react-icons/ai'
 import { signOut } from "next-auth/react"
-
+import { LogoLink } from '@/components/common'
 // todo add button to hide nav options on mobile and tablet devices
 // todo add tooltip on hover
 // todo create logo comp -> DRY
@@ -22,6 +22,7 @@ const SideNav = () => {
 
     return (
         <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
+            <LogoLink size={70} />
             <ul className="space-y-5">
                 <SideNavItemLink
                     href='dashboard'
