@@ -85,3 +85,8 @@ export interface AccountI {
     email: string;
     image: string;
 }
+
+export interface NavLogoLinkI {
+    width: number;
+    height: number;
+}
