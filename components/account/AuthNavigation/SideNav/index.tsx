@@ -8,8 +8,6 @@ import {
     AiFillEdit,
     AiOutlineLogout
 } from 'react-icons/ai'
-import Link from 'next/link'
-import Image from 'next/image'
 import { signOut } from "next-auth/react"
 
 // todo add button to hide nav options on mobile and tablet devices
