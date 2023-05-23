@@ -35,19 +35,7 @@ const NavBar = () => {
                     ['bg-altWhite h-screen']: ((isMobile || isTablet) && isOpen)
                 })}
             >
-                <Link
-                    href='/'
-                    title='Navigate to homepage'
-                >
-                    <Image
-                        src='/drop-the-needle-logo.webp'
-                        height={150}
-                        width={150}
-                        alt='Drop The Needle logo'
-                        priority
-                        className='mx-auto'
-                    />
-                </Link>
+                <LogoLink size={150} />
                 {(isOpen || isDesktop) &&
                     <React.Fragment>
                         <ul
