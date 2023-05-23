@@ -87,6 +87,5 @@ export interface AccountI {
 }
 
 export interface NavLogoLinkI {
-    width: number;
-    height: number;
+    size: number;
 }

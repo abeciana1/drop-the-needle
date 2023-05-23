@@ -1,7 +1,10 @@
 import Link from "next/link"
 import Image from "next/image"
+import { NavLogoLinkI } from "@/interfaces"
 
-const LogoLink = () => {
+const LogoLink = ({
+    size
+}: NavLogoLinkI) => {
 
     return (
         <Link
@@ -10,8 +13,8 @@ const LogoLink = () => {
         >
             <Image
                 src='/drop-the-needle-logo.webp'
-                height={70}
-                width={70}
+                width={size}
+                height={size}
                 alt='Drop The Needle logo'
                 priority
                 className='mx-auto bg-altWhite rounded-full'
