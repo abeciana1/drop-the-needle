@@ -8,8 +8,10 @@ import {
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
-import { signIn } from "next-auth/react"
-import { useSession } from "next-auth/react"
+import {
+    signIn,
+    useSession
+} from "next-auth/react"
 
 const NavBar = () => {
     const { data: session } = useSession()
