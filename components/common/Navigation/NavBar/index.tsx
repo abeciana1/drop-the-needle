@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import {
+    Fragment,
+    useState } from 'react'
 import {
     LogoLink,
     OnClickButton,
@@ -28,7 +30,7 @@ const NavBar = () => {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <nav
                 className={cx('z-50 pt-5 px-5 sm:px-10 lg:px-20', {
                     ['flex justify-between items-center ']: isDesktop,
@@ -37,7 +39,7 @@ const NavBar = () => {
             >
                 <LogoLink size={150} />
                 {(isOpen || isDesktop) &&
-                    <React.Fragment>
+                    <Fragment>
                         <ul
                             data-testid={isOpen ? 'menu-open': 'menu-closed'}
                             className={cx('flex', {
@@ -78,7 +80,7 @@ const NavBar = () => {
                                 <AccountDD />
                             }
                         </ul>
-                    </React.Fragment>
+                    </Fragment>
                 }
                 {(isMobile || isTablet) &&
                     <div data-testid='hamburger-btn' className='absolute top-5 right-5'>
@@ -90,7 +92,7 @@ const NavBar = () => {
                     </div>
                 }
             </nav>
-        </React.Fragment>
+        </Fragment>
     )
 }
 
