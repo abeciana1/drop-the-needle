@@ -18,7 +18,7 @@ export const SideNavItemLink = ({
                 href={`/${encodeURI(href)}`}
                 className='text-altWhite text-2xl font-medium'
             >
-                <Icon size={'3rem'}/>
+                <Icon size={'2.25rem'}/>
             </Link>
             {/* {linkText} */}
         </li>
@@ -40,7 +40,7 @@ export const SideNavItemButton = ({
                 className='text-altWhite text-2xl font-medium'
             >
                 {/* {text} */}
-                <Icon size={'3rem'} />
+                <Icon size={'2.25rem'} />
             </button>
         </li>
     )
