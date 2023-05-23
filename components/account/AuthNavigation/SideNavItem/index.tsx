@@ -35,8 +35,11 @@ export const SideNavItemButton = ({
 
     return (
         <li className="list-none">
-            <button onClick={onClick}>
-                {text}
+            <button 
+                onClick={onClick}
+                className='text-altWhite text-2xl font-medium'
+            >
+                {/* {text} */}
                 <Icon size={'3rem'} />
             </button>
         </li>

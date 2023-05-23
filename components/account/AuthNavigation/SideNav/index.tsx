@@ -10,8 +10,13 @@ import {
 } from 'react-icons/ai'
 import Link from 'next/link'
 import Image from 'next/image'
+import { signOut } from "next-auth/react"
 
 const SideNav = () => {
+
+    const handleSignOut = async () => {
+        await signOut({ callbackUrl: '/'})
+    }
 
     return (
         <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
@@ -45,15 +50,11 @@ const SideNav = () => {
                     icon={AiFillEdit}
                 />
             </ul>
-            <SideNavItemLink
-                href='dashboard/power-hours/create'
-                linkText='Create New'
-                icon={AiFillEdit}
-            />
-            {/* <SideNavItemButton
+            <SideNavItemButton
                 text='Signout'
                 icon={AiOutlineLogout}
-            /> */}
+                onClick={handleSignOut}
+            />
         </nav>
     )
 }

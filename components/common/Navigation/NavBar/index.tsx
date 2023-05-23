@@ -23,7 +23,7 @@ const NavBar = () => {
     } = useResponsiveness() || {}
 
     const handleGoogleSignin = async () => {
-        await signIn('google', {callbackUrl: '/'})
+        await signIn('google', {callbackUrl: '/dashboard'})
     }
 
     return (
