@@ -1,5 +1,6 @@
 export {default as NavBar} from '@/components/common/Navigation/NavBar'
 export {default as NavItem } from '@/components/common/Navigation/NavItem'
+export { default as LogoLink } from '@/components/common/Navigation/Logo'
 export {
     LinkLookLikeButton
 } from '@/components/common/Link'

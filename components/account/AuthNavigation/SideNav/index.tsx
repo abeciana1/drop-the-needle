@@ -24,19 +24,6 @@ const SideNav = () => {
 
     return (
         <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
-            <Link
-                href='/'
-                title='Navigate to homepage'
-            >
-                <Image
-                    src='/drop-the-needle-logo.webp'
-                    height={70}
-                    width={70}
-                    alt='Drop The Needle logo'
-                    priority
-                    className='mx-auto bg-altWhite rounded-full'
-                />
-            </Link>
             <ul className="space-y-5">
                 <SideNavItemLink
                     href='dashboard'
