@@ -14,6 +14,7 @@ import {
 import { signOut } from "next-auth/react"
 import { LogoLink } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
+import cx from 'classnames'
 // todo add button to hide nav options on mobile and tablet devices
 
 const SideNav = () => {
@@ -58,7 +59,10 @@ const SideNav = () => {
                     />
                     {/* {(isMobile || isTablet) && */}
                     {(isDesktop) &&
-                        <button className='absolute bg-altBlack text-altWhite ml-20 top-3/4 rounded-full border-altWhite border-2 p-1 text-left'>
+                        <button className={cx('absolute bg-altBlack text-altWhite top-3/4 rounded-full border-altWhite border-2 p-1 text-left', {
+                            ['ml-20']: showNav,
+                            ['left-0']: showNav === false
+                        })}>
                             {showNav ?
                                 <AiOutlineDoubleRight size={'2rem'}/>
                                 :
