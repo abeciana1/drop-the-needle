@@ -12,7 +12,6 @@ import { signOut } from "next-auth/react"
 import { LogoLink } from '@/components/common'
 // todo add button to hide nav options on mobile and tablet devices
 // todo add tooltip on hover
-// todo create logo comp -> DRY
 
 const SideNav = () => {
 
