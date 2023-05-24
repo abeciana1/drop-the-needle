@@ -59,7 +59,6 @@ const SideNav = () => {
                             onClick={handleSignOut}
                         />
                     </Fragment>
-                    {/* {(isDesktop) && */}
                 </nav>
             }
             {isMobile &&
