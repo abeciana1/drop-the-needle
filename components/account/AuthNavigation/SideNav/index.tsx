@@ -62,7 +62,7 @@ const SideNav = () => {
                     {/* {(isDesktop) && */}
                 </nav>
             }
-            {(isMobile) &&
+            {isMobile &&
                 <button onClick={() => setNav(!showNav)} className={cx('absolute bg-altBlack text-altWhite top-3/4 rounded-full border-altWhite border-2 p-1 text-left', {
                     ['ml-16']: showNav,
                     ['left-0']: showNav === false
