@@ -34,43 +34,45 @@ const SideNav = () => {
         <Fragment>
             {(showNav || isDesktop) &&
                 <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
-                    <LogoLink size={70} />
-                    <ul className="space-y-5">
-                        <SideNavItemLink
-                            href='dashboard'
-                            linkText='Dashboard'
-                            icon={AiFillLayout}
+                    <Fragment>
+                        <LogoLink size={70} />
+                        <ul className="space-y-5">
+                            <SideNavItemLink
+                                href='dashboard'
+                                linkText='Dashboard'
+                                icon={AiFillLayout}
+                            />
+                            <SideNavItemLink
+                                href='dashboard/power-hours'
+                                linkText='My Power Hours'
+                                icon={AiOutlineBars}
+                            />
+                            <SideNavItemLink
+                                href='dashboard/power-hours/create'
+                                linkText='Create New'
+                                icon={AiFillEdit}
+                            />
+                        </ul>
+                        <SideNavItemButton
+                            text='Signout'
+                            icon={AiOutlineLogout}
+                            onClick={handleSignOut}
                         />
-                        <SideNavItemLink
-                            href='dashboard/power-hours'
-                            linkText='My Power Hours'
-                            icon={AiOutlineBars}
-                        />
-                        <SideNavItemLink
-                            href='dashboard/power-hours/create'
-                            linkText='Create New'
-                            icon={AiFillEdit}
-                        />
-                    </ul>
-                    <SideNavItemButton
-                        text='Signout'
-                        icon={AiOutlineLogout}
-                        onClick={handleSignOut}
-                    />
-                    {/* {(isMobile || isTablet) && */}
-                    {(isDesktop) &&
-                        <button className={cx('absolute bg-altBlack text-altWhite top-3/4 rounded-full border-altWhite border-2 p-1 text-left', {
-                            ['ml-20']: showNav,
-                            ['left-0']: showNav === false
-                        })}>
-                            {showNav ?
-                                <AiOutlineDoubleRight size={'2rem'}/>
-                                :
-                                <AiOutlineDoubleLeft size={'2rem'}/>
-                            }
-                        </button>
-                    }
+                    </Fragment>
+                    {/* {(isDesktop) && */}
                 </nav>
+            }
+            {(isMobile || isTablet) &&
+                <button onClick={() => setNav(!showNav)} className={cx('absolute bg-altBlack text-altWhite top-3/4 rounded-full border-altWhite border-2 p-1 text-left', {
+                    ['ml-16']: showNav,
+                    ['left-0']: showNav === false
+                })}>
+                    {showNav ?
+                        <AiOutlineDoubleLeft size={'2rem'}/>
+                        :
+                        <AiOutlineDoubleRight size={'2rem'}/>
+                    }
+                </button>
             }
         </Fragment>
     )
