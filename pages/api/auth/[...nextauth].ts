@@ -1,9 +1,8 @@
 import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-// import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { PrismaClient } from "@prisma/client"
+import prisma from '@/hooks/prisma'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
-const prisma = new PrismaClient()
 
 export const options: AuthOptions = {
     providers: [
@@ -12,6 +11,7 @@ export const options: AuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         })
     ],
+    // adapter: PrismaAdapter(prisma),
     secret: process.env.JWT_SECRET,
     session: {
         strategy: 'jwt',
@@ -27,11 +27,9 @@ export const options: AuthOptions = {
             }
         },
         async jwt({ token, account, profile, trigger}: any) {
-
             if (account) {
                 token.accessToken = account.access_token
             }
-
             if (profile) {
                 if (trigger === 'signUp') {
                     await prisma.user.create({
@@ -41,8 +39,6 @@ export const options: AuthOptions = {
                         }
                     })
                 } else if (trigger === 'signIn') {
-                    // ! Create page for signin and signup
-                    // ! - need to have different options so be4 case works
                     await prisma.user.findFirst({
                         where: {
                             email: profile.email
@@ -52,9 +48,6 @@ export const options: AuthOptions = {
             }
             return token
         },
-        async session({ session }) {
-            return session
-        }
     },
     jwt: {
         secret: process.env.JWT_SECRET,
@@ -63,3 +56,20 @@ export const options: AuthOptions = {
 }
 
 export default NextAuth(options)
+
+// let user = await prisma.user.findUnique({
+//     where: {
+//         email: profile.email
+//     }
+// })
+// if (!!user) {
+//     return true
+// } else {
+//     await prisma.user.create({
+//         data: {
+//             name: profile.name,
+//             email: profile.email,
+//         }
+//     })
+//     return true
+// }

@@ -4,7 +4,9 @@ import { SideNav } from '@/components/account'
 import { NextPageContext } from 'next';
 import { getSession } from "next-auth/react"
 
-const DashboardIdxPage = () => {
+// todo create endpoint for user data mapping and gathering
+
+const DashboardIdxPage = (props: any) => {
 
     return (
         <Fragment>
@@ -20,8 +22,11 @@ export default DashboardIdxPage
 
 export const getServerSideProps = async (context: NextPageContext) => {
     let session = await getSession(context)
-    console.log('data', session)
+
     return {
-        props: session
+        props: {
+            name: session?.user?.name,
+            // hostedPowerHours: hostedPowerHours
+        }
     }
 }
