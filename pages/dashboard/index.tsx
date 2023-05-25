@@ -3,6 +3,7 @@ import { SEO } from '@/components/common'
 import { SideNav } from '@/components/account'
 import { NextPageContext } from 'next';
 import { getSession } from "next-auth/react"
+import axios from 'axios';
 
 // todo create endpoint for user data mapping and gathering
 
@@ -20,12 +21,17 @@ const DashboardIdxPage = (props: any) => {
 
 export default DashboardIdxPage
 
-export const getServerSideProps = async (context: NextPageContext) => {
-    let session = await getSession(context)
-
+export const getStaticProps = async (params: any) => {
+    // let session = await getSession(params)
+    // let data = await axios.get('http://localhost:3000/api/user/get-user', {
+    //     params: {
+    //         email: session?.user?.email
+    //     }
+    // })
+    // console.log('session', params)
     return {
         props: {
-            name: session?.user?.name,
+            // name: session?.user?.name as string,
             // hostedPowerHours: hostedPowerHours
         }
     }
