@@ -94,3 +94,8 @@ export interface NavLogoLinkI {
 export interface PlaylistCardI {
     powerHour: DashPowerHourType;
 }
+
+export interface StyledHeadingI {
+    text: string;
+    color?: number;
+}
