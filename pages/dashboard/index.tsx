@@ -6,7 +6,6 @@ import {
     WavySection,
     DashPageLayout
 } from '@/components/common'
-import { SideNav } from '@/components/account'
 import axios from 'axios';
 import { PlaylistCardI } from '@/interfaces';
 import {
