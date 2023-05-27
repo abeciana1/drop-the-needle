@@ -4,6 +4,7 @@ import { HeroSectionI } from '@/interfaces'
 import {
     LinkLookLikeButton,
 } from '@/components/common'
+import { H1 } from '@/components/styled'
 
 export const HeroSectionBlendImage = ({
     heading,
@@ -25,7 +26,7 @@ export const HeroSectionBlendImage = ({
     return (
         <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 items-center">
             <section className="space-y-5">
-                <h1 className=' text-altBlack'>{heading}</h1>
+                <H1 color={2} text={heading} />
                 <div className='text-altBlack text-2xl font-semiBold'>{bodyTagline}</div>
                 {ctaButton &&
                     <div>
