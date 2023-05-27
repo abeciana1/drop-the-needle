@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
-import { 
-  NavBar,
+import {
   HeroSectionBlendImage,
   Grid2Column,
   Grid3Column,
