@@ -29,7 +29,7 @@ const SideNav = () => {
     }
 
     return (
-        <Fragment>
+        <aside>
             {(showNav || isDesktop) &&
                 <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
                     <Fragment>
@@ -71,7 +71,7 @@ const SideNav = () => {
                     }
                 </button>
             }
-        </Fragment>
+        </aside>
     )
 }
 

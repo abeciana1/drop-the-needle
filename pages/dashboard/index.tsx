@@ -1,7 +1,9 @@
 import { Fragment } from 'react'
 import {
     SEO,
-    PlaylistCard
+    PlaylistCard,
+    ComponentMargin,
+    WavySection
 } from '@/components/common'
 import { SideNav } from '@/components/account'
 import axios from 'axios';
@@ -10,13 +12,27 @@ import axios from 'axios';
 
 const DashboardIdxPage = ({data}: any) => {
     console.log(data)
+    const {
+        name
+    } = data
     return (
         <Fragment>
             <SEO
                 title='Dashboard'
             />
-            <SideNav/>
-            <h1>My Power Hours</h1>
+            <section className='flex flex-row'>
+                <SideNav/>
+                <main className='w-full'>
+                    <ComponentMargin>
+                        <h1 className='text-altBlack'>Welcome back, {name}</h1>
+                    </ComponentMargin>
+                    <WavySection color='jaffa-200' type={1} />
+                    <ComponentMargin bgColor='jaffa-200'>
+                        <h2>My Power Hours</h2>
+                    </ComponentMargin>
+                </main>
+            </section>
+            
         </Fragment>
     )
 }
