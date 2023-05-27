@@ -12,7 +12,7 @@ const PlaylistCard = ({
         <Link
             href={`/dashboard/powerhour/${encodeURI(id.toString())}`}
             title={title}
-            className="text-lg mx-auto text-center font-medium"
+            className="text-xl mx-auto text-center font-semiBold"
         >
             <Image
                 src={cover_image}
