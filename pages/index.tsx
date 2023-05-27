@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { 
   NavBar,
   HeroSectionBlendImage,
@@ -8,7 +8,8 @@ import {
   WavySection,
   ComponentMargin,
   Footer,
-  SEO
+  SEO,
+  CommonPageLayout
 } from '@/components/common'
 import { 
   FaYoutube,
@@ -20,12 +21,12 @@ import {
 export default function Home() {
 
   return (
-    <React.Fragment>
+    <Fragment>
       <SEO
         description='Start curating and compiling power hours with ease from YouTube videos.'
       />
-      <NavBar/>
-      <main>
+      <CommonPageLayout>
+
         <ComponentMargin>
           <HeroSectionBlendImage
             heading='Drop The Needle'
@@ -85,7 +86,7 @@ export default function Home() {
         <ComponentMargin bgColor='vermillion-200'>
           <Footer/>
         </ComponentMargin>
-      </main>
-    </React.Fragment>
+      </CommonPageLayout>
+    </Fragment>
   )
 }

@@ -9,7 +9,9 @@ export {
     Grid2Column,
     Grid3Column,
     WavySection,
-    ComponentMargin
+    ComponentMargin,
+    CommonPageLayout,
+    DashPageLayout
 } from '@/components/common/Layout'
 export {default as Feature} from '@/components/common/Feature'
 export {default as Footer} from '@/components/common/Footer'

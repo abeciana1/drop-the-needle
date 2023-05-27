@@ -4,6 +4,8 @@ import {
     ComponentMarginI
 } from "@/interfaces"
 import cx from 'classnames'
+import { NavBar } from '@/components/common'
+import { SideNav } from "@/components/account"
 
 export const Grid2Column = ({
     children
@@ -93,14 +95,28 @@ export const ComponentMargin = ({
     )
 }
 
-export const CommonPageLayout = () => {
+export const CommonPageLayout = ({
+    children
+}: ChildrenI ) => {
     return (
-        <></>
+        <>
+            <NavBar/>
+            <main>
+                {children}
+            </main>
+        </>
     )
 }
 
-export const DashPageLayout = () => {
+export const DashPageLayout = ({
+    children
+}: ChildrenI) => {
     return (
-        <></>
+        <>
+            <SideNav/>
+            <main>
+                {children}
+            </main>
+        </>
     )
 }
