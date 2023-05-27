@@ -39,9 +39,9 @@ const AccountDD = () => {
             </button>
             {(open || isTablet || isMobile)  &&
                 <ul 
-                    data-testid='menu-list' className={cx('font-medium text-lg',{
+                    data-testid='menu-list' className={cx('font-medium text-lg bg-altWhite',{
                     ["space-y-3 mt-3 ml-3"]: (isTablet || isMobile),
-                    ["absolute mt-0 ml-0 space-y-0.5 bg-transparent shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
+                    ["absolute mt-0 ml-0 space-y-0.5 shadow-xl p-2 right-0 w-44 rounded-lg text-right"]: isDesktop
                 })}>
                     <li>
                         <Link
