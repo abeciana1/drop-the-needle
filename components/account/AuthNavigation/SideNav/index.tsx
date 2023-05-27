@@ -15,6 +15,7 @@ import { signOut } from "next-auth/react"
 import { LogoLink } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
+import { Squash as Hamburger } from 'hamburger-react'
 
 const SideNav = () => {
     const [ showNav, setNav ] = useState(false)
@@ -61,16 +62,13 @@ const SideNav = () => {
                 </nav>
             }
             {(isMobile || isTablet) &&
-                <button onClick={() => setNav(!showNav)} className={cx('absolute bg-altBlack text-altWhite top-[30rem] rounded-full border-altWhite border-2 p-1 text-left', {
-                    ['ml-16']: showNav,
-                    ['left-0']: showNav === false
-                })}>
-                    {showNav ?
-                        <AiOutlineDoubleLeft size={'2rem'}/>
-                        :
-                        <AiOutlineDoubleRight size={'2rem'}/>
-                    }
-                </button>
+                <div data-testid='hamburger-btn' className='absolute top-5 right-3'>
+                    <Hamburger
+                        toggled={showNav}
+                        toggle={setNav}
+                        color='#343434'
+                    />
+                </div>
             }
         </aside>
     )

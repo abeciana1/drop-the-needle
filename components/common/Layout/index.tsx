@@ -114,7 +114,7 @@ export const DashPageLayout = ({
     return (
         <>
             <SideNav/>
-            <main>
+            <main className='pt-10'>
                 {children}
             </main>
         </>
