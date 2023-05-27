@@ -1,5 +1,8 @@
 import { Fragment } from 'react'
-import { SEO } from '@/components/common'
+import {
+    SEO,
+    PlaylistCard
+} from '@/components/common'
 import { SideNav } from '@/components/account'
 import axios from 'axios';
 
