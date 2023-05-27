@@ -29,7 +29,7 @@ const DashboardIdxPage = ({data}: any) => {
                     </ComponentMargin>
                     <WavySection color='jaffa-200' type={1} />
                     <ComponentMargin bgColor='jaffa-200'>
-                        <h2>My Power Hours</h2>
+                        <h2>My Hosted Power Hours</h2>
                         <section className='py-5 grid grid-cols-3'>
                             {hosted.map(({powerHour}: PlaylistCardI) => (
                                 <PlaylistCard
