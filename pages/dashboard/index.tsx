@@ -30,14 +30,16 @@ const DashboardIdxPage = ({data}: any) => {
                     <WavySection color='jaffa-200' type={1} />
                     <ComponentMargin bgColor='jaffa-200'>
                         <h2>My Power Hours</h2>
-                        {hosted.map(({powerHour}: PlaylistCardI) => (
-                            <PlaylistCard
-                                key={powerHour.id}
-                                id={powerHour.id}
-                                title={powerHour.title}
-                                cover_image={powerHour.cover_image}
-                            />
-                        ))}
+                        <section className='py-5'>
+                            {hosted.map(({powerHour}: PlaylistCardI) => (
+                                <PlaylistCard
+                                    key={powerHour.id}
+                                    id={powerHour.id}
+                                    title={powerHour.title}
+                                    cover_image={powerHour.cover_image}
+                                />
+                            ))}
+                        </section>
                     </ComponentMargin>
                 </main>
             </section>
