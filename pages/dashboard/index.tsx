@@ -7,8 +7,8 @@ import axios from 'axios';
 
 // todo create endpoint for user data mapping and gathering
 
-const DashboardIdxPage = (props: any) => {
-
+const DashboardIdxPage = ({data}: any) => {
+    console.log(data)
     return (
         <Fragment>
             <SEO
@@ -21,18 +21,26 @@ const DashboardIdxPage = (props: any) => {
 
 export default DashboardIdxPage
 
-export const getStaticProps = async (params: any) => {
-    // let session = await getSession(params)
-    // let data = await axios.get('http://localhost:3000/api/user/get-user', {
-    //     params: {
-    //         email: session?.user?.email
-    //     }
-    // })
-    // console.log('session', params)
+export const getStaticPaths = async () => {
+    let { data } = await axios.get('http://localhost:3000/api/user/get-dashboard')
+    let hostedPaths = data?.user?.hosted.map((hosted: any) => {
+        return hosted?.powerHour?.id
+    })
+    let participantPaths = data?.user?.participants.map((participant: any) => {
+        return participant?.powerHour?.id
+    })
+    const paths = hostedPaths.concat(participantPaths)
+    return {
+        paths,
+        fallback: true
+    }
+}
+
+export const getStaticProps = async () => {
+    let { data } = await axios.get('http://localhost:3000/api/user/get-dashboard')
     return {
         props: {
-            // name: session?.user?.name as string,
-            // hostedPowerHours: hostedPowerHours
+            data: data?.user
         }
     }
 }

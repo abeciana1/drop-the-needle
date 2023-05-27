@@ -6,14 +6,13 @@ const secret = process.env.JWT_SECRET
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const token = await getToken({ req, secret })
-    const { email }: any = token
-    let user = await prisma?.user?.findUnique({
+    let user = await prisma?.user?.findFirst({
         where: {
-            email: email
+            email: token?.email as string
         },
         include: {
             hosted: {
-                include: {
+                select: {
                     powerHour: {
                         select: {
                             id: true,
@@ -24,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
             },
             participants: {
-                include: {
+                select: {
                     powerHour: {
                         select: {
                             id: true,
@@ -36,5 +35,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         }
     })
+    // return user
     res.status(200).json({ user });
 }
