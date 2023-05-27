@@ -1,7 +1,6 @@
 import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import prisma from '@/hooks/prisma'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
 
 
 export const options: AuthOptions = {
@@ -11,7 +10,6 @@ export const options: AuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         })
     ],
-    // adapter: PrismaAdapter(prisma),
     secret: process.env.JWT_SECRET,
     session: {
         strategy: 'jwt',
