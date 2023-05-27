@@ -37,7 +37,7 @@ export const h3 = ({
 }: StyledHeadingI) => {
     return (
         <h3
-            className={cx('text-4xl lg:text-5xl font-bold', {
+            className={cx('text-3xl lg:text-4xl font-bold', {
                 [colors[color]]: colors[color],
             })}
         >
@@ -52,11 +52,41 @@ export const h4 = ({
 }: StyledHeadingI) => {
     return (
         <h4
-            className={cx('text-4xl lg:text-5xl font-bold', {
+            className={cx('text-2xl lg:text-3xl font-bold', {
                 [colors[color]]: colors[color],
             })}
         >
             {text}
         </h4>
+    )
+}
+
+export const h5 = ({
+    text,
+    color = 0
+}: StyledHeadingI) => {
+    return (
+        <h5
+            className={cx('text-xl lg:text-2xl font-bold', {
+                [colors[color]]: colors[color],
+            })}
+        >
+            {text}
+        </h5>
+    )
+}
+
+export const h6 = ({
+    text,
+    color = 0
+}: StyledHeadingI) => {
+    return (
+        <h6
+            className={cx('text-lg lg:text-xl font-bold', {
+                [colors[color]]: colors[color],
+            })}
+        >
+            {text}
+        </h6>
     )
 }
