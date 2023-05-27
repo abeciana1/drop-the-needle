@@ -27,7 +27,6 @@ const DashboardIdxPage = ({data}: any) => {
                 title='Dashboard'
             />
             <DashPageLayout>
-
                 <ComponentMargin>
                     <H1 color={2} text={`Welcome back, ${name}`}/>
                 </ComponentMargin>
