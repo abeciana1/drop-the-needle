@@ -45,6 +45,10 @@ const DashboardIdxPage = ({data}: any) => {
                             ))}
                         </section>
                     </ComponentMargin>
+                    <WavySection color='jaffa-200' type={2} bgColor='altGreen-300' />
+                    <ComponentMargin bgColor='altGreen-300'>
+                        <H2 color={0} text={'Participation'} />
+                    </ComponentMargin>
                 </main>
             </section>
             
