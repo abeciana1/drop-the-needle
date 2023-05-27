@@ -1,10 +1,10 @@
-import { PlaylistCardI } from "@/interfaces"
+import { PowerHourType } from "@/types" 
 
 const PlaylistCard = ({
     id,
     title,
-    coverImage
-}: PlaylistCardI) => {
+    cover_image
+}: PowerHourType) => {
 
     return (
         <></>

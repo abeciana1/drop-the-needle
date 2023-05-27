@@ -7,13 +7,15 @@ import {
 } from '@/components/common'
 import { SideNav } from '@/components/account'
 import axios from 'axios';
+import { PlaylistCardI } from '@/interfaces';
 
 // todo create endpoint for user data mapping and gathering
 
 const DashboardIdxPage = ({data}: any) => {
     console.log(data)
     const {
-        name
+        name,
+        hosted
     } = data
     return (
         <Fragment>
@@ -29,6 +31,14 @@ const DashboardIdxPage = ({data}: any) => {
                     <WavySection color='jaffa-200' type={1} />
                     <ComponentMargin bgColor='jaffa-200'>
                         <h2>My Power Hours</h2>
+                        {hosted.map(({powerHour}: PlaylistCardI) => (
+                            <PlaylistCard
+                                key={powerHour.id}
+                                id={powerHour.id}
+                                title={powerHour.title}
+                                cover_image={powerHour.cover_image}
+                            />
+                        ))}
                     </ComponentMargin>
                 </main>
             </section>

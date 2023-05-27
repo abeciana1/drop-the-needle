@@ -8,3 +8,9 @@ export type ImageType = {
     height: number;
     alt: string;
 }
+
+export type DashPowerHourType = {
+    id: number;
+    title: string;
+    cover_image: string;
+}

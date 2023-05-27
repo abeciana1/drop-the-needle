@@ -1,6 +1,7 @@
 import React from 'react'
 import {
-    ImageType
+    ImageType,
+    DashPowerHourType
 } from '@/types';
 
 export interface ChildrenI {
@@ -91,7 +92,5 @@ export interface NavLogoLinkI {
 }
 
 export interface PlaylistCardI {
-    id: number;
-    title: string;
-    coverImage: string;
+    powerHour: DashPowerHourType;
 }
