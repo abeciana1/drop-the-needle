@@ -9,8 +9,6 @@ import { SideNav } from '@/components/account'
 import axios from 'axios';
 import { PlaylistCardI } from '@/interfaces';
 
-// todo create endpoint for user data mapping and gathering
-
 const DashboardIdxPage = ({data}: any) => {
     console.log(data)
     const {
