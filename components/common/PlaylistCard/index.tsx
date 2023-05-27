@@ -8,7 +8,13 @@ const PlaylistCard = ({
 }: DashPowerHourType) => {
 
     return (
-        <></>
+        <Link
+            href={`/dashboard/powerhour/${encodeURI(id.toString())}`}
+            className=""
+            title={title}
+        >
+            {title}
+        </Link>
     )
 }
 
