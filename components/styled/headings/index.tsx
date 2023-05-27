@@ -46,3 +46,17 @@ export const h3 = ({
     )
 }
 
+export const h4 = ({
+    text,
+    color = 0
+}: StyledHeadingI) => {
+    return (
+        <h4
+            className={cx('text-4xl lg:text-5xl font-bold', {
+                [colors[color]]: colors[color],
+            })}
+        >
+            {text}
+        </h4>
+    )
+}
