@@ -1,4 +1,5 @@
 import { DashPowerHourType } from "@/types" 
+import Link from 'next/link'
 
 const PlaylistCard = ({
     id,
