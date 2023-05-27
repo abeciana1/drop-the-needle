@@ -19,8 +19,8 @@ const PlaylistCard = ({
                 priority
                 className=""
                 alt={title}
-                width={200}
-                height={200}
+                width={225}
+                height={225}
             />
             {title}
         </Link>
