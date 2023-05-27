@@ -8,6 +8,10 @@ import {
 import { SideNav } from '@/components/account'
 import axios from 'axios';
 import { PlaylistCardI } from '@/interfaces';
+import {
+    H1,
+    H2
+} from '@/components/styled'
 
 const DashboardIdxPage = ({data}: any) => {
     console.log(data)
@@ -25,7 +29,7 @@ const DashboardIdxPage = ({data}: any) => {
                 <SideNav/>
                 <main className='w-full'>
                     <ComponentMargin>
-                        <h1 className='text-altBlack'>Welcome back, {name}</h1>
+                        <H1 color={2} text={`Welcome back, ${name}`}></H1>
                     </ComponentMargin>
                     <WavySection color='jaffa-200' type={1} />
                     <ComponentMargin bgColor='jaffa-200'>

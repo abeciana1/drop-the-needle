@@ -9,12 +9,12 @@ export {
 
 
 export const colors = [
-    'bg-inherit',
-    'bg-altWhite',
-    'bg-altBlack',
-    'bg-vermillion',
-    'bg-gold',
-    'bg-altGreen',
-    'bg-ceruleanBlue',
-    'bg-jaffa'
+    'text-inherit',
+    'text-altWhite',
+    'text-altBlack',
+    'text-vermillion',
+    'text-gold',
+    'text-altGreen',
+    'text-ceruleanBlue',
+    'text-jaffa'
 ]
