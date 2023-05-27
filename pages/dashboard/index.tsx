@@ -48,6 +48,16 @@ const DashboardIdxPage = ({data}: any) => {
                     <WavySection color='jaffa-200' type={2} bgColor='altGreen-300' />
                     <ComponentMargin bgColor='altGreen-300'>
                         <H2 color={0} text={'Participation'} />
+                        <section className='py-5 grid grid-cols-3'>
+                            {participants.map(({powerHour}: PlaylistCardI) => (
+                                <PlaylistCard
+                                    key={powerHour.id}
+                                    id={powerHour.id}
+                                    title={powerHour.title}
+                                    cover_image={powerHour.cover_image}
+                                />
+                            ))}
+                        </section>
                     </ComponentMargin>
                 </main>
             </section>

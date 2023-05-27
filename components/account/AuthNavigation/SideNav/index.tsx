@@ -21,6 +21,7 @@ const SideNav = () => {
 
     const {
         isMobile,
+        isTablet,
         isDesktop
     } = useResponsiveness() || {}
 
@@ -29,9 +30,9 @@ const SideNav = () => {
     }
 
     return (
-        <aside>
+        <aside className="relative z-50">
             {(showNav || isDesktop) &&
-                <nav className="bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
+                <nav className="fixed bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
                     <Fragment>
                         <LogoLink size={70} />
                         <ul className="space-y-5">
@@ -59,8 +60,8 @@ const SideNav = () => {
                     </Fragment>
                 </nav>
             }
-            {isMobile &&
-                <button onClick={() => setNav(!showNav)} className={cx('absolute bg-altBlack text-altWhite top-3/4 rounded-full border-altWhite border-2 p-1 text-left', {
+            {(isMobile || isTablet) &&
+                <button onClick={() => setNav(!showNav)} className={cx('absolute bg-altBlack text-altWhite top-[30rem] rounded-full border-altWhite border-2 p-1 text-left', {
                     ['ml-16']: showNav,
                     ['left-0']: showNav === false
                 })}>
