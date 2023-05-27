@@ -1,5 +1,6 @@
 import { DashPowerHourType } from "@/types" 
 import Link from 'next/link'
+import Image from 'next/image'
 
 const PlaylistCard = ({
     id,
@@ -13,6 +14,14 @@ const PlaylistCard = ({
             className=""
             title={title}
         >
+            <Image
+                src={cover_image}
+                priority
+                className=""
+                title={title}
+                width={100}
+                height={100}
+            />
             {title}
         </Link>
     )
