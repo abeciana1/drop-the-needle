@@ -16,6 +16,7 @@ const DashboardIdxPage = ({data}: any) => {
                 title='Dashboard'
             />
             <SideNav/>
+            <h1>My Power Hours</h1>
         </Fragment>
     )
 }
