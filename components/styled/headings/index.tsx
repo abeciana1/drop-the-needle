@@ -16,7 +16,7 @@ export const H1 = ({
     )
 }
 
-export const h2 = ({
+export const H2 = ({
     text,
     color = 0
 }: StyledHeadingI) => {
@@ -31,7 +31,7 @@ export const h2 = ({
     )
 }
 
-export const h3 = ({
+export const H3 = ({
     text,
     color = 0
 }: StyledHeadingI) => {
@@ -46,7 +46,7 @@ export const h3 = ({
     )
 }
 
-export const h4 = ({
+export const H4 = ({
     text,
     color = 0
 }: StyledHeadingI) => {
@@ -61,7 +61,7 @@ export const h4 = ({
     )
 }
 
-export const h5 = ({
+export const H5 = ({
     text,
     color = 0
 }: StyledHeadingI) => {
@@ -76,7 +76,7 @@ export const h5 = ({
     )
 }
 
-export const h6 = ({
+export const H6 = ({
     text,
     color = 0
 }: StyledHeadingI) => {
