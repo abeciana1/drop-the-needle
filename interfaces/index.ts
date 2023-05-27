@@ -89,3 +89,9 @@ export interface AccountI {
 export interface NavLogoLinkI {
     size: number;
 }
+
+export interface PlaylistCardI {
+    id: number;
+    title: string;
+    coverImage: string;
+}

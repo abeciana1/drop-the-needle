@@ -1,5 +1,10 @@
+import { PlaylistCardI } from "@/interfaces"
 
-const PlaylistCard = () => {
+const PlaylistCard = ({
+    id,
+    title,
+    coverImage
+}: PlaylistCardI) => {
 
     return (
         <></>
