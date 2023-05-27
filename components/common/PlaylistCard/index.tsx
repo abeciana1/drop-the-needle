@@ -20,7 +20,7 @@ const PlaylistCard = ({
                 className=""
                 alt={title}
                 width={200}
-                height={100}
+                height={200}
             />
             {title}
         </Link>
