@@ -29,11 +29,11 @@ const DashboardIdxPage = ({data}: any) => {
                 <SideNav/>
                 <main className='w-full'>
                     <ComponentMargin>
-                        <H1 color={2} text={`Welcome back, ${name}`}></H1>
+                        <H1 color={2} text={`Welcome back, ${name}`}/>
                     </ComponentMargin>
                     <WavySection color='jaffa-200' type={1} />
                     <ComponentMargin bgColor='jaffa-200'>
-                        <h2>My Hosted Power Hours</h2>
+                        <H2 color={0} text={'My Hosted Power Hours'} />
                         <section className='py-5 grid grid-cols-3'>
                             {hosted.map(({powerHour}: PlaylistCardI) => (
                                 <PlaylistCard
