@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { HeroSectionI } from '@/interfaces'
 import {
     LinkLookLikeButton,
-    ComponentMargin
 } from '@/components/common'
 
 export const HeroSectionBlendImage = ({
