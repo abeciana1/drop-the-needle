@@ -13,7 +13,8 @@ const DashboardIdxPage = ({data}: any) => {
     console.log(data)
     const {
         name,
-        hosted
+        hosted,
+        participants
     } = data
     return (
         <Fragment>

@@ -1,10 +1,10 @@
-import { PowerHourType } from "@/types" 
+import { DashPowerHourType } from "@/types" 
 
 const PlaylistCard = ({
     id,
     title,
     cover_image
-}: PowerHourType) => {
+}: DashPowerHourType) => {
 
     return (
         <></>
