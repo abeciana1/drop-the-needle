@@ -92,3 +92,15 @@ export const ComponentMargin = ({
         </section>
     )
 }
+
+export const CommonPageLayout = () => {
+    return (
+        <></>
+    )
+}
+
+export const DashPageLayout = () => {
+    return (
+        <></>
+    )
+}
