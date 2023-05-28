@@ -24,25 +24,28 @@ export const options: AuthOptions = {
                 return false
             }
         },
-        async jwt({ token, account, profile, trigger}: any) {
+        async jwt({ token, account, profile}: any) {
             if (account) {
                 token.accessToken = account.access_token
             }
             if (profile) {
-                if (trigger === 'signUp') {
-                    await prisma.user.create({
+                let user = await prisma.user.findFirst({
+                    where: {
+                        email: profile.email
+                    }
+                })
+                if (!!user === false) {
+                    let newUser = await prisma.user.create({
                         data: {
                             name: profile.name,
                             email: profile.email,
                         }
                     })
-                } else if (trigger === 'signIn') {
-                    await prisma.user.findFirst({
-                        where: {
-                            email: profile.email
-                        }
-                    })
+                    console.log('newUser', newUser)
+                    return newUser
                 }
+                console.log('user', user)
+                return user
             }
             return token
         },
