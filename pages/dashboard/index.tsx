@@ -12,14 +12,16 @@ import {
     H1,
     H2
 } from '@/components/styled'
+import { NextPageContext } from 'next';
+import { getSession } from 'next-auth/react'
 
-const DashboardIdxPage = ({data}: any) => {
-    console.log(data)
+
+const DashboardIdxPage = ({user}: any) => {
     const {
         name,
         hosted,
         participants
-    } = data
+    } = user
     return (
         <Fragment>
             <SEO
@@ -33,7 +35,7 @@ const DashboardIdxPage = ({data}: any) => {
                 <ComponentMargin bgColor='jaffa-200'>
                     <H2 color={0} text={'My Hosted Power Hours'} />
                     <section className='py-5 grid grid-cols-3'>
-                        {hosted.map(({powerHour}: PlaylistCardI) => (
+                        {hosted?.map(({powerHour}: PlaylistCardI) => (
                             <PlaylistCard
                                 key={powerHour.id}
                                 id={powerHour.id}
@@ -47,7 +49,7 @@ const DashboardIdxPage = ({data}: any) => {
                 <ComponentMargin bgColor='altGreen-300'>
                     <H2 color={0} text={'Participation'} />
                     <section className='py-5 grid grid-cols-3'>
-                        {participants.map(({powerHour}: PlaylistCardI) => (
+                        {participants?.map(({powerHour}: PlaylistCardI) => (
                             <PlaylistCard
                                 key={powerHour.id}
                                 id={powerHour.id}
@@ -68,26 +70,14 @@ const DashboardIdxPage = ({data}: any) => {
 
 export default DashboardIdxPage
 
-// export const getStaticPaths = async () => {
-//     let { data } = await axios.get('http://localhost:3000/api/user/get-dashboard')
-//     let hostedPaths = data?.user?.hosted.map((hosted: any) => {
-//         return hosted?.powerHour?.id
-//     })
-//     let participantPaths = data?.user?.participants.map((participant: any) => {
-//         return participant?.powerHour?.id
-//     })
-//     const paths = hostedPaths.concat(participantPaths)
-//     return {
-//         paths,
-//         fallback: true
-//     }
-// }
-
-export const getStaticProps = async () => {
-    let { data } = await axios.get('http://localhost:3000/api/user/get-dashboard')
+export const getServerSideProps = async (context: NextPageContext) => {
+    const session = await getSession(context);
+    let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+        params: session?.user?.email
+    })
     return {
         props: {
-            data: data?.user
+            user: data?.user
         }
     }
 }

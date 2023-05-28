@@ -18,7 +18,6 @@ import {
 const NavBar = () => {
     const { data: session } = useSession()
     const [ isOpen, setOpen ] = useState(false)
-
     const {
         isMobile,
         isTablet,

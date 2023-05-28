@@ -7,14 +7,11 @@ import {
     AiFillLayout,
     AiOutlineBars,
     AiFillEdit,
-    AiOutlineLogout,
-    AiOutlineDoubleLeft,
-    AiOutlineDoubleRight
+    AiOutlineLogout
 } from 'react-icons/ai'
 import { signOut } from "next-auth/react"
 import { LogoLink } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
-import cx from 'classnames'
 import { Squash as Hamburger } from 'hamburger-react'
 
 const SideNav = () => {
@@ -27,7 +24,7 @@ const SideNav = () => {
     } = useResponsiveness() || {}
 
     const handleSignOut = async () => {
-        await signOut({ callbackUrl: '/'})
+        await signOut({ callbackUrl: '/' })
     }
 
     return (
