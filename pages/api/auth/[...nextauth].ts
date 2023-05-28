@@ -41,10 +41,8 @@ export const options: AuthOptions = {
                             email: profile.email,
                         }
                     })
-                    console.log('newUser', newUser)
                     return newUser
                 }
-                console.log('user', user)
                 return user
             }
             return token
@@ -57,20 +55,3 @@ export const options: AuthOptions = {
 }
 
 export default NextAuth(options)
-
-// let user = await prisma.user.findUnique({
-//     where: {
-//         email: profile.email
-//     }
-// })
-// if (!!user) {
-//     return true
-// } else {
-//     await prisma.user.create({
-//         data: {
-//             name: profile.name,
-//             email: profile.email,
-//         }
-//     })
-//     return true
-// }
