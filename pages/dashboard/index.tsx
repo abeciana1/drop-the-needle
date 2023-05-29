@@ -47,16 +47,18 @@ const DashboardIdxPage = ({user}: any) => {
                             />
                         ))}
                     </section>
-                    <div className='ml-10'>
+                    <>
                         {hosted?.length > 3 &&
-                            <LinkLookLikeButton
-                                href='dashboard/powerhour'
-                                text='View more'
-                                bgColor='altBlack'
-                                ctaArrow={true}
-                            />
+                        <div className='ml-10'>
+                                <LinkLookLikeButton
+                                    href='dashboard/powerhour'
+                                    text='View more'
+                                    bgColor='altBlack'
+                                    ctaArrow={true}
+                                />
+                        </div>
                         }
-                    </div>
+                    </>
                 </ComponentMargin>
                 <WavySection color='jaffa-200' type={2} bgColor='ceruleanBlue' />
                 <ComponentMargin bgColor='ceruleanBlue'>
@@ -71,16 +73,18 @@ const DashboardIdxPage = ({user}: any) => {
                             />
                         ))}
                     </section>
-                    <div className='ml-10'>
+                    <>
                         {hosted?.length > 3 &&
+                        <div className='ml-10'>
                             <LinkLookLikeButton
                                 href='dashboard/powerhour'
                                 text='View more'
                                 bgColor='gold'
                                 ctaArrow={true}
                             />
+                        </div>
                         }
-                    </div>
+                    </>
                 </ComponentMargin>
                 <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
                 <ComponentMargin bgColor='vermillion-200'>
