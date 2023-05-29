@@ -99,3 +99,8 @@ export interface StyledHeadingI {
     text: string;
     color?: number;
 }
+
+export interface ToggleButtonI {
+    isOpen: boolean;
+    setOpen: () => void;
+}
