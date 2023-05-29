@@ -17,7 +17,7 @@ const ParticipantPowerHoursPage = () => {
             />
             <DashPageLayout footerColor='vermillion-200'>
                 <ComponentMargin bgColor='jaffa-200'>
-                    <H1 color={0} text={'My Hosted Power Hours'} />
+                    <H1 color={0} text={'Participating Power Hours'} />
                 </ComponentMargin>
             </DashPageLayout>
         </>
@@ -26,9 +26,10 @@ const ParticipantPowerHoursPage = () => {
 
 export const getServerSideProps = async (context: NextPageContext) => {
     const session = await getSession(context);
-    let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+    let {data} = await axios.post('http://localhost:3000/api/powerhour/get-hosted', {
         params: session?.user?.email
     })
+    console.log(data)
     return {
         props: {}
     }

@@ -22,8 +22,6 @@ const DashboardIdxPage = ({user}: any) => {
         hosted,
         participants
     } = user
-
-    console.log(hosted.length)
     return (
         <>
             <SEO
