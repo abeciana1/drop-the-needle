@@ -1,4 +1,6 @@
-
+import {
+    SEO
+} from '@/components/common'
 
 const ParticipantPowerHoursPage = () => {
 

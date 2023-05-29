@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import {
     SEO,
     PlaylistCard,
@@ -26,7 +25,7 @@ const DashboardIdxPage = ({user}: any) => {
 
     console.log(hosted.length)
     return (
-        <Fragment>
+        <>
             <SEO
                 title='Dashboard'
             />
@@ -91,7 +90,7 @@ const DashboardIdxPage = ({user}: any) => {
                     <H2 text={'Invitations'} />
                 </ComponentMargin>
             </DashPageLayout>
-        </Fragment>
+        </>
     )
 }
 
