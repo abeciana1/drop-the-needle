@@ -51,7 +51,7 @@ const DashboardIdxPage = ({user}: any) => {
                         {hosted?.length > 3 &&
                         <div className='ml-10'>
                                 <LinkLookLikeButton
-                                    href='dashboard/powerhour'
+                                    href='dashboard/powerhour/hosted'
                                     text='View more'
                                     bgColor='altBlack'
                                     ctaArrow={true}
@@ -77,7 +77,7 @@ const DashboardIdxPage = ({user}: any) => {
                         {hosted?.length > 3 &&
                         <div className='ml-10'>
                             <LinkLookLikeButton
-                                href='dashboard/powerhour'
+                                href='dashboard/powerhour/participant'
                                 text='View more'
                                 bgColor='gold'
                                 ctaArrow={true}
