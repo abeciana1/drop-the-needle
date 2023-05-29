@@ -10,12 +10,14 @@ import {
     AiOutlineLogout
 } from 'react-icons/ai'
 import { signOut } from "next-auth/react"
-import { LogoLink } from '@/components/common'
+import {
+    LogoLink,
+    ToggleButton
+} from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
-import { Squash as Hamburger } from 'hamburger-react'
 
 const SideNav = () => {
-    const [ showNav, setNav ] = useState(false)
+    const [ isOpen, setOpen ] = useState(false)
 
     const {
         isMobile,
@@ -29,7 +31,7 @@ const SideNav = () => {
 
     return (
         <aside className="relative z-50">
-            {(showNav || isDesktop) &&
+            {(isOpen || isDesktop) &&
                 <nav className="fixed bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
                     <Fragment>
                         <LogoLink size={70} />
@@ -59,13 +61,7 @@ const SideNav = () => {
                 </nav>
             }
             {(isMobile || isTablet) &&
-                <div data-testid='hamburger-btn' className='absolute top-5 right-3'>
-                    <Hamburger
-                        toggled={showNav}
-                        toggle={setNav}
-                        color='#343434'
-                    />
-                </div>
+                <ToggleButton isOpen={isOpen} setOpen={setOpen} />
             }
         </aside>
     )
