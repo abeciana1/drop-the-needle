@@ -42,12 +42,12 @@ const SideNav = () => {
                                 icon={AiFillLayout}
                             />
                             <SideNavItemLink
-                                href='dashboard/power-hours'
+                                href='dashboard/powerhour/hosted'
                                 linkText='My Power Hours'
                                 icon={AiOutlineBars}
                             />
                             <SideNavItemLink
-                                href='dashboard/power-hours/create'
+                                href='dashboard/powerhour/create'
                                 linkText='Create New'
                                 icon={AiFillEdit}
                             />
