@@ -82,10 +82,8 @@ export default function Home() {
           </Grid2Column>
         </ComponentMargin>
         <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
-        <ComponentMargin bgColor='vermillion-200'>
-          <Footer/>
-        </ComponentMargin>
       </CommonPageLayout>
+      <Footer bgColor='vermillion-200'/>
     </Fragment>
   )
 }
