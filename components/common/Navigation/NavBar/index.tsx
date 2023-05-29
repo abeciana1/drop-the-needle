@@ -10,7 +10,6 @@ import {
 } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
-import { Squash as Hamburger } from 'hamburger-react'
 import {
     signIn,
     useSession
