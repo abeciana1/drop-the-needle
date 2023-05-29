@@ -4,7 +4,8 @@ import {
     PlaylistCard,
     ComponentMargin,
     WavySection,
-    DashPageLayout
+    DashPageLayout,
+    LinkLookLikeButton
 } from '@/components/common'
 import axios from 'axios';
 import { PlaylistCardI } from '@/interfaces';
@@ -44,9 +45,17 @@ const DashboardIdxPage = ({user}: any) => {
                             />
                         ))}
                     </section>
+                    <div className='ml-10'>
+                        <LinkLookLikeButton
+                            href='dashboard/powerhour'
+                            text='View more'
+                            bgColor='altBlack'
+                            ctaArrow={true}
+                        />
+                    </div>
                 </ComponentMargin>
-                <WavySection color='jaffa-200' type={2} bgColor='altGreen-300' />
-                <ComponentMargin bgColor='altGreen-300'>
+                <WavySection color='jaffa-200' type={2} bgColor='ceruleanBlue' />
+                <ComponentMargin bgColor='ceruleanBlue'>
                     <H2 color={0} text={'Participation'} />
                     <section className='py-5 grid grid-cols-3'>
                         {participants?.map(({powerHour}: PlaylistCardI) => (
@@ -58,8 +67,16 @@ const DashboardIdxPage = ({user}: any) => {
                             />
                         ))}
                     </section>
+                    <div className='ml-10'>
+                        <LinkLookLikeButton
+                            href='dashboard/powerhour'
+                            text='View more'
+                            bgColor='gold'
+                            ctaArrow={true}
+                        />
+                    </div>
                 </ComponentMargin>
-                <WavySection color='altGreen-300' type={3} bgColor='vermillion-200' />
+                <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
                 <ComponentMargin bgColor='vermillion-200'>
                     <H2 text={'Invitations'} />
                 </ComponentMargin>
