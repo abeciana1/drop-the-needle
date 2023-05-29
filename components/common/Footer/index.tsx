@@ -9,7 +9,7 @@ const Footer = ({
     let currentYear = date.getFullYear()
 
     return (
-        <footer className={cx("pt-10 md:pt-20 flex justify-center items-center space-x-2 bg-inherit font-semiBold", {
+        <footer className={cx("pt-10 md:pt-20 flex justify-center items-center space-x-2 bg-inherit font-semiBold fixed w-full bottom-0", {
             ['bg-vermillion-200 text-altBlack']: bgColor === 'vermillion-200',
             ['bg-jaffa-200 text-altBlack']: bgColor === 'jaffa-200',
             ['bg-ceruleanBlue text-altWhite']: bgColor === 'ceruleanBlue',
