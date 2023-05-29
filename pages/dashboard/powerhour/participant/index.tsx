@@ -13,7 +13,7 @@ const ParticipantPowerHoursPage = () => {
     return(
         <>
             <SEO
-                title='Hosted Power Hours'
+                title='Participating Power Hours'
             />
             <DashPageLayout footerColor='vermillion-200'>
                 <ComponentMargin bgColor='jaffa-200'>
