@@ -102,5 +102,5 @@ export interface StyledHeadingI {
 
 export interface ToggleButtonI {
     isOpen: boolean;
-    setOpen: (value: boolean) => void;
+    setOpen: (value: any) => void;
 }
