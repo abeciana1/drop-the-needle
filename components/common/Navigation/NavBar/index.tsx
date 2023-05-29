@@ -5,7 +5,8 @@ import {
     LogoLink,
     OnClickButton,
     AccountDD,
-    NavItem
+    NavItem,
+    ToggleButton
 } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import cx from 'classnames'
@@ -82,13 +83,7 @@ const NavBar = () => {
                     </Fragment>
                 }
                 {(isMobile || isTablet) &&
-                    <div data-testid='hamburger-btn' className='absolute top-5 right-5'>
-                        <Hamburger
-                            toggled={isOpen}
-                            toggle={setOpen}
-                            color='#343434'
-                        />
-                    </div>
+                    <ToggleButton isOpen={isOpen} setOpen={setOpen} />
                 }
             </nav>
         </Fragment>
