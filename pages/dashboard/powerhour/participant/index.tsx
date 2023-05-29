@@ -8,9 +8,12 @@ import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
+import { PlaylistCardI } from '@/interfaces';
 
-const ParticipantPowerHoursPage = () => {
-
+const ParticipantPowerHoursPage = ({
+    powerHours
+}: any) => {
+    
     return(
         <>
             <SEO
@@ -31,9 +34,11 @@ export const getServerSideProps = async (context: NextPageContext) => {
     let {data} = await axios.post('http://localhost:3000/api/powerhour/get-hosted', {
         params: session?.user?.email
     })
-    console.log(data)
+
     return {
-        props: {}
+        props: {
+            powerHours: data?.powerHours
+        }
     }
 }
 
