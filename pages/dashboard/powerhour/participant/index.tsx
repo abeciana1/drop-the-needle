@@ -1,7 +1,8 @@
 import {
     SEO,
     DashPageLayout,
-    ComponentMargin
+    ComponentMargin,
+    WavySection
 } from '@/components/common'
 import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
@@ -16,9 +17,10 @@ const ParticipantPowerHoursPage = () => {
                 title='Participating Power Hours'
             />
             <DashPageLayout footerColor='vermillion-200'>
-                <ComponentMargin bgColor='jaffa-200'>
+                <ComponentMargin>
                     <H1 color={0} text={'Participating Power Hours'} />
                 </ComponentMargin>
+                <WavySection color='jaffa-200' type={1} />
             </DashPageLayout>
         </>
     )
