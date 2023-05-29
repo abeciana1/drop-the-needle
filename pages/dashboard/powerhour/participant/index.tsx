@@ -2,7 +2,8 @@ import {
     SEO,
     DashPageLayout,
     ComponentMargin,
-    WavySection
+    WavySection,
+    PlaylistCard
 } from '@/components/common'
 import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
@@ -13,7 +14,7 @@ import { PlaylistCardI } from '@/interfaces';
 const ParticipantPowerHoursPage = ({
     powerHours
 }: any) => {
-    
+
     return(
         <>
             <SEO
@@ -24,6 +25,9 @@ const ParticipantPowerHoursPage = ({
                     <H1 color={0} text={'Participating Power Hours'} />
                 </ComponentMargin>
                 <WavySection color='jaffa-200' type={1} />
+                <ComponentMargin bgColor='jaffa-200'>
+                    
+                </ComponentMargin>
             </DashPageLayout>
         </>
     )

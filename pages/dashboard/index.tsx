@@ -35,7 +35,7 @@ const DashboardIdxPage = ({user}: any) => {
                 <ComponentMargin bgColor='jaffa-200'>
                     <H2 color={0} text={'My Hosted Power Hours'} />
                     <section className='py-5 grid grid-cols-3'>
-                        {hosted?.map(({powerHour}: PlaylistCardI) => (
+                        {hosted?.slice(({powerHour}: PlaylistCardI) => (
                             <PlaylistCard
                                 key={powerHour.id}
                                 id={powerHour.id}
@@ -61,7 +61,7 @@ const DashboardIdxPage = ({user}: any) => {
                 <ComponentMargin bgColor='ceruleanBlue'>
                     <H2 color={0} text={'Participation'} />
                     <section className='py-5 grid grid-cols-3'>
-                        {participants?.map(({powerHour}: PlaylistCardI) => (
+                        {participants?.slice(({powerHour}: PlaylistCardI) => (
                             <PlaylistCard
                                 key={powerHour.id}
                                 id={powerHour.id}
