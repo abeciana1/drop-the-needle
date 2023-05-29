@@ -23,6 +23,8 @@ const DashboardIdxPage = ({user}: any) => {
         hosted,
         participants
     } = user
+
+    console.log(hosted.length)
     return (
         <Fragment>
             <SEO
@@ -46,12 +48,14 @@ const DashboardIdxPage = ({user}: any) => {
                         ))}
                     </section>
                     <div className='ml-10'>
-                        <LinkLookLikeButton
-                            href='dashboard/powerhour'
-                            text='View more'
-                            bgColor='altBlack'
-                            ctaArrow={true}
-                        />
+                        {hosted?.length > 3 &&
+                            <LinkLookLikeButton
+                                href='dashboard/powerhour'
+                                text='View more'
+                                bgColor='altBlack'
+                                ctaArrow={true}
+                            />
+                        }
                     </div>
                 </ComponentMargin>
                 <WavySection color='jaffa-200' type={2} bgColor='ceruleanBlue' />
@@ -68,12 +72,14 @@ const DashboardIdxPage = ({user}: any) => {
                         ))}
                     </section>
                     <div className='ml-10'>
-                        <LinkLookLikeButton
-                            href='dashboard/powerhour'
-                            text='View more'
-                            bgColor='gold'
-                            ctaArrow={true}
-                        />
+                        {hosted?.length > 3 &&
+                            <LinkLookLikeButton
+                                href='dashboard/powerhour'
+                                text='View more'
+                                bgColor='gold'
+                                ctaArrow={true}
+                            />
+                        }
                     </div>
                 </ComponentMargin>
                 <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
