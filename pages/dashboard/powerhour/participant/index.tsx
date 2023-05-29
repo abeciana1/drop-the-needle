@@ -4,6 +4,9 @@ import {
     ComponentMargin
 } from '@/components/common'
 import { H1 } from '@/components/styled'
+import { NextPageContext } from 'next';
+import axios from 'axios';
+import { getSession } from 'next-auth/react'
 
 const ParticipantPowerHoursPage = () => {
 
@@ -19,6 +22,16 @@ const ParticipantPowerHoursPage = () => {
             </DashPageLayout>
         </>
     )
+}
+
+export const getServerSideProps = async (context: NextPageContext) => {
+    const session = await getSession(context);
+    let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+        params: session?.user?.email
+    })
+    return {
+        props: {}
+    }
 }
 
 export default ParticipantPowerHoursPage
