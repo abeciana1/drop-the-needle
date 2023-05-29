@@ -1,10 +1,14 @@
 import {
     ChildrenI,
     WavySectionI,
-    ComponentMarginI
+    ComponentMarginI,
+    CommonPageLayoutI
 } from "@/interfaces"
 import cx from 'classnames'
-import { NavBar } from '@/components/common'
+import {
+    NavBar,
+    Footer
+} from '@/components/common'
 import { SideNav } from "@/components/account"
 
 export const Grid2Column = ({
@@ -96,27 +100,31 @@ export const ComponentMargin = ({
 }
 
 export const CommonPageLayout = ({
-    children
-}: ChildrenI ) => {
+    children,
+    footerColor
+}: CommonPageLayoutI ) => {
     return (
         <>
             <NavBar/>
             <main>
                 {children}
             </main>
+            <Footer bgColor={footerColor} />
         </>
     )
 }
 
 export const DashPageLayout = ({
-    children
-}: ChildrenI) => {
+    children,
+    footerColor
+}: CommonPageLayoutI) => {
     return (
         <>
             <SideNav/>
             <main className='pt-10'>
                 {children}
             </main>
+            <Footer bgColor={footerColor} />
         </>
     )
 }

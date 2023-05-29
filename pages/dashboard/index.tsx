@@ -27,7 +27,7 @@ const DashboardIdxPage = ({user}: any) => {
             <SEO
                 title='Dashboard'
             />
-            <DashPageLayout>
+            <DashPageLayout footerColor='vermillion-200'>
                 <ComponentMargin>
                     <H1 color={2} text={`Welcome back, ${name}`}/>
                 </ComponentMargin>

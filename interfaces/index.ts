@@ -108,3 +108,7 @@ export interface ToggleButtonI {
 export interface FooterI {
     bgColor: string;
 }
+
+export interface CommonPageLayoutI extends ChildrenI {
+    footerColor: string
+}

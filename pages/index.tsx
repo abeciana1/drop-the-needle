@@ -6,7 +6,6 @@ import {
   Feature,
   WavySection,
   ComponentMargin,
-  Footer,
   SEO,
   CommonPageLayout
 } from '@/components/common'
@@ -24,7 +23,7 @@ export default function Home() {
       <SEO
         description='Start curating and compiling power hours with ease from YouTube videos.'
       />
-      <CommonPageLayout>
+      <CommonPageLayout footerColor='vermillion-200'>
 
         <ComponentMargin>
           <HeroSectionBlendImage
@@ -83,7 +82,6 @@ export default function Home() {
         </ComponentMargin>
         <WavySection color='ceruleanBlue' type={3} bgColor='vermillion-200' />
       </CommonPageLayout>
-      <Footer bgColor='vermillion-200'/>
     </Fragment>
   )
 }
