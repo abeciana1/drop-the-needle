@@ -27,7 +27,7 @@ export const SideNavItemLink = ({
             </Link>
             {hover &&
                 <div 
-                    className='absolute ml-16 font-medium text-altWhite bg-altBlack px-2 py-1 rounded-lg'
+                    className='fixed ml-16 font-medium text-altWhite bg-altBlack px-2 py-1 rounded-lg min-w-fit text-center'
                 >{linkText}</div>
             }
         </li>
