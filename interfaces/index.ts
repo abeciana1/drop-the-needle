@@ -104,3 +104,7 @@ export interface ToggleButtonI {
     isOpen: boolean;
     setOpen: (value: any) => void;
 }
+
+export interface FooterI {
+    bgColor: string;
+}

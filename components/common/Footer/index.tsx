@@ -1,11 +1,20 @@
 import Image from 'next/image'
-    
-const Footer = () => {
+import cx from 'classnames'
+import { FooterI } from '@/interfaces'
+
+const Footer = ({
+    bgColor
+}: FooterI) => {
     const date = new Date()
     let currentYear = date.getFullYear()
 
     return (
-        <footer className="pt-10 md:pt-20 flex justify-center space-x-2 bg-inherit font-semiBold">
+        <footer className={cx("pt-10 md:pt-20 flex justify-center space-x-2 bg-inherit font-semiBold", {
+            ['bg-vermillion-200 text-altBlack']: bgColor === 'vermillion-200',
+            ['bg-jaffa-200 text-altBlack']: bgColor === 'jaffa-200',
+            ['bg-ceruleanBlue text-altWhite']: bgColor === 'ceruleanBlue',
+            ['bg-altGreen-300 text-altWhite']: bgColor === 'altGreen-300'
+        })}>
             &#169;{currentYear}
             <a
             href="https://alexbeciana.com/"
