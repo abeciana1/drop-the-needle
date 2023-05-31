@@ -4,7 +4,8 @@ import {
     ComponentMargin,
     WavySection,
     DashPageLayout,
-    LinkLookLikeButton
+    LinkLookLikeButton,
+    PlaylistCardGroup
 } from '@/components/common'
 import axios from 'axios';
 import { PlaylistCardI } from '@/interfaces';
@@ -36,7 +37,7 @@ const DashboardIdxPage = ({user}: any) => {
                     <H2 color={0} text={'My Hosted Power Hours'} />
                     <>
                         {hosted?.length > 0 &&
-                            <section className='py-5 grid grid-cols-3'>
+                            <PlaylistCardGroup>
                                 {hosted?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
                                     <PlaylistCard
                                         key={powerHour.id}
@@ -45,7 +46,7 @@ const DashboardIdxPage = ({user}: any) => {
                                         cover_image={powerHour.cover_image}
                                     />
                                 ))}
-                            </section>
+                            </PlaylistCardGroup>
                         }
                     </>
                     <>
@@ -66,7 +67,7 @@ const DashboardIdxPage = ({user}: any) => {
                     <H2 color={0} text={'Participation'} />
                     <>
                         {participants?.length > 0 &&
-                            <section className='py-5 grid grid-cols-3'>
+                            <PlaylistCardGroup>
                                 {participants?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
                                     <PlaylistCard
                                         key={powerHour.id}
@@ -75,7 +76,7 @@ const DashboardIdxPage = ({user}: any) => {
                                         cover_image={powerHour.cover_image}
                                     />
                                 ))}
-                            </section>
+                            </PlaylistCardGroup>
                         }
                     </>
                     <>
