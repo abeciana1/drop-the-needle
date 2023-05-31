@@ -3,7 +3,8 @@ import {
     DashPageLayout,
     ComponentMargin,
     WavySection,
-    PlaylistCard
+    PlaylistCard,
+    PlaylistCardGroup
 } from '@/components/common'
 import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
@@ -14,7 +15,7 @@ import { PlaylistCardI } from '@/interfaces';
 const ParticipantPowerHoursPage = ({
     powerHours
 }: any) => {
-
+    console.log(powerHours)
     return(
         <>
             <SEO
@@ -26,7 +27,20 @@ const ParticipantPowerHoursPage = ({
                 </ComponentMargin>
                 <WavySection color='jaffa-200' type={1} />
                 <ComponentMargin bgColor='jaffa-200'>
-                    
+                    <>
+                        {powerHours?.length > 0 &&
+                            <PlaylistCardGroup>
+                                {powerHours?.map(({powerHour}: PlaylistCardI) => (
+                                    <PlaylistCard
+                                        key={powerHour.id}
+                                        id={powerHour.id}
+                                        title={powerHour.title}
+                                        cover_image={powerHour.cover_image}
+                                    />
+                                ))}
+                            </PlaylistCardGroup>
+                        }
+                    </>
                 </ComponentMargin>
             </DashPageLayout>
         </>
