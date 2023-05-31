@@ -12,7 +12,8 @@ export {
     WavySection,
     ComponentMargin,
     CommonPageLayout,
-    DashPageLayout
+    DashPageLayout,
+    PlaylistCardGroup
 } from '@/components/common/Layout'
 export {default as Feature} from '@/components/common/Feature'
 export {default as Footer} from '@/components/common/Footer'
