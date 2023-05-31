@@ -15,7 +15,6 @@ import { PlaylistCardI } from '@/interfaces';
 const ParticipantPowerHoursPage = ({
     powerHours
 }: any) => {
-    console.log(powerHours)
     return(
         <>
             <SEO
@@ -50,7 +49,7 @@ const ParticipantPowerHoursPage = ({
 
 export const getServerSideProps = async (context: NextPageContext) => {
     const session = await getSession(context);
-    let {data} = await axios.post('http://localhost:3000/api/powerhour/get-hosted', {
+    let {data} = await axios.post('http://localhost:3000/api/powerhour/get-participants', {
         params: session?.user?.email
     })
 
