@@ -34,16 +34,20 @@ const DashboardIdxPage = ({user}: any) => {
                 <WavySection color='jaffa-200' type={1} />
                 <ComponentMargin bgColor='jaffa-200'>
                     <H2 color={0} text={'My Hosted Power Hours'} />
-                    <section className='py-5 grid grid-cols-3'>
-                        {hosted?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
-                            <PlaylistCard
-                                key={powerHour.id}
-                                id={powerHour.id}
-                                title={powerHour.title}
-                                cover_image={powerHour.cover_image}
-                            />
-                        ))}
-                    </section>
+                    <>
+                        {hosted?.length > 0 &&
+                            <section className='py-5 grid grid-cols-3'>
+                                {hosted?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
+                                    <PlaylistCard
+                                        key={powerHour.id}
+                                        id={powerHour.id}
+                                        title={powerHour.title}
+                                        cover_image={powerHour.cover_image}
+                                    />
+                                ))}
+                            </section>
+                        }
+                    </>
                     <>
                         {hosted?.length > 3 &&
                         <div className='ml-10'>
@@ -60,16 +64,20 @@ const DashboardIdxPage = ({user}: any) => {
                 <WavySection color='jaffa-200' type={2} bgColor='ceruleanBlue' />
                 <ComponentMargin bgColor='ceruleanBlue'>
                     <H2 color={0} text={'Participation'} />
-                    <section className='py-5 grid grid-cols-3'>
-                        {participants?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
-                            <PlaylistCard
-                                key={powerHour.id}
-                                id={powerHour.id}
-                                title={powerHour.title}
-                                cover_image={powerHour.cover_image}
-                            />
-                        ))}
-                    </section>
+                    <>
+                        {participants?.length > 0 &&
+                            <section className='py-5 grid grid-cols-3'>
+                                {participants?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
+                                    <PlaylistCard
+                                        key={powerHour.id}
+                                        id={powerHour.id}
+                                        title={powerHour.title}
+                                        cover_image={powerHour.cover_image}
+                                    />
+                                ))}
+                            </section>
+                        }
+                    </>
                     <>
                         {hosted?.length > 3 &&
                         <div className='ml-10'>
