@@ -110,5 +110,5 @@ export interface FooterI {
 }
 
 export interface CommonPageLayoutI extends ChildrenI {
-    footerColor: string
+    footerColor?: string
 }

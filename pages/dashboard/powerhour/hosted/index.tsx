@@ -21,7 +21,7 @@ const HostedPowerHoursPage = ({
             <SEO
                 title='Hosted Power Hours'
             />
-            <DashPageLayout footerColor='vermillion-200'>
+            <DashPageLayout>
                 <ComponentMargin>
                     <H1 color={0} text={'Hosted Power Hours'} />
                 </ComponentMargin>
@@ -42,7 +42,7 @@ const HostedPowerHoursPage = ({
                         }
                     </>
                 </ComponentMargin>
-                <WavySection color='jaffa-200' type={2} bgColor='vermillion-200' />
+                <WavySection color='jaffa-200' type={2} />
             </DashPageLayout>
         </>
     )

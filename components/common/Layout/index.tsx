@@ -101,7 +101,7 @@ export const ComponentMargin = ({
 
 export const CommonPageLayout = ({
     children,
-    footerColor
+    footerColor = ''
 }: CommonPageLayoutI ) => {
     return (
         <>
@@ -116,7 +116,7 @@ export const CommonPageLayout = ({
 
 export const DashPageLayout = ({
     children,
-    footerColor
+    footerColor = ''
 }: CommonPageLayoutI) => {
     return (
         <>
