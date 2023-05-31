@@ -5,6 +5,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     let user = await prisma?.user?.findFirst({
         where: {
             email: req?.body?.params
+        },
+        select: {
+            id: true
         }
     })
     let powerHours = await prisma?.host?.findMany({
