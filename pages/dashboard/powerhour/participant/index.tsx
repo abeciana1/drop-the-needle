@@ -42,6 +42,7 @@ const ParticipantPowerHoursPage = ({
                         }
                     </>
                 </ComponentMargin>
+                <WavySection color='jaffa-200' type={2} bgColor='vermillion-200' />
             </DashPageLayout>
         </>
     )
