@@ -128,3 +128,13 @@ export const DashPageLayout = ({
         </>
     )
 }
+
+export const PlaylistCardGroup = ({
+    children
+}: ChildrenI) => {
+    return(
+        <section className='py-5 grid grid-cols-3'>
+            {children}
+        </section>
+    )
+}
