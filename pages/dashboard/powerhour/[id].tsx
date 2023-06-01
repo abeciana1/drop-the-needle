@@ -30,11 +30,13 @@ export const getStaticPaths = async () => {
     }
 }
 
-export const getStaticProps = async (context: any) => {
-    console.log(context)
-    
+export const getStaticProps = async ({params}: any) => {
+    const {data } = await axios.get("http://localhost:3000/api/powerhour/" + params?.id)
+    console.log(data)
     return {
-        props: {}
+        props: {
+            powerHour: data?.powerHour
+        }
     }
 }
 
