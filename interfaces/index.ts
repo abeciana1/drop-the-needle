@@ -4,18 +4,13 @@ import {
     DashPowerHourType
 } from '@/types';
 
+export type {
+    NavItemI,
+    NavItemIconI
+} from '@/interfaces/Navigation'
+
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
-}
-
-export interface NavItemI {
-    href: string;
-    color?: string;
-    linkText: string;
-}
-
-export interface NavItemIconI extends NavItemI {
-    icon: React.ElementType;
 }
 
 export interface LinkButtonI extends DefaultButtonI {
