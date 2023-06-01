@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
     console.log(context)
-
+    
     return {
         props: {}
     }
