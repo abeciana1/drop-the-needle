@@ -22,7 +22,9 @@ const ParticipantPowerHoursPage = ({
             />
             <DashPageLayout>
                 <ComponentMargin>
-                    <H1 color={0} text={'Participating Power Hours'} />
+                    <section className='md:ml-10'>
+                        <H1 color={0} text={'Participating Power Hours'} />
+                    </section>
                 </ComponentMargin>
                 <WavySection color='jaffa-200' type={1} />
                 <ComponentMargin bgColor='jaffa-200'>

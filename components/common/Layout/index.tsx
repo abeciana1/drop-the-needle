@@ -121,7 +121,7 @@ export const DashPageLayout = ({
     return (
         <>
             <SideNav/>
-            <main className='pt-10'>
+            <main className='pt-10 min-h-screen'>
                 {children}
             </main>
             <Footer bgColor={footerColor} />
@@ -133,7 +133,7 @@ export const PlaylistCardGroup = ({
     children
 }: ChildrenI) => {
     return(
-        <section className='py-5 grid grid-cols-3'>
+        <section className='py-5 grid grid-cols-3 md:ml-10'>
             {children}
         </section>
     )

@@ -32,7 +32,7 @@ const SideNav = () => {
     return (
         <aside className="relative z-50">
             {(isOpen || isDesktop) &&
-                <nav className="fixed bg-altBlack max-w-fit h-screen flex flex-col items-center px-1 py-2 justify-between">
+                <nav className="fixed bg-altBlack max-w-fit h-full flex flex-col items-center px-1 py-2 justify-between">
                     <Fragment>
                         <LogoLink size={70} />
                         <ul className="space-y-5">
