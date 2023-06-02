@@ -30,5 +30,6 @@ export type {
 export type {
     UserI,
     DashPowerHourI,
-    PowerHourI
+    PowerHourI,
+    SongI
 } from '@/interfaces/Data'
