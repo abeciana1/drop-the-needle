@@ -1,31 +1,38 @@
 import {
     DashPageLayout,
-    SEO
+    SEO,
+    ComponentMargin
 } from '@/components/common'
 import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
+import Image from 'next/image'
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
-    // const {
+    const {
     //     id,
-    //     title,
+        title,
     //     description,
-    //     cover_image,
+        cover_image,
     //     date_time,
     //     createdAt,
     //     privateStatus,
     //     publishStatus,
     //     participants,
     //     PowerHourSongs
-    // } = powerHour
+    } = powerHour
 
     return (
         <>
             <SEO />
             <DashPageLayout>
                 <section className="">
-
+                    <Image
+                        src={cover_image}
+                        width={150}
+                        height={150}
+                        alt={title}
+                    />
                 </section>
             </DashPageLayout>
         </>
