@@ -31,7 +31,12 @@ export interface PowerHourI {
     createdAt: Date;
     privateStatus: boolean;
     publishStatus: boolean;
-    participants: UserI[];
+    participants: {
+        
+        user: {
+            name: string;
+        }
+    };
     PowerHourSongs: SongI[]
 }
 

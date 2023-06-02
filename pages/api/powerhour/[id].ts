@@ -8,7 +8,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
         include: {
             PowerHourSongs: true,
-            participants: true
+            participants: {
+                include: {
+                    user: {
+                        select: {
+                            name: true
+                        }
+                    }
+                }
+            }
         }
     })
     res.status(200).json({ powerHour })
