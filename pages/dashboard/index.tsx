@@ -9,7 +9,7 @@ import {
 } from '@/components/common'
 import axios from 'axios';
 import {
-    PlaylistCardI,
+    DashPowerHourI,
     UserI
 } from '@/interfaces';
 import {
@@ -41,7 +41,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                     <>
                         {hosted?.length > 0 &&
                             <PlaylistCardGroup>
-                                {hosted?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
+                                {hosted?.slice(0,3).map(({powerHour}: DashPowerHourI) => (
                                     <PlaylistCard
                                         key={powerHour.id}
                                         id={powerHour.id}
@@ -71,7 +71,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                     <>
                         {participants?.length > 0 &&
                             <PlaylistCardGroup>
-                                {participants?.slice(0,3).map(({powerHour}: PlaylistCardI) => (
+                                {participants?.slice(0,3).map(({powerHour}: DashPowerHourI) => (
                                     <PlaylistCard
                                         key={powerHour.id}
                                         id={powerHour.id}

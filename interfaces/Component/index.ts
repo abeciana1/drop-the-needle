@@ -49,11 +49,6 @@ export interface AccountI {
     image: string;
 }
 
-
-export interface PlaylistCardI {
-    powerHour: DashPowerHourType;
-}
-
 export interface StyledHeadingI {
     text: string;
     color?: number;
