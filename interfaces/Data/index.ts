@@ -28,3 +28,15 @@ export interface PowerHourI {
     hosts: UserI[];
     participants: UserI[];
 }
+
+export interface SongI {
+    id: number;
+    title: string;
+    artist: string;
+    youtubeLink: string;
+    startTime: string;
+    endTime: string;
+    orderNumber: number;
+    createdAt: Date;
+    participant: UserI;
+}
