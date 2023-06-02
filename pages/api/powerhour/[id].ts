@@ -5,6 +5,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const powerHour = await prisma?.powerHour?.findFirst({
         where: {
             id: Number(req?.query?.id)
+        },
+        include: {
+            PowerHourSongs: true
         }
     })
     res.status(200).json({ powerHour })
