@@ -27,7 +27,7 @@ export interface PowerHourI {
     publishStatus: boolean;
     hosts: UserI[];
     participants: UserI[];
-    
+    PowerHourSongs: SongI[]
 }
 
 export interface SongI {
