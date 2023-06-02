@@ -11,12 +11,17 @@ export type {
     NavLogoLinkI
 } from '@/interfaces/Navigation'
 
+export type {
+    OnClickButtonI,
+    OnClickIconButtonI,
+    EventOnClickBtnI,
+    LinkButtonI,
+    LinkOnClickEvent,
+    ToggleButtonI
+} from '@/interfaces/Button'
+
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
-}
-
-export interface LinkButtonI extends DefaultButtonI {
-    href: string;
 }
 
 export interface HeroSectionI {
@@ -54,27 +59,6 @@ export interface SeoI {
     noFollow?: boolean;
 }
 
-interface DefaultButtonI {
-    text: string;
-    ctaArrow?: boolean;
-    bgColor?: string;
-}
-
-export interface OnClickButtonI extends DefaultButtonI {
-    onClick: () => void;
-}
-
-export interface OnClickIconButtonI extends OnClickButtonI {
-    icon: React.ElementType;
-}
-
-export interface EventOnClickBtnI extends DefaultButtonI {
-    onClick: (e: Event) => void;
-}
-
-export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
-
-
 export interface AccountI {
     name: string;
     email: string;
@@ -89,11 +73,6 @@ export interface PlaylistCardI {
 export interface StyledHeadingI {
     text: string;
     color?: number;
-}
-
-export interface ToggleButtonI {
-    isOpen: boolean;
-    setOpen: (value: any) => void;
 }
 
 export interface FooterI {
