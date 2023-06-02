@@ -22,7 +22,6 @@ export type {
     ComponentMarginI,
     SeoI,
     AccountI,
-    PlaylistCardI,
     StyledHeadingI,
     FooterI,
     CommonPageLayoutI
