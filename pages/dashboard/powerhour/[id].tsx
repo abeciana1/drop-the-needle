@@ -6,19 +6,19 @@ import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
-
-    const {
-        id,
-        title,
-        description,
-        cover_image,
-        date_time,
-        createdAt,
-        privateStatus,
-        publishStatus,
-        participants,
-        PowerHourSongs
-    } = powerHour
+    console.log({powerHour})
+    // const {
+    //     id,
+    //     title,
+    //     description,
+    //     cover_image,
+    //     date_time,
+    //     createdAt,
+    //     privateStatus,
+    //     publishStatus,
+    //     participants,
+    //     PowerHourSongs
+    // } = powerHour
 
     return (
         <>
