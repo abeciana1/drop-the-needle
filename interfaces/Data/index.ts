@@ -8,12 +8,18 @@ export interface UserI {
     }
 }
 
+interface PowerHourMetaI {
+    id: number;
+    title: string;
+    cover_image: string;
+}
+
 export interface DashPowerHourI {
-    powerHour: {
-        id: number;
-        title: string;
-        cover_image: string;
-    }
+    powerHour: PowerHourMetaI
+}
+
+export interface PowerHourGroupI { // for cards
+    powerHours: DashPowerHourI[]
 }
 
 export interface PowerHourI {

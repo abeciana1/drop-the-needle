@@ -32,5 +32,6 @@ export type {
     DashPowerHourI,
     PowerHourI,
     SongI,
-    PowerHourDynamicPageI
+    PowerHourDynamicPageI,
+    PowerHourGroupI
 } from '@/interfaces/Data'

@@ -10,11 +10,14 @@ import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
-import { DashPowerHourI } from '@/interfaces';
+import {
+    DashPowerHourI,
+    PowerHourGroupI
+} from '@/interfaces';
 
 const ParticipantPowerHoursPage = ({
     powerHours
-}: any) => {
+}: PowerHourGroupI) => {
     return(
         <>
             <SEO
