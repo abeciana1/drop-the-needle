@@ -15,7 +15,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             userId: user?.id
         },
         include: {
-            powerHour: true
+            powerHour: {
+                select: {
+                    id: true,
+                    title: true,
+                    cover_image: true
+                }
+            }
         }
     })
     res.status(200).json({ powerHours })
