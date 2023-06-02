@@ -15,9 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                             name: true
                         }
                     }
-                },
-                // include: {
-                // }
+                }
             }
         }
     })
