@@ -6,7 +6,9 @@ import {
 
 export type {
     NavItemI,
-    NavItemIconI
+    NavItemIconI,
+    NavBarI,
+    NavLogoLinkI
 } from '@/interfaces/Navigation'
 
 export interface ChildrenI {
@@ -72,9 +74,6 @@ export interface EventOnClickBtnI extends DefaultButtonI {
 
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 
-export interface NavBarI {
-    status: boolean;
-}
 
 export interface AccountI {
     name: string;
@@ -82,9 +81,6 @@ export interface AccountI {
     image: string;
 }
 
-export interface NavLogoLinkI {
-    size: number;
-}
 
 export interface PlaylistCardI {
     powerHour: DashPowerHourType;

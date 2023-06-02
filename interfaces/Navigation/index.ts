@@ -7,3 +7,11 @@ export interface NavItemI {
 export interface NavItemIconI extends NavItemI {
     icon: React.ElementType;
 }
+
+export interface NavBarI {
+    status: boolean;
+}
+
+export interface NavLogoLinkI {
+    size: number;
+}
