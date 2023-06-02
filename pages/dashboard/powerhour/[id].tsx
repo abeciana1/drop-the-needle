@@ -11,6 +11,7 @@ import {
 import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
 import Image from 'next/image'
+import { format } from 'date-fns'
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
@@ -28,10 +29,10 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             height={250}
                             alt={powerHour?.title}
                         />
-                        <section>
+                        <section className=''>
                             <H1 color={2} text={powerHour?.title} />
                             <H2 color={2} text={powerHour?.description} />
-                            <H3 color={2} text={powerHour?.date_time}/>
+                            <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
                         </section>
                     </section>
                 </ComponentMargin>
