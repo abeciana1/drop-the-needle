@@ -3,12 +3,12 @@ export interface UserI {
         id: number;
         name: string;
         email: string;
-        hosted: DashPowerHour[];
-        participants: DashPowerHour[];
+        hosted: DashPowerHourI[];
+        participants: DashPowerHourI[];
     }
 }
 
-export interface DashPowerHour {
+export interface DashPowerHourI {
     powerHour: {
         id: number;
         title: string;
