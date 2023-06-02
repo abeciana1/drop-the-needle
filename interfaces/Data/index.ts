@@ -16,3 +16,15 @@ export interface DashPowerHourI {
     }
 }
 
+export interface PowerHourI {
+    id: number;
+    title: string;
+    description: string;
+    cover_image: string;
+    date_time: Date;
+    createdAt: Date;
+    privateStatus: boolean;
+    publishStatus: boolean;
+    hosts: UserI[];
+    participants: UserI[];
+}
