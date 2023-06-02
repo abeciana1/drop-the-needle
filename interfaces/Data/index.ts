@@ -32,7 +32,6 @@ export interface PowerHourI {
     privateStatus: boolean;
     publishStatus: boolean;
     participants: {
-        
         user: {
             name: string;
         }
