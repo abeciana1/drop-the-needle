@@ -8,7 +8,10 @@ import {
     PlaylistCardGroup
 } from '@/components/common'
 import axios from 'axios';
-import { PlaylistCardI } from '@/interfaces';
+import {
+    PlaylistCardI,
+    UserI
+} from '@/interfaces';
 import {
     H1,
     H2
@@ -17,7 +20,7 @@ import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react'
 
 
-const DashboardIdxPage = ({user}: any) => {
+const DashboardIdxPage = ({user}: UserI) => {
     const {
         name,
         hosted,

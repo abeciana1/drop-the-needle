@@ -27,3 +27,7 @@ export type {
     FooterI,
     CommonPageLayoutI
 } from '@/interfaces/Component'
+
+export type {
+    UserI
+} from '@/interfaces/Data'
