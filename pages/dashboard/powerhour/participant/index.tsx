@@ -10,7 +10,7 @@ import { H1 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
-import { PlaylistCardI } from '@/interfaces';
+import { DashPowerHourI } from '@/interfaces';
 
 const ParticipantPowerHoursPage = ({
     powerHours
@@ -31,7 +31,7 @@ const ParticipantPowerHoursPage = ({
                     <>
                         {powerHours?.length > 0 &&
                             <PlaylistCardGroup>
-                                {powerHours?.map(({powerHour}: PlaylistCardI) => (
+                                {powerHours?.map(({powerHour}: DashPowerHourI) => (
                                     <PlaylistCard
                                         key={powerHour.id}
                                         id={powerHour.id}
