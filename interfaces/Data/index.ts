@@ -25,7 +25,6 @@ export interface PowerHourI {
     createdAt: Date;
     privateStatus: boolean;
     publishStatus: boolean;
-    hosts: UserI[];
     participants: UserI[];
     PowerHourSongs: SongI[]
 }
