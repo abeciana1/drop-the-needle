@@ -29,5 +29,6 @@ export type {
 } from '@/interfaces/Component'
 
 export type {
-    UserI
+    UserI,
+    DashPowerHour
 } from '@/interfaces/Data'

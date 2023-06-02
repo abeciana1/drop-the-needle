@@ -8,7 +8,7 @@ export interface UserI {
     }
 }
 
-interface DashPowerHour {
+export interface DashPowerHour {
     powerHour: {
         id: number;
         title: string;
