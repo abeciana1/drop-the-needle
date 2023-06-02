@@ -17,18 +17,20 @@ export interface DashPowerHourI {
 }
 
 export interface PowerHourI {
-    powerHour: {
-        id: number;
-        title: string;
-        description: string;
-        cover_image: string;
-        date_time: Date;
-        createdAt: Date;
-        privateStatus: boolean;
-        publishStatus: boolean;
-        participants: UserI[];
-        PowerHourSongs: SongI[]
-    }
+    id: number;
+    title: string;
+    description: string;
+    cover_image: string;
+    date_time: Date;
+    createdAt: Date;
+    privateStatus: boolean;
+    publishStatus: boolean;
+    participants: UserI[];
+    PowerHourSongs: SongI[]
+}
+
+export interface PowerHourDynamicPageI {
+    powerHour: PowerHourI
 }
 
 export interface SongI {

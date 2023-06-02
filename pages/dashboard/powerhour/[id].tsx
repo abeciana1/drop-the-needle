@@ -3,9 +3,9 @@ import {
     SEO
 } from '@/components/common'
 import axios from 'axios'
-import { PowerHourI } from '@/interfaces'
+import { PowerHourDynamicPageI } from '@/interfaces'
 
-const PowerHourDynamic = ({ powerHour }: PowerHourI) => {
+const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
 
     const {
         id,
