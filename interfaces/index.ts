@@ -35,3 +35,7 @@ export type {
     PowerHourGroupI,
     PowerHourDynamicPageI
 } from '@/interfaces/Data'
+
+export type {
+    SingleSelectFieldI
+} from '@/interfaces/Form'
