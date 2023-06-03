@@ -17,6 +17,10 @@ import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
 import Image from 'next/image'
 import { format } from 'date-fns'
+import {
+    HiEye,
+    HiEyeOff
+} from "react-icons/hi"
 
 const phPublishStatuses = [
     {
@@ -32,7 +36,9 @@ const phPublishStatuses = [
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
 
-    const [ publishStatus, setPubStatus ] = useState(false)
+
+    let currentIdx = powerHour?.publishStatus ? 0 : 1
+    const [ publishStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
     return (
         <>
@@ -54,7 +60,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                         </section>
                     </section>
                     <Grid3Column>
-                        <SingleSelectField />
+                        <SingleSelectField
+                            icon={publishStatus ? HiEye : HiEyeOff}
+                            labelText='Set publish status'
+                            dataSource={phPublishStatuses}
+                            property='status'
+                            selectedValue={publishStatus}
+                            setSelectedValue={setPubStatus}
+                        />
                     </Grid3Column>
                 </ComponentMargin>
             }
@@ -87,7 +100,8 @@ export const getStaticProps = async ({params}: any) => {
         return {
             props: {
                 powerHour: null
-            }
+            },
+            revalidate: 10
         }
     }
 }
