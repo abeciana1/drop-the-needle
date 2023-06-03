@@ -1,7 +1,9 @@
 import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-
+import {
+    SingleSelectFieldI
+} from '@/interfaces'
 
 export const SingleSelectField = ({
     icon,
