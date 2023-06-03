@@ -8,7 +8,7 @@ import {
     SingleSelectFieldI
 } from '@/interfaces'
 
-export const SingleSelectField = ({
+const SingleSelectField = ({
     icon,
     labelText,
     dataSource,
@@ -79,3 +79,5 @@ export const SingleSelectField = ({
         </div>
     )
 }
+
+export default SingleSelectField
