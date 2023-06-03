@@ -39,6 +39,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ publishStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
+    const handlePowerHourPublishStatus = () => {
+        if (publishStatus?.status === 'Published') {
+            setPubStatus(phPublishStatuses[1])
+        } else {
+            setPubStatus(phPublishStatuses[0])
+        }
+    }
+
     return (
         <>
             <SEO />
@@ -67,7 +75,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             dataSource={phPublishStatuses}
                             property='status'
                             selectedValue={publishStatus}
-                            setSelectedValue={setPubStatus}
+                            setSelectedValue={handlePowerHourPublishStatus}
                         />
                     </Grid3Column>
                 </ComponentMargin>
