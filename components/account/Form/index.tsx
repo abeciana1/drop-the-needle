@@ -1,0 +1,1 @@
+export { default as SingleSelectField } from '@/components/account/Form/SingleSelect'
