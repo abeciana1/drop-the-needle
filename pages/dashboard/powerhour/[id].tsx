@@ -37,10 +37,10 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
 
     let currentIdx = powerHour?.publishStatus ? 0 : 1
-    const [ publishStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
+    const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[0])
 
     const handlePowerHourPublishStatus = () => {
-        if (publishStatus?.status === 'Published') {
+        if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
         } else {
             setPubStatus(phPublishStatuses[0])
@@ -70,11 +70,11 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                     </section>
                     <Grid3Column>
                         <SingleSelectField
-                            icon={publishStatus ? HiEye : HiEyeOff}
+                            icon={selectedPubStatus?.bool ? HiEye : HiEyeOff}
                             labelText='Set publish status'
                             dataSource={phPublishStatuses}
                             property='status'
-                            selectedValue={publishStatus}
+                            selectedValue={selectedPubStatus}
                             setSelectedValue={handlePowerHourPublishStatus}
                         />
                     </Grid3Column>
