@@ -22,14 +22,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             <DashPageLayout>
             {powerHour &&
                 <ComponentMargin>
-                    <section className="flex justify-around">
+                    <section className="flex flex-col md:flex-row justify-around items-center py-10">
                         <Image
                             src={powerHour?.cover_image}
                             width={250}
                             height={250}
                             alt={powerHour?.title}
                         />
-                        <section className=''>
+                        <section className="space-y-2.5">
                             <H1 color={2} text={powerHour?.title} />
                             <H2 color={2} text={powerHour?.description} />
                             <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
