@@ -24,7 +24,7 @@ const SingleSelectField = ({
         <label className="sr-only">{ labelText }</label>
         <Listbox value={selectedValue} onChange={setSelectedValue}>
             <div className="relative">
-            <Listbox.Button className="border-2 border-coolGray relative w-full cursor-default rounded-lg py-2 pl-4 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <Listbox.Button className="border-2 border-altBlack relative w-full cursor-default rounded-lg py-2 pl-4 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
                 <div className="flex items-center gap-2">
                     <Icon className="h-5 w-5" />
                     <span className="block truncate text-base font-medium">{selectedValue[property]}</span>
