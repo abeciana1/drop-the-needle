@@ -1,6 +1,9 @@
 import { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
+import {
+    HiCheck,
+    HiSelector
+} from "react-icons/hi"
 import {
     SingleSelectFieldI
 } from '@/interfaces'
@@ -27,7 +30,7 @@ export const SingleSelectField = ({
                     <span className="block truncate text-base font-medium">{selectedValue[property]}</span>
                 </div>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
-                <SelectorIcon
+                <HiSelector
                     className="h-5 w-5 text-coolGray"
                     aria-hidden="true"
                     strokeWidth="2"
@@ -62,7 +65,7 @@ export const SingleSelectField = ({
                         </span>
                         {selected ? (
                             <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-amber-600">
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                            <HiCheck className="h-5 w-5" aria-hidden="true" />
                             </span>
                         ) : null}
                         </>
