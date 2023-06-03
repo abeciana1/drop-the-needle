@@ -35,7 +35,6 @@ const phPublishStatuses = [
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
-    // console.log('date',)
 
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ publishStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
@@ -44,7 +43,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         <>
             <SEO />
             <DashPageLayout>
-            {/* {powerHour && */}
                 <ComponentMargin>
                     <section className="flex flex-col md:flex-row justify-around items-center py-10">
                         <Image
@@ -73,7 +71,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                         />
                     </Grid3Column>
                 </ComponentMargin>
-            {/* } */}
             </DashPageLayout>
         </>
     )
