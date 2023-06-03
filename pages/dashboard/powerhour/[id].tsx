@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import {
     DashPageLayout,
     SEO,
     ComponentMargin,
+    Grid3Column
 } from '@/components/common'
 import {
     H1,
@@ -16,8 +18,21 @@ import { PowerHourDynamicPageI } from '@/interfaces'
 import Image from 'next/image'
 import { format } from 'date-fns'
 
+const phPublishStatuses = [
+    {
+        status: 'Published',
+        bool: true
+    },
+    {
+        status: 'Not Published',
+        bool: false
+    }
+]
+
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
+
+    const [ publishStatus, setPubStatus ] = useState(false)
 
     return (
         <>
@@ -38,6 +53,9 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
                         </section>
                     </section>
+                    <Grid3Column>
+                        <SingleSelectField />
+                    </Grid3Column>
                 </ComponentMargin>
             }
             </DashPageLayout>
