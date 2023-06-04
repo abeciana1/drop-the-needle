@@ -39,7 +39,7 @@ export const AccordionDataList = ({
                     className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-white w-full"
                 >
                     { dataSource.map((dataEntity: any) => {
-                        return <li className="text-lg">{ dataEntity[property] }</li>
+                        return <li key={dataEntity.id} className="text-lg">{ dataEntity[property] }</li>
                     })}
                 </ul>
             </Disclosure.Panel>
