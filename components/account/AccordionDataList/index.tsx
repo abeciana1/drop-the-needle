@@ -10,7 +10,7 @@ const AccordionDataList = ({
     size,
     property
 }: AccordionDataI) => {
-
+    console.log({dataSource})
     const Icon = icon as React.ElementType
 
     return (
@@ -38,8 +38,8 @@ const AccordionDataList = ({
                 <ul
                     className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-altWhite w-full"
                 >
-                    { dataSource.map((dataEntity: any) => {
-                        return <li key={dataEntity.id} className="text-lg">{ dataEntity[property] }</li>
+                    { dataSource?.map((dataEntity: any) => {
+                        return <li key={dataEntity?.id} className="text-lg">{ dataEntity[property] }</li>
                     })}
                 </ul>
             </Disclosure.Panel>

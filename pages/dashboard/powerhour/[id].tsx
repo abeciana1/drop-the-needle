@@ -11,7 +11,8 @@ import {
     H3
 } from '@/components/styled'
 import {
-    SingleSelectField
+    SingleSelectField,
+    AccordionDataList
 } from '@/components/account'
 import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
@@ -19,7 +20,8 @@ import Image from 'next/image'
 import { format } from 'date-fns'
 import {
     HiEye,
-    HiEyeOff
+    HiEyeOff,
+    HiOutlineUserCircle
 } from "react-icons/hi"
 
 const phPublishStatuses = [
@@ -47,6 +49,8 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         }
     }
 
+    const users = powerHour?.participants?.map((participant: any) => participant?.user)
+    console.log('users', users)
     return (
         <>
             <SEO />
@@ -76,6 +80,13 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             property='status'
                             selectedValue={selectedPubStatus}
                             setSelectedValue={handlePowerHourPublishStatus}
+                        />
+                        <AccordionDataList
+                            icon={HiOutlineUserCircle}
+                            heading='Participant list'
+                            dataSource={users}
+                            size='md'
+                            property='name'
                         />
                     </Grid3Column>
                 </ComponentMargin>
