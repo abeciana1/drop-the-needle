@@ -7,3 +7,5 @@ export {
 export {
     SingleSelectField
 } from '@/components/account/Form'
+
+export { default as AccordionDataList } from '@/components/account/AccordionDataList'
