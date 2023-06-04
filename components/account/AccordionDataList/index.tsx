@@ -31,12 +31,12 @@ export const AccordionDataList = ({
                 strokeWidth="2.5"
                 className={`${
                 open ? "rotate-180 text-heading" : "text-text"
-                } h-5 w-5 text-coolGray`}
+                } h-5 w-5 text-altBlack`}
             />
             </Disclosure.Button>
             <Disclosure.Panel className="relative">
                 <ul
-                    className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-white w-full"
+                    className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-altWhite w-full"
                 >
                     { dataSource.map((dataEntity: any) => {
                         return <li key={dataEntity.id} className="text-lg">{ dataEntity[property] }</li>
