@@ -50,7 +50,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     }
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
-    console.log('users', users)
+    
     return (
         <>
             <SEO />
