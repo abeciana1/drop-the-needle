@@ -36,7 +36,7 @@ const AccordionDataList = ({
             </Disclosure.Button>
             <Disclosure.Panel className="relative">
                 <ul
-                    className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-altWhite w-full"
+                    className="px-2 py-2 h-28 top-2 overscroll-auto overflow-auto z-50 absolute rounded-md bg-altWhite w-full shadow-lg ring-altBlack ring-1"
                 >
                     { dataSource?.map((dataEntity: any) => {
                         return <li key={dataEntity?.id} className="text-lg">{ dataEntity[property] }</li>

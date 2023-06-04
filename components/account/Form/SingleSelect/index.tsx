@@ -43,7 +43,7 @@ const SingleSelectField = ({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >
-                <Listbox.Options className="z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-altWhite py-1 text-base sm:text-sm shadow-lg ring-altBlack ring-1">
+                <Listbox.Options className="z-50 absolute mt-2 max-h-60 w-full overflow-auto rounded-md bg-altWhite py-1 text-base sm:text-sm shadow-lg ring-altBlack ring-1">
                 {dataSource.map((data: any, dataIdx: number) => (
                     <Listbox.Option
                     key={dataIdx}
