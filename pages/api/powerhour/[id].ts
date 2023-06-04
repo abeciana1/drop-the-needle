@@ -10,6 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             PowerHourSongs: true,
             participants: {                
                 select: {
+                    id: true,
                     user: {
                         select: {
                             name: true
