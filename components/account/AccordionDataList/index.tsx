@@ -1,14 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import cx from 'classnames'
 import { HiChevronUp } from "react-icons/hi"
-
-interface AccordionDataI {
-    icon: React.ElementType;
-    heading: string;
-    dataSource: any;
-    size: string;
-    property: string;
-}
+import { AccordionDataI } from '@/interfaces'
 
 export const AccordionDataList = ({
     icon,

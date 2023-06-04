@@ -24,7 +24,8 @@ export type {
     AccountI,
     StyledHeadingI,
     FooterI,
-    CommonPageLayoutI
+    CommonPageLayoutI,
+    AccordionDataI
 } from '@/interfaces/Component'
 
 export type {

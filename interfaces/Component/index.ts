@@ -61,3 +61,11 @@ export interface FooterI {
 export interface CommonPageLayoutI extends ChildrenI {
     footerColor?: string
 }
+
+export interface AccordionDataI {
+    icon: React.ElementType;
+    heading: string;
+    dataSource: any;
+    size: string;
+    property: string;
+}
