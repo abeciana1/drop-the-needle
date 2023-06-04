@@ -3,7 +3,7 @@ import cx from 'classnames'
 import { HiChevronUp } from "react-icons/hi"
 import { AccordionDataI } from '@/interfaces'
 
-export const AccordionDataList = ({
+const AccordionDataList = ({
     icon,
     heading,
     dataSource,
@@ -49,3 +49,5 @@ export const AccordionDataList = ({
         </div>
     )
 }
+
+export default AccordionDataList
