@@ -37,7 +37,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     console.log({powerHour})
 
     let currentIdx = powerHour?.publishStatus ? 0 : 1
-    const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[0])
+    const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
     const handlePowerHourPublishStatus = () => {
         if (selectedPubStatus?.status === 'Published') {
