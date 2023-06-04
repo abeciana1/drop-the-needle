@@ -34,7 +34,7 @@ export const AccordionDataList = ({
                 <Icon className="h-5 w-5" />
                 <div className="font-medium">{ heading }</div>
             </div>
-            <ChevronUpIcon
+            <HiChevronUp
                 strokeWidth="2.5"
                 className={`${
                 open ? "rotate-180 text-heading" : "text-text"
