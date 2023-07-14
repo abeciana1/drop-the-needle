@@ -24,7 +24,7 @@ export const LinkLookLikeButton = ({
             {text}
             {ctaArrow &&
                 <span>
-                    <FaArrowRight className='ml-2' />
+                    <FaArrowRight title='cta-right-arrow' className='ml-2' />
                 </span>
             }
         </Link>
