@@ -1,9 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import {
-    LinkButtonI,
-    LinkOnClickEvent
-} from '@/interfaces'
+import { LinkButtonI } from '@/interfaces'
 import cx from 'classnames'
 import { FaArrowRight } from 'react-icons/fa'
 
