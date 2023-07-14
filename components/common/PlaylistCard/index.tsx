@@ -10,7 +10,7 @@ const PlaylistCard = ({
 
     return (
         <Link
-            href={`/dashboard/powerhour/${encodeURI(id.toString())}`}
+            href={`/listen/powerhour/${encodeURI(id.toString())}`}
             title={title}
             className="text-xl mx-auto text-center font-semiBold"
         >
