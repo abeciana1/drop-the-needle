@@ -3,7 +3,6 @@ import NavBar from '../'
 import { Context as ResponsiveContext } from 'react-responsive'
 import userEvent from '@testing-library/user-event'
 import { SessionProvider } from "next-auth/react"
-import { createServer } from '@/mocks/server'
 
 const session = {
     user: {
