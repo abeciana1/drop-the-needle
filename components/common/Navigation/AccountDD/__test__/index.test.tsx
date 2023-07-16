@@ -36,7 +36,7 @@ describe('AccountDD', () => {
         const { myAcctBtn } = renderedComponent()
         expect(myAcctBtn).toBeInTheDocument()
     })
-    test.only("> renders options on button click", async () => {
+    test("> renders options on button click", async () => {
         const { myAcctBtn } = renderedComponent()
         await userEvent.click(myAcctBtn)
         let accountOptionList = screen.getByTestId('menu-list')
