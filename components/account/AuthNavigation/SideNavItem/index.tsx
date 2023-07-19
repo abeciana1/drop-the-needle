@@ -56,7 +56,8 @@ export const SideNavItemButton = ({
                 <Icon size={'2.25rem'} />
             </button>
             {hover &&
-                <div 
+                <div
+                    data-testid='tooltip'
                     className='absolute ml-16 font-medium text-altWhite bg-altBlack px-2 py-1 rounded-lg'
                 >{text}</div>
             }
