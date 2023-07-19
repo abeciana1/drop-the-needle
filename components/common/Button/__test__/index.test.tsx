@@ -29,6 +29,28 @@ const renderEventBtn = (ctaArrowRender = true) => {
     }
 }
 
+const renderClickBtn = (ctaArrowRender = true) => {
+    if (ctaArrowRender) {
+        render(
+            <OnClickButton
+                text='Test button'
+                ctaArrow
+                bgColor='gold'
+                onClick={testOnClick}
+            />
+        )
+    } else {
+        render(
+            <OnClickButton
+                text='Test button'
+                ctaArrow={false}
+                bgColor='gold'
+                onClick={testOnClick}
+            />
+        )
+    }
+}
+
 describe('EventClickButton', () => {
     test('> renders text', () => {
         renderEventBtn()
