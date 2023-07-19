@@ -47,7 +47,7 @@ describe('SingleSelectField', () => {
         const selectField = screen.getByTestId('select-field')
         expect(selectField).toBeInTheDocument()
     })
-    test.only('> user click changes status', async () => {
+    test('> user click changes status', async () => {
         render(<SingleSelectFieldComp/> )
         const selectField = screen.getByTestId('select-field')
         expect(selectField).toBeInTheDocument()
