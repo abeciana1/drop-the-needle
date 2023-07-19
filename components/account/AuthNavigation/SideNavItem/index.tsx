@@ -22,6 +22,7 @@ export const SideNavItemLink = ({
             <Link
                 href={`/${encodeURI(href)}`}
                 className='text-altWhite text-2xl font-medium'
+                title={linkText}
             >
                 <Icon size={'2.25rem'}/>
             </Link>
