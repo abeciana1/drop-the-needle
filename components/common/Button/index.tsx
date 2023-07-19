@@ -24,7 +24,7 @@ export const EventClickButton = ({
             {text}
             {ctaArrow &&
                 <span>
-                    <FaArrowRight className='ml-2' />
+                    <FaArrowRight title='cta-arrow' className='ml-2' />
                 </span>
             }
         </button>
@@ -50,7 +50,7 @@ export const OnClickButton = ({
             {text}
             {ctaArrow &&
                 <span>
-                    <FaArrowRight className='ml-2' />
+                    <FaArrowRight title='cta-arrow' className='ml-2' />
                 </span>
             }
         </button>
