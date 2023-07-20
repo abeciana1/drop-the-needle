@@ -121,7 +121,7 @@ export const DashPageLayout = ({
     return (
         <>
             <SideNav/>
-            <main className='pt-10 min-h-screen md:ml-10'>
+            <main className='min-h-screen md:ml-[4.8rem]'>
                 {children}
             </main>
             <Footer bgColor={footerColor} />
