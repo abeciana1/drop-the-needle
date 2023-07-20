@@ -13,8 +13,9 @@ const AccordionDataList = ({
     console.log({dataSource})
     const Icon = icon as React.ElementType
 
+    // w-64 sm:w-80 lg:w-96
     return (
-        <div data-testid="accordion-data-list" className="flex w-64 sm:w-80 lg:w-96 flex-col mx-auto">
+        <div data-testid="accordion-data-list" className="flex w-full flex-col mx-auto">
     <Disclosure>
         {({ open }) => (
         <>
