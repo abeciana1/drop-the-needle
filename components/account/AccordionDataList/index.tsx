@@ -10,7 +10,6 @@ const AccordionDataList = ({
     size,
     property
 }: AccordionDataI) => {
-    console.log({dataSource})
     const Icon = icon as React.ElementType
 
     // w-64 sm:w-80 lg:w-96
