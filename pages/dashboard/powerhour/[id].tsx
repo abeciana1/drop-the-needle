@@ -8,7 +8,8 @@ import {
 import {
     H1,
     H2,
-    H3
+    H3,
+    H4
 } from '@/components/styled'
 import {
     SingleSelectField,
@@ -36,7 +37,6 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
-    console.log(powerHour?.participants)
 
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
@@ -88,7 +88,11 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             size='md'
                             property='name'
                         />
+                        <section>
+                            <H4 text="Promotion and sharing coming soon" />
+                        </section>
                     </Grid3Column>
+                    <section></section>
                 </ComponentMargin>
             </DashPageLayout>
         </>
