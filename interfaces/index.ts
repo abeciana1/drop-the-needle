@@ -25,7 +25,8 @@ export type {
     StyledHeadingI,
     FooterI,
     CommonPageLayoutI,
-    AccordionDataI
+    AccordionDataI,
+    TrackListI
 } from '@/interfaces/Component'
 
 export type {

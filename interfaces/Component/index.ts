@@ -3,6 +3,7 @@ import {
     ImageType,
     DashPowerHourType
 } from '@/types';
+import { SongI } from '@/interfaces/Data'
 
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
@@ -68,4 +69,8 @@ export interface AccordionDataI {
     dataSource: any;
     size: string;
     property: string;
+}
+
+export interface TrackListI {
+    songs: SongI[]
 }
