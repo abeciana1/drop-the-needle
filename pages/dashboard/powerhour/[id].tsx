@@ -13,7 +13,8 @@ import {
 } from '@/components/styled'
 import {
     SingleSelectField,
-    AccordionDataList
+    AccordionDataList,
+    TrackList
 } from '@/components/account'
 import axios from 'axios'
 import { PowerHourDynamicPageI } from '@/interfaces'
@@ -92,7 +93,9 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <section></section>
+                    <section>
+                        <TrackList songs={powerHour?.PowerHourSongs} />
+                    </section>
                 </ComponentMargin>
             </DashPageLayout>
         </>
