@@ -5,12 +5,13 @@ import Image from 'next/image'
 const PlaylistCard = ({
     id,
     title,
-    cover_image
+    cover_image,
+    publicLink
 }: DashPowerHourType) => {
 
     return (
         <Link
-            href={`/listen/powerhour/${encodeURI(id.toString())}`}
+            href={`/${publicLink ? 'listen' : 'dashboard'}/powerhour/${encodeURI(id.toString())}`}
             title={title}
             className="text-xl mx-auto text-center font-semiBold"
         >
