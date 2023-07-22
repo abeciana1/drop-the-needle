@@ -5,7 +5,9 @@ const TrackList = ({
 }: TrackListI) => {
 
     return(
-        <ul></ul>
+        <section>
+            <ul></ul>
+        </section>
     )
 }
 

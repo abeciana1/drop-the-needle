@@ -93,9 +93,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <section>
-                        <TrackList songs={powerHour?.PowerHourSongs} />
-                    </section>
+                    <TrackList songs={powerHour?.PowerHourSongs} />
                 </ComponentMargin>
             </DashPageLayout>
         </>
