@@ -12,6 +12,7 @@ interface PowerHourMetaI {
     id: number;
     title: string;
     cover_image: string;
+    publicLink?: boolean;
 }
 
 export interface DashPowerHourI {
