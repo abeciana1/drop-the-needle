@@ -8,6 +8,7 @@ describe('PlaylistCard', () => {
                 id={1}
                 title='Test Playlist'
                 cover_image='https://media.graphassets.com/output=format:webp/HbyIN3qzSVGDqTAcN9iP'
+                publicLink
             />
         )
     })
@@ -16,6 +17,7 @@ describe('PlaylistCard', () => {
             name: /test playlist/i
         })
         expect(link).toBeInTheDocument()
+        expect(link).toHaveAttribute('href', '/listen/powerhour/1')
     })
     test('> playlist image renders', () => {
         const img = screen.getByAltText(/test playlist/i)
