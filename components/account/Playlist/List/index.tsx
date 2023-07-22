@@ -1,6 +1,8 @@
+import { TrackListI } from '@/interfaces'
 
-
-const TrackList = () => {
+const TrackList = ({
+    songs
+}: TrackListI) => {
 
     return(
         <ul></ul>
