@@ -9,4 +9,5 @@ export type DashPowerHourType = {
     id: number;
     title: string;
     cover_image: string;
+    publicLink: boolean;
 }
