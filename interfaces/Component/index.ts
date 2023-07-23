@@ -77,4 +77,5 @@ export interface TrackListI {
 
 export interface TrackI {
     song: SongI;
+    user: string;
 }
