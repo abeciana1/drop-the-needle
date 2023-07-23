@@ -10,6 +10,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             PowerHourSongs: {
                 orderBy: {
                     orderNumber: 'asc'
+                },
+                include: {
+                    participant: {
+                        select: {
+                            user: {
+                                select: {
+                                    name: true
+                                }
+                            }
+                        }
+                    }
                 }
             },
             participants: {                
