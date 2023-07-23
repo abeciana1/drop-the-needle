@@ -1,7 +1,7 @@
 import { TrackI } from '@/interfaces'
 
-const Track = ({ song }: TrackI) => {
-
+const Track = ({ song, user }: TrackI) => {
+    console.log(song)
     return(
         <li>
             <details>
