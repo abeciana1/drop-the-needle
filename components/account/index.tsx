@@ -9,4 +9,7 @@ export {
 } from '@/components/account/Form'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'
-export { TrackList } from '@/components/account/Playlist'
+export {
+    TrackList,
+    Track
+} from '@/components/account/Playlist'
