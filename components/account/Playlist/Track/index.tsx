@@ -1,6 +1,6 @@
+import { TrackI } from '@/interfaces'
 
-
-const Track = () => {
+const Track = ({ song }: TrackI) => {
 
     return(
         <li>
