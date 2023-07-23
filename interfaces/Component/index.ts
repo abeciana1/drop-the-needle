@@ -74,3 +74,7 @@ export interface AccordionDataI {
 export interface TrackListI {
     songs: SongI[]
 }
+
+export interface TrackI {
+    song: SongI;
+}
