@@ -121,3 +121,7 @@ h6 {
   @apply text-lg lg:text-xl;
   @apply font-bold;
 }
+
+summary{
+  list-style: none
+}

@@ -5,7 +5,7 @@ const Track = ({ song, user }: TrackI) => {
     return(
         <li>
             <details>
-
+                <summary></summary>
             </details>
         </li>
     )
