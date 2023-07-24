@@ -79,3 +79,7 @@ export interface TrackI {
     song: SongI;
     user: string;
 }
+
+export interface TrackPresentI {
+    link: string;
+}
