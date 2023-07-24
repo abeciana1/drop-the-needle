@@ -8,16 +8,16 @@ const Track = ({ song, user }: TrackI) => {
     } = song
 
     return(
-        <li>
+        <li className="px-5 py-5">
             <details>
                 <summary>
                     <span className='font-bold'>&quot;{title}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{artist} (album, year)</span>
-                    <span className='float-right mr-5'>{user}</span>
+                    <span className='float-right'>{user}</span>
                 </summary>
                 <div>
-                    
+
                 </div>
             </details>
         </li>
