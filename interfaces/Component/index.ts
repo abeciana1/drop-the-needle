@@ -82,4 +82,6 @@ export interface TrackI {
 
 export interface TrackPresentI {
     link: string;
+    startTime: string;
+    endTime: string;
 }
