@@ -15,6 +15,8 @@ const Track = ({ song, user }: TrackI) => {
         setOpen(!open)
     }
 
+
+
     return(
         <li onClick={toggleOpenDetails} className="px-5 py-5 cursor-pointer">
             <div>
@@ -29,6 +31,9 @@ const Track = ({ song, user }: TrackI) => {
                         <div className='font-bold'>Timestamps:</div>
                         <div><span className='font-medium'>Start: </span>{startTime}</div>
                         <div><span className='font-medium'>End: </span>{endTime}</div>
+                    </div>
+                    <div>
+
                     </div>
                 </section>
                 }
