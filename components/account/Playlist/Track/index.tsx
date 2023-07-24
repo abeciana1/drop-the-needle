@@ -4,7 +4,9 @@ const Track = ({ song, user }: TrackI) => {
 
     const {
         title,
-        artist
+        artist,
+        startTime,
+        endTime
     } = song
 
     return(
@@ -17,7 +19,9 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='float-right'>{user}</span>
                 </summary>
                 <div>
-
+                    <div className='font-bold'>Timestamps:</div>
+                    <div><span className='font-medium'>Start: </span>{startTime}</div>
+                    <div><span className='font-medium'>End: </span>{endTime}</div>
                 </div>
             </details>
         </li>
