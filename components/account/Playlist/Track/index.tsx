@@ -14,7 +14,11 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='font-bold'>&quot;{title}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{artist} (album, year)</span>
+                    <span className='float-right mr-5'>{user}</span>
                 </summary>
+                <div>
+                    
+                </div>
             </details>
         </li>
     )
