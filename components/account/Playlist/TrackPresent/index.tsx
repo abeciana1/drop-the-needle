@@ -1,5 +1,6 @@
+import ReactPlayer from 'react-player/lazy'
 
-const TrackPresent = () => {
+const TrackPresent = ({ link }) => {
     return (
         <div></div>
     )
