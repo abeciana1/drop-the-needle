@@ -21,20 +21,22 @@ const TrackPresent = ({
         return duration
     }
 
-    const embedLink = () => {
+    const linkConverter = () => {
         let youtubeId = link.split("=")
         let convertedLink = `https://www.youtube.com/embed/${youtubeId[1]}?start=${convertedStartTime}&end=${convertedEndTime}`
         return convertedLink
     }
 
+    let embedLink = linkConverter()
+
     return (
         <>
-            {/* <ReactPlayer
+            <ReactPlayer
                 url={embedLink}
                 onPlay={stateMonitor}
                 controls={true}
                 className="mx-auto"
-            /> */}
+            />
         </>
     )
 }

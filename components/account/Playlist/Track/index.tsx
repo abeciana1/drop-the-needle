@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { TrackI } from '@/interfaces'
+import { TrackPresent } from '@/components/account'
 
 const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
@@ -8,7 +9,8 @@ const Track = ({ song, user }: TrackI) => {
         title,
         artist,
         startTime,
-        endTime
+        endTime,
+        youtubeLink
     } = song
 
     const toggleOpenDetails = () => {
@@ -33,7 +35,11 @@ const Track = ({ song, user }: TrackI) => {
                         <div><span className='font-medium'>End: </span>{endTime}</div>
                     </div>
                     <div>
-
+                        <TrackPresent
+                            link={youtubeLink}
+                            startTime={startTime}
+                            endTime={endTime}
+                        />
                     </div>
                 </section>
                 }
