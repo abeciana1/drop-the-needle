@@ -27,7 +27,8 @@ export type {
     CommonPageLayoutI,
     AccordionDataI,
     TrackListI,
-    TrackI
+    TrackI,
+    TrackPresentI
 } from '@/interfaces/Component'
 
 export type {
