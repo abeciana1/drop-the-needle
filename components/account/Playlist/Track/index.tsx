@@ -1,11 +1,20 @@
 import { TrackI } from '@/interfaces'
 
 const Track = ({ song, user }: TrackI) => {
-    console.log(song)
+
+    const {
+        title,
+        artist
+    } = song
+
     return(
         <li>
             <details>
-                <summary></summary>
+                <summary>
+                    <span className='font-bold'>&quot;{title}&quot;</span>
+                    <span> - </span>
+                    <span className='italic'>{artist} (album, year)</span>
+                </summary>
             </details>
         </li>
     )
