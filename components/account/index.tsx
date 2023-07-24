@@ -11,5 +11,6 @@ export {
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'
 export {
     TrackList,
-    Track
+    Track,
+    TrackPresent
 } from '@/components/account/Playlist'
