@@ -39,8 +39,9 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='font-bold'>&quot;{title}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{artist} (album, year)</span>
+                    <span className='ml-10'>{user}</span>
                 </div>
-                {hover ?
+                {hover &&
                     <span>
                         <OnClickButton
                             text="Remove"
@@ -49,8 +50,6 @@ const Track = ({ song, user }: TrackI) => {
                             onClick={toggleRemoveTrack}
                         />
                     </span>
-                        :
-                    <span className='float-right'>{user}</span>
                 }
             </div>
             {open &&
