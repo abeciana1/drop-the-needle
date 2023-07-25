@@ -15,6 +15,13 @@ const Track = ({ song, user }: TrackI) => {
         youtubeLink
     } = song
 
+    const [ songObj, setSongObj ] = useState({
+        songTitle: title,
+        songArtist: artist,
+        songStartTime: startTime,
+        songEndTime: endTime,
+    })
+
     const toggleOpenDetails = () => {
         setOpen(!open)
     }
@@ -36,9 +43,9 @@ const Track = ({ song, user }: TrackI) => {
         >
             <div className='flex flex-wrap items-center justify-between'>
                 <div>
-                    <span className='font-bold'>&quot;{title}&quot;</span>
+                    <span className='font-bold'>&quot;{songObj?.songTitle}&quot;</span>
                     <span> - </span>
-                    <span className='italic'>{artist} (album, year)</span>
+                    <span className='italic'>{songObj?.songArtist} (album, year)</span>
                     <span className='ml-10'>{user}</span>
                 </div>
                 {hover &&
@@ -56,14 +63,14 @@ const Track = ({ song, user }: TrackI) => {
                 <section className='flex flex-col md:flex-row justify-between py-5'>
                     <div>
                         <div className='font-bold'>Timestamps:</div>
-                        <div><span className='font-medium'>Start: </span>{startTime}</div>
-                        <div><span className='font-medium'>End: </span>{endTime}</div>
+                        <div><span className='font-medium'>Start: </span>{songObj?.songStartTime}</div>
+                        <div><span className='font-medium'>End: </span>{songObj?.songEndTime}</div>
                     </div>
                     <div>
                         <TrackPresent
                             link={youtubeLink}
-                            startTime={startTime}
-                            endTime={endTime}
+                            startTime={songObj?.songStartTime}
+                            endTime={songObj?.songEndTime}
                         />
                     </div>
                 </section>
