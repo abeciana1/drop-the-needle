@@ -21,6 +21,8 @@ const Track = ({ song, user }: TrackI) => {
         songArtist: artist,
         songStartTime: startTime,
         songEndTime: endTime,
+        songAlbum: '',
+        songYear: ''
     })
 
     const toggleOpenDetails = () => {
@@ -50,7 +52,7 @@ const Track = ({ song, user }: TrackI) => {
                 <div>
                     <span className='font-bold'>&quot;{songObj?.songTitle}&quot;</span>
                     <span> - </span>
-                    <span className='italic'>{songObj?.songArtist} (album, year)</span>
+                    <span className='italic'>{songObj?.songArtist} ({songObj?.songAlbum}, {songObj?.songYear})</span>
                     <span className='ml-10'>{user}</span>
                 </div>
                 {hover &&
