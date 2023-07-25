@@ -36,6 +36,8 @@ const TrackPresent = ({
                 onPlay={stateMonitor}
                 controls={true}
                 className="mx-auto"
+                width="100%"
+                height="100%"
             />
         </>
     )
