@@ -44,7 +44,8 @@ export const OnClickButton = ({
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
                 ['text-altWhite bg-vermillion']: bgColor === 'vermillion',
-                ['text-altBlack bg-gold']: bgColor === 'gold'
+                ['text-altBlack bg-gold']: bgColor === 'gold',
+                ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue'
             })}
         >
             {text}
