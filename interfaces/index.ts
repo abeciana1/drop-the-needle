@@ -28,7 +28,8 @@ export type {
     AccordionDataI,
     TrackListI,
     TrackI,
-    TrackPresentI
+    TrackPresentI,
+    ModalI
 } from '@/interfaces/Component'
 
 export type {
