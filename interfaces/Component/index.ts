@@ -3,7 +3,7 @@ import {
     ImageType,
     DashPowerHourType
 } from '@/types';
-import { SongI } from '@/interfaces/Data'
+import { SongI, OnClickButtonI } from '@/interfaces'
 
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
@@ -84,4 +84,8 @@ export interface TrackPresentI {
     link: string;
     startTime: string;
     endTime: string;
+}
+
+export interface ModalI extends OnClickButtonI, ChildrenI {
+    ctaArrow?: boolean;
 }
