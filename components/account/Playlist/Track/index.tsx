@@ -6,6 +6,7 @@ import { OnClickButton } from '@/components/common'
 const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
     const [ hover, setHover ] = useState(false)
+    const [ edit, setEdit ] = useState(false)
 
     const {
         title,
@@ -32,6 +33,10 @@ const Track = ({ song, user }: TrackI) => {
 
     const toggleHover = () => {
         setHover(!hover)
+    }
+
+    const toggleEditForm = () => {
+        setEdit(!edit)
     }
 
     return(
@@ -65,6 +70,14 @@ const Track = ({ song, user }: TrackI) => {
                         <div className='font-bold'>Timestamps:</div>
                         <div><span className='font-medium'>Start: </span>{songObj?.songStartTime}</div>
                         <div><span className='font-medium'>End: </span>{songObj?.songEndTime}</div>
+                        <div>
+                            <OnClickButton
+                                text="Edit"
+                                bgColor='ceruleanBlue'
+                                ctaArrow={false}
+                                onClick={toggleEditForm}
+                            />
+                        </div>
                     </div>
                     <div>
                         <TrackPresent
