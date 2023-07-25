@@ -28,7 +28,7 @@ const Track = ({ song, user }: TrackI) => {
                 <span className='float-right'>{user}</span>
             </div>
             {open &&
-                <section className='flex'>
+                <section className='flex justify-between py-5'>
                     <div>
                         <div className='font-bold'>Timestamps:</div>
                         <div><span className='font-medium'>Start: </span>{startTime}</div>
