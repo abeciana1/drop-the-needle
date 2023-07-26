@@ -14,7 +14,7 @@ const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
     const [ hover, setHover ] = useState(false)
     const [ edit, setEdit ] = useState(false)
-
+    
     const {
         title,
         artist,
@@ -108,6 +108,51 @@ const Track = ({ song, user }: TrackI) => {
                                         value={songObj?.songTitle}
                                         fieldRequired
                                         placeholder={songObj?.songTitle}
+                                        onChange={onChangeHandler}
+                                    />
+                                    <TextInput
+                                        name='songArtist'
+                                        labelText='Edit song title'
+                                        type='text'
+                                        value={songObj?.songArtist}
+                                        fieldRequired
+                                        placeholder={songObj?.songArtist}
+                                        onChange={onChangeHandler}
+                                    />
+                                    <TextInput
+                                        name='songAlbum'
+                                        labelText='Edit song album'
+                                        type='text'
+                                        value={songObj?.songAlbum}
+                                        fieldRequired
+                                        placeholder={songObj?.songAlbum}
+                                        onChange={onChangeHandler}
+                                    />
+                                    <TextInput
+                                        name='songYear'
+                                        labelText='Edit song year'
+                                        type='number'
+                                        value={songObj?.songYear}
+                                        fieldRequired
+                                        placeholder={songObj?.songYear}
+                                        onChange={onChangeHandler}
+                                    />
+                                    <TextInput
+                                        name='songStartTime'
+                                        labelText='Edit song start time'
+                                        type='text'
+                                        value={songObj?.songStartTime}
+                                        fieldRequired
+                                        placeholder={songObj?.songStartTime}
+                                        onChange={onChangeHandler}
+                                    />
+                                    <TextInput
+                                        name='songEndTime'
+                                        labelText='Edit song end time'
+                                        type='text'
+                                        value={songObj?.songEndTime}
+                                        fieldRequired
+                                        placeholder={songObj?.songEndTime}
                                         onChange={onChangeHandler}
                                     />
                                 </FormContainer>
