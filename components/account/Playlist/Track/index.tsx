@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { TrackI } from '@/interfaces'
 import {
     TrackPresent,
-    FormContainer
+    FormContainer,
+    TextInput
 } from '@/components/account'
 import {
     OnClickButton,
@@ -30,6 +31,13 @@ const Track = ({ song, user }: TrackI) => {
         songAlbum: '',
         songYear: ''
     })
+
+    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSongObj({
+            ...songObj,
+            [event.target.name]: event.target.value
+        })
+    }
 
     const toggleOpenDetails = () => {
         setOpen(!open)
@@ -93,7 +101,15 @@ const Track = ({ song, user }: TrackI) => {
                                 <FormContainer
                                     onSubmit={updateSubmitHandler}
                                 >
-
+                                    <TextInput
+                                        name='songTitle'
+                                        labelText='Edit song title'
+                                        type='text'
+                                        value={songObj?.songTitle}
+                                        fieldRequired
+                                        placeholder={songObj?.songTitle}
+                                        onChange={onChangeHandler}
+                                    />
                                 </FormContainer>
                             </ModalComp>
                         </div>
