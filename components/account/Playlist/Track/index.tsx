@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import { TrackI } from '@/interfaces'
 import { TrackPresent } from '@/components/account'
-import { OnClickButton } from '@/components/common'
+import {
+    OnClickButton,
+    ModalComp
+} from '@/components/common'
 
 const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
@@ -42,8 +45,7 @@ const Track = ({ song, user }: TrackI) => {
     }
 
     return(
-        <li 
-            onClick={toggleOpenDetails} 
+        <li
             className="px-5 py-5 cursor-pointer"
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
@@ -56,7 +58,13 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='ml-10'>{user}</span>
                 </div>
                 {hover &&
-                    <span>
+                    <span className='flex gap-10'>
+                        <OnClickButton
+                            text={open ? "Close" : "Expand"}
+                            bgColor='ceruleanBlue'
+                            ctaArrow={false}
+                            onClick={toggleOpenDetails}
+                        />
                         <OnClickButton
                             text="Remove"
                             bgColor='vermillion'
@@ -73,12 +81,13 @@ const Track = ({ song, user }: TrackI) => {
                         <div><span className='font-medium'>Start: </span>{songObj?.songStartTime}</div>
                         <div><span className='font-medium'>End: </span>{songObj?.songEndTime}</div>
                         <div>
-                            <OnClickButton
+                            <ModalComp
+                                onClick={toggleEditForm}
                                 text="Edit"
                                 bgColor='ceruleanBlue'
-                                ctaArrow={false}
-                                onClick={toggleEditForm}
-                            />
+                            >
+                                <h1>hello world</h1>
+                            </ModalComp>
                         </div>
                     </div>
                     <div>
