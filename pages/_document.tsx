@@ -9,6 +9,7 @@ export default function Document() {
         <link rel="icon" type="image/x-icon" href="/music-note-favicon.webp" />
       </Head>
         <body className='w-fit min-w-full'>
+        <div id="modals" />
           <Main />
           <NextScript />
         </body>
