@@ -39,10 +39,6 @@ const Track = ({ song, user }: TrackI) => {
         console.log('remove')
     }
 
-    const toggleHover = () => {
-        setHover(!hover)
-    }
-
     const toggleEditForm = () => {
         setEdit(!edit)
     }
@@ -55,8 +51,8 @@ const Track = ({ song, user }: TrackI) => {
     return(
         <li
             className="px-5 py-5 cursor-pointer"
-            onMouseEnter={toggleHover}
-            onMouseLeave={toggleHover}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
             <div className='flex flex-wrap items-center justify-between'>
                 <div>
