@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { OnClickButton } from '@/components/common'
 import { ModalI } from '@/interfaces'
+import Modal from 'react-modal'
 
-const Modal: React.FC<any> = ({
+const ModalComp: React.FC<any> = ({
     text,
     bgColor,
     onClick,
     children
 }: ModalI) => {
     const [ isOpen, setIsOpen ] = useState(false)
-
+    Modal.setAppElement('#modals')
     const customStyles = {
         overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.6)'
@@ -24,13 +25,17 @@ const Modal: React.FC<any> = ({
         }
     }
 
+    const toggleModal = () => {
+        setIsOpen(true)
+        onClick()
+    }
 
     return (
         <>
             <OnClickButton
                 text={text}
                 bgColor={bgColor}
-                onClick={onClick}
+                onClick={toggleModal}
                 ctaArrow={false}
             />
             <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
@@ -41,4 +46,4 @@ const Modal: React.FC<any> = ({
     )
 }
 
-export default Modal
+export default ModalComp
