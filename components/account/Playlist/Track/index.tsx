@@ -86,7 +86,7 @@ const Track = ({ song, user }: TrackI) => {
                                 text="Edit"
                                 bgColor='ceruleanBlue'
                             >
-                                <h1>hello world</h1>
+                                
                             </ModalComp>
                         </div>
                     </div>
