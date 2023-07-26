@@ -40,7 +40,7 @@ export const OnClickButton = ({
     return (
         <button
             onClick={onClick}
-            className={cx('flex flex-row w-fit items-center text-2xl font-medium px-3 py-1 rounded-lg', {
+            className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
                 ['text-altWhite bg-vermillion']: bgColor === 'vermillion',
