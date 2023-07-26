@@ -1,10 +1,12 @@
+import { ChildrenI } from "@/interfaces"
 
-
-const FormContainer = () => {
+const FormContainer = ({
+    children
+}: ChildrenI) => {
 
     return (
         <form>
-
+            {children}
         </form>
     )
 }
