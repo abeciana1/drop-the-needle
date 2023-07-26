@@ -1,11 +1,14 @@
-import { ChildrenI } from "@/interfaces"
+import { FormI } from "@/interfaces"
 
 const FormContainer = ({
-    children
-}: ChildrenI) => {
+    children,
+    onSubmit
+}: FormI) => {
 
     return (
-        <form>
+        <form
+            onSubmit={onSubmit}
+        >
             {children}
         </form>
     )
