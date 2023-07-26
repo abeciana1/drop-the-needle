@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { TrackI } from '@/interfaces'
-import { TrackPresent } from '@/components/account'
+import {
+    TrackPresent,
+    FormContainer
+} from '@/components/account'
 import {
     OnClickButton,
     ModalComp
@@ -42,6 +45,11 @@ const Track = ({ song, user }: TrackI) => {
 
     const toggleEditForm = () => {
         setEdit(!edit)
+    }
+
+    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        console.log(e)
+        console.log('submit')
     }
 
     return(
@@ -86,7 +94,11 @@ const Track = ({ song, user }: TrackI) => {
                                 text="Edit"
                                 bgColor='ceruleanBlue'
                             >
-                                
+                                <FormContainer
+                                    onSubmit={updateSubmitHandler}
+                                >
+
+                                </FormContainer>
                             </ModalComp>
                         </div>
                     </div>
