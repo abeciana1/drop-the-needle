@@ -24,4 +24,4 @@ export {
 } from '@/components/common/Button'
 export { default as AccountDD } from '@/components/common/Navigation/AccountDD'
 export { default as PlaylistCard } from '@/components/common/PlaylistCard'
-export { default as Modal } from '@/components/common/Modal'
+export { default as ModalComp } from '@/components/common/Modal'
