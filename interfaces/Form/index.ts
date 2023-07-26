@@ -13,3 +13,13 @@ export interface SingleSelectFieldI {
 export interface FormI extends ChildrenI {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
+
+export interface TextInputI {
+    name: string;
+    labelText: string;
+    type: string;
+    value: string;
+    fieldRequired?: boolean;
+    placeholder: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
+}
