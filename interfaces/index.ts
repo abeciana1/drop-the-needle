@@ -42,5 +42,6 @@ export type {
 } from '@/interfaces/Data'
 
 export type {
-    SingleSelectFieldI
+    SingleSelectFieldI,
+    FormI
 } from '@/interfaces/Form'
