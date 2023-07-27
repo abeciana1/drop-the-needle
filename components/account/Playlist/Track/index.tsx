@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { TrackI } from '@/interfaces'
 import {
-    TrackPresent
+    TrackPresent,
+    UpdateTrackForm
 } from '@/components/account'
 import {
     OnClickButton
@@ -52,7 +53,14 @@ const Track = ({ song, user }: TrackI) => {
                 </div>
                 {hover &&
                     <span className='flex gap-10'>
-
+                        <UpdateTrackForm
+                            title={trackObj?.trackTitle}
+                            artist={trackObj?.trackArtist}
+                            startTime={trackObj?.trackStartTime}
+                            endTime={trackObj?.trackEndTime}
+                            album={trackObj?.trackAlbum}
+                            year={trackObj?.trackYear}
+                        />
                         <OnClickButton
                             text="Remove"
                             bgColor='vermillion'
