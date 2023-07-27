@@ -46,3 +46,7 @@ export type {
     FormI,
     InputI
 } from '@/interfaces/Form'
+
+export type { 
+    UpdateTrackFormI
+} from '@/interfaces/Form/Forms'
