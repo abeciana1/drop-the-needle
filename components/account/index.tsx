@@ -7,9 +7,12 @@ export {
 export {
     SingleSelectField,
     FormContainer,
-    Input,
-    UpdateTrackForm
+    Input
 } from '@/components/account/Form'
+
+export {
+    UpdateTrackForm
+} from '@/components/account/Form/Forms'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'
 export {
