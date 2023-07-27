@@ -12,7 +12,8 @@ const UpdateTrackForm = ({
     startTime,
     endTime,
     album,
-    year
+    year,
+    submitHandler
 }: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
 
@@ -36,12 +37,6 @@ const UpdateTrackForm = ({
         setEdit(!edit)
     }
 
-    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log(e)
-        console.log('submit')
-    }
-
     return(
     <ModalComp
         shouldCloseOnOverlayClick={false}
@@ -51,7 +46,7 @@ const UpdateTrackForm = ({
         bgColor='ceruleanBlue'
     >
         <FormContainer
-            onSubmit={updateSubmitHandler}
+            onSubmit={submitHandler}
         >
             <Input
                 name='songTitle'
