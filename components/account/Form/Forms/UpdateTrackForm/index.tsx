@@ -15,7 +15,6 @@ const UpdateTrackForm = ({
     year
 }: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
-    // const [ submitted, setSubmitted ] = useState(false)
 
     const [ songObj, setSongObj ] = useState({
         songTitle: title,
@@ -38,6 +37,7 @@ const UpdateTrackForm = ({
     }
 
     const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         console.log(e)
         console.log('submit')
     }
