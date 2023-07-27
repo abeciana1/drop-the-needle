@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { OnClickButton } from '@/components/common'
 import { ModalI } from '@/interfaces'
 import Modal from 'react-modal'
@@ -23,7 +23,10 @@ const ModalComp: React.FC<any> = ({
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        borderRadius: '0.5rem',
+        border: '2px solid #343434',
+        width: 'auto'
         }
     }
 
@@ -31,6 +34,16 @@ const ModalComp: React.FC<any> = ({
         setIsOpen(true)
         onClick()
     }
+
+    useEffect(() => {
+        if(document) {
+            if(isOpen) {
+                document.body.style.overflow = 'hidden'
+            } else {
+                document.body.style.overflow = 'unset'
+            }
+        }
+    }, [isOpen])
 
     return (
         <>
@@ -46,6 +59,7 @@ const ModalComp: React.FC<any> = ({
                 style={customStyles}
                 shouldCloseOnEsc={shouldCloseOnEsc}
                 shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+                preventScroll
             >
                 <button onClick={() => setIsOpen(false)}>Close Modal</button>
                 { children }
