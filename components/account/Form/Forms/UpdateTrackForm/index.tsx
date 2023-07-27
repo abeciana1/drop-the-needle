@@ -4,19 +4,26 @@ import {
     FormContainer,
     Input
 } from '@/components/account'
+import { UpdateTrackFormI } from '@/interfaces'
 
-
-const UpdateTrackForm = () => {
+const UpdateTrackForm = ({
+    title,
+    artist,
+    startTime,
+    endTime,
+    album,
+    year
+}: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
-    const [ submitted, setSubmitted ] = useState(false)
+    // const [ submitted, setSubmitted ] = useState(false)
 
     const [ songObj, setSongObj ] = useState({
         songTitle: title,
         songArtist: artist,
         songStartTime: startTime,
         songEndTime: endTime,
-        songAlbum: '',
-        songYear: ''
+        songAlbum: album,
+        songYear: year
     })
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
