@@ -4,3 +4,5 @@ export { default as FormContainer } from '@/components/account/Form/Container'
 export {
     Input
 } from '@/components/account/Form/Inputs'
+
+export { default as UpdateTrackForm } from '@/components/account/Form/Forms/UpdateTrackForm'
