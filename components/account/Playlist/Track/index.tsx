@@ -84,18 +84,18 @@ const Track = ({ song, user }: TrackI) => {
                         <div className='font-bold'>Timestamps:</div>
                         <div><span className='font-medium'>Start: </span>{trackObj?.trackStartTime}</div>
                         <div><span className='font-medium'>End: </span>{trackObj?.trackEndTime}</div>
-                        <div>
+                        <div className='mt-7'>
+                            <UpdateTrackForm
+                                title={trackObj?.trackTitle}
+                                artist={trackObj?.trackArtist}
+                                startTime={trackObj?.trackStartTime}
+                                endTime={trackObj?.trackEndTime}
+                                album={trackObj?.trackAlbum}
+                                year={trackObj?.trackYear}
+                                youtubeLink={trackObj?.trackYouTubeLink}
+                                submitHandler={updateSubmitHandler}
+                            />
                         </div>
-                        <UpdateTrackForm
-                            title={trackObj?.trackTitle}
-                            artist={trackObj?.trackArtist}
-                            startTime={trackObj?.trackStartTime}
-                            endTime={trackObj?.trackEndTime}
-                            album={trackObj?.trackAlbum}
-                            year={trackObj?.trackYear}
-                            youtubeLink={trackObj?.trackYouTubeLink}
-                            submitHandler={updateSubmitHandler}
-                        />
                     </div>
                     <div>
                         <TrackPresent
