@@ -13,6 +13,7 @@ const UpdateTrackForm = ({
     endTime,
     album,
     year,
+    youtubeLink,
     submitHandler
 }: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
@@ -23,7 +24,8 @@ const UpdateTrackForm = ({
         songStartTime: startTime,
         songEndTime: endTime,
         songAlbum: album,
-        songYear: year
+        songYear: year,
+        songLink: youtubeLink
     })
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +48,7 @@ const UpdateTrackForm = ({
         bgColor='ceruleanBlue'
     >
         <FormContainer
-            onSubmit={submitHandler}
+            onSubmit={(e) => submitHandler(e, songObj)}
         >
             <Input
                 name='songTitle'
@@ -59,11 +61,20 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songArtist'
-                labelText='Edit song title'
+                labelText='Edit song artist'
                 type='text'
                 value={songObj?.songArtist}
                 fieldRequired
                 placeholder={songObj?.songArtist}
+                onChange={onChangeHandler}
+            />
+            <Input
+                name='songLink'
+                labelText='Edit song link'
+                type='text'
+                value={songObj?.songLink}
+                fieldRequired
+                placeholder={songObj?.songLink}
                 onChange={onChangeHandler}
             />
             <Input

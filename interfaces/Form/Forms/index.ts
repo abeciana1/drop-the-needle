@@ -5,5 +5,6 @@ export interface UpdateTrackFormI {
     endTime: string;
     album: string;
     year: string;
-    submitHandler: (e: React.FormEvent<HTMLFormElement>) => void;
+    youtubeLink: string;
+    submitHandler: (e: React.FormEvent<HTMLFormElement>, data: any) => void;
 }

@@ -25,6 +25,7 @@ const Track = ({ song, user }: TrackI) => {
         trackArtist: artist,
         trackStartTime: startTime,
         trackEndTime: endTime,
+        trackYouTubeLink: youtubeLink,
         trackAlbum: '',
         trackYear: ''
     })
@@ -37,10 +38,12 @@ const Track = ({ song, user }: TrackI) => {
         console.log('remove')
     }
 
-    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>, data: any) => {
         e.preventDefault()
         console.log(e)
+        console.log(data)
         console.log('submit')
+        // setTrackObj()
     }
 
     return(
@@ -90,6 +93,7 @@ const Track = ({ song, user }: TrackI) => {
                             endTime={trackObj?.trackEndTime}
                             album={trackObj?.trackAlbum}
                             year={trackObj?.trackYear}
+                            youtubeLink={trackObj?.trackYouTubeLink}
                             submitHandler={updateSubmitHandler}
                         />
                     </div>
