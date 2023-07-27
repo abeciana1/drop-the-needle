@@ -1,20 +1,15 @@
 import { useState } from 'react'
 import { TrackI } from '@/interfaces'
 import {
-    TrackPresent,
-    FormContainer,
-    Input
+    TrackPresent
 } from '@/components/account'
 import {
-    OnClickButton,
-    ModalComp
+    OnClickButton
 } from '@/components/common'
 
 const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
     const [ hover, setHover ] = useState(false)
-    const [ edit, setEdit ] = useState(false)
-    const [ submitted, setSubmitted ] = useState(false)
     
     const {
         title,
@@ -24,21 +19,14 @@ const Track = ({ song, user }: TrackI) => {
         youtubeLink
     } = song
 
-    const [ songObj, setSongObj ] = useState({
-        songTitle: title,
-        songArtist: artist,
-        songStartTime: startTime,
-        songEndTime: endTime,
-        songAlbum: '',
-        songYear: ''
+    const [ trackObj, setTrackObj ] = useState({
+        trackTitle: title,
+        trackArtist: artist,
+        trackStartTime: startTime,
+        trackEndTime: endTime,
+        trackAlbum: '',
+        trackYear: ''
     })
-
-    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSongObj({
-            ...songObj,
-            [event.target.name]: event.target.value
-        })
-    }
 
     const toggleOpenDetails = () => {
         setOpen(!open)
@@ -46,18 +34,6 @@ const Track = ({ song, user }: TrackI) => {
 
     const toggleRemoveTrack = () => {
         console.log('remove')
-    }
-
-    const toggleEditForm = () => {
-        setEdit(!edit)
-    }
-
-    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-        console.log(e)
-        console.log('submit')
-        if (submitted === false) {
-            
-        }
     }
 
     return(
@@ -69,79 +45,14 @@ const Track = ({ song, user }: TrackI) => {
         >
             <div className='flex flex-wrap items-center justify-between'>
                 <div className="">
-                    <span className='font-bold'>&quot;{songObj?.songTitle}&quot;</span>
+                    <span className='font-bold'>&quot;{trackObj?.trackTitle}&quot;</span>
                     <span> - </span>
-                    <span className='italic'>{songObj?.songArtist} ({songObj?.songAlbum}, {songObj?.songYear})</span>
+                    <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear})</span>
                     <span className='ml-10'>{user}</span>
                 </div>
                 {hover &&
                     <span className='flex gap-10'>
-                        <ModalComp
-                            shouldCloseOnOverlayClick={false}
-                            shouldCloseOnEsc={false}
-                            onClick={toggleEditForm}
-                            text="Edit"
-                            bgColor='ceruleanBlue'
-                        >
-                            <FormContainer
-                                onSubmit={updateSubmitHandler}
-                            >
-                                <Input
-                                    name='songTitle'
-                                    labelText='Edit song title'
-                                    type='text'
-                                    value={songObj?.songTitle}
-                                    fieldRequired
-                                    placeholder={songObj?.songTitle}
-                                    onChange={onChangeHandler}
-                                />
-                                <Input
-                                    name='songArtist'
-                                    labelText='Edit song title'
-                                    type='text'
-                                    value={songObj?.songArtist}
-                                    fieldRequired
-                                    placeholder={songObj?.songArtist}
-                                    onChange={onChangeHandler}
-                                />
-                                <Input
-                                    name='songAlbum'
-                                    labelText='Edit song album'
-                                    type='text'
-                                    value={songObj?.songAlbum}
-                                    fieldRequired
-                                    placeholder={songObj?.songAlbum}
-                                    onChange={onChangeHandler}
-                                />
-                                <Input
-                                    name='songYear'
-                                    labelText='Edit song year'
-                                    type='number'
-                                    value={songObj?.songYear}
-                                    fieldRequired
-                                    placeholder={songObj?.songYear}
-                                    onChange={onChangeHandler}
-                                />
-                                <Input
-                                    name='songStartTime'
-                                    labelText='Edit song start time'
-                                    type='text'
-                                    value={songObj?.songStartTime}
-                                    fieldRequired
-                                    placeholder={songObj?.songStartTime}
-                                    onChange={onChangeHandler}
-                                />
-                                <Input
-                                    name='songEndTime'
-                                    labelText='Edit song end time'
-                                    type='text'
-                                    value={songObj?.songEndTime}
-                                    fieldRequired
-                                    placeholder={songObj?.songEndTime}
-                                    onChange={onChangeHandler}
-                                />
-                            </FormContainer>
-                        </ModalComp>
+
                         <OnClickButton
                             text="Remove"
                             bgColor='vermillion'
@@ -155,16 +66,16 @@ const Track = ({ song, user }: TrackI) => {
                 <section className='flex flex-col md:flex-row justify-between py-5'>
                     <div>
                         <div className='font-bold'>Timestamps:</div>
-                        <div><span className='font-medium'>Start: </span>{songObj?.songStartTime}</div>
-                        <div><span className='font-medium'>End: </span>{songObj?.songEndTime}</div>
+                        <div><span className='font-medium'>Start: </span>{trackObj?.trackStartTime}</div>
+                        <div><span className='font-medium'>End: </span>{trackObj?.trackEndTime}</div>
                         <div>
                         </div>
                     </div>
                     <div>
                         <TrackPresent
                             link={youtubeLink}
-                            startTime={songObj?.songStartTime}
-                            endTime={songObj?.songEndTime}
+                            startTime={trackObj?.trackStartTime}
+                            endTime={trackObj?.trackEndTime}
                         />
                     </div>
                 </section>
