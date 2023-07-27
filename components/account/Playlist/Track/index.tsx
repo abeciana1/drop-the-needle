@@ -9,7 +9,7 @@ import {
 } from '@/components/common'
 
 const Track = ({ song, user }: TrackI) => {
-    const [ open, setOpen ] = useState(false)
+    const [ openTrack, setOpen ] = useState(false)
     const [ hover, setHover ] = useState(false)
     
     const {
@@ -30,7 +30,7 @@ const Track = ({ song, user }: TrackI) => {
     })
 
     const toggleOpenDetails = () => {
-        setOpen(!open)
+        setOpen(!openTrack)
     }
 
     const toggleRemoveTrack = () => {
@@ -45,7 +45,6 @@ const Track = ({ song, user }: TrackI) => {
 
     return(
         <li
-            onClick={toggleOpenDetails}
             className="px-5 py-5 cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
@@ -61,14 +60,11 @@ const Track = ({ song, user }: TrackI) => {
                 </div>
                 {hover &&
                     <span className='flex gap-10'>
-                        <UpdateTrackForm
-                            title={trackObj?.trackTitle}
-                            artist={trackObj?.trackArtist}
-                            startTime={trackObj?.trackStartTime}
-                            endTime={trackObj?.trackEndTime}
-                            album={trackObj?.trackAlbum}
-                            year={trackObj?.trackYear}
-                            submitHandler={updateSubmitHandler}
+                        <OnClickButton
+                            text={openTrack ? "Close" : "Open"}
+                            bgColor='ceruleanBlue'
+                            ctaArrow={false}
+                            onClick={toggleOpenDetails}
                         />
                         <OnClickButton
                             text="Remove"
@@ -79,7 +75,7 @@ const Track = ({ song, user }: TrackI) => {
                     </span>
                 }
             </div>
-            {open &&
+            {openTrack &&
                 <section className='flex flex-col md:flex-row justify-between py-5'>
                     <div>
                         <div className='font-bold'>Timestamps:</div>
@@ -87,6 +83,15 @@ const Track = ({ song, user }: TrackI) => {
                         <div><span className='font-medium'>End: </span>{trackObj?.trackEndTime}</div>
                         <div>
                         </div>
+                        <UpdateTrackForm
+                            title={trackObj?.trackTitle}
+                            artist={trackObj?.trackArtist}
+                            startTime={trackObj?.trackStartTime}
+                            endTime={trackObj?.trackEndTime}
+                            album={trackObj?.trackAlbum}
+                            year={trackObj?.trackYear}
+                            submitHandler={updateSubmitHandler}
+                        />
                     </div>
                     <div>
                         <TrackPresent
