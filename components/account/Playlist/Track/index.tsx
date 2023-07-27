@@ -37,15 +37,24 @@ const Track = ({ song, user }: TrackI) => {
         console.log('remove')
     }
 
+    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log(e)
+        console.log('submit')
+    }
+
     return(
         <li
-            onClick={toggleOpenDetails}
             className="px-5 py-5 cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className='flex flex-wrap items-center justify-between'>
-                <div className="">
+            <div 
+                className='flex flex-wrap items-center justify-between'
+            >
+                <div 
+                    onClick={toggleOpenDetails}
+                >
                     <span className='font-bold'>&quot;{trackObj?.trackTitle}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear})</span>
@@ -60,6 +69,7 @@ const Track = ({ song, user }: TrackI) => {
                             endTime={trackObj?.trackEndTime}
                             album={trackObj?.trackAlbum}
                             year={trackObj?.trackYear}
+                            submitHandler={updateSubmitHandler}
                         />
                         <OnClickButton
                             text="Remove"
