@@ -14,12 +14,13 @@ export interface FormI extends ChildrenI {
     onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export interface TextInputI {
+export interface InputI {
     name: string;
     labelText: string;
     type: string;
     value?: string;
-    fieldRequired?: boolean;
+    fieldRequired: boolean;
     placeholder: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
+    [x: string]: any;
 }

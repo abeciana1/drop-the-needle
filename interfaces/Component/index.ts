@@ -88,4 +88,6 @@ export interface TrackPresentI {
 
 export interface ModalI extends OnClickButtonI, ChildrenI {
     ctaArrow?: boolean;
+    shouldCloseOnEsc?: boolean;
+    shouldCloseOnOverlayClick?: boolean;
 }

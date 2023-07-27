@@ -1,13 +1,13 @@
-import { TextInput } from '@/components/account'
+import { Input } from '@/components/account'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 const onChangeMock = jest.fn()
 
-describe('TextInput', () => {
+describe('Input', () => {
     test('> should render successfully and onChange works', async () => {
         render(
-            <TextInput
+            <Input
                 name='name'
                 labelText='Enter your name'
                 type='text'

@@ -7,7 +7,9 @@ const ModalComp: React.FC<any> = ({
     text,
     bgColor,
     onClick,
-    children
+    children,
+    shouldCloseOnEsc = true,
+    shouldCloseOnOverlayClick = true
 }: ModalI) => {
     const [ isOpen, setIsOpen ] = useState(false)
     Modal.setAppElement('#modals')
@@ -38,7 +40,13 @@ const ModalComp: React.FC<any> = ({
                 onClick={toggleModal}
                 ctaArrow={false}
             />
-            <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)} style={customStyles}>
+            <Modal
+                isOpen={isOpen} 
+                onRequestClose={() => setIsOpen(false)} 
+                style={customStyles}
+                shouldCloseOnEsc={shouldCloseOnEsc}
+                shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+            >
                 <button onClick={() => setIsOpen(false)}>Close Modal</button>
                 { children }
             </Modal>

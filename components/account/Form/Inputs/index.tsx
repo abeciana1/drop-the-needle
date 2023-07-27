@@ -1,14 +1,15 @@
-import { TextInputI } from '@/interfaces'
+import { InputI } from '@/interfaces'
 
-export const TextInput = ({
+export const Input = ({
     name,
     labelText,
     type,
     value,
     fieldRequired,
     placeholder,
-    onChange
-}: TextInputI) => {
+    onChange,
+    ...additionalProps
+}: InputI) => {
     return (
         <div
             className="py-3"
@@ -22,6 +23,7 @@ export const TextInput = ({
                 value={value}
                 required={fieldRequired}
                 onChange={(e) => onChange(e)}
+                {...additionalProps}
             />
         </div>
     )

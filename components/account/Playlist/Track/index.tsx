@@ -3,7 +3,7 @@ import { TrackI } from '@/interfaces'
 import {
     TrackPresent,
     FormContainer,
-    TextInput
+    Input
 } from '@/components/account'
 import {
     OnClickButton,
@@ -14,6 +14,7 @@ const Track = ({ song, user }: TrackI) => {
     const [ open, setOpen ] = useState(false)
     const [ hover, setHover ] = useState(false)
     const [ edit, setEdit ] = useState(false)
+    const [ submitted, setSubmitted ] = useState(false)
     
     const {
         title,
@@ -54,16 +55,20 @@ const Track = ({ song, user }: TrackI) => {
     const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         console.log(e)
         console.log('submit')
+        if (submitted === false) {
+            
+        }
     }
 
     return(
         <li
+            onClick={toggleOpenDetails}
             className="px-5 py-5 cursor-pointer"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
             <div className='flex flex-wrap items-center justify-between'>
-                <div>
+                <div className="">
                     <span className='font-bold'>&quot;{songObj?.songTitle}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{songObj?.songArtist} ({songObj?.songAlbum}, {songObj?.songYear})</span>
@@ -71,12 +76,72 @@ const Track = ({ song, user }: TrackI) => {
                 </div>
                 {hover &&
                     <span className='flex gap-10'>
-                        <OnClickButton
-                            text={open ? "Close" : "Expand"}
+                        <ModalComp
+                            shouldCloseOnOverlayClick={false}
+                            shouldCloseOnEsc={false}
+                            onClick={toggleEditForm}
+                            text="Edit"
                             bgColor='ceruleanBlue'
-                            ctaArrow={false}
-                            onClick={toggleOpenDetails}
-                        />
+                        >
+                            <FormContainer
+                                onSubmit={updateSubmitHandler}
+                            >
+                                <Input
+                                    name='songTitle'
+                                    labelText='Edit song title'
+                                    type='text'
+                                    value={songObj?.songTitle}
+                                    fieldRequired
+                                    placeholder={songObj?.songTitle}
+                                    onChange={onChangeHandler}
+                                />
+                                <Input
+                                    name='songArtist'
+                                    labelText='Edit song title'
+                                    type='text'
+                                    value={songObj?.songArtist}
+                                    fieldRequired
+                                    placeholder={songObj?.songArtist}
+                                    onChange={onChangeHandler}
+                                />
+                                <Input
+                                    name='songAlbum'
+                                    labelText='Edit song album'
+                                    type='text'
+                                    value={songObj?.songAlbum}
+                                    fieldRequired
+                                    placeholder={songObj?.songAlbum}
+                                    onChange={onChangeHandler}
+                                />
+                                <Input
+                                    name='songYear'
+                                    labelText='Edit song year'
+                                    type='number'
+                                    value={songObj?.songYear}
+                                    fieldRequired
+                                    placeholder={songObj?.songYear}
+                                    onChange={onChangeHandler}
+                                />
+                                <Input
+                                    name='songStartTime'
+                                    labelText='Edit song start time'
+                                    type='text'
+                                    value={songObj?.songStartTime}
+                                    fieldRequired
+                                    placeholder={songObj?.songStartTime}
+                                    onChange={onChangeHandler}
+                                />
+                                <Input
+                                    name='songEndTime'
+                                    labelText='Edit song end time'
+                                    type='text'
+                                    value={songObj?.songEndTime}
+                                    fieldRequired
+                                    placeholder={songObj?.songEndTime}
+                                    onChange={onChangeHandler}
+                                />
+                            </FormContainer>
+                        </ModalComp>
                         <OnClickButton
                             text="Remove"
                             bgColor='vermillion'
@@ -93,70 +158,6 @@ const Track = ({ song, user }: TrackI) => {
                         <div><span className='font-medium'>Start: </span>{songObj?.songStartTime}</div>
                         <div><span className='font-medium'>End: </span>{songObj?.songEndTime}</div>
                         <div>
-                            <ModalComp
-                                onClick={toggleEditForm}
-                                text="Edit"
-                                bgColor='ceruleanBlue'
-                            >
-                                <FormContainer
-                                    onSubmit={updateSubmitHandler}
-                                >
-                                    <TextInput
-                                        name='songTitle'
-                                        labelText='Edit song title'
-                                        type='text'
-                                        value={songObj?.songTitle}
-                                        fieldRequired
-                                        placeholder={songObj?.songTitle}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <TextInput
-                                        name='songArtist'
-                                        labelText='Edit song title'
-                                        type='text'
-                                        value={songObj?.songArtist}
-                                        fieldRequired
-                                        placeholder={songObj?.songArtist}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <TextInput
-                                        name='songAlbum'
-                                        labelText='Edit song album'
-                                        type='text'
-                                        value={songObj?.songAlbum}
-                                        fieldRequired
-                                        placeholder={songObj?.songAlbum}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <TextInput
-                                        name='songYear'
-                                        labelText='Edit song year'
-                                        type='number'
-                                        value={songObj?.songYear}
-                                        fieldRequired
-                                        placeholder={songObj?.songYear}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <TextInput
-                                        name='songStartTime'
-                                        labelText='Edit song start time'
-                                        type='text'
-                                        value={songObj?.songStartTime}
-                                        fieldRequired
-                                        placeholder={songObj?.songStartTime}
-                                        onChange={onChangeHandler}
-                                    />
-                                    <TextInput
-                                        name='songEndTime'
-                                        labelText='Edit song end time'
-                                        type='text'
-                                        value={songObj?.songEndTime}
-                                        fieldRequired
-                                        placeholder={songObj?.songEndTime}
-                                        onChange={onChangeHandler}
-                                    />
-                                </FormContainer>
-                            </ModalComp>
                         </div>
                     </div>
                     <div>

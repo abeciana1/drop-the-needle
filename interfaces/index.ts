@@ -44,5 +44,5 @@ export type {
 export type {
     SingleSelectFieldI,
     FormI,
-    TextInputI
+    InputI
 } from '@/interfaces/Form'

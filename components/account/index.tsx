@@ -7,7 +7,7 @@ export {
 export {
     SingleSelectField,
     FormContainer,
-    TextInput
+    Input
 } from '@/components/account/Form'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'

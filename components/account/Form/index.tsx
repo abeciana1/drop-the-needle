@@ -2,5 +2,5 @@ export { default as SingleSelectField } from '@/components/account/Form/SingleSe
 export { default as FormContainer } from '@/components/account/Form/Container'
 
 export {
-    TextInput
+    Input
 } from '@/components/account/Form/Inputs'
