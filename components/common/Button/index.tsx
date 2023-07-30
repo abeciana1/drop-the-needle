@@ -37,8 +37,17 @@ export const OnClickButton = ({
     ctaArrow,
     onClick
 }: OnClickButtonI) => {
+
+    const toggle = (e: React.KeyboardEvent<HTMLElement>) => {
+        if(e.code === "Enter" || e.keyCode === 13) {
+            onClick
+        }
+    }
+
     return (
         <button
+            tabIndex={0}
+            onKeyDown={toggle}
             onClick={onClick}
             className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',

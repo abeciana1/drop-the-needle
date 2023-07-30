@@ -10,7 +10,7 @@ import {
 
 const Track = ({ song, user }: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
-    const [ hover, setHover ] = useState(false)
+    // const [ hover, setHover ] = useState(false)
     
     const {
         title,
@@ -46,7 +46,7 @@ const Track = ({ song, user }: TrackI) => {
         // setTrackObj()
     }
 
-    const focusTrackHandler = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
         if(e.code === "Enter") {
             setOpen(!openTrack)
         }
@@ -54,21 +54,20 @@ const Track = ({ song, user }: TrackI) => {
 
     return(
         <li
-            tabIndex={0}
             className="px-5 py-5 cursor-pointer focus:border-2 border-ceruleanBlue"
-            onMouseEnter={() => setHover(true)}
-            onKeyDown={focusTrackHandler}
-            onMouseLeave={() => setHover(false)}
-            onBlur={() => setHover(false)}
         >
             <div 
+
                 className='flex flex-wrap items-center justify-between'
             >
-                <div>
+                <div
+                    tabIndex={0}
+                    onKeyDown={focusTrackHandler}
+                >
                     <span className='font-bold'>&quot;{trackObj?.trackTitle}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear})</span>
-                    <span className='ml-10'>{user}</span>
+                    <span className='float-right'>{user}</span>
                 </div>
                 <span className='flex gap-10'>
                     <OnClickButton
