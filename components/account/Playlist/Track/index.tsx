@@ -46,11 +46,20 @@ const Track = ({ song, user }: TrackI) => {
         // setTrackObj()
     }
 
+    const focusTrackHandler = (e: React.KeyboardEvent<HTMLLIElement>) => {
+        if(e.code === "Enter") {
+            setOpen(!openTrack)
+        }
+    }
+
     return(
         <li
-            className="px-5 py-5 cursor-pointer"
+            tabIndex={0}
+            className="px-5 py-5 cursor-pointer focus:border-2 border-ceruleanBlue"
             onMouseEnter={() => setHover(true)}
+            onKeyDown={focusTrackHandler}
             onMouseLeave={() => setHover(false)}
+            onBlur={() => setHover(false)}
         >
             <div 
                 className='flex flex-wrap items-center justify-between'
@@ -61,22 +70,20 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear})</span>
                     <span className='ml-10'>{user}</span>
                 </div>
-                {hover &&
-                    <span className='flex gap-10'>
-                        <OnClickButton
-                            text={openTrack ? "Close" : "Open"}
-                            bgColor='ceruleanBlue'
-                            ctaArrow={false}
-                            onClick={toggleOpenDetails}
-                        />
-                        <OnClickButton
-                            text="Remove"
-                            bgColor='vermillion'
-                            ctaArrow={false}
-                            onClick={toggleRemoveTrack}
-                        />
-                    </span>
-                }
+                <span className='flex gap-10'>
+                    <OnClickButton
+                        text={openTrack ? "Close" : "Open"}
+                        bgColor='ceruleanBlue'
+                        ctaArrow={false}
+                        onClick={toggleOpenDetails}
+                    />
+                    <OnClickButton
+                        text="Remove"
+                        bgColor='vermillion'
+                        ctaArrow={false}
+                        onClick={toggleRemoveTrack}
+                    />
+                </span>
             </div>
             {openTrack &&
                 <section className='flex flex-col md:flex-row justify-between py-5'>
