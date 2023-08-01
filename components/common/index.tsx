@@ -20,7 +20,8 @@ export {default as Footer} from '@/components/common/Footer'
 export {default as SEO} from '@/components/common/SEO'
 export {
     EventClickButton,
-    OnClickButton
+    OnClickButton,
+    SubmitButton
 } from '@/components/common/Button'
 export { default as AccountDD } from '@/components/common/Navigation/AccountDD'
 export { default as PlaylistCard } from '@/components/common/PlaylistCard'
