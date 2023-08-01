@@ -55,7 +55,7 @@ const Track = ({ song, user }: TrackI) => {
 
     return(
         <li
-            className="px-5 py-5 cursor-pointer focus:border-2 border-ceruleanBlue"
+            className="px-5 py-5 focus:border-2 border-ceruleanBlue"
         >
             <div 
 
