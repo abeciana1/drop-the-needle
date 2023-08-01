@@ -28,6 +28,6 @@ export interface ToggleButtonI {
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 
 export interface SubmitButtonI {
-    text: string;
+    text?: string;
     bgColor?: string;
 }
