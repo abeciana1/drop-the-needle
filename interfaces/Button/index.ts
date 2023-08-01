@@ -1,7 +1,7 @@
 interface DefaultButtonI {
     text: string;
-    ctaArrow?: boolean;
     bgColor?: string;
+    ctaArrow?: boolean;
 }
 
 export interface OnClickButtonI extends DefaultButtonI {
@@ -26,3 +26,8 @@ export interface ToggleButtonI {
 }
 
 export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
+
+export interface SubmitButtonI {
+    text: string;
+    bgColor?: string;
+}
