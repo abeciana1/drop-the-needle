@@ -17,7 +17,8 @@ const Track = ({ song, user }: TrackI) => {
         artist,
         startTime,
         endTime,
-        youtubeLink
+        youtubeLink,
+        // orderNumber
     } = song
 
     const [ trackObj, setTrackObj ] = useState({
