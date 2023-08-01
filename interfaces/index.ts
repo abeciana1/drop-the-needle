@@ -11,7 +11,8 @@ export type {
     EventOnClickBtnI,
     LinkButtonI,
     LinkOnClickEvent,
-    ToggleButtonI
+    ToggleButtonI,
+    SubmitButtonI
 } from '@/interfaces/Button'
 
 export type {
