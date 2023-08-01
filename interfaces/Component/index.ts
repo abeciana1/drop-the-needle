@@ -90,4 +90,6 @@ export interface ModalI extends OnClickButtonI, ChildrenI {
     ctaArrow?: boolean;
     shouldCloseOnEsc?: boolean;
     shouldCloseOnOverlayClick?: boolean;
+    render: boolean;
+    setRender: (arg: boolean) => void;
 }
