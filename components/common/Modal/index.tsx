@@ -6,12 +6,12 @@ import Modal from 'react-modal'
 const ModalComp: React.FC<any> = ({
     text,
     bgColor,
-    onClick,
     children,
     shouldCloseOnEsc = true,
-    shouldCloseOnOverlayClick = true
+    shouldCloseOnOverlayClick = true,
+    render,
+    setRender
 }: ModalI) => {
-    const [ isOpen, setIsOpen ] = useState(false)
     Modal.setAppElement('#modals')
     const customStyles = {
         overlay: {
@@ -31,19 +31,18 @@ const ModalComp: React.FC<any> = ({
     }
 
     const toggleModal = () => {
-        setIsOpen(true)
-        onClick()
+        setRender(!render)
     }
 
     useEffect(() => {
         if(document) {
-            if(isOpen) {
+            if(render) {
                 document.body.style.overflow = 'hidden'
             } else {
                 document.body.style.overflow = 'unset'
             }
         }
-    }, [isOpen])
+    }, [render])
 
     return (
         <>
@@ -54,13 +53,13 @@ const ModalComp: React.FC<any> = ({
                 ctaArrow={false}
             />
             <Modal
-                isOpen={isOpen} 
-                onRequestClose={() => setIsOpen(false)} 
+                isOpen={render} 
+                onRequestClose={() => setRender(false)} 
                 style={customStyles}
                 shouldCloseOnEsc={shouldCloseOnEsc}
                 shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
             >
-                <button onClick={() => setIsOpen(false)}>Close Modal</button>
+                <button onClick={() => setRender(false)}>Close Modal</button>
                 { children }
             </Modal>
         </>
