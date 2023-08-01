@@ -10,7 +10,6 @@ import {
 
 const Track = ({ song, user }: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
-    // const [ hover, setHover ] = useState(false)
     
     const {
         title,

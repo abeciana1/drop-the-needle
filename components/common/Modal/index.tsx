@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { OnClickButton } from '@/components/common'
 import { ModalI } from '@/interfaces'
 import Modal from 'react-modal'
