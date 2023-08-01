@@ -47,11 +47,16 @@ const UpdateTrackForm = ({
         shouldCloseOnOverlayClick={false}
         shouldCloseOnEsc={false}
         onClick={toggleEditForm}
+        render={edit}
+        setRender={setEdit}
         text="Edit"
         bgColor='ceruleanBlue'
     >
         <FormContainer
-            onSubmit={(e) => submitHandler(e, songObj)}
+            onSubmit={(e) => {
+                submitHandler(e, songObj)
+                setEdit(false)
+            }}
         >
             <Input
                 name='songTitle'
