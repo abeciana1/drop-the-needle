@@ -1,5 +1,8 @@
 import { useState } from 'react'
-import { ModalComp } from '@/components/common'
+import {
+    ModalComp,
+    SubmitButton
+} from '@/components/common'
 import {
     FormContainer,
     Input
@@ -112,6 +115,9 @@ const UpdateTrackForm = ({
                 fieldRequired
                 placeholder={songObj?.songEndTime}
                 onChange={onChangeHandler}
+            />
+            <SubmitButton
+                bgColor='vermillion'
             />
         </FormContainer>
     </ModalComp>
