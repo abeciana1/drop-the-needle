@@ -55,7 +55,7 @@ const UpdateTrackForm = ({
         >
             <Input
                 name='songTitle'
-                labelText='Edit song title'
+                labelText='Song title'
                 type='text'
                 value={songObj?.songTitle}
                 fieldRequired
@@ -64,7 +64,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songArtist'
-                labelText='Edit song artist'
+                labelText='Song artist'
                 type='text'
                 value={songObj?.songArtist}
                 fieldRequired
@@ -73,7 +73,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songLink'
-                labelText='Edit song link'
+                labelText='Song link'
                 type='text'
                 value={songObj?.songLink}
                 fieldRequired
@@ -82,7 +82,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songAlbum'
-                labelText='Edit song album'
+                labelText='Song album'
                 type='text'
                 value={songObj?.songAlbum}
                 fieldRequired
@@ -91,7 +91,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songYear'
-                labelText='Edit song year'
+                labelText='Song year'
                 type='number'
                 value={songObj?.songYear}
                 fieldRequired
@@ -100,7 +100,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songStartTime'
-                labelText='Edit song start time'
+                labelText='Song start time'
                 type='text'
                 value={songObj?.songStartTime}
                 fieldRequired
@@ -109,7 +109,7 @@ const UpdateTrackForm = ({
             />
             <Input
                 name='songEndTime'
-                labelText='Edit song end time'
+                labelText='Song end time'
                 type='text'
                 value={songObj?.songEndTime}
                 fieldRequired
