@@ -59,7 +59,6 @@ const ModalComp: React.FC<any> = ({
                 style={customStyles}
                 shouldCloseOnEsc={shouldCloseOnEsc}
                 shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
-                preventScroll
             >
                 <button onClick={() => setIsOpen(false)}>Close Modal</button>
                 { children }
