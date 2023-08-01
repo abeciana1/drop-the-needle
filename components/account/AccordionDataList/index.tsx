@@ -18,7 +18,7 @@ const AccordionDataList = ({
     <Disclosure>
         {({ open }) => (
         <>
-            <Disclosure.Button className={cx("relative flex w-full items-center justify-between rounded-lg border-2 border-altBlack bg-layer-2 px-4 py-2 font-semibold text-heading hover:bg-muted-1 focus:outline-none", {
+            <Disclosure.Button className={cx("relative flex w-full items-center justify-between rounded-lg border-2 focus:ring-2 focus:ring-ceruleanBlue border-altBlack bg-layer-2 px-4 py-2 font-semibold text-heading hover:bg-muted-1 focus:outline-none", {
                 ['text-sm']: size === 'sm',
                 ['text-base']: size === 'md',
                 ['text-lg']: size === 'lg'
