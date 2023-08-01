@@ -40,11 +40,19 @@ const Track = ({ song, user }: TrackI) => {
     }
 
     const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>, data: any) => {
+        e.stopPropagation()
         e.preventDefault()
-        console.log(e)
         console.log(data)
-        console.log('submit')
-        // setTrackObj()
+        setTrackObj({
+            ...trackObj,
+            trackTitle: data?.songTitle,
+            trackArtist: data?.songArtist,
+            trackStartTime: data?.songStartTime,
+            trackEndTime: data?.songEndTime,
+            trackYouTubeLink: data?.songLink,
+            trackAlbum: data?.songAlbum,
+            trackYear: data?.songYear
+        })
     }
 
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
