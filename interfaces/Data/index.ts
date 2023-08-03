@@ -52,6 +52,6 @@ export interface SongI {
     startTime: string;
     endTime: string;
     orderNumber: number;
-    createdAt: Date;
+    createdAt: Date | string;
     participant: UserI;
 }
