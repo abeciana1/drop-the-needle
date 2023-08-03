@@ -34,9 +34,8 @@ describe('Track', () => {
         expect(songTitle).toBeInTheDocument()
         expect(songArtist).toBeInTheDocument()
     })
-    test.only('> renders open and remove buttons', () => {
+    test('> renders open and remove buttons', () => {
         renderedComponent()
-        screen.debug()
         const openBtn = screen.getByRole('button', {
             name: /open/i
         })
