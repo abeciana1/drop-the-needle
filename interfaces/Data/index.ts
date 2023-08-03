@@ -53,5 +53,7 @@ export interface SongI {
     endTime: string;
     orderNumber: number;
     createdAt: Date | string;
-    participant: UserI;
+    participant: {
+        name: string;
+    };
 }
