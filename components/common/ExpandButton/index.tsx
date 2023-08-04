@@ -5,14 +5,12 @@ import {
     ShareButtonPropsI
 } from '@/interfaces'
 
-
 export const ExpandBtn = ({
     text,
     icon,
-    // textColor,
     backgroundColor,
     onClick,
-    addClass
+    size
 }: ExpandButtonPropsI) => {
 
     const Icon = icon as React.ElementType
@@ -29,22 +27,18 @@ export const ExpandBtn = ({
 
     return (
         <button
+            style={{width: `${size}rem`}}
             onClick={onClick}
             className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
-                // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
                 ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
                 ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
                 ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
-                ['rounded-lg']: open,
-                [addClass]: addClass
+                ['rounded-lg']: open
             })}
             onMouseEnter={expandHandler}
             onMouseLeave={expandHandler}
         >
             <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                // ['text-altWhite']: textColor === 'altWhite',
-                // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
-                // ['text-altBlack']: backgroundColor === 'altWhite',
                 ['mx-auto']: open === false
             })} />
             {open &&
