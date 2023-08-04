@@ -34,22 +34,15 @@ export interface SubmitButtonI {
 
 export interface ExpandButtonPropsI {
     text: string;
-    // textColor: string;
     disabled?: boolean;
     backgroundColor?: string;
     icon: React.ElementType;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
-    addClass: string;
+    size: number;
 }
 
-export interface ShareButtonPropsI {
-    text: string;
-    // textColor: string;
-    disabled?: boolean;
+export interface ShareButtonPropsI extends ExpandButtonPropsI {
     subject?: any;
     body?: any;
-    backgroundColor?: string;
     sms?: boolean;
-    icon: React.ElementType;
-    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
