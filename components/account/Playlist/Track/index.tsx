@@ -5,8 +5,15 @@ import {
     UpdateTrackForm
 } from '@/components/account'
 import {
-    OnClickButton
+    OnClickButton,
+    ExpandBtn
 } from '@/components/common'
+import {
+    AiFillEdit,
+    AiFillDelete
+} from 'react-icons/ai'
+
+
 
 const Track = ({ song, user }: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
@@ -78,17 +85,19 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='float-right'>{user}</span>
                 </div>
                 <span className='flex gap-10'>
-                    <OnClickButton
+                    <ExpandBtn
                         text={openTrack ? "Close" : "Open"}
-                        bgColor='ceruleanBlue'
-                        ctaArrow={false}
+                        icon={AiFillEdit}
+                        backgroundColor='ceruleanBlue'
                         onClick={toggleOpenDetails}
+                        size={7}
                     />
-                    <OnClickButton
+                    <ExpandBtn
                         text="Remove"
-                        bgColor='vermillion'
-                        ctaArrow={false}
+                        icon={AiFillDelete}
+                        backgroundColor='vermillion'
                         onClick={toggleRemoveTrack}
+                        size={8}
                     />
                 </span>
             </div>
