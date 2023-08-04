@@ -34,7 +34,7 @@ export interface SubmitButtonI {
 
 export interface ExpandButtonPropsI {
     text: string;
-    textColor: string;
+    // textColor: string;
     disabled?: boolean;
     backgroundColor?: string;
     icon: React.ElementType;
@@ -44,7 +44,7 @@ export interface ExpandButtonPropsI {
 
 export interface ShareButtonPropsI {
     text: string;
-    textColor: string;
+    // textColor: string;
     disabled?: boolean;
     subject?: any;
     body?: any;
