@@ -9,7 +9,7 @@ import {
 export const ExpandBtn = ({
     text,
     icon,
-    textColor,
+    // textColor,
     backgroundColor,
     onClick,
     addClass
@@ -31,11 +31,10 @@ export const ExpandBtn = ({
         <button
             onClick={onClick}
             className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
-                ['text-altWhite']: textColor === 'altWhite',
-                ['text-royalBlue']: textColor === 'royalBlue',
-                ['bg-royalBlue']: backgroundColor === 'royalBlue',
-                ['bg-scarlet']: backgroundColor === 'scarlet',
-                ['bg-green-400']: backgroundColor === 'bg-green-400',
+                // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
+                ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
+                ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
+                ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
                 ['rounded-lg']: open,
                 [addClass]: addClass
             })}
@@ -43,9 +42,9 @@ export const ExpandBtn = ({
             onMouseLeave={expandHandler}
         >
             <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                ['text-altWhite']: textColor === 'altWhite',
-                ['text-royalBlue']: textColor === 'royalBlue',
-                ['text-coolGray']: textColor === 'coolGray',
+                // ['text-altWhite']: textColor === 'altWhite',
+                // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
+                // ['text-altBlack']: backgroundColor === 'altWhite',
                 ['mx-auto']: open === false
             })} />
             {open &&
@@ -62,7 +61,7 @@ export const ShareBtn = ({
     icon,
     subject,
     body,
-    textColor,
+    // textColor,
     backgroundColor,
     sms,
     onClick
@@ -90,22 +89,19 @@ export const ShareBtn = ({
             <button
                 onClick={onClick}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
-                    ['text-altWhite']: textColor === 'altWhite',
-                    ['text-royalBlue']: textColor === 'royalBlue',
-                    ['text-coolGray']: textColor === 'coolGray',
-                    ['bg-royalBlue']: backgroundColor === 'royalBlue',
-                    ['bg-scarlet']: backgroundColor === 'scarlet',
-                    ['bg-yellow-300']: backgroundColor === 'yellow',
-                    ['bg-green-400']: backgroundColor === 'bg-green-400',
+                    ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
+                    ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
+                    ['bg-yellow-300 text-altBlack']: backgroundColor === 'yellow',
+                    ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
                     ['rounded-lg']: open
                 })}
                 onMouseEnter={expandHandler}
                 onMouseLeave={expandHandler}
             >
                 <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                    ['text-altWhite']: textColor === 'altWhite',
-                    ['text-royalBlue']: textColor === 'royalBlue',
-                    ['text-coolGray']: textColor === 'coolGray',
+                    // ['text-altWhite']: textColor === 'altWhite',
+                    // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
+                    // ['text-altBlack']: textColor === 'altBlack',
                     ['mx-auto']: open === false
                 })} />
                 {open &&
@@ -118,22 +114,19 @@ export const ShareBtn = ({
             <a
                 href={sms ? smsHref : emailHref}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
-                    ['text-altWhite']: textColor === 'altWhite',
-                    ['text-royalBlue']: textColor === 'royalBlue',
-                    ['text-coolGray']: textColor === 'coolGray',
-                    ['bg-royalBlue']: backgroundColor === 'royalBlue',
-                    ['bg-scarlet']: backgroundColor === 'scarlet',
-                    ['bg-yellow-300']: backgroundColor === 'yellow',
-                    ['bg-green-400']: backgroundColor === 'bg-green-400',
+                    ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
+                    ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
+                    ['bg-yellow-300 text-altBlack']: backgroundColor === 'yellow',
+                    ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
                     ['rounded-lg']: open
                 })}
                 onMouseEnter={expandHandler}
                 onMouseLeave={expandHandler}
             >
                 <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                    ['text-altWhite']: textColor === 'altWhite',
-                    ['text-royalBlue']: textColor === 'royalBlue',
-                    ['text-coolGray']: textColor === 'coolGray',
+                    // ['text-altWhite']: textColor === 'altWhite',
+                    // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
+                    // ['text-altBlack']: textColor === 'altBlack',
                     ['mx-auto']: open === false
                 })} />
                 {open &&
