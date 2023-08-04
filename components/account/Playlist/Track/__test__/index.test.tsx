@@ -15,7 +15,9 @@ const renderedComponent = () => {
                     "orderNumber": 0,
                     "createdAt": "2023-04-21T18:09:07.793Z",
                     "participant": {
-                        "name": "Alex"
+                        user: {
+                            "name": "Alex"
+                        }
                     }
                 }
             }

@@ -54,6 +54,8 @@ export interface SongI {
     orderNumber: number;
     createdAt: Date | string;
     participant: {
-        name: string;
+        user: {
+            name: string;
+        }
     };
 }
