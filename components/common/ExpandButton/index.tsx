@@ -55,10 +55,10 @@ export const ShareBtn = ({
     icon,
     subject,
     body,
-    // textColor,
     backgroundColor,
     sms,
-    onClick
+    onClick,
+    size
 }: ShareButtonPropsI) => {
 
     const Icon = icon as React.ElementType
@@ -81,6 +81,7 @@ export const ShareBtn = ({
         <>
         {onClick ?
             <button
+                style={{width: `${size}rem`}}
                 onClick={onClick}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
@@ -93,9 +94,6 @@ export const ShareBtn = ({
                 onMouseLeave={expandHandler}
             >
                 <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                    // ['text-altWhite']: textColor === 'altWhite',
-                    // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
-                    // ['text-altBlack']: textColor === 'altBlack',
                     ['mx-auto']: open === false
                 })} />
                 {open &&
@@ -106,6 +104,7 @@ export const ShareBtn = ({
             </button>
         :
             <a
+                style={{width: `${size}rem`}}
                 href={sms ? smsHref : emailHref}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
@@ -118,9 +117,6 @@ export const ShareBtn = ({
                 onMouseLeave={expandHandler}
             >
                 <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
-                    // ['text-altWhite']: textColor === 'altWhite',
-                    // ['text-ceruleanBlue']: textColor === 'ceruleanBlue',
-                    // ['text-altBlack']: textColor === 'altBlack',
                     ['mx-auto']: open === false
                 })} />
                 {open &&
