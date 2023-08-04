@@ -12,7 +12,9 @@ export type {
     LinkButtonI,
     LinkOnClickEvent,
     ToggleButtonI,
-    SubmitButtonI
+    SubmitButtonI,
+    ExpandButtonPropsI,
+    ShareButtonPropsI
 } from '@/interfaces/Button'
 
 export type {
