@@ -5,7 +5,7 @@
     transition: width 0.5s;
 }
 
-.expand-btn:hover[data-size] {
+.expand-btn:hover {
     -webkit-transition: width 0.5s;
     transition: width 0.5s;
 }
