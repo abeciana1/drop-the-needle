@@ -27,7 +27,7 @@ export const ExpandBtn = ({
 
     return (
         <button
-            style={{width: `${size}rem`}}
+            style={ open ? {width: `${size}rem`} : {}}
             onClick={onClick}
             className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                 ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
@@ -81,7 +81,7 @@ export const ShareBtn = ({
         <>
         {onClick ?
             <button
-                style={{width: `${size}rem`}}
+                style={ open ? {width: `${size}rem`} : {}}
                 onClick={onClick}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
@@ -104,7 +104,7 @@ export const ShareBtn = ({
             </button>
         :
             <a
-                style={{width: `${size}rem`}}
+                style={ open ? {width: `${size}rem`} : {}}
                 href={sms ? smsHref : emailHref}
                 className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
