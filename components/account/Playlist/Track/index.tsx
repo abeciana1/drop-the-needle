@@ -10,7 +10,8 @@ import {
 } from '@/components/common'
 import {
     AiFillEdit,
-    AiFillDelete
+    AiFillDelete,
+    AiFillFolderOpen
 } from 'react-icons/ai'
 
 
@@ -87,7 +88,7 @@ const Track = ({ song, user }: TrackI) => {
                 <span className='flex gap-10'>
                     <ExpandBtn
                         text={openTrack ? "Close" : "Open"}
-                        icon={AiFillEdit}
+                        icon={AiFillFolderOpen}
                         backgroundColor='ceruleanBlue'
                         onClick={toggleOpenDetails}
                         size={7}
