@@ -29,7 +29,7 @@ export const ExpandBtn = ({
         <button
             style={ open ? {width: `${size}rem`} : {}}
             onClick={onClick}
-            className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
+            className={cx('py-2 hover:px-4 focus:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                 ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
                 ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
                 ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
@@ -37,6 +37,8 @@ export const ExpandBtn = ({
             })}
             onMouseEnter={expandHandler}
             onMouseLeave={expandHandler}
+            onFocus={expandHandler}
+            onBlur={expandHandler}
         >
             <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
                 ['mx-auto']: open === false
@@ -83,7 +85,7 @@ export const ShareBtn = ({
             <button
                 style={ open ? {width: `${size}rem`} : {}}
                 onClick={onClick}
-                className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
+                className={cx('py-2 hover:px-4 focus:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
                     ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
                     ['bg-yellow-300 text-altBlack']: backgroundColor === 'yellow',
@@ -106,7 +108,7 @@ export const ShareBtn = ({
             <a
                 style={ open ? {width: `${size}rem`} : {}}
                 href={sms ? smsHref : emailHref}
-                className={cx('py-2 hover:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
+                className={cx('py-2 hover:px-4  focus:px-4 flex overflow-hidden expand-btn rounded-full items-center', {
                     ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
                     ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
                     ['bg-yellow-300 text-altBlack']: backgroundColor === 'yellow',

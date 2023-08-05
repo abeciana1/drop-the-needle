@@ -5,7 +5,8 @@
     transition: width 0.5s;
 }
 
-.expand-btn:hover {
+.expand-btn:hover,
+.expand-btn:focus {
     -webkit-transition: width 0.5s;
     transition: width 0.5s;
 }
