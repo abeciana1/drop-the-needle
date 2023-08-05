@@ -16,14 +16,6 @@ export const ExpandBtn = ({
     const Icon = icon as React.ElementType
 
     const [open, setClose] = useState(false)
-    
-    const expandHandler = () => {
-        if (open) {
-            setClose(false)
-        } else {
-            setClose(true)
-        }
-    }
 
     return (
         <button
@@ -66,14 +58,6 @@ export const ShareBtn = ({
     const Icon = icon as React.ElementType
 
     const [open, setClose] = useState(false)
-    
-    const expandHandler = () => {
-        if (open) {
-            setClose(false)
-        } else {
-            setClose(true)
-        }
-    }
 
     const emailHref = `mailto:?subject=${encodeURIComponent(subject) || ''}&body=${encodeURIComponent(body) || ''}`
 
