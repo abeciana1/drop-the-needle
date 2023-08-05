@@ -85,7 +85,7 @@ const Track = ({ song, user }: TrackI) => {
                     <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear})</span>
                     <span className='float-right'>{user}</span>
                 </div>
-                <span className='flex gap-10'>
+                <span className='flex gap-5'>
                     <ExpandBtn
                         text={openTrack ? "Close" : "Open"}
                         icon={AiFillFolderOpen}
