@@ -40,7 +40,7 @@ export const OnClickButton = ({
 }: OnClickButtonI) => {
 
     const toggle = (e: React.KeyboardEvent<HTMLElement>) => {
-        if(e.code === "Enter" || e.keyCode === 13) {
+        if(e.code === "Enter") {
             onClick
         }
     }
