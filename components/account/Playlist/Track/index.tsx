@@ -43,7 +43,6 @@ const Track = ({ song, user, provided }: TrackI) => {
     }
 
     const toggleRemoveTrack = () => {
-        console.log('remove')
         if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
             // todo hook this function up to remove song
             // todo create action to delete song
