@@ -16,7 +16,7 @@ import {
 
 
 
-const Track = ({ song, user }: TrackI) => {
+const Track = ({ song, user, provided }: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
     
     const {
@@ -71,6 +71,9 @@ const Track = ({ song, user }: TrackI) => {
     return(
         <li
             className="px-5 py-5 focus:border-2 border-ceruleanBlue"
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
         >
             <div 
 
