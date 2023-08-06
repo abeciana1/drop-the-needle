@@ -78,6 +78,8 @@ export interface TrackListI {
 export interface TrackI {
     song: SongI;
     user: string;
+    index: number;
+    provided: any;
 }
 
 export interface TrackPresentI {
