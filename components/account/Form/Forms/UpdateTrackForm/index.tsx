@@ -121,9 +121,11 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songEndTime}
                 onChange={onChangeHandler}
             />
-            <SubmitButton
-                bgColor='vermillion'
-            />
+            <div className="py-3">
+                <SubmitButton
+                    bgColor='vermillion'
+                />
+            </div>
         </FormContainer>
     </ModalComp>
     )
