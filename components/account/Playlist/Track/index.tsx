@@ -121,7 +121,7 @@ const Track = ({ song, user }: TrackI) => {
                             />
                         </div>
                     </div>
-                    <div>
+                    <div className="pt-3 md:pt-0">
                         <TrackPresent
                             link={youtubeLink}
                             startTime={trackObj?.trackStartTime}
