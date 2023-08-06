@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react'
-import { OnClickButton } from '@/components/common'
+import {
+    OnClickButton,
+    ExpandBtn
+} from '@/components/common'
 import { ModalI } from '@/interfaces'
 import Modal from 'react-modal'
+import { AiOutlineClose } from 'react-icons/ai'
 
 const ModalComp: React.FC<any> = ({
     text,
@@ -59,7 +63,15 @@ const ModalComp: React.FC<any> = ({
                 shouldCloseOnEsc={shouldCloseOnEsc}
                 shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
             >
-                <button onClick={() => setRender(false)}>Close Modal</button>
+                <div className="flex justify-end">
+                    <ExpandBtn
+                        text="Close"
+                        icon={AiOutlineClose}
+                        backgroundColor='vermillion'
+                        size={7}
+                        onClick={() => setRender(false)}
+                    />
+                </div>
                 { children }
             </Modal>
         </>
