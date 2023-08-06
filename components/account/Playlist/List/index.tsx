@@ -26,7 +26,7 @@ const TrackList = ({
                     <Droppable droppableId="droppable-list">
                         {(provided) => (
                             <ul
-                                className="border-altBlack border-4 rounded-lg divide-y-4 divide-altBlack"
+                                className="border-altBlack border-4 rounded-lg divide-altBlack"
                                 ref={provided.innerRef}
                                 {...provided.droppableProps}
                             >

@@ -74,7 +74,7 @@ const Track = ({ song, user, provided }: TrackI) => {
 
     return(
         <li
-            className="px-5 py-5 focus:border-2 border-ceruleanBlue"
+            className="px-5 py-5 focus:border-2 focus:border-ceruleanBlue border-altBlack border-2 border-b-2"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
