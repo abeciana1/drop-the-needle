@@ -7,7 +7,7 @@ const FormContainer = ({
 
     return (
         <form
-            className="w-56 sm:w-96"
+            className="sm:w-96"
             onSubmit={onSubmit}
         >
             {children}
