@@ -1,4 +1,5 @@
 import { FormI } from "@/interfaces"
+import { useState } from 'react'
 
 const FormContainer = ({
     children,
@@ -7,6 +8,7 @@ const FormContainer = ({
 
     return (
         <form
+            noValidate
             className="sm:w-96"
             onSubmit={onSubmit}
         >

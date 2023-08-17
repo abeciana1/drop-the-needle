@@ -1,4 +1,53 @@
+import { useEffect, useState } from 'react'
 import { InputI } from '@/interfaces'
+import { omit } from 'lodash'
+
+const validate = (value: string, inputRule: any, error: any, setError: any) => {
+    switch (inputRule?.type) {
+        case 'fieldRequired':
+            if (value?.length < 1) {
+                setError({
+                    ...error,
+                    error: 'This field is required.'
+                })
+            } else {
+                let newError = omit(error, "error")
+                setError(newError)
+            }
+        case 'lenLimit':
+            if (value?.length < 1) {
+                setError({
+                    ...error,
+                    error: 'This field is required.'
+                })
+            } else if (value?.length < inputRule?.min || value?.length > inputRule?.max) {
+                setError({
+                    ...error,
+                    error: `This field requires a minimum of ${inputRule?.min} and maximum ${inputRule?.max} characters`
+                })
+            } else {
+                let newError = omit(error, "error")
+                setError(newError)
+            }
+        case 'textFormat':
+            if (value?.length < 1) {
+                setError({
+                    ...error,
+                    error: 'This field is required.'
+                })
+            } else if (!!value?.match(new RegExp(inputRule.regExPattern, "gi")) === false) {
+                setError({
+                    ...error,
+                    error: `Please format your answer to this format: ${inputRule.example}`
+                })
+            } else {
+                let newError = omit(error, "error")
+                setError(newError)
+            }
+        default:
+            break;
+    }
+}
 
 export const Input = ({
     name,
@@ -7,9 +56,20 @@ export const Input = ({
     value,
     fieldRequired,
     placeholder,
+    inputRule,
     onChange,
+    errors,
+    isSubmitted,
+    // setErrors,
+    // defaultValue,
     ...additionalProps
 }: InputI) => {
+
+    const [ error, setError ] = useState<{[key: string]: any}>({})
+
+    useEffect(() => {
+        validate(value, inputRule, error, setError)
+    }, [])
     return (
         <div
             className="py-3"
@@ -20,11 +80,19 @@ export const Input = ({
                 placeholder={placeholder}
                 name={name}
                 type={type}
-                value={value}
                 required={fieldRequired}
-                onChange={(e) => onChange(e)}
+                value={value || ''}
+                onChange={(e) => {
+                    onChange(e)
+                    validate(e.target.value, inputRule, error, setError)
+                }}
                 {...additionalProps}
             />
+            {error && Object.keys(error).length > 0 &&
+                <div>
+                    {error.error}
+                </div>
+            }
         </div>
     )
 }

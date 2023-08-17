@@ -9,7 +9,6 @@ import {
     ExpandBtn
 } from '@/components/common'
 import {
-    AiFillEdit,
     AiFillDelete,
     AiFillFolderOpen
 } from 'react-icons/ai'

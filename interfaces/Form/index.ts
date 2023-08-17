@@ -18,9 +18,14 @@ export interface InputI {
     name: string;
     labelText: string;
     type: string;
-    value?: string;
+    value: string;
     fieldRequired: boolean;
     placeholder: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
+    errors: {[key: string]: string};
+    // defaultValue: string;
+    // inputRule: {
+    //     [key: string]: any;
+    // };
     [x: string]: any;
 }

@@ -1,51 +1,43 @@
-import React, { useState } from 'react'
-import {omit} from 'lodash'
+// import React, { useState, useEffect } from 'react';
+// import validate from '@/utils/validate'
 
-const useFormValid = (callback: () => void) => {
-    const [values, setValues] = useState({});
-    const [errors, setErrors] = useState({});
+// const useForm = (
+//     callback?: () => void //,
+//     // validateCallback?: ({}) => React.SetStateAction<{}>
+// ) => {
 
-    const validate = (event : any, name : string, value : string, inputRule: string) => {
-        switch(name) {
-            default:
-                break;
-        }
-    }
+//     const [values, setValues] = useState<{[key: string]: any}>({});
+//     const [errors, setErrors] = useState<{[key: string]: any | {}}>({});
+//     const [isSubmitting, setIsSubmitting] = useState(false);
+//     const [submitted, setSubmitted] = useState(false)
 
-    const handleChange = (event: any) => {
-        event.persist();
+//     useEffect(() => {
+//         if (Object.keys(errors).length === 0 && submitted) {
+//             if (callback) callback();
+//         }
+//     }, [errors]);
 
-        let name = event.target.name;
-        let val = event.target.value;
-        let inputRule = event.target.dataset.inputRule;
+//     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+//         if (event) event.preventDefault();
+//         // if (validateCallback) validateCallback()
+//         // setErrors(validateCallback(values, isSubmitting));
+//         setSubmitted(true);
+//     };
 
-        validate(event,name,val,inputRule);
+//     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+//         event.persist();
+//         setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+//     };
 
-        setValues({
-            ...values,
-            [name]:val,
-        })
+//     return {
+//         handleChange,
+//         handleSubmit,
+//         values,
+//         errors,
+//         setErrors,
+//         setIsSubmitting,
+//         isSubmitting
+//     }
+// };
 
-    }
-
-    const handleSubmit = (event: any) => {
-        if(event) event.preventDefault();
-
-        if(Object.keys(errors).length === 0 && Object.keys(values).length !==0 ){
-            callback();
-
-        }else{
-            alert("There is an Error!");
-        }
-    }
-
-
-    return {
-        values,
-        errors,
-        handleChange,
-        handleSubmit
-    }
-}
-
-export default useFormValid
+// export default useForm;
