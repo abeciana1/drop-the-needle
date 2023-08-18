@@ -47,7 +47,8 @@ export type {
 export type {
     SingleSelectFieldI,
     FormI,
-    InputI
+    InputI,
+    LenLimitI
 } from '@/interfaces/Form'
 
 export type { 
