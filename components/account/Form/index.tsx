@@ -2,7 +2,7 @@ export { default as SingleSelectField } from '@/components/account/Form/SingleSe
 export { default as FormContainer } from '@/components/account/Form/Container'
 
 export {
-    Input
+    TextInput
 } from '@/components/account/Form/Inputs'
 
 export { default as UpdateTrackForm } from '@/components/account/Form/Forms/UpdateTrackForm'

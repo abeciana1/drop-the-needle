@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     ModalComp,
     SubmitButton
 } from '@/components/common'
 import {
     FormContainer,
-    Input
+    TextInput
 } from '@/components/account'
 import { UpdateTrackFormI } from '@/interfaces'
 
@@ -21,8 +21,8 @@ const UpdateTrackForm = ({
 }: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
     const [ isSubmitted, setSubmit ] = useState(false)
-    const [ errors, setErrors ] = useState({})
-    
+    const [ errorsPresent, setErrorsPresent ] = useState(0)
+
     const [ songObj, setSongObj ] = useState({
         songTitle: title,
         songArtist: artist,
@@ -32,15 +32,26 @@ const UpdateTrackForm = ({
         songYear: year,
         songLink: youtubeLink
     })
+
+    useEffect(() => {
+        if(edit) {
+            findErrorsInForm()
+        }
+    }, [errorsPresent])
+
+    const findErrorsInForm = async () => {
+        let errorList: NodeListOf<Element> = document.querySelectorAll('div[data-error="true"]')
+        if (errorList?.length < 1) {
+            setErrorsPresent(0)
+        }
+    }
     
     const toggleEditForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.stopPropagation()
         event.preventDefault()
         setSubmit(true)
-        if (Object.keys(errors).length === 0 && isSubmitted) {
-            setEdit(!edit)
-            submitHandler(event, songObj)
-        }
+        setEdit(!edit)
+        submitHandler(event, songObj)
     }
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,119 +75,93 @@ const UpdateTrackForm = ({
         <FormContainer
             onSubmit={toggleEditForm}
         >
-            <Input
+            <TextInput
                 name='songTitle'
                 labelText='Song title'
-                type='text'
                 fieldRequired
-                // defaultValue={title}
                 value={songObj?.songTitle || ''}
                 placeholder={songObj?.songTitle || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'fieldRequired'
-                }}
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
             />
-            <Input
+            <TextInput
                 name='songArtist'
                 labelText='Song artist'
-                type='text'
                 fieldRequired
-                // defaultValue={artist}
                 placeholder={songObj?.songArtist || ''}
                 value={songObj?.songArtist || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'fieldRequired'
-                }}
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
             />
-            <Input
+            {/* <TextInput
                 name='songLink'
                 labelText='Song link'
-                type='text'
                 fieldRequired
-                // defaultValue={youtubeLink}
                 placeholder={songObj?.songLink || ''}
                 value={songObj?.songLink || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'textFormat',
-                    regExPattern: "youtube.com/watch\\?v=",
-                    example: 'https://www.youtube.com/watch?v=QGnkTQikhsE'
-                }}
-            />
-            <Input
+                // isSubmitted={isSubmitted}
+                // inputRule={{
+                //     type: 'textFormat',
+                //     regExPattern: "youtube.com/watch\\?v=",
+                //     example: 'https://www.youtube.com/watch?v=QGnkTQikhsE'
+                // }}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
+            /> */}
+            <TextInput
                 name='songAlbum'
                 labelText='Song album'
-                type='text'
                 fieldRequired
-                // defaultValue={album}
                 placeholder={songObj?.songAlbum || ''}
                 value={songObj?.songAlbum || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'fieldRequired'
-                }}
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
             />
-            <Input
+            {/* <TextInput
                 name='songYear'
                 labelText='Song year'
-                type='number'
                 fieldRequired
-                // defaultValue={year}
                 placeholder={songObj?.songYear || ''}
                 value={songObj?.songYear || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'lenLimit',
-                    min: 4,
-                    max: 4
-                }}
-            />
-            <Input
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
+            /> */}
+            {/* <TextInput
                 name='songStartTime'
                 labelText='Song start time'
-                type='text'
                 fieldRequired
-                // defaultValue={startTime}
                 placeholder={songObj?.songStartTime || ''}
                 value={songObj?.songStartTime || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'fieldRequired'
-                }}
-            />
-            <Input
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
+            /> */}
+            {/* <TextInput
                 name='songEndTime'
                 labelText='Song end time'
-                type='text'
                 fieldRequired
-                // defaultValue={endTime}
                 placeholder={songObj?.songEndTime || ''}
                 value={songObj?.songEndTime || ''}
                 onChange={handleOnChange}
-                errors={errors}
-                isSubmitted={isSubmitted}
-                inputRule={{
-                    type: 'fieldRequired'
-                }}
+                // isSubmitted={isSubmitted}
+                setErrorsPresent={setErrorsPresent}
+                errorsPresent={errorsPresent}
+            /> */}
+            <SubmitButton
+                bgColor='vermillion'
+                disabled={errorsPresent !== 0}
             />
             <div className="py-3">
-                <SubmitButton
-                    bgColor='vermillion'
-                />
             </div>
         </FormContainer>
     </ModalComp>

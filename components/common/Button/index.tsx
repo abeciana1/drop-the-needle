@@ -70,11 +70,13 @@ export const OnClickButton = ({
 
 export const SubmitButton = ({
     bgColor,
-    text = 'Submit'
+    text = 'Submit',
+    disabled = false
 }: SubmitButtonI) => {
 
     return(
         <button
+            disabled={disabled}
             className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
                 ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',

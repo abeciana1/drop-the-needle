@@ -30,6 +30,7 @@ export interface LinkOnClickEvent extends LinkButtonI, EventOnClickBtnI {}
 export interface SubmitButtonI {
     text?: string;
     bgColor?: string;
+    disabled?: boolean;
 }
 
 export interface ExpandButtonPropsI {
