@@ -5,7 +5,8 @@ import {
 } from '@/components/common'
 import {
     FormContainer,
-    TextInput
+    TextInput,
+    LenLimitInput
 } from '@/components/account'
 import { UpdateTrackFormI } from '@/interfaces'
 
@@ -124,7 +125,7 @@ const UpdateTrackForm = ({
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
-            {/* <TextInput
+            <LenLimitInput
                 name='songYear'
                 labelText='Song year'
                 fieldRequired
@@ -134,7 +135,9 @@ const UpdateTrackForm = ({
                 // isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
-            /> */}
+                min={4}
+                max={4}
+            />
             {/* <TextInput
                 name='songStartTime'
                 labelText='Song start time'
