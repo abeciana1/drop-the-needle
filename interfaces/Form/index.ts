@@ -23,3 +23,8 @@ export interface InputI {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
     [x: string]: any;
 }
+
+export interface LenLimitI extends InputI {
+    min: number;
+    max: number;
+}
