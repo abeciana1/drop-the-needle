@@ -1,33 +1,10 @@
 import { useEffect, useState } from 'react'
-import { InputI } from '@/interfaces'
+import {
+    LenLimitI
+} from '@/interfaces'
 import { omit } from 'lodash'
 
-// const validate = (value: string, inputRule: any, error: any, setError: any, errorsPresent: number, setErrorsPresent: any) => {
-//     switch (inputRule?.type) {
-//         case "textFormat":
-//             if (value?.length < 1) {
-//                 setErrorsPresent(errorsPresent++)
-//                 setError({
-//                     ...error,
-//                     error: 'This field is required.'
-//                 })
-//             } else if (!!value?.match(new RegExp(inputRule.regExPattern, "gi")) === false) {
-//                 setErrorsPresent(errorsPresent++)
-//                 setError({
-//                     ...error,
-//                     error: `Please format your answer to this format: ${inputRule.example}`
-//                 })
-//             } else {
-//                 setErrorsPresent(--errorsPresent)
-//                 let newError1 = omit(error, "error")
-//                 setError(newError1)
-//             }
-//         default:
-//             break;
-//     }
-// }
-
-export const TextInput = ({
+export const LenLimitInput = ({
     name,
     labelText,
     value,
@@ -35,8 +12,10 @@ export const TextInput = ({
     placeholder,
     onChange,
     setErrorsPresent,
-    errorsPresent
-}: InputI) => {
+    errorsPresent,
+    min,
+    max
+}: LenLimitI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})
 
@@ -51,6 +30,12 @@ export const TextInput = ({
                 ...error,
                 error: 'This field is required.'
             })
+        } else if (value.length < max || value.length > max) {
+            setErrorsPresent(errorsPresent++)
+            setError({
+                ...error,
+                error: `This field requires a minimum of ${min} and maximum of ${max} characters.`
+            })
         } else {
             setErrorsPresent(--errorsPresent)
             let newError1 = omit(error, "error")
@@ -59,9 +44,7 @@ export const TextInput = ({
     }
 
     return (
-        <div
-            className="py-3"
-        >
+        <div className="py-3">
             <label className="">{ labelText }</label>
             <input
                 className="py-1 pl-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
