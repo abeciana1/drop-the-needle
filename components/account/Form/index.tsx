@@ -3,7 +3,8 @@ export { default as FormContainer } from '@/components/account/Form/Container'
 
 export {
     TextInput,
-    LenLimitInput
+    LenLimitInput,
+    TextFormatInput
 } from '@/components/account/Form/Inputs'
 
 export { default as UpdateTrackForm } from '@/components/account/Form/Forms/UpdateTrackForm'
