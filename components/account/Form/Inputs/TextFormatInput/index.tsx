@@ -34,7 +34,7 @@ export const TextFormatInput = ({
             setErrorsPresent(errorsPresent++)
             setError({
                 ...error,
-                error: `Please format your answer to this format: ${example}`
+                error: `Please format your answer to this format:`
             })
         } else {
             setErrorsPresent(--errorsPresent)
@@ -61,6 +61,7 @@ export const TextFormatInput = ({
             {error && Object.keys(error).length > 0 &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
+                    <span className='font-medium'>{" "}{example}</span>
                 </div>
             }
         </div>
