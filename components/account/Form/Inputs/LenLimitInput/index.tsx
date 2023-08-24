@@ -30,7 +30,7 @@ export const LenLimitInput = ({
                 ...error,
                 error: 'This field is required.'
             })
-        } else if (value.length < max || value.length > max) {
+        } else if (value.length < max) {
             setErrorsPresent(errorsPresent++)
             setError({
                 ...error,
@@ -52,7 +52,7 @@ export const LenLimitInput = ({
                 name={name}
                 type="text"
                 required={fieldRequired}
-                value={value || ''}
+                value={value.substring(0,4).concat("") || ''}
                 onChange={(e) => {
                     onChange(e)
                     validate(e.target.value)
