@@ -119,18 +119,19 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songAlbum || ''}
                 value={songObj?.songAlbum || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
             <LenLimitInput
                 name='songYear'
+                type='number'
                 labelText='Song year'
                 fieldRequired
                 placeholder={songObj?.songYear || ''}
                 value={songObj?.songYear || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
                 min={4}

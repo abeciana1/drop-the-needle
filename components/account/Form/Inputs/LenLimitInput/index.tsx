@@ -7,6 +7,7 @@ import { omit } from 'lodash'
 export const LenLimitInput = ({
     name,
     labelText,
+    type,
     value,
     fieldRequired,
     placeholder,
@@ -14,7 +15,8 @@ export const LenLimitInput = ({
     setErrorsPresent,
     errorsPresent,
     min,
-    max
+    max,
+    isSubmitted
 }: LenLimitI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})
@@ -50,7 +52,7 @@ export const LenLimitInput = ({
                 className="py-1 pl-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
                 placeholder={placeholder}
                 name={name}
-                type="text"
+                type={type}
                 required={fieldRequired}
                 value={value.substring(0,4).concat("") || ''}
                 onChange={(e) => {
@@ -58,7 +60,7 @@ export const LenLimitInput = ({
                     validate(e.target.value)
                 }}
             />
-            {error && Object.keys(error).length > 0 &&
+            {(isSubmitted && error && Object.keys(error).length > 0) &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
                 </div>

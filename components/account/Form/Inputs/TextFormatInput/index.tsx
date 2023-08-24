@@ -14,7 +14,8 @@ export const TextFormatInput = ({
     setErrorsPresent,
     errorsPresent,
     formatPattern,
-    example
+    example,
+    isSubmitted
 }: TextFormatI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})
@@ -58,7 +59,7 @@ export const TextFormatInput = ({
                     validate(e.target.value)
                 }}
             />
-            {error && Object.keys(error).length > 0 &&
+            {(isSubmitted && error && Object.keys(error).length > 0) &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
                     <span className='font-medium'>{" "}{example}</span>
