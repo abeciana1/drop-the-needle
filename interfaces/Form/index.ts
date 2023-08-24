@@ -28,3 +28,8 @@ export interface LenLimitI extends InputI {
     min: number;
     max: number;
 }
+
+export interface TextFormatI extends InputI {
+    formatPattern: string;
+    example: string;
+}
