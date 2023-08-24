@@ -2,31 +2,6 @@ import { useEffect, useState } from 'react'
 import { InputI } from '@/interfaces'
 import { omit } from 'lodash'
 
-// const validate = (value: string, inputRule: any, error: any, setError: any, errorsPresent: number, setErrorsPresent: any) => {
-//     switch (inputRule?.type) {
-//         case "textFormat":
-//             if (value?.length < 1) {
-//                 setErrorsPresent(errorsPresent++)
-//                 setError({
-//                     ...error,
-//                     error: 'This field is required.'
-//                 })
-//             } else if (!!value?.match(new RegExp(inputRule.regExPattern, "gi")) === false) {
-//                 setErrorsPresent(errorsPresent++)
-//                 setError({
-//                     ...error,
-//                     error: `Please format your answer to this format: ${inputRule.example}`
-//                 })
-//             } else {
-//                 setErrorsPresent(--errorsPresent)
-//                 let newError1 = omit(error, "error")
-//                 setError(newError1)
-//             }
-//         default:
-//             break;
-//     }
-// }
-
 export const TextInput = ({
     name,
     labelText,
