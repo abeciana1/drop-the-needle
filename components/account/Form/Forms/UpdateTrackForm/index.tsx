@@ -6,7 +6,8 @@ import {
 import {
     FormContainer,
     TextInput,
-    LenLimitInput
+    LenLimitInput,
+    TextFormatInput
 } from '@/components/account'
 import { UpdateTrackFormI } from '@/interfaces'
 
@@ -83,7 +84,7 @@ const UpdateTrackForm = ({
                 value={songObj?.songTitle || ''}
                 placeholder={songObj?.songTitle || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
@@ -94,26 +95,23 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songArtist || ''}
                 value={songObj?.songArtist || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
-            {/* <TextInput
+            <TextFormatInput
                 name='songLink'
                 labelText='Song link'
                 fieldRequired
                 placeholder={songObj?.songLink || ''}
                 value={songObj?.songLink || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
-                // inputRule={{
-                //     type: 'textFormat',
-                //     regExPattern: "youtube.com/watch\\?v=",
-                //     example: 'https://www.youtube.com/watch?v=QGnkTQikhsE'
-                // }}
+                isSubmitted={isSubmitted}
+                formatPattern="youtube.com/watch\\?v="
+                example='https://www.youtube.com/watch?v=QGnkTQikhsE'
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
-            /> */}
+            />
             <TextInput
                 name='songAlbum'
                 labelText='Song album'
