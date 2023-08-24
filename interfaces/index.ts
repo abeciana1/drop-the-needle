@@ -48,7 +48,8 @@ export type {
     SingleSelectFieldI,
     FormI,
     InputI,
-    LenLimitI
+    LenLimitI,
+    TextFormatI
 } from '@/interfaces/Form'
 
 export type { 
