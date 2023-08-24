@@ -10,7 +10,8 @@ export const TextInput = ({
     placeholder,
     onChange,
     setErrorsPresent,
-    errorsPresent
+    errorsPresent,
+    isSubmitted
 }: InputI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})
@@ -50,7 +51,7 @@ export const TextInput = ({
                     validate(e.target.value)
                 }}
             />
-            {error && Object.keys(error).length > 0 &&
+            {(isSubmitted && error && Object.keys(error).length > 0) &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
                 </div>
