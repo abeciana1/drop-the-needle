@@ -19,7 +19,8 @@ const ModalComp: React.FC<any> = ({
     Modal.setAppElement('#modals')
     const customStyles = {
         overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)'
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        zIndex: '9999'
         },
         content: {
         top: '50%',
@@ -30,7 +31,8 @@ const ModalComp: React.FC<any> = ({
         transform: 'translate(-50%, -50%)',
         borderRadius: '0.5rem',
         border: '2px solid #343434',
-        width: 'auto'
+        width: 'auto',
+        maxHeight: '100vh'
         }
     }
 
