@@ -6,7 +6,7 @@ const PlaylistCard = ({
     id,
     title,
     cover_image,
-    publicLink
+    publicLink = false
 }: DashPowerHourType) => {
 
     return (
