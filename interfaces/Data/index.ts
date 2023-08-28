@@ -54,6 +54,8 @@ export interface SongI {
     endTime: string;
     orderNumber: number;
     createdAt: Date | string;
+    album: string;
+    year: string;
     participant: {
         user: {
             name: string;
