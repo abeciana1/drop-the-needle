@@ -41,6 +41,9 @@ model PowerHour {
   createdAt      DateTime         @default(now())
   privateStatus Boolean @default(false)
   publishStatus Boolean @default(false)
+  songLimit Int @default(5)
+  album String @default("")
+  year String @default("")
   hosts          Host[]
   participants   Participant[]
   PowerHourSongs PowerHourSong[]

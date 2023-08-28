@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "powerHours" ADD COLUMN     "album" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "songLimit" INTEGER NOT NULL DEFAULT 5,
+ADD COLUMN     "year" TEXT NOT NULL DEFAULT '';
