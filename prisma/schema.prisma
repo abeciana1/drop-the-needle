@@ -42,8 +42,6 @@ model PowerHour {
   privateStatus Boolean @default(false)
   publishStatus Boolean @default(false)
   songLimit Int @default(5)
-  album String @default("")
-  year String @default("")
   hosts          Host[]
   participants   Participant[]
   PowerHourSongs PowerHourSong[]
@@ -57,6 +55,8 @@ model PowerHourSong {
   youtubeLink String
   startTime   String
   endTime     String
+  album String @default("")
+  year String @default("")
   powerHourId Int
   orderNumber Int
   createdAt   DateTime  @default(now())
