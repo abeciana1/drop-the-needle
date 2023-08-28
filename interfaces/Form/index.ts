@@ -21,10 +21,13 @@ export interface InputI {
     fieldRequired: boolean;
     placeholder: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
-    [x: string]: any;
+    isSubmitted: boolean;
+    errorsPresent: number;
+    setErrorsPresent: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface LenLimitI extends InputI {
+    type: string;
     min: number;
     max: number;
 }
@@ -32,4 +35,8 @@ export interface LenLimitI extends InputI {
 export interface TextFormatI extends InputI {
     formatPattern: string;
     example: string;
+}
+
+export interface TimeStampInputI extends InputI {
+    timeValue: string;
 }
