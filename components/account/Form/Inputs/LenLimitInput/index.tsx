@@ -60,7 +60,7 @@ export const LenLimitInput = ({
                     validate(e.target.value)
                 }}
             />
-            {(isSubmitted && error && Object.keys(error).length > 0) &&
+            {error && Object.keys(error).length > 0 &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
                 </div>

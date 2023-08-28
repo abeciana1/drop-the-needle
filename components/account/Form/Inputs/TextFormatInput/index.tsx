@@ -35,7 +35,7 @@ export const TextFormatInput = ({
             setErrorsPresent(errorsPresent++)
             setError({
                 ...error,
-                error: `Please format your answer to this format:`
+                error: `Please format your answer to this format: ${example}`
             })
         } else {
             setErrorsPresent(--errorsPresent)
@@ -59,10 +59,10 @@ export const TextFormatInput = ({
                     validate(e.target.value)
                 }}
             />
-            {(isSubmitted && error && Object.keys(error).length > 0) &&
+            {error && Object.keys(error).length > 0 &&
                 <div data-error="true" className='text-vermillion'>
                     {error.error}
-                    <span className='font-medium'>{" "}{example}</span>
+                    {/* <span className='font-medium'>{" "}{example}</span> */}
                 </div>
             }
         </div>
