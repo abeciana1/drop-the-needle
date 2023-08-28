@@ -40,6 +40,7 @@ const ParticipantPowerHoursPage = ({
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
+                                        publicLink
                                     />
                                 ))}
                             </PlaylistCardGroup>
