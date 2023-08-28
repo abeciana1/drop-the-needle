@@ -107,10 +107,10 @@ const UpdateTrackForm = ({
                 value={songObj?.songLink || ''}
                 onChange={handleOnChange}
                 isSubmitted={isSubmitted}
-                formatPattern="youtube.com/watch\\?v="
-                example='https://www.youtube.com/watch?v=QGnkTQikhsE'
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
+                formatPattern={"youtube.com/watch\\?v="}
+                example='https://www.youtube.com/watch?v=QGnkTQikhsE'
             />
             <TextInput
                 name='songAlbum'
@@ -137,33 +137,37 @@ const UpdateTrackForm = ({
                 min={4}
                 max={4}
             />
-            {/* <TextInput
+            <TextFormatInput
                 name='songStartTime'
                 labelText='Song start time'
                 fieldRequired
                 placeholder={songObj?.songStartTime || ''}
                 value={songObj?.songStartTime || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
-            /> */}
-            {/* <TextInput
+                formatPattern="^[0-9]:[0-5][0-9]$"
+                example='1:55'
+            />
+            <TextFormatInput
                 name='songEndTime'
                 labelText='Song end time'
                 fieldRequired
                 placeholder={songObj?.songEndTime || ''}
-                value={songObj?.songEndTime || ''}
                 onChange={handleOnChange}
-                // isSubmitted={isSubmitted}
+                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
-            /> */}
-            <SubmitButton
-                bgColor='vermillion'
-                disabled={errorsPresent !== 0}
+                value={songObj?.songEndTime || ''}
+                formatPattern="^[0-9]:[0-5][0-9]$"
+                example='1:55'
             />
             <div className="py-3">
+                <SubmitButton
+                    bgColor='vermillion'
+                    disabled={errorsPresent !== 0}
+                />
             </div>
         </FormContainer>
     </ModalComp>
