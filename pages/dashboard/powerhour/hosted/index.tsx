@@ -39,6 +39,7 @@ const HostedPowerHoursPage = ({
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
+                                        publicLink={false}
                                     />
                                 ))}
                             </PlaylistCardGroup>
