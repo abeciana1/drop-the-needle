@@ -5,7 +5,6 @@ import {
     UpdateTrackForm
 } from '@/components/account'
 import {
-    OnClickButton,
     ExpandBtn
 } from '@/components/common'
 import {
@@ -24,7 +23,8 @@ const Track = ({ song, user, provided }: TrackI) => {
         startTime,
         endTime,
         youtubeLink,
-        // orderNumber
+        album,
+        year
     } = song
 
     const [ trackObj, setTrackObj ] = useState({
@@ -33,8 +33,8 @@ const Track = ({ song, user, provided }: TrackI) => {
         trackStartTime: startTime,
         trackEndTime: endTime,
         trackYouTubeLink: youtubeLink,
-        trackAlbum: '',
-        trackYear: ''
+        trackAlbum: album,
+        trackYear: year
     })
 
     const toggleOpenDetails = () => {
