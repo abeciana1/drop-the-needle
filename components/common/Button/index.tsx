@@ -5,6 +5,7 @@ import {
     OnClickButtonI,
     SubmitButtonI
 } from '@/interfaces'
+import { useState } from 'react'
 
 export const EventClickButton = ({
     text,
@@ -73,19 +74,30 @@ export const SubmitButton = ({
     text = 'Submit',
     disabled = false
 }: SubmitButtonI) => {
-
+    const [ showTooltip, setTooltip ] = useState(false)
     return(
-        <button
-            disabled={disabled}
-            className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
-                ['text-altWhite bg-altBlack']: bgColor === 'altBlack',
-                ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
-                ['text-altWhite bg-vermillion']: bgColor === 'vermillion',
-                ['text-altBlack bg-gold']: bgColor === 'gold',
-                ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue'
-            })}
+        <div
+            className='relative flex items-center max-w-content'
         >
-            {text}
-        </button>
+            <button
+                onMouseEnter={() => setTooltip(true)}
+                onFocus={() => setTooltip(true)}
+                onBlur={() => setTooltip(false)}
+                onTouchStart={() => setTooltip(true)}
+                onTouchCancel={() => setTooltip(false)}
+                onMouseLeave={() => setTooltip(false)}
+                disabled={disabled}
+                className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
+                    ['text-altWhite bg-altBlack']: bgColor === 'altBlack' && disabled === false,
+                    ['text-altBlack bg-altWhite']: bgColor === 'altWhite' && disabled === false,
+                    ['text-altWhite bg-vermillion']: bgColor === 'vermillion' && disabled === false,
+                    ['text-altBlack bg-gold']: bgColor === 'gold' && disabled === false,
+                    ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue' && disabled === false,
+                    ['cursor-not-allowed bg-altBlack-200 text-altBlack']: disabled
+                })}
+            >
+                {disabled ? 'Fix errors in form' : text}
+            </button>
+        </div>
     )
 }
