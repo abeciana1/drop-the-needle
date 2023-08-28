@@ -37,6 +37,7 @@ export interface PowerHourI {
             name: string;
         }
     }];
+    songLimit: number;
     PowerHourSongs: SongI[]
 }
 
