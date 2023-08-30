@@ -44,9 +44,7 @@ const Track = ({ song, user, provided }: TrackI) => {
     const toggleRemoveTrack = async () => {
         if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
             await axios.delete(`http://localhost:3000/api/track/${id}`)
-            .then(res => console.log(`Deleted post with ID ${id}`))
             .catch(err => console.error({err}))
-            console.log('you deleted it')
         }
     }
 
