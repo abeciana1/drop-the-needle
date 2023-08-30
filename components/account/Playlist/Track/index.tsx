@@ -43,7 +43,7 @@ const Track = ({ song, user, provided }: TrackI) => {
 
     const toggleRemoveTrack = async () => {
         if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
-            await axios.delete(`http://localhost:3000/api/track/${id}`)
+            await axios.delete(`/api/track/${id}`)
             .catch(err => console.error({err}))
         }
     }
@@ -62,7 +62,7 @@ const Track = ({ song, user, provided }: TrackI) => {
             trackAlbum: data?.songAlbum,
             trackYear: data?.songYear
         })
-        await axios.patch(`http://localhost:3000/api/track/${id}`, {
+        await axios.patch(`/api/track/${id}`, {
             title: data?.songTitle,
             artist: data?.songArtist,
             startTime: data?.songStartTime,
