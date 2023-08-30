@@ -11,13 +11,13 @@ import {
     AiFillDelete,
     AiFillFolderOpen
 } from 'react-icons/ai'
-
-
+import axios from 'axios'
 
 const Track = ({ song, user, provided }: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
     
     const {
+        id,
         title,
         artist,
         startTime,
@@ -49,7 +49,7 @@ const Track = ({ song, user, provided }: TrackI) => {
         }
     }
 
-    const updateSubmitHandler = (e: React.FormEvent<HTMLFormElement>, data: any) => {
+    const updateSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
         e.stopPropagation()
         e.preventDefault()
         console.log(data)
@@ -63,6 +63,17 @@ const Track = ({ song, user, provided }: TrackI) => {
             trackAlbum: data?.songAlbum,
             trackYear: data?.songYear
         })
+        await axios.patch(`http://localhost:3000/api/track/${id}`, {
+            title: data?.songTitle,
+            artist: data?.songArtist,
+            startTime: data?.songStartTime,
+            endTime: data?.songEndTime,
+            youtubeLink: data?.songLink,
+            album: data?.songAlbum,
+            year: data?.songYear
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error('err', err))
     }
 
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
