@@ -41,10 +41,11 @@ const Track = ({ song, user, provided }: TrackI) => {
         setOpen(!openTrack)
     }
 
-    const toggleRemoveTrack = () => {
+    const toggleRemoveTrack = async () => {
         if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
-            // todo hook this function up to remove song
-            // todo create action to delete song
+            await axios.delete(`http://localhost:3000/api/track/${id}`)
+            .then(res => console.log(`Deleted post with ID ${id}`))
+            .catch(err => console.error({err}))
             console.log('you deleted it')
         }
     }
@@ -73,7 +74,7 @@ const Track = ({ song, user, provided }: TrackI) => {
             year: data?.songYear
         })
         .then(res => console.log(res))
-        .catch(err => console.error('err', err))
+        .catch(err => console.error({err}))
     }
 
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
