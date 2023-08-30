@@ -48,20 +48,20 @@ const UpdateTrackForm = ({
         }
     }
     
-    const toggleEditForm = (event: React.FormEvent<HTMLFormElement>) => {
-        event.stopPropagation()
-        event.preventDefault()
-        setSubmit(true)
-        setEdit(!edit)
-        submitHandler(event, songObj)
-    }
-
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.persist()
         setSongObj({
             ...songObj,
             [event.target.name]: event.target.value
         })
+    }
+    
+    const toggleEditForm = (event: React.FormEvent<HTMLFormElement>) => {
+        event.stopPropagation()
+        event.preventDefault()
+        setSubmit(true)
+        setEdit(!edit)
+        submitHandler(event, songObj)
     }
 
     return(
