@@ -13,7 +13,13 @@ import {
 } from 'react-icons/ai'
 import axios from 'axios'
 
-const Track = ({ song, user, provided }: TrackI) => {
+const Track = ({
+    song,
+    user,
+    provided,
+    index,
+    removeHandler
+}: TrackI) => {
     const [ openTrack, setOpen ] = useState(false)
     
     const {
@@ -41,12 +47,13 @@ const Track = ({ song, user, provided }: TrackI) => {
         setOpen(!openTrack)
     }
 
-    const toggleRemoveTrack = async () => {
-        if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
-            await axios.delete(`/api/track/${id}`)
-            .catch(err => console.error({err}))
-        }
-    }
+    // const toggleRemoveTrack = () => {
+    //     if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
+    //         removeHandler(index)
+    //         // await axios.delete(`/api/track/${id}`)
+    //         // .catch(err => console.error({err}))
+    //     }
+    // }
 
     const updateSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
         e.stopPropagation()
@@ -113,7 +120,7 @@ const Track = ({ song, user, provided }: TrackI) => {
                         text="Remove"
                         icon={AiFillDelete}
                         backgroundColor='vermillion'
-                        onClick={toggleRemoveTrack}
+                        onClick={() => removeHandler(index)}
                         size={8}
                     />
                 </span>
