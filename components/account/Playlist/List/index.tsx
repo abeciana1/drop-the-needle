@@ -3,7 +3,8 @@ import { TrackListI, SongI } from '@/interfaces'
 import { Track } from '@/components/account'
 
 const TrackList = ({
-    songs
+    songs,
+    removeHandler
 }: TrackListI) => {
 
     const handleOnDragEnd = (result: any) => {
@@ -39,6 +40,7 @@ const TrackList = ({
                                         >
                                             {(provided) => (
                                                 <Track
+                                                    removeHandler={removeHandler}
                                                     song={song}
                                                     user={song?.participant?.user?.name} 
                                                     provided={provided}
