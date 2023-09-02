@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     DashPageLayout,
     SEO,
@@ -17,7 +17,7 @@ import {
     TrackList
 } from '@/components/account'
 import axios from 'axios'
-import { PowerHourDynamicPageI } from '@/interfaces'
+import { PowerHourDynamicPageI, SongI } from '@/interfaces'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import {
@@ -38,9 +38,13 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
-
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
+    const [ songList, setSongList ] = useState([])
+    console.log({songList})
+    useEffect(() => {
+
+    }, [songList])
 
     const handlePowerHourPublishStatus = () => {
         if (selectedPubStatus?.status === 'Published') {
@@ -51,6 +55,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     }
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
+
+    const removeHandler = (index: number) => {
+        if (confirm(`Are you sure you want to delete song from this power hour?`)) {
+            let newSongs = [...songList]
+            newSongs.splice(index, 1)
+            setSongList(newSongs)
+        }
+    }
 
     return (
         <>
@@ -93,7 +105,12 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <TrackList songs={powerHour?.PowerHourSongs} />
+                    <TrackList
+                        // setSongList={setSongList}
+                        removeHandler={removeHandler}
+                        songs={songList}
+                        // songs={powerHour?.PowerHourSongs}
+                    />
                 </ComponentMargin>
             </DashPageLayout>
         </>
@@ -108,7 +125,7 @@ export const getStaticPaths = async () => {
     })
     return {
         paths: powerHourPaths,
-        fallback: false
+        fallback: true
     }
 }
 
@@ -118,7 +135,8 @@ export const getStaticProps = async ({params}: any) => {
         return {
             props: {
                 powerHour: data?.powerHour
-            }
+            },
+            revalidate: 1
         }
     } catch (error) {
         return {
