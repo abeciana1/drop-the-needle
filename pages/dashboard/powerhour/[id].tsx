@@ -40,11 +40,26 @@ const phPublishStatuses = [
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
-    const [ songList, setSongList ] = useState([])
-    console.log({songList})
+    const [ songList, setSongList ]: any = useState([])
     useEffect(() => {
+        if (window) {
+            let id = window.location.pathname.split('/')[3]
+            axios.get("http://localhost:3000/api/powerhour/get-songs/" + id)
+            .then((response) => {
+                console.log(response)
+                setSongList(response?.data?.sortedSongs)
+            })
+            .catch(err => console.error({err}))
+        }
+    }, [])
 
-    }, [songList])
+    const removeHandler = (index: number) => {
+        if (confirm(`Are you sure you want to delete song from this power hour?`)) {
+            let newSongs = [...songList]
+            newSongs.splice(index, 1)
+            setSongList(newSongs)
+        }
+    }
 
     const handlePowerHourPublishStatus = () => {
         if (selectedPubStatus?.status === 'Published') {
@@ -55,14 +70,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     }
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
-
-    const removeHandler = (index: number) => {
-        if (confirm(`Are you sure you want to delete song from this power hour?`)) {
-            let newSongs = [...songList]
-            newSongs.splice(index, 1)
-            setSongList(newSongs)
-        }
-    }
 
     return (
         <>
@@ -106,10 +113,8 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                         </section>
                     </Grid3Column>
                     <TrackList
-                        // setSongList={setSongList}
                         removeHandler={removeHandler}
                         songs={songList}
-                        // songs={powerHour?.PowerHourSongs}
                     />
                 </ComponentMargin>
             </DashPageLayout>
