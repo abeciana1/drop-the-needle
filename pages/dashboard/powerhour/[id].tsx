@@ -46,7 +46,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             let id = window.location.pathname.split('/')[3]
             axios.get("http://localhost:3000/api/powerhour/get-songs/" + id)
             .then((response) => {
-                console.log(response)
                 setSongList(response?.data?.sortedSongs)
             })
             .catch(err => console.error({err}))
