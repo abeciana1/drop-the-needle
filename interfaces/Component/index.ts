@@ -1,7 +1,6 @@
 import React from 'react'
 import {
-    ImageType,
-    DashPowerHourType
+    ImageType
 } from '@/types';
 import { SongI, OnClickButtonI } from '@/interfaces'
 
