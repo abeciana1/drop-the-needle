@@ -44,7 +44,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
-            axios.get("http://localhost:3000/api/powerhour/get-songs/" + id)
+            axios.get("/api/powerhour/get-songs/" + id)
             .then((response) => {
                 setSongList(response?.data?.sortedSongs)
             })
@@ -57,6 +57,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             let newSongs = [...songList]
             newSongs.splice(index, 1)
             setSongList(newSongs)
+            axios.delete('/api/track/' + index)
         }
     }
 
