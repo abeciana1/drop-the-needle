@@ -47,14 +47,6 @@ const Track = ({
         setOpen(!openTrack)
     }
 
-    // const toggleRemoveTrack = () => {
-    //     if (confirm(`Are you sure you want to delete '${title}' from this power hour?`)) {
-    //         removeHandler(index)
-    //         // await axios.delete(`/api/track/${id}`)
-    //         // .catch(err => console.error({err}))
-    //     }
-    // }
-
     const updateSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
         e.stopPropagation()
         e.preventDefault()
