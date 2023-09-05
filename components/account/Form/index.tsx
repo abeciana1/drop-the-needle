@@ -7,4 +7,7 @@ export {
     TextFormatInput
 } from '@/components/account/Form/Inputs'
 
-export { default as UpdateTrackForm } from '@/components/account/Form/Forms/UpdateTrackForm'
+export {
+    UpdateTrackForm,
+    UpdatePowerHourForm
+} from '@/components/account/Form/Forms'
