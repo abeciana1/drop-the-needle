@@ -10,8 +10,7 @@ export const TextInput = ({
     placeholder,
     onChange,
     setErrorsPresent,
-    errorsPresent,
-    isSubmitted
+    errorsPresent
 }: InputI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})

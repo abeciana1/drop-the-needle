@@ -14,8 +14,7 @@ export const TextFormatInput = ({
     setErrorsPresent,
     errorsPresent,
     formatPattern,
-    example,
-    isSubmitted
+    example
 }: TextFormatI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})

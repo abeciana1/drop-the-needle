@@ -15,8 +15,7 @@ export const LenLimitInput = ({
     setErrorsPresent,
     errorsPresent,
     min,
-    max,
-    isSubmitted
+    max
 }: LenLimitI) => {
 
     const [ error, setError ] = useState<{[key: string]: any}>({})
