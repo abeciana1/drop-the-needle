@@ -11,18 +11,6 @@ import {
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 
-// {
-//     "id": 1,
-//     "title": "Power Hour 1",
-//     "description": "Power Hour 1",
-//     "cover_image": "https://media.graphassets.com/output=format:webp/HbyIN3qzSVGDqTAcN9iP",
-//     "date_time": "2023-04-21T18:09:07.771Z",
-//     "createdAt": "2023-04-21T18:09:07.775Z",
-//     "privateStatus": false,
-//     "publishStatus": false,
-//     "songLimit": 5,
-// }
-
 const UpdatePowerHourForm = ({
     title,
     description,
