@@ -84,8 +84,14 @@ const UpdatePowerHourForm = ({
             render={edit}
             setRender={setEdit}
         >
-            {/* <FormContainer>
-            </FormContainer> */}
+            <FormContainer onSubmit={toggleEditForm}>
+                <div className="py-3">
+                    <SubmitButton
+                        bgColor='vermillion'
+                        disabled={errorsPresent !== 0}
+                    />
+                </div>
+            </FormContainer>
         </ModalComp>
     )
 }
