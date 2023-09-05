@@ -25,13 +25,13 @@ const UpdatePowerHourForm = ({
     const [ errorsPresent, setErrorsPresent ] = useState(0)
 
     const [ playlist, setPlaylist ] = useState({
-        playlistTitle: title,
-        playlistDesc: description,
-        playlistImg: coverImage,
-        playlistDate: dateTime,
-        playlistPrivacy: privateStatus,
-        playlistPublish: publishStatus,
-        playlistLimit: songLimit
+        title: title,
+        description: description,
+        coverImage: coverImage,
+        dateTime: dateTime,
+        privateStatus: privateStatus,
+        publishStatus: publishStatus,
+        songLimit: songLimit
     })
 
     useEffect(() => {
@@ -73,6 +73,16 @@ const UpdatePowerHourForm = ({
             setRender={setEdit}
         >
             <FormContainer onSubmit={toggleEditForm}>
+                <TextInput
+                    name='title'
+                    labelText='Power Hour title'
+                    fieldRequired
+                    value={playlist?.title || ''}
+                    placeholder={playlist?.title || ''}
+                    onChange={handleOnChange}
+                    setErrorsPresent={setErrorsPresent}
+                    errorsPresent={errorsPresent}
+                />
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
