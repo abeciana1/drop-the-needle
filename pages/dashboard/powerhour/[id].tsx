@@ -14,10 +14,11 @@ import {
 import {
     SingleSelectField,
     AccordionDataList,
-    TrackList
+    TrackList,
+    UpdatePowerHourForm
 } from '@/components/account'
 import axios from 'axios'
-import { PowerHourDynamicPageI, SongI } from '@/interfaces'
+import { PowerHourDynamicPageI } from '@/interfaces'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import {
@@ -38,9 +39,20 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
-    let currentIdx = powerHour?.publishStatus ? 0 : 1
+    const [ powerHourObj, setPowerHour ] = useState({
+        id: powerHour?.id,
+        title: powerHour?.title,
+        description: powerHour?.description,
+        coverImage: powerHour?.cover_image,
+        dateTime: powerHour?.date_time,
+        privateStatus: powerHour?.privateStatus,
+        publishStatus: powerHour?.publishStatus,
+        songLimit: powerHour?.songLimit,
+    })
+    let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ]: any = useState([])
+
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
@@ -71,6 +83,32 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
 
+    const updatePlaylistSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
+        e.stopPropagation()
+        e.preventDefault()
+        setPowerHour({
+            ...powerHourObj,
+            title: data?.title,
+            description: data?.description,
+            coverImage: data?.coverImage,
+            dateTime: data?.dateTime,
+            privateStatus: data?.privateStatus,
+            publishStatus: data?.publishStatus,
+            songLimit: data?.songLimit
+        })
+        await axios.patch(`/api/powerhour/${powerHour?.id}`, {
+            title: data?.title,
+            description: data?.description,
+            cover_image: data?.coverImage,
+            date_time: data?.dateTime,
+            privateStatus: data?.privateStatus,
+            publishStatus: data?.publishStatus,
+            songLimit: data?.songLimit
+        })
+        .then(res => console.log(res))
+        .catch(err => console.error({err}))
+    }
+
     return (
         <>
             <SEO />
@@ -90,6 +128,16 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             {powerHour?.date_time &&
                                 <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
                             }
+                            <UpdatePowerHourForm
+                                title={powerHourObj?.title}
+                                description={powerHourObj?.description}
+                                coverImage={powerHourObj?.coverImage}
+                                dateTime={powerHourObj?.dateTime}
+                                privateStatus={powerHourObj?.privateStatus}
+                                publishStatus={powerHourObj?.publishStatus}
+                                songLimit={powerHourObj?.songLimit}
+                                submitHandler={updatePlaylistSubmitHandler}
+                            />
                         </section>
                     </section>
                     <Grid3Column>
@@ -112,7 +160,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <div className="my-5 font-medium">Song limit: {powerHour?.songLimit}</div>
+                    <div className="my-5 font-medium">Song limit: {powerHourObj?.songLimit}</div>
                     <TrackList
                         removeHandler={removeHandler}
                         songs={songList}
@@ -137,12 +185,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params}: any) => {
     try {
-        const {data } = await axios.get("http://localhost:3000/api/powerhour/" + params?.id)
+        const { data } = await axios.get("http://localhost:3000/api/powerhour/" + params?.id)
         return {
             props: {
                 powerHour: data?.powerHour
-            },
-            revalidate: 1
+            }
         }
     } catch (error) {
         return {
