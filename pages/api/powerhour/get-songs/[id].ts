@@ -8,7 +8,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 id: Number(req?.query?.id)
             },
             select: {
-                PowerHourSongs: true
+                PowerHourSongs: {
+                    include: {
+                        participant: {
+                            select: {
+                                user: {
+                                    select: {
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         })
         let sortedSongs = powerHourSongs?.PowerHourSongs.sort((a, b) => a.orderNumber - b.orderNumber)
