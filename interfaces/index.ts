@@ -53,5 +53,6 @@ export type {
 } from '@/interfaces/Form'
 
 export type { 
-    UpdateTrackFormI
+    UpdateTrackFormI,
+    UpdatePowerHourFormI
 } from '@/interfaces/Form/Forms'
