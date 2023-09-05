@@ -21,7 +21,6 @@ export interface InputI {
     fieldRequired: boolean;
     placeholder: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
-    isSubmitted: boolean;
     errorsPresent: number;
     setErrorsPresent: React.Dispatch<React.SetStateAction<number>>;
 }
