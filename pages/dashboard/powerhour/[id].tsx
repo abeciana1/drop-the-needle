@@ -76,8 +76,10 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     const handlePowerHourPublishStatus = () => {
         if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
+            // todo add patch api call
         } else {
             setPubStatus(phPublishStatuses[0])
+            // todo add patch api call
         }
     }
 
@@ -105,7 +107,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             publishStatus: data?.publishStatus,
             songLimit: data?.songLimit
         })
-        .then(res => console.log(res))
         .catch(err => console.error({err}))
     }
 
@@ -160,7 +161,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <div className="my-5 font-medium">Song limit: {powerHourObj?.songLimit}</div>
+                    <div className="my-5 font-medium">Song limit: {powerHour?.songLimit}</div>
                     <TrackList
                         removeHandler={removeHandler}
                         songs={songList}
