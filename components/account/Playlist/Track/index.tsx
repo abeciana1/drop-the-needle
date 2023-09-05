@@ -70,7 +70,6 @@ const Track = ({
             album: data?.songAlbum,
             year: data?.songYear
         })
-        .then(res => console.log(res))
         .catch(err => console.error({err}))
     }
 
