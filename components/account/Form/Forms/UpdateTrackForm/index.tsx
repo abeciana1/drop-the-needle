@@ -22,7 +22,6 @@ const UpdateTrackForm = ({
     submitHandler
 }: UpdateTrackFormI) => {
     const [ edit, setEdit ] = useState(false)
-    const [ isSubmitted, setSubmit ] = useState(false)
     const [ errorsPresent, setErrorsPresent ] = useState(0)
 
     const [ songObj, setSongObj ] = useState({
@@ -60,7 +59,6 @@ const UpdateTrackForm = ({
     const toggleEditForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.stopPropagation()
         event.preventDefault()
-        setSubmit(true)
         setEdit(!edit)
         submitHandler(event, songObj)
     }
@@ -85,7 +83,6 @@ const UpdateTrackForm = ({
                 value={songObj?.songTitle || ''}
                 placeholder={songObj?.songTitle || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
@@ -96,7 +93,6 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songArtist || ''}
                 value={songObj?.songArtist || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
@@ -107,7 +103,6 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songLink || ''}
                 value={songObj?.songLink || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
                 formatPattern={"youtube.com/watch\\?v="}
@@ -120,7 +115,6 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songAlbum || ''}
                 value={songObj?.songAlbum || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
@@ -132,7 +126,6 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songYear || ''}
                 value={songObj?.songYear || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
                 min={4}
@@ -145,7 +138,6 @@ const UpdateTrackForm = ({
                 placeholder={songObj?.songStartTime || ''}
                 value={songObj?.songStartTime || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
                 formatPattern="^[0-9]:[0-5][0-9]$"
@@ -157,7 +149,6 @@ const UpdateTrackForm = ({
                 fieldRequired
                 placeholder={songObj?.songEndTime || ''}
                 onChange={handleOnChange}
-                isSubmitted={isSubmitted}
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
                 value={songObj?.songEndTime || ''}
