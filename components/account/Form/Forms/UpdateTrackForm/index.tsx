@@ -48,6 +48,7 @@ const UpdateTrackForm = ({
         }
     }
     
+    
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.persist()
         setSongObj({
@@ -63,7 +64,7 @@ const UpdateTrackForm = ({
         setEdit(!edit)
         submitHandler(event, songObj)
     }
-
+    
     return(
     <ModalComp
         shouldCloseOnOverlayClick={false}
