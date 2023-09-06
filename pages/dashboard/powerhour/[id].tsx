@@ -115,32 +115,34 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
-                    <section className="flex flex-col md:flex-row justify-around items-center py-10">
-                        <Image
-                            src={powerHour?.cover_image}
-                            width={250}
-                            height={250}
-                            alt={powerHour?.title}
-                            priority
-                        />
-                        <section className="space-y-2.5">
-                            <H1 color={2} text={powerHour?.title} />
-                            <H2 color={2} text={powerHour?.description} />
-                            {powerHour?.date_time &&
-                                <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
-                            }
-                            <UpdatePowerHourForm
-                                title={powerHourObj?.title}
-                                description={powerHourObj?.description}
-                                coverImage={powerHourObj?.coverImage}
-                                dateTime={powerHourObj?.dateTime}
-                                privateStatus={powerHourObj?.privateStatus}
-                                publishStatus={powerHourObj?.publishStatus}
-                                songLimit={powerHourObj?.songLimit}
-                                submitHandler={updatePlaylistSubmitHandler}
+                    {powerHour &&
+                        <section className="flex flex-col md:flex-row justify-around items-center py-10">
+                            <Image
+                                src={powerHourObj?.coverImage}
+                                width={250}
+                                height={250}
+                                alt={powerHour?.title}
+                                priority
                             />
+                            <section className="space-y-2.5">
+                                <H1 color={2} text={powerHourObj?.title} />
+                                <H2 color={2} text={powerHourObj?.description} />
+                                {powerHourObj?.dateTime &&
+                                    <H3 color={2} text={format(new Date(powerHourObj?.dateTime), 'MM/dd/yyyy')}/>
+                                }
+                                <UpdatePowerHourForm
+                                    title={powerHourObj?.title}
+                                    description={powerHourObj?.description}
+                                    coverImage={powerHourObj?.coverImage}
+                                    dateTime={powerHourObj?.dateTime}
+                                    privateStatus={powerHourObj?.privateStatus}
+                                    publishStatus={powerHourObj?.publishStatus}
+                                    songLimit={powerHourObj?.songLimit}
+                                    submitHandler={updatePlaylistSubmitHandler}
+                                />
+                            </section>
                         </section>
-                    </section>
+                    }
                     <Grid3Column>
                         <SingleSelectField
                             icon={selectedPubStatus?.bool ? HiEye : HiEyeOff}
