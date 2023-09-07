@@ -2,7 +2,7 @@ export { default as SingleSelectField } from '@/components/account/Form/SingleSe
 export { default as FormContainer } from '@/components/account/Form/Container'
 
 export {
-    TextInput,
+    Input,
     LenLimitInput,
     TextFormatInput
 } from '@/components/account/Form/Inputs'
