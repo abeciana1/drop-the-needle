@@ -39,6 +39,17 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
+    useEffect(() => {
+        if (window) {
+            let id = window.location.pathname.split('/')[3]
+            axios.get("/api/powerhour/get-songs/" + id)
+            .then((response) => {
+                setSongList(response?.data?.sortedSongs)
+            })
+            .catch(err => console.error({err}))
+        }
+    }, [])
+
     const [ powerHourObj, setPowerHour ] = useState({
         id: powerHour?.id,
         title: powerHour?.title,
@@ -52,17 +63,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ]: any = useState([])
-
-    useEffect(() => {
-        if (window) {
-            let id = window.location.pathname.split('/')[3]
-            axios.get("/api/powerhour/get-songs/" + id)
-            .then((response) => {
-                setSongList(response?.data?.sortedSongs)
-            })
-            .catch(err => console.error({err}))
-        }
-    }, [])
 
     const removeHandler = (index: number) => {
         if (confirm(`Are you sure you want to delete song from this power hour?`)) {
@@ -115,29 +115,29 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
-                    {powerHour &&
+                    {powerHourObj &&
                         <section className="flex flex-col md:flex-row justify-around items-center py-10">
                             <Image
-                                src={powerHourObj?.coverImage}
+                                src={powerHour?.cover_image }
                                 width={250}
                                 height={250}
-                                alt={powerHour?.title}
+                                alt={powerHourObj?.title}
                                 priority
                             />
                             <section className="space-y-2.5">
-                                <H1 color={2} text={powerHourObj?.title} />
-                                <H2 color={2} text={powerHourObj?.description} />
-                                {powerHourObj?.dateTime &&
-                                    <H3 color={2} text={format(new Date(powerHourObj?.dateTime), 'MM/dd/yyyy')}/>
+                                <H1 color={2} text={powerHour?.title} />
+                                <H2 color={2} text={powerHour?.description} />
+                                {powerHour?.date_time &&
+                                    <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
                                 }
                                 <UpdatePowerHourForm
-                                    title={powerHourObj?.title}
-                                    description={powerHourObj?.description}
+                                    title={powerHour?.title}
+                                    description={powerHour?.description}
                                     coverImage={powerHourObj?.coverImage}
                                     dateTime={powerHourObj?.dateTime}
                                     privateStatus={powerHourObj?.privateStatus}
                                     publishStatus={powerHourObj?.publishStatus}
-                                    songLimit={powerHourObj?.songLimit}
+                                    songLimit={powerHour?.songLimit}
                                     submitHandler={updatePlaylistSubmitHandler}
                                 />
                             </section>
