@@ -5,7 +5,7 @@ import {
 } from '@/components/common'
 import {
     FormContainer,
-    TextInput,
+    Input,
     LenLimitInput,
     TextFormatInput
 } from '@/components/account'
@@ -76,7 +76,7 @@ const UpdateTrackForm = ({
         <FormContainer
             onSubmit={toggleEditForm}
         >
-            <TextInput
+            <Input
                 name='songTitle'
                 labelText='Song title'
                 fieldRequired
@@ -86,7 +86,7 @@ const UpdateTrackForm = ({
                 setErrorsPresent={setErrorsPresent}
                 errorsPresent={errorsPresent}
             />
-            <TextInput
+            <Input
                 name='songArtist'
                 labelText='Song artist'
                 fieldRequired
@@ -108,7 +108,7 @@ const UpdateTrackForm = ({
                 formatPattern={"youtube.com/watch\\?v="}
                 example='https://www.youtube.com/watch?v=QGnkTQikhsE'
             />
-            <TextInput
+            <Input
                 name='songAlbum'
                 labelText='Song album'
                 fieldRequired
