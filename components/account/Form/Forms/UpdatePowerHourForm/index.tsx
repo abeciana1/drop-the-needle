@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import {
     ModalComp,
     SubmitButton
 } from '@/components/common'
 import {
     FormContainer,
-    TextInput
+    Input,
+    LenLimitInput
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 
@@ -21,6 +22,7 @@ const UpdatePowerHourForm = ({
 }: UpdatePowerHourFormI) => {
     const [ edit, setEdit ] = useState(false)
     const [ errorsPresent, setErrorsPresent ] = useState(0)
+    console.log('errorsPresent', errorsPresent)
 
     const [ playlist, setPlaylist ] = useState({
         title: title,
@@ -32,14 +34,22 @@ const UpdatePowerHourForm = ({
         songLimit: songLimit
     })
 
+    // const errorFinding = useMemo(() => {
+    //     if(edit) {
+    //         let errorList: NodeListOf<Element> = document.querySelectorAll('[data-error="true"]')
+    //         if (errorList?.length < 1) {
+    //             setErrorsPresent(0)
+    //         }
+    //     }
+    // }, [errorsPresent])
+    
     useEffect(() => {
-        if(edit) {
-            findErrorsInForm()
-        }
+        findErrorsInForm()
     }, [errorsPresent])
 
-    const findErrorsInForm = async () => {
-        let errorList: NodeListOf<Element> = document.querySelectorAll('div[data-error="true"]')
+    // console.log(errorFinding)
+    const findErrorsInForm = () => {
+        let errorList: NodeListOf<Element> = document.querySelectorAll('[data-error="true"]')
         if (errorList?.length < 1) {
             setErrorsPresent(0)
         }
@@ -71,15 +81,28 @@ const UpdatePowerHourForm = ({
             setRender={setEdit}
         >
             <FormContainer onSubmit={toggleEditForm}>
-                <TextInput
+                <Input
                     name='title'
                     labelText='Power Hour title'
                     fieldRequired
-                    value={playlist?.title || ''}
-                    placeholder={playlist?.title || ''}
+                    value={playlist?.title}
+                    placeholder={playlist?.title}
                     onChange={handleOnChange}
                     setErrorsPresent={setErrorsPresent}
                     errorsPresent={errorsPresent}
+                />
+                <Input
+                    name='songLimit'
+                    type='number'
+                    labelText='Song limit'
+                    fieldRequired
+                    placeholder={playlist?.songLimit}
+                    value={playlist?.songLimit}
+                    onChange={handleOnChange}
+                    setErrorsPresent={setErrorsPresent}
+                    errorsPresent={errorsPresent}
+                    min={0}
+                    max={99}
                 />
                 <div className="py-3">
                     <SubmitButton
