@@ -16,17 +16,22 @@ export interface FormI extends ChildrenI {
 
 export interface InputI {
     name: string;
+    type?: string;
     labelText: string;
-    value: string;
+    value: string | number;
     fieldRequired: boolean;
-    placeholder: string;
+    placeholder: string | number | undefined;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void|undefined;
     errorsPresent: number;
     setErrorsPresent: React.Dispatch<React.SetStateAction<number>>;
+    min?: number;
+    max?: number;
 }
 
 export interface LenLimitI extends InputI {
     type: string;
+    value: string;
+    // placeholder: string;
     min: number;
     max: number;
 }
