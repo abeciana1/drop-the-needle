@@ -59,7 +59,7 @@ const UpdatePowerHourForm = ({
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
-                        disabled={errorsPresent !== 0}
+                        // disabled={errorsPresent !== 0}
                     />
                 </div>
             </FormContainer>
