@@ -1,3 +1,9 @@
+import { Path, UseFormRegister } from "react-hook-form";
+import {
+    FormValuesI,
+    NumberValidation
+} from '@/interfaces'
+
 export type ImageType = {
     src: string;
     width: number;
@@ -10,4 +16,33 @@ export type DashPowerHourType = {
     title: string;
     cover_image: string;
     publicLink: boolean;
+}
+
+export type InputType = {
+    name: string;
+    type?: string;
+    label: Path<FormValuesI>;
+    fieldRequired: boolean | string;
+    register: UseFormRegister<FormValuesI>;
+    registerOptions?: {
+        maxLength?: NumberValidation;
+        minLength?: NumberValidation;
+        max?: number;
+        min?: number;
+        pattern?: {
+            value: RegExp,
+            message: string;
+        };
+        validate?: Function | Object | any;
+        valueAsNumber?: any;
+        valueAsString?: any;
+        valueAsDate?: any;
+        setValueAs?: <T>(value: any) => T;
+        disabled?: boolean;
+        onChange?: (e: React.SyntheticEvent) => void;
+        onBlur?: (e: React.SyntheticEvent) => void;
+        value?: string | number;
+        shouldUnregister?: boolean;
+        deps?: string | string[];
+    }
 }
