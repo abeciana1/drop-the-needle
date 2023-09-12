@@ -39,7 +39,6 @@ export interface PowerHourI {
         }
     }];
     songLimit: number;
-    PowerHourSongs: SongI[]
 }
 
 export interface PowerHourDynamicPageI {
