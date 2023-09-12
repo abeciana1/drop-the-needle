@@ -28,7 +28,7 @@ const UpdateTrackForm = ({
     } = useForm()
     const [ edit, setEdit ] = useState(false)
 
-    const submitTest = (data: any) => {
+    const submit = (data: any) => {
         setEdit(!edit)
         submitHandler(data)
     }
@@ -44,7 +44,7 @@ const UpdateTrackForm = ({
         bgColor='ceruleanBlue'
     >
         <FormContainer
-            onSubmit={handleSubmit(submitTest)}
+            onSubmit={handleSubmit(submit)}
         >
             <Input
                 label='Title'
