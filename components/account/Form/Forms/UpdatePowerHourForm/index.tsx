@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { useForm } from "react-hook-form"
 import {
     ModalComp,
     SubmitButton
 } from '@/components/common'
 import {
-    FormContainer
+    FormContainer,
+    Input
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
+import { ErrorMessage } from "@hookform/error-message"
 
 const UpdatePowerHourForm = ({
     title,
@@ -18,6 +21,11 @@ const UpdatePowerHourForm = ({
     songLimit,
     submitHandler
 }: UpdatePowerHourFormI) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
     const [ edit, setEdit ] = useState(false)
 
     const [ playlist, setPlaylist ] = useState({
