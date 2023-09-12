@@ -50,19 +50,31 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         }
     }, [])
 
+    useEffect(() => {
+        if (window) {
+            let id = window.location.pathname.split('/')[3]
+            axios.get("/api/powerhour/" + id)
+            .then((res) => {
+                setPowerHour(res?.data?.powerHour)
+            })
+            .catch(err => console.error({err}))
+        }
+    }, [])
+
     const [ powerHourObj, setPowerHour ] = useState({
-        id: powerHour?.id,
-        title: powerHour?.title,
-        description: powerHour?.description,
-        coverImage: powerHour?.cover_image,
-        dateTime: powerHour?.date_time,
-        privateStatus: powerHour?.privateStatus,
-        publishStatus: powerHour?.publishStatus,
-        songLimit: powerHour?.songLimit,
+        title: '',
+        description: '',
+        cover_image: '',
+        date_time: '',
+        privateStatus: false,
+        publishStatus: false,
+        participants: [],
+        songLimit: 0
     })
+    console.log(powerHourObj)
     let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
-    const [ songList, setSongList ]: any = useState([])
+    const [ songList, setSongList ] = useState([])
 
     const removeHandler = (index: number) => {
         if (confirm(`Are you sure you want to delete song from this power hour?`)) {
@@ -83,7 +95,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         }
     }
 
-    const users = powerHour?.participants?.map((participant: any) => participant?.user)
+    const users = powerHourObj?.participants?.map((participant: any) => participant?.user)
 
     const updatePlaylistSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
         e.stopPropagation()
@@ -92,8 +104,8 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             ...powerHourObj,
             title: data?.title,
             description: data?.description,
-            coverImage: data?.coverImage,
-            dateTime: data?.dateTime,
+            cover_image: data?.coverImage,
+            date_time: data?.dateTime,
             privateStatus: data?.privateStatus,
             publishStatus: data?.publishStatus,
             songLimit: data?.songLimit
@@ -118,23 +130,23 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                     {powerHourObj &&
                         <section className="flex flex-col md:flex-row justify-around items-center py-10">
                             <Image
-                                src={powerHour?.cover_image }
+                                src={powerHourObj?.cover_image }
                                 width={250}
                                 height={250}
                                 alt={powerHourObj?.title}
                                 priority
                             />
                             <section className="space-y-2.5">
-                                <H1 color={2} text={powerHour?.title} />
-                                <H2 color={2} text={powerHour?.description} />
-                                {powerHour?.date_time &&
-                                    <H3 color={2} text={format(new Date(powerHour?.date_time), 'MM/dd/yyyy')}/>
+                                <H1 color={2} text={powerHourObj?.title} />
+                                <H2 color={2} text={powerHourObj?.description} />
+                                {powerHourObj?.date_time &&
+                                    <H3 color={2} text={format(new Date(powerHourObj?.date_time), 'MM/dd/yyyy')}/>
                                 }
                                 <UpdatePowerHourForm
-                                    title={powerHour?.title}
-                                    description={powerHour?.description}
-                                    coverImage={powerHourObj?.coverImage}
-                                    dateTime={powerHourObj?.dateTime}
+                                    title={powerHourObj?.title}
+                                    description={powerHourObj?.description}
+                                    coverImage={powerHourObj?.cover_image}
+                                    dateTime={powerHourObj?.date_time}
                                     privateStatus={powerHourObj?.privateStatus}
                                     publishStatus={powerHourObj?.publishStatus}
                                     songLimit={powerHour?.songLimit}
@@ -163,7 +175,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <div className="my-5 font-medium">Song limit: {powerHour?.songLimit}</div>
+                    <div className="my-5 font-medium">Song limit: {powerHourObj?.songLimit}</div>
                     <TrackList
                         removeHandler={removeHandler}
                         songs={songList}
@@ -172,36 +184,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             </DashPageLayout>
         </>
     )
-}
-
-export const getStaticPaths = async () => {
-    const { data } = await axios.get("http://localhost:3000/api/powerhour/get-all-ids")
-    let powerHourPaths: number[] = []
-    data?.powerHoursIds.map((powerHour: any) => {
-        return ({ params: {id: powerHour.id.toString()}})
-    })
-    return {
-        paths: powerHourPaths,
-        fallback: true
-    }
-}
-
-export const getStaticProps = async ({params}: any) => {
-    try {
-        const { data } = await axios.get("http://localhost:3000/api/powerhour/" + params?.id)
-        return {
-            props: {
-                powerHour: data?.powerHour
-            }
-        }
-    } catch (error) {
-        return {
-            props: {
-                powerHour: null
-            },
-            revalidate: 10
-        }
-    }
 }
 
 export default PowerHourDynamic
