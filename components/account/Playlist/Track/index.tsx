@@ -47,10 +47,7 @@ const Track = ({
         setOpen(!openTrack)
     }
 
-    const updateSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
-        e.stopPropagation()
-        e.preventDefault()
-        console.log(data)
+    const updateSubmitHandler = async (data: any) => {
         setTrackObj({
             ...trackObj,
             trackTitle: data?.songTitle,
