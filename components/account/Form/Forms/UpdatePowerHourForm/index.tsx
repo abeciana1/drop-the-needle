@@ -28,29 +28,9 @@ const UpdatePowerHourForm = ({
     } = useForm()
     const [ edit, setEdit ] = useState(false)
 
-    const [ playlist, setPlaylist ] = useState({
-        title: title,
-        description: description,
-        coverImage: coverImage,
-        dateTime: dateTime,
-        privateStatus: privateStatus,
-        publishStatus: publishStatus,
-        songLimit: songLimit
-    })
-
-    const toggleEditForm = (event: React.FormEvent<HTMLFormElement>) => {
-        event.stopPropagation()
-        event.preventDefault()
+    const submit = (data: any) => {
         setEdit(!edit)
-        submitHandler(event, playlist)
-    }
-
-    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.persist()
-        setPlaylist({
-            ...playlist,
-            [event.target.name]: event.target.value
-        })
+        submitHandler(data)
     }
 
     return (
@@ -59,11 +39,11 @@ const UpdatePowerHourForm = ({
             shouldCloseOnEsc={false}
             text='Edit Power Hour'
             bgColor='ceruleanBlue'
-            onClick={toggleEditForm}
+            onClick={() => setEdit(true)}
             render={edit}
             setRender={setEdit}
         >
-            <FormContainer onSubmit={toggleEditForm}>
+            <FormContainer onSubmit={handleSubmit(submit)}>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
