@@ -17,5 +17,5 @@ export interface UpdatePowerHourFormI {
     privateStatus: boolean;
     publishStatus: boolean;
     songLimit: number;
-    submitHandler: (e: React.FormEvent<HTMLFormElement>, data: any) => void;
+    submitHandler: (data: any) => void;
 }
