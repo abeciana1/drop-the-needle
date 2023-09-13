@@ -44,10 +44,19 @@ const UpdatePowerHourForm = ({
             setRender={setEdit}
         >
             <FormContainer onSubmit={handleSubmit(submit)}>
+                <Input
+                    label='Title'
+                    name='title'
+                    fieldRequired='This field is required.'
+                    register={register}
+                    registerOptions={{
+                        value: title
+                    }}
+                />
+                <ErrorMessage name='title' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
-                        // disabled={errorsPresent !== 0}
                     />
                 </div>
             </FormContainer>
