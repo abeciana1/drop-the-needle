@@ -7,7 +7,8 @@ export {
 export {
     SingleSelectField,
     FormContainer,
-    Input
+    Input,
+    TextArea
 } from '@/components/account/Form'
 
 export {
