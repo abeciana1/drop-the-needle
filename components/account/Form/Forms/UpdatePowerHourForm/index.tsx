@@ -6,7 +6,8 @@ import {
 } from '@/components/common'
 import {
     FormContainer,
-    Input
+    Input,
+    TextArea
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
@@ -54,6 +55,15 @@ const UpdatePowerHourForm = ({
                     }}
                 />
                 <ErrorMessage name='title' errors={errors} as='div' className='text-vermillion'/>
+                <TextArea
+                    label='Description'
+                    name='description'
+                    fieldRequired='This field is required.'
+                    register={register}
+                    registerOptions={{
+                        value: description
+                    }}
+                />
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
