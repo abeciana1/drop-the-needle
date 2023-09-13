@@ -97,9 +97,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
 
     const users = powerHourObj?.participants?.map((participant: any) => participant?.user)
 
-    const updatePlaylistSubmitHandler = async (e: React.FormEvent<HTMLFormElement>, data: any) => {
-        e.stopPropagation()
-        e.preventDefault()
+    const updatePlaylistSubmitHandler = async (data: any) => {
         setPowerHour({
             ...powerHourObj,
             title: data?.title,
