@@ -3,7 +3,9 @@ export { default as FormContainer } from '@/components/account/Form/Container'
 
 export {
     Input,
-    TextArea
+    TextArea,
+    FileUpload,
+    FileUploadI
 } from '@/components/account/Form/Inputs'
 
 export {
