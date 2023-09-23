@@ -21,6 +21,7 @@ export type DashPowerHourType = {
 export type InputType = {
     name: string;
     type?: string;
+    value?: string;
     label: Path<FormValuesI>;
     fieldRequired: boolean | string;
     register: UseFormRegister<FormValuesI>;
@@ -45,4 +46,9 @@ export type InputType = {
         shouldUnregister?: boolean;
         deps?: string | string[];
     }
+}
+
+export type OptionType = {
+    value: string;
+    text: string
 }
