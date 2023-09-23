@@ -77,7 +77,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     const [ songList, setSongList ] = useState([])
 
     const removeHandler = (index: number) => {
-        if (confirm(`Are you sure you want to delete song from this power hour?`)) {
+        if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
             let newSongs = [...songList]
             newSongs.splice(index, 1)
             setSongList(newSongs)
@@ -102,16 +102,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             ...powerHourObj,
             title: data?.title,
             description: data?.description,
-            cover_image: data?.coverImage,
             date_time: data?.dateTime,
             privateStatus: data?.privateStatus,
-            publishStatus: data?.publishStatus,
+            publishStatus: data?.publishStatus  === 'true',
             songLimit: data?.songLimit
         })
         await axios.patch(`/api/powerhour/${powerHour?.id}`, {
             title: data?.title,
             description: data?.description,
-            cover_image: data?.coverImage,
             date_time: data?.dateTime,
             privateStatus: data?.privateStatus,
             publishStatus: data?.publishStatus,
@@ -120,6 +118,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         .catch(err => console.error({err}))
     }
 
+    console.log('powerHourObj?.publishStatus', typeof powerHourObj?.publishStatus)
 //     <FileUpload
 // label='Cover image'
 // value={coverImage}
