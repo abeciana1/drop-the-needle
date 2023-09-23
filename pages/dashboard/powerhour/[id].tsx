@@ -71,7 +71,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         participants: [],
         songLimit: 0
     })
-    console.log(powerHourObj)
+
     let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ] = useState([])
@@ -120,6 +120,26 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         .catch(err => console.error({err}))
     }
 
+//     <FileUpload
+// label='Cover image'
+// value={coverImage}
+// name='coverImage'
+// fieldRequired={true}
+// register={register}
+// registerOptions={{
+//     validate: {
+//         acceptedFormats: (files: File[]) => {
+//             console.log(files)
+//             return ["image/jpeg", "image/png", "image/webp"].includes(
+//                 files[0]?.type
+//             ) || "Only PNG, JPEG, or WEBP"
+//         }
+//     }
+// }}
+// acceptedFileTypes="image/jpeg, image/png, image/webp"
+// />
+// <ErrorMessage name='coverImage' errors={errors} as='div' className='text-vermillion'/>
+
     return (
         <>
             <SEO />
@@ -143,7 +163,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                                 <UpdatePowerHourForm
                                     title={powerHourObj?.title}
                                     description={powerHourObj?.description}
-                                    coverImage={powerHourObj?.cover_image}
                                     dateTime={powerHourObj?.date_time}
                                     privateStatus={powerHourObj?.privateStatus}
                                     publishStatus={powerHourObj?.publishStatus}
