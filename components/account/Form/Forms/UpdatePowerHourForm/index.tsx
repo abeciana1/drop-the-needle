@@ -8,7 +8,8 @@ import {
     FormContainer,
     Input,
     TextArea,
-    DatePicker
+    DatePicker,
+    Select
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
@@ -92,6 +93,29 @@ const UpdatePowerHourForm = ({
                     }
                 />
                 <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
+                <Select
+                    label='Publish status'
+                    name='publishStatus'
+                    fieldRequired={true}
+                    register={register}
+                    options={[
+                        {value: 'select', text: '-- Select a status --'},
+                        {value: 'true', text: 'Published'},
+                        {value: 'false', text: 'Not Published'}
+                    ]}
+                    registerOptions={{
+                        validate: {
+                            value: (value: string) => {
+                                if (value === 'select') {
+                                    return 'Please select a status'
+                                } else {
+                                    return true
+                                }
+                            }
+                        }
+                    }}
+                />
+                <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
