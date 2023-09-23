@@ -8,11 +8,11 @@ import {
     FormContainer,
     Input,
     TextArea,
-    FileUpload
+    DatePicker
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
-import axios from 'axios'
+import { format } from 'date-fns'
 
 const UpdatePowerHourForm = ({
     title,
@@ -42,6 +42,11 @@ const UpdatePowerHourForm = ({
         // .then(res => console.log('res', res))
         // .catch(err => console.error('upload', err))
         // submitHandler(data)
+    }
+    let formattedDate;
+    
+    if (dateTime) {
+        formattedDate = format(new Date(dateTime), 'yyyy-MM-dd')
     }
 
     return (
@@ -75,6 +80,16 @@ const UpdatePowerHourForm = ({
                     }}
                 />
                 <ErrorMessage name='description' errors={errors} as='div' className='text-vermillion'/>
+                <DatePicker
+                    label='Event date'
+                    name='dateTime'
+                    fieldRequired='This field is required.'
+                    register={register}
+                    registerOptions={{
+                        value: formattedDate
+                    }}
+                />
+                <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
