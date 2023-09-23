@@ -7,15 +7,16 @@ import {
 import {
     FormContainer,
     Input,
-    TextArea
+    TextArea,
+    FileUpload
 } from '@/components/account'
 import { UpdatePowerHourFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
+import axios from 'axios'
 
 const UpdatePowerHourForm = ({
     title,
     description,
-    coverImage,
     dateTime,
     privateStatus,
     publishStatus,
@@ -31,7 +32,16 @@ const UpdatePowerHourForm = ({
 
     const submit = (data: any) => {
         setEdit(!edit)
-        submitHandler(data)
+        // let formData = new FormData()
+        // formData.append('input', e?.target?.files[0])
+        // axios.post(process.env.HYGRAPH_UPLOAD_URL as string, {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data",
+        //     }
+        // })
+        // .then(res => console.log('res', res))
+        // .catch(err => console.error('upload', err))
+        // submitHandler(data)
     }
 
     return (
@@ -64,6 +74,7 @@ const UpdatePowerHourForm = ({
                         value: description
                     }}
                 />
+                <ErrorMessage name='description' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
