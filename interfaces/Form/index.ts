@@ -32,5 +32,5 @@ export interface FileUploadI extends InputType {
 }
 
 export interface SelectI extends InputType {
-    options: OptionType[]
+    options: OptionType[];
 }
