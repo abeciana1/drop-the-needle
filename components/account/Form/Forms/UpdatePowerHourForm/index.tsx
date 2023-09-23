@@ -32,15 +32,6 @@ const UpdatePowerHourForm = ({
 
     const submit = (data: any) => {
         setEdit(!edit)
-        // let formData = new FormData()
-        // formData.append('input', e?.target?.files[0])
-        // axios.post(process.env.HYGRAPH_UPLOAD_URL as string, {
-        //     headers: {
-        //         "Content-Type": "multipart/form-data",
-        //     }
-        // })
-        // .then(res => console.log('res', res))
-        // .catch(err => console.error('upload', err))
         // submitHandler(data)
     }
     let formattedDate;
