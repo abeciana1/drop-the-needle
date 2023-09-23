@@ -10,7 +10,7 @@ const DatePicker = ({
 }: InputType) => {
 
     let today = new Date()
-    let formattedMinDate = format(today, 'yyyy-MM-dd')
+    let formattedMinDate = format(today, 'yyyy-MM-dd\'T\'HH:mm')
 
     return (
         <div className="py-3">
@@ -20,7 +20,7 @@ const DatePicker = ({
                     required: fieldRequired,
                     ...registerOptions
                 })}
-                type='date'
+                type='datetime-local'
                 min={formattedMinDate}
                 className="py-1 pl-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
             />
