@@ -29,15 +29,15 @@ const UpdatePowerHourForm = ({
         formState: { errors },
     } = useForm()
     const [ edit, setEdit ] = useState(false)
+    let formattedDate;
 
     const submit = (data: any) => {
         setEdit(!edit)
         // submitHandler(data)
     }
-    let formattedDate;
     
     if (dateTime) {
-        formattedDate = format(new Date(dateTime), 'yyyy-MM-dd')
+        formattedDate = format(new Date(dateTime), 'yyyy-MM-dd HH:mm')
     }
 
     return (
@@ -77,8 +77,19 @@ const UpdatePowerHourForm = ({
                     fieldRequired='This field is required.'
                     register={register}
                     registerOptions={{
-                        value: formattedDate
-                    }}
+                        value: formattedDate,
+                        // validate: {
+                        //     value: (value: number | Date) => {
+                        //         console.log(isBefore(value, new Date()))
+                        //             if (isBefore(value, new Date())) {
+                        //                 return `Invalid`
+                        //             } else {
+                        //                 return true
+                        //             }
+                        //         }
+                        //     }
+                        }
+                    }
                 />
                 <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
