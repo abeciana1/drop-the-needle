@@ -116,6 +116,29 @@ const UpdatePowerHourForm = ({
                     }}
                 />
                 <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
+                <Select
+                    label='Publish status'
+                    name='privateStatus'
+                    fieldRequired={true}
+                    register={register}
+                    options={[
+                        {value: 'select', text: '-- Select a status --'},
+                        {value: 'true', text: 'Public'},
+                        {value: 'false', text: 'Private'}
+                    ]}
+                    registerOptions={{
+                        validate: {
+                            value: (value: string) => {
+                                if (value === 'select') {
+                                    return 'Please select a status'
+                                } else {
+                                    return true
+                                }
+                            }
+                        }
+                    }}
+                />
+                <ErrorMessage name='privateStatus' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
