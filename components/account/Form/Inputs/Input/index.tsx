@@ -13,7 +13,7 @@ export const Input = ({
         <div
             className="py-3"
         >
-            <label className="">{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
+            <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
             <input
                 {...register(name, {
                     required: fieldRequired,
