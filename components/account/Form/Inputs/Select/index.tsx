@@ -12,7 +12,7 @@ const Select = ({
 
     return (
         <div className="py-3">
-            <div>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</div>
+            <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
             <select
                 id={name}
                 {...register(name, {
