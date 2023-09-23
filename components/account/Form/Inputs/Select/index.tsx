@@ -12,8 +12,9 @@ const Select = ({
 
     return (
         <div className="py-3">
-            <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
-            <select 
+            <div>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</div>
+            <select
+                id={name}
                 {...register(name, {
                     required: fieldRequired,
                     ...registerOptions
@@ -22,7 +23,7 @@ const Select = ({
             >
                 {options?.map((option: OptionType, index: number) => {
                     return (
-                        <option key={index} value={option?.value} />
+                        <option key={index} value={option?.value}>{option?.text}</option>
                     )
                 })}
             </select>
