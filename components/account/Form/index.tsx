@@ -5,7 +5,7 @@ export {
     Input,
     TextArea,
     FileUpload,
-    FileUploadI
+    DatePicker
 } from '@/components/account/Form/Inputs'
 
 export {
