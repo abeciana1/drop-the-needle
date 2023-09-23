@@ -12,7 +12,6 @@ export interface UpdateTrackFormI {
 export interface UpdatePowerHourFormI {
     title: string;
     description: string;
-    coverImage: string;
     dateTime: Date | string;
     privateStatus: boolean;
     publishStatus: boolean;
