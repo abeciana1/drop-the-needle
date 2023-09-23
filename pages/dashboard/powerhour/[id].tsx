@@ -156,10 +156,10 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             />
                             <section className="space-y-2.5">
                                 <H1 color={2} text={powerHourObj?.title} />
-                                <H2 color={2} text={powerHourObj?.description} />
                                 {powerHourObj?.date_time &&
-                                    <H3 color={2} text={formatInTimeZone(new Date(powerHourObj?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy p zzz') + " / " + formatInTimeZone(new Date(powerHourObj?.date_time), 'America/New_York', 'p zzz')}/>
+                                    <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHourObj?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHourObj?.date_time), 'America/New_York', 'p zzz')}</div>
                                 }
+                                <div className='text-altBlack text-xl'>{powerHourObj?.description}</div>
                                 <UpdatePowerHourForm
                                     title={powerHourObj?.title}
                                     description={powerHourObj?.description}
