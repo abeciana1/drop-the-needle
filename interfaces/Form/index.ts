@@ -1,4 +1,8 @@
 import { ChildrenI } from '@/interfaces'
+import {
+    InputType,
+    OptionType
+} from '@/types'
 
 export interface FormValuesI {
     [key: string]: string | number | boolean;
@@ -21,4 +25,12 @@ export interface FormI extends ChildrenI {
 export interface NumberValidation {
     value: number;
     message: string;
+}
+
+export interface FileUploadI extends InputType {
+    acceptedFileTypes: string;
+}
+
+export interface SelectI extends InputType {
+    options: OptionType[]
 }
