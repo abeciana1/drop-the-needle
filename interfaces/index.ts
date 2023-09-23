@@ -48,7 +48,9 @@ export type {
     SingleSelectFieldI,
     FormI,
     FormValuesI,
-    NumberValidation
+    NumberValidation,
+    FileUploadI,
+    SelectI
 } from '@/interfaces/Form'
 
 export type { 
