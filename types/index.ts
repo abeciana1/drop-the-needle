@@ -38,11 +38,11 @@ export type InputType = {
         valueAsNumber?: any;
         valueAsString?: any;
         valueAsDate?: any;
-        setValueAs?: <T>(value: any) => T;
+        setValueAs?: (value: any) => void;
         disabled?: boolean;
         onChange?: (e: React.SyntheticEvent) => void;
         onBlur?: (e: React.SyntheticEvent) => void;
-        value?: string | number;
+        value?: string | number | boolean;
         shouldUnregister?: boolean;
         deps?: string | string[];
     }
