@@ -34,7 +34,7 @@ const UpdatePowerHourForm = ({
 
     const submit = (data: any) => {
         setEdit(!edit)
-        // submitHandler(data)
+        submitHandler(data)
     }
     
     if (dateTime) {
@@ -79,18 +79,7 @@ const UpdatePowerHourForm = ({
                     register={register}
                     registerOptions={{
                         value: formattedDate,
-                        // validate: {
-                        //     value: (value: number | Date) => {
-                        //         console.log(isBefore(value, new Date()))
-                        //             if (isBefore(value, new Date())) {
-                        //                 return `Invalid`
-                        //             } else {
-                        //                 return true
-                        //             }
-                        //         }
-                        //     }
-                        }
-                    }
+                    }}
                 />
                 <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
                 <Select
