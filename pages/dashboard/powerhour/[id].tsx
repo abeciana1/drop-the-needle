@@ -118,7 +118,6 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
         .catch(err => console.error({err}))
     }
 
-    console.log('powerHourObj?.publishStatus', typeof powerHourObj?.publishStatus)
 //     <FileUpload
 // label='Cover image'
 // value={coverImage}
