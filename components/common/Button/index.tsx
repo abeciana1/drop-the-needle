@@ -5,7 +5,6 @@ import {
     OnClickButtonI,
     SubmitButtonI
 } from '@/interfaces'
-import { useState } from 'react'
 
 export const EventClickButton = ({
     text,
@@ -74,18 +73,12 @@ export const SubmitButton = ({
     text = 'Submit',
     disabled = false
 }: SubmitButtonI) => {
-    // const [ showTooltip, setTooltip ] = useState(false)
+
     return(
         <div
             className='relative flex items-center max-w-content'
         >
             <button
-                // onMouseEnter={() => setTooltip(true)}
-                // onFocus={() => setTooltip(true)}
-                // onBlur={() => setTooltip(false)}
-                // onTouchStart={() => setTooltip(true)}
-                // onTouchCancel={() => setTooltip(false)}
-                // onMouseLeave={() => setTooltip(false)}
                 disabled={disabled}
                 className={cx('flex flex-row w-fit items-center text-xl font-medium px-3 py-1 rounded-lg', {
                     ['text-altWhite bg-altBlack']: bgColor === 'altBlack' && disabled === false,
@@ -97,7 +90,6 @@ export const SubmitButton = ({
                 })}
             >
                 {text}
-                {/* {disabled ? 'Fix errors in form' : text} */}
             </button>
         </div>
     )
