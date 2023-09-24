@@ -191,7 +191,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                             <H4 text="Promotion and sharing coming soon" />
                         </section>
                     </Grid3Column>
-                    <div className="my-5 font-medium">Song limit: {powerHourObj?.songLimit}</div>
+                    <div className="my-5 font-medium">Song limit per user: {powerHourObj?.songLimit}</div>
                     <TrackList
                         removeHandler={removeHandler}
                         songs={songList}
