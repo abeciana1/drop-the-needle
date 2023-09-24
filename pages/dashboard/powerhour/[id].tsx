@@ -7,8 +7,6 @@ import {
 } from '@/components/common'
 import {
     H1,
-    H2,
-    H3,
     H4
 } from '@/components/styled'
 import {
@@ -18,7 +16,6 @@ import {
     UpdatePowerHourForm
 } from '@/components/account'
 import axios from 'axios'
-import { PowerHourDynamicPageI } from '@/interfaces'
 import Image from 'next/image'
 import { formatInTimeZone } from 'date-fns-tz'
 import {
@@ -38,7 +35,7 @@ const phPublishStatuses = [
     }
 ]
 
-const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
+const PowerHourDynamic = () => {
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
@@ -62,6 +59,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     }, [])
 
     const [ powerHourObj, setPowerHour ] = useState({
+        id: 0,
         title: '',
         description: '',
         cover_image: '',
@@ -75,6 +73,14 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
     let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ] = useState([])
+
+    useEffect(() => {
+        if (powerHourObj.publishStatus) {
+            setPubStatus(phPublishStatuses[0])
+        } else {
+            setPubStatus(phPublishStatuses[1])
+        }
+    }, [selectedPubStatus, powerHourObj])
 
     const removeHandler = (index: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
@@ -107,14 +113,15 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             publishStatus: data?.publishStatus === 'true',
             songLimit: data?.songLimit
         })
-        await axios.patch(`/api/powerhour/${powerHour?.id}`, {
+        await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
             title: data?.title,
             description: data?.description,
-            date_time: data?.dateTime,
-            privateStatus: data?.privateStatus,
-            publishStatus: data?.publishStatus,
+            date_time: new Date(data?.dateTime),
+            privateStatus: data?.privateStatus === 'true',
+            publishStatus: data?.publishStatus === 'true',
             songLimit: data?.songLimit
         })
+        .then(res => console.log('res', res))
         .catch(err => console.error({err}))
     }
 
@@ -164,7 +171,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
                                     dateTime={powerHourObj?.date_time}
                                     privateStatus={powerHourObj?.privateStatus}
                                     publishStatus={powerHourObj?.publishStatus}
-                                    songLimit={powerHour?.songLimit}
+                                    songLimit={powerHourObj?.songLimit}
                                     submitHandler={updatePlaylistSubmitHandler}
                                 />
                             </section>
