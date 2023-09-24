@@ -77,19 +77,19 @@ const PowerHourDynamic = () => {
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ] = useState([])
 
-    const trackRemoveHandler = (index: number) => {
+    const trackRemoveHandler = async (index: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
             let newSongs = [...songList]
             newSongs.splice(index, 1)
             setSongList(newSongs)
-            axios.delete('/api/track/' + index)
+            await axios.delete('/api/track/' + index)
         }
     }
 
-    const deleteHandler = () => {
+    const deleteHandler = async () => {
         if (confirm('Are you sure you want to delete this power hour?')) {
             router.push('/dashboard')
-            //! axios delete
+            await axios.delete('/api/track/' + powerHourObj.id)
         }
     }
 
