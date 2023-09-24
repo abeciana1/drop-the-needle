@@ -141,6 +141,25 @@ const UpdatePowerHourForm = ({
                     }}
                 />
                 <ErrorMessage name='privateStatus' errors={errors} as='div' className='text-vermillion'/>
+                <Input
+                    label='Song limit'
+                    name='songLimit'
+                    type='number'
+                    fieldRequired='This field is required.'
+                    register={register}
+                    registerOptions={{
+                        value: songLimit,
+                        minLength: {
+                            value: 1,
+                            message: 'This field requires a minimum of 1.'
+                        },
+                        maxLength: {
+                            value: 99,
+                            message: 'This field may not exceed more than 99.'
+                        }
+                    }}
+                />
+                <ErrorMessage name='songLimit' errors={errors} as='div' className='text-vermillion'/>
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
