@@ -94,6 +94,7 @@ const UpdatePowerHourForm = ({
                 />
                 <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
                 <Select
+                    currentSelection={`Your power hour is currently: ${publishStatus ? 'Published' : 'Not Published'}`}
                     label='Publish status'
                     name='publishStatus'
                     fieldRequired={true}
@@ -117,7 +118,8 @@ const UpdatePowerHourForm = ({
                 />
                 <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
                 <Select
-                    label='Publish status'
+                    currentSelection={`Your power hour is currently ${privateStatus ? 'private' : 'public'}`}
+                    label='Privacy status'
                     name='privateStatus'
                     fieldRequired={true}
                     register={register}
