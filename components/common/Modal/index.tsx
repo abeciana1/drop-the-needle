@@ -40,16 +40,6 @@ const ModalComp: React.FC<any> = ({
         setRender(!render)
     }
 
-    useEffect(() => {
-        if(document) {
-            if(render) {
-                document.body.style.overflow = 'hidden'
-            } else {
-                document.body.style.overflow = 'unset'
-            }
-        }
-    }, [render])
-
     return (
         <>
             <OnClickButton
