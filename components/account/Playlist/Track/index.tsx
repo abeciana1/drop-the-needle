@@ -94,9 +94,9 @@ const Track = ({
                     <span className='font-bold'>&quot;{trackObj?.trackTitle}&quot;</span>
                     <span> - </span>
                     <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear?.substring(0,4).concat("")})</span>
-                    <span className='float-right'>{user}</span>
+                    <span className='ml-5'>{user}</span>
                 </div>
-                <span className='flex gap-5'>
+                <span className='flex mt-5 md:mt-0 gap-5'>
                     <ExpandBtn
                         text={openTrack ? "Close" : "Open"}
                         icon={AiFillFolderOpen}
