@@ -131,7 +131,7 @@ const UpdatePowerHourForm = ({
                 />
                 <ErrorMessage name='privateStatus' errors={errors} as='div' className='text-vermillion'/>
                 <Input
-                    label='Song limit'
+                    label='Song limit per user'
                     name='songLimit'
                     type='number'
                     fieldRequired='This field is required.'
