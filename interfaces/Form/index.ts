@@ -32,5 +32,6 @@ export interface FileUploadI extends InputType {
 }
 
 export interface SelectI extends InputType {
+    currentSelection: string;
     options: OptionType[];
 }
