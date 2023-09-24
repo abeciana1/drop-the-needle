@@ -3,7 +3,8 @@ import {
     DashPageLayout,
     SEO,
     ComponentMargin,
-    Grid3Column
+    Grid3Column,
+    OnClickButton
 } from '@/components/common'
 import {
     H1
@@ -22,6 +23,7 @@ import {
     HiEyeOff,
     HiOutlineUserCircle
 } from "react-icons/hi"
+import { useRouter } from 'next/router'
 
 const phPublishStatuses = [
     {
@@ -35,6 +37,8 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = () => {
+    const router = useRouter()
+
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
@@ -73,12 +77,19 @@ const PowerHourDynamic = () => {
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ] = useState([])
 
-    const removeHandler = (index: number) => {
+    const trackRemoveHandler = (index: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
             let newSongs = [...songList]
             newSongs.splice(index, 1)
             setSongList(newSongs)
             axios.delete('/api/track/' + index)
+        }
+    }
+
+    const powerHourRemoveHandler = () => {
+        if (confirm('Are you sure you want to delete this power hour?')) {
+            router.push('/dashboard')
+            //! axios delete
         }
     }
 
@@ -154,21 +165,28 @@ const PowerHourDynamic = () => {
                                 alt={powerHourObj?.title}
                                 priority
                             />
-                            <section className="space-y-2.5">
+                            <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
                                 <H1 color={2} text={powerHourObj?.title} />
                                 {powerHourObj?.date_time &&
                                     <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHourObj?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHourObj?.date_time), 'America/New_York', 'p zzz')}</div>
                                 }
                                 <div className='text-altBlack text-xl'>{powerHourObj?.description}</div>
-                                <UpdatePowerHourForm
-                                    title={powerHourObj?.title}
-                                    description={powerHourObj?.description}
-                                    dateTime={powerHourObj?.date_time}
-                                    privateStatus={powerHourObj?.privateStatus}
-                                    publishStatus={powerHourObj?.publishStatus}
-                                    songLimit={powerHourObj?.songLimit}
-                                    submitHandler={updatePlaylistSubmitHandler}
-                                />
+                                <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
+                                    <UpdatePowerHourForm
+                                        title={powerHourObj?.title}
+                                        description={powerHourObj?.description}
+                                        dateTime={powerHourObj?.date_time}
+                                        privateStatus={powerHourObj?.privateStatus}
+                                        publishStatus={powerHourObj?.publishStatus}
+                                        songLimit={powerHourObj?.songLimit}
+                                        submitHandler={updatePlaylistSubmitHandler}
+                                    />
+                                    <OnClickButton
+                                        text='Delete Power Hour'
+                                        bgColor='vermillion'
+                                        onClick={powerHourRemoveHandler}
+                                    />
+                                </div>
                             </section>
                         </section>
                     }
@@ -194,7 +212,7 @@ const PowerHourDynamic = () => {
                     </Grid3Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHourObj?.songLimit}</div>
                     <TrackList
-                        removeHandler={removeHandler}
+                        removeHandler={trackRemoveHandler}
                         songs={songList}
                     />
                 </ComponentMargin>
