@@ -86,7 +86,7 @@ const PowerHourDynamic = () => {
         }
     }
 
-    const powerHourRemoveHandler = () => {
+    const deleteHandler = () => {
         if (confirm('Are you sure you want to delete this power hour?')) {
             router.push('/dashboard')
             //! axios delete
@@ -184,7 +184,7 @@ const PowerHourDynamic = () => {
                                     <OnClickButton
                                         text='Delete Power Hour'
                                         bgColor='vermillion'
-                                        onClick={powerHourRemoveHandler}
+                                        onClick={deleteHandler}
                                     />
                                 </div>
                             </section>
