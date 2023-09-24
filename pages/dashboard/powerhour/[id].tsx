@@ -73,14 +73,6 @@ const PowerHourDynamic = () => {
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ songList, setSongList ] = useState([])
 
-    useEffect(() => {
-        if (powerHourObj.publishStatus) {
-            setPubStatus(phPublishStatuses[0])
-        } else {
-            setPubStatus(phPublishStatuses[1])
-        }
-    }, [selectedPubStatus, powerHourObj])
-
     const removeHandler = (index: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
             let newSongs = [...songList]
@@ -90,13 +82,17 @@ const PowerHourDynamic = () => {
         }
     }
 
-    const handlePowerHourPublishStatus = () => {
+    const handlePowerHourPublishStatus = async () => {
         if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
-            // todo add patch api call
+            await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
+                publishStatus: phPublishStatuses[1].bool
+            })
         } else {
             setPubStatus(phPublishStatuses[0])
-            // todo add patch api call
+            await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
+                publishStatus: phPublishStatuses[0].bool
+            })
         }
     }
 
