@@ -6,8 +6,7 @@ import {
     Grid3Column
 } from '@/components/common'
 import {
-    H1,
-    H4
+    H1
 } from '@/components/styled'
 import {
     SingleSelectField,
@@ -194,7 +193,7 @@ const PowerHourDynamic = () => {
                             property='name'
                         />
                         <section>
-                            <H4 text="Promotion and sharing coming soon" />
+                            <div className='text-altBlack text-2xl font-medium'>Promotion and sharing coming soon</div>
                         </section>
                     </Grid3Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHourObj?.songLimit}</div>
