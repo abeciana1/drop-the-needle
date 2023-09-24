@@ -22,11 +22,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
         })
         res.status(200).json({ powerHour })
-    }
-    if (req.method === 'PATCH') {
+    } else if (req.method === 'PATCH') {
         const powerHour = await prisma?.powerHour?.update({
             where: { id: powerHourId },
             data: req.body
+        })
+        res.status(200).json({ powerHour })
+    }  else if (req.method === 'DELETE') {
+        const powerHour = await prisma?.powerHour?.delete({
+            where: {
+                id: powerHourId
+            }
         })
         res.status(200).json({ powerHour })
     }
