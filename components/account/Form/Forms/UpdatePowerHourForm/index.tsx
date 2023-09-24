@@ -151,11 +151,20 @@ const UpdatePowerHourForm = ({
                         value: songLimit,
                         minLength: {
                             value: 1,
-                            message: 'This field requires a minimum of 1.'
+                            message: 'This field requires a minimum of 1 digit.'
                         },
                         maxLength: {
-                            value: 99,
-                            message: 'This field may not exceed more than 99.'
+                            value: 2,
+                            message: 'This field may not exceed more than 2 digits.'
+                        },
+                        validate: {
+                            value: (value: number) => {
+                                if (value < 0) {
+                                    return 'This field allows only positive values.'
+                                } else {
+                                    return true
+                                }
+                            }
                         }
                     }}
                 />
