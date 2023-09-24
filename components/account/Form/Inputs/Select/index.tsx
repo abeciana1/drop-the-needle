@@ -3,6 +3,7 @@ import { OptionType } from '@/types'
 
 const Select = ({
     label,
+    currentSelection,
     fieldRequired,
     name,
     register,
@@ -13,6 +14,7 @@ const Select = ({
     return (
         <div className="py-3">
             <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
+            {currentSelection && <div>{currentSelection}</div>}
             <select
                 id={name}
                 {...register(name, {
