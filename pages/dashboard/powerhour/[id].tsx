@@ -103,8 +103,8 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             title: data?.title,
             description: data?.description,
             date_time: data?.dateTime,
-            privateStatus: data?.privateStatus,
-            publishStatus: data?.publishStatus  === 'true',
+            privateStatus: data?.privateStatus === 'true',
+            publishStatus: data?.publishStatus === 'true',
             songLimit: data?.songLimit
         })
         await axios.patch(`/api/powerhour/${powerHour?.id}`, {
@@ -145,7 +145,7 @@ const PowerHourDynamic = ({ powerHour }: PowerHourDynamicPageI) => {
             <DashPageLayout>
                 <ComponentMargin>
                     {powerHourObj &&
-                        <section className="flex flex-col md:flex-row justify-around items-center py-10">
+                        <section className="flex flex-col md:flex-row justify-around items-center pt-20">
                             <Image
                                 src={powerHourObj?.cover_image }
                                 width={250}
