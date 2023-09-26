@@ -18,3 +18,7 @@ export interface UpdatePowerHourFormI {
     songLimit: number;
     submitHandler: (data: any) => void;
 }
+
+export interface AddTrackFormI {
+    powerHourId: number;
+}
