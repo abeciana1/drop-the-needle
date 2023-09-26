@@ -14,7 +14,8 @@ const ModalComp: React.FC<any> = ({
     shouldCloseOnEsc = true,
     shouldCloseOnOverlayClick = true,
     render,
-    setRender
+    setRender,
+    icon
 }: ModalI) => {
     Modal.setAppElement('#modals')
     const customStyles = {
@@ -47,6 +48,7 @@ const ModalComp: React.FC<any> = ({
                 bgColor={bgColor}
                 onClick={toggleModal}
                 ctaArrow={false}
+                icon={icon}
             />
             <Modal
                 isOpen={render} 
