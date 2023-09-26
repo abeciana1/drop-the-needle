@@ -1,3 +1,5 @@
+import { TrackDataI } from "@/interfaces"
+
 export interface UpdateTrackFormI {
     title: string;
     artist: string;
@@ -21,4 +23,5 @@ export interface UpdatePowerHourFormI {
 
 export interface AddTrackFormI {
     powerHourId: number;
+    submitHandler: (trackData: TrackDataI) => void;
 }
