@@ -24,6 +24,7 @@ import {
     HiOutlineUserCircle
 } from "react-icons/hi"
 import { useRouter } from 'next/router'
+import { TrackDataI } from '@/interfaces'
 
 const phPublishStatuses = [
     {
@@ -38,7 +39,8 @@ const phPublishStatuses = [
 
 const PowerHourDynamic = () => {
     const router = useRouter()
-
+    const [ songList, setSongList ] = useState([])
+    
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
@@ -48,7 +50,7 @@ const PowerHourDynamic = () => {
             })
             .catch(err => console.error({err}))
         }
-    }, [])
+    }, [songList])
 
     useEffect(() => {
         if (window) {
@@ -75,7 +77,7 @@ const PowerHourDynamic = () => {
 
     let currentIdx = powerHourObj?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
-    const [ songList, setSongList ] = useState([])
+
 
     const trackRemoveHandler = async (index: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
@@ -129,6 +131,21 @@ const PowerHourDynamic = () => {
         })
         .then(res => console.log('res', res))
         .catch(err => console.error({err}))
+    }
+
+    const addTrackHandler = (trackData: TrackDataI) => {
+        console.log('trackData', trackData)
+        // * post req to db
+        // * backend post req
+            // * create new track 
+            // * order number pushed to back -> orderNumber === ph.length - 1
+        // * Add host id to payload to axios post req
+            // * use useSession from navbar
+        // * add power hour id to payload
+        // * Create react portal hovering overlay -> loading animation
+        // let newSongList:[] = [...songList, trackData]
+        // setSongList(newSongList)
+        //! axios post req
     }
 
 //     <FileUpload
