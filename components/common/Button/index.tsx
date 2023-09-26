@@ -36,8 +36,10 @@ export const OnClickButton = ({
     text,
     bgColor,
     ctaArrow,
-    onClick
+    onClick,
+    icon
 }: OnClickButtonI) => {
+    const Icon = icon as React.ElementType
 
     const toggle = (e: React.KeyboardEvent<HTMLElement>) => {
         if(e.code === "Enter") {
@@ -58,6 +60,12 @@ export const OnClickButton = ({
                 ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue'
             })}
         >
+            {icon &&
+                <Icon 
+                    strokeWidth="2.5" 
+                    className="h-5 w-5 mx-auto"
+                />
+            }
             {text}
             {ctaArrow &&
                 <span>
