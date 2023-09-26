@@ -32,7 +32,8 @@ export const ExpandBtn = ({
             onFocus={() => setClose(true)}
             onBlur={() => setClose(false)}
         >
-            <Icon strokeWidth="2.5" className={cx('h-5 w-5', {
+            <Icon strokeWidth="2.5" 
+                className={cx('h-5 w-5', {
                 ['mx-auto']: open === false
             })} />
             {open &&
