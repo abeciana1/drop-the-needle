@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { TrackListI, SongI } from '@/interfaces'
 import { Track } from '@/components/account'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 const TrackList = ({
     songs,
@@ -20,6 +22,7 @@ const TrackList = ({
     return(
         <section>
             <div className="font-medium">(Click on the track to expand details)</div>
+            
             <DragDropContext
                 onDragEnd={(result) => handleOnDragEnd(result)}
             >
