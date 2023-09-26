@@ -95,4 +95,5 @@ export interface ModalI extends OnClickButtonI, ChildrenI {
     shouldCloseOnOverlayClick?: boolean;
     render: boolean;
     setRender: (arg: boolean) => void;
+    icon?: React.ElementType;
 }
