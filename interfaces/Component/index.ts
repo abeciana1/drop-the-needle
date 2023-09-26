@@ -2,7 +2,7 @@ import React from 'react'
 import {
     ImageType
 } from '@/types';
-import { SongI, OnClickButtonI } from '@/interfaces'
+import { SongI, OnClickButtonI, TrackDataI } from '@/interfaces'
 
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
@@ -73,6 +73,7 @@ export interface AccordionDataI {
 export interface TrackListI {
     songs: SongI[];
     removeHandler: (id: number) => void;
+    addTrackHandler: (trackData: TrackDataI) => void;
 }
 
 export interface TrackI {
