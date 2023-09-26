@@ -6,6 +6,7 @@ interface DefaultButtonI {
 
 export interface OnClickButtonI extends DefaultButtonI {
     onClick: () => void;
+    icon?: React.ElementType;
 }
 
 export interface OnClickIconButtonI extends OnClickButtonI {
