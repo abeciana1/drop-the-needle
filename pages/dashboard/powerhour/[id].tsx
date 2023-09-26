@@ -231,6 +231,7 @@ const PowerHourDynamic = () => {
                     <TrackList
                         removeHandler={trackRemoveHandler}
                         songs={songList}
+                        addTrackHandler={addTrackHandler}
                     />
                 </ComponentMargin>
             </DashPageLayout>
