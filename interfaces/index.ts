@@ -41,7 +41,8 @@ export type {
     PowerHourI,
     SongI,
     PowerHourGroupI,
-    PowerHourDynamicPageI
+    PowerHourDynamicPageI,
+    TrackDataI
 } from '@/interfaces/Data'
 
 export type {

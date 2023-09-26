@@ -62,3 +62,14 @@ export interface SongI {
         }
     };
 }
+
+export interface TrackDataI {
+    title: string;
+    artist: string;
+    youtubeLink: string;
+    album: string;
+    year: string;
+    startTime: string;
+    endTime: string;
+    orderNumber: number;
+}
