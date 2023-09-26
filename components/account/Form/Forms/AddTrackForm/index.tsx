@@ -1,8 +1,5 @@
 import { useState } from 'react'
-import {
-    AddTrackFormI,
-    TrackDataI
-} from '@/interfaces'
+import { AddTrackFormI } from '@/interfaces'
 import { useForm } from "react-hook-form"
 import {
     ModalComp,
@@ -26,7 +23,11 @@ const AddTrackForm = ({
     const [ edit, setEdit ] = useState(false)
 
     const submit = (data: any) => {
-        submitHandler(data)
+        submitHandler({
+            ...data,
+            participantId: 0,
+            powerHourId: powerHourId
+        })
     }
 
     return (
