@@ -50,7 +50,7 @@ const PowerHourDynamic = () => {
             })
             .catch(err => console.error({err}))
         }
-    }, [songList])
+    }, [])
 
     useEffect(() => {
         if (window) {
