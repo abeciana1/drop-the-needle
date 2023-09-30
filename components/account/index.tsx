@@ -16,7 +16,8 @@ export {
 
 export {
     UpdateTrackForm,
-    UpdatePowerHourForm
+    UpdatePowerHourForm,
+    AddTrackForm
 } from '@/components/account/Form'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'
