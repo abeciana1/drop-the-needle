@@ -8,20 +8,20 @@ body {
     padding: 0px;
     margin: 0px;
 }
-body .container {
+body .loading-container {
     width: 112px;
     height: 112px;
 }
-body .container .box1,
-body .container .box2,
-body .container .box3 {
+body .loading-container .box1,
+body .loading-container .box2,
+body .loading-container .box3 {
     border: 16px solid #333;
     box-sizing: border-box;
     position: absolute;
     display: block;
     border-radius: 24px;
 }
-body .container .box1 {
+body .loading-container .box1 {
     width: 112px;
     height: 48px;
     margin-top: 64px;
@@ -29,7 +29,7 @@ body .container .box1 {
     -webkit-animation: anime1 3s 0s forwards cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
     animation: anime1 3s 0s forwards cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
-body .container .box2 {
+body .loading-container .box2 {
     width: 48px;
     height: 48px;
     margin-top: 0px;
@@ -37,7 +37,7 @@ body .container .box2 {
     -webkit-animation: anime2 3s 0s forwards cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
     animation: anime2 3s 0s forwards cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
 }
-body .container .box3 {
+body .loading-container .box3 {
     width: 48px;
     height: 48px;
     margin-top: 0px;
