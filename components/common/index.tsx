@@ -30,3 +30,4 @@ export {
     ExpandBtn,
     ShareBtn
 } from '@/components/common/ExpandButton'
+export { default as LoadingInstance } from '@/components/common/Loading'
