@@ -66,7 +66,11 @@ export const OnClickButton = ({
                     className="h-5 w-5 mx-auto"
                 />
             }
-            {text}
+            <span className={cx({
+                ['ml-2']: icon
+            })}>
+                {text}
+            </span>
             {ctaArrow &&
                 <span>
                     <FaArrowRight title='cta-arrow' className='ml-2' />
