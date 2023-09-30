@@ -10,9 +10,10 @@ import {
     Input
 } from '@/components/account'
 import { ErrorMessage } from "@hookform/error-message"
+import { useSession } from 'next-auth/react'
 
 const AddTrackForm = ({
-    powerHourId,
+    icon,
     submitHandler
 }: AddTrackFormI) => {
     const {
@@ -21,13 +22,19 @@ const AddTrackForm = ({
         formState: { errors },
     } = useForm()
     const [ edit, setEdit ] = useState(false)
+    // const { data: session } = useSession()
+    // console.log('data', session)
 
     const submit = (data: any) => {
-        submitHandler({
-            ...data,
-            participantId: 0,
-            powerHourId: powerHourId
-        })
+        if (window) {
+            let id = window.location.pathname.split('/')[3]
+            console.log(window.location)
+            submitHandler({
+                ...data,
+                // participantId: 0,
+                powerHourId: id
+            })
+        }
     }
 
     return (
@@ -37,8 +44,9 @@ const AddTrackForm = ({
             onClick={() => setEdit(true)}
             render={edit}
             setRender={setEdit}
-            text="Edit"
+            text="Add a track"
             bgColor='ceruleanBlue'
+            icon={icon}
         >
             <FormContainer onSubmit={handleSubmit(submit)}>
                 <Input
