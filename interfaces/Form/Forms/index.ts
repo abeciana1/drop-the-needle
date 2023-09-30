@@ -22,6 +22,6 @@ export interface UpdatePowerHourFormI {
 }
 
 export interface AddTrackFormI {
-    powerHourId: number;
+    icon: React.ElementType;
     submitHandler: (trackData: TrackDataI) => void;
 }
