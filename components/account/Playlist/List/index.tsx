@@ -1,12 +1,15 @@
-import { useState } from 'react'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { TrackListI, SongI } from '@/interfaces'
-import { Track } from '@/components/account'
+import {
+    Track,
+    AddTrackForm
+} from '@/components/account'
 import { AiOutlinePlus } from 'react-icons/ai'
 
 const TrackList = ({
     songs,
-    removeHandler
+    removeHandler,
+    addTrackHandler
 }: TrackListI) => {
 
     const handleOnDragEnd = (result: any) => {
@@ -21,8 +24,13 @@ const TrackList = ({
 
     return(
         <section>
-            <div className="font-medium">(Click on the track to expand details)</div>
-            
+            <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
+                (Click on the track to expand details)
+                <AddTrackForm
+                    icon={AiOutlinePlus}
+                    submitHandler={addTrackHandler}
+                />
+            </div>
             <DragDropContext
                 onDragEnd={(result) => handleOnDragEnd(result)}
             >
