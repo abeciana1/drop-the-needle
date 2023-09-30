@@ -46,6 +46,10 @@ export const options: AuthOptions = {
             }
             return token
         },
+        async session({session, token}: any) {
+            session.user.id = token.id
+            return session
+        }
     },
     jwt: {
         secret: process.env.NEXTAUTH_SECRET,
