@@ -25,7 +25,6 @@ const LoadingInstance = () => {
         }
     }
 
-    console.log('isLoading', isLoading)
     return (
         <>
             {isLoading &&
