@@ -1,7 +1,8 @@
 import '@/styles/globals.css'
+import '@/styles/expand-button.css'
+import '@/styles/loading-animation.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
-import '@/styles/expand-button.css'
 import LoadingStore from '@/context/loading-context'
 import { LoadingInstance } from '@/components/common'
 
