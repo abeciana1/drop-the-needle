@@ -34,7 +34,11 @@ const LoadingInstance = () => {
                 shouldCloseOnEsc={false}
                 shouldCloseOnOverlayClick={false}
             >
-                <div/>
+                <section className="loading-container">
+                    <div className="box1"/>
+                    <div className="box2"/>
+                    <div className="box3"/>
+                </section>
             </Modal>
         }
         </>
