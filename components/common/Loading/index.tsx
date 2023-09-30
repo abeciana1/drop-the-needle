@@ -5,7 +5,7 @@ import Modal from 'react-modal'
 const LoadingInstance = () => {
     const { isLoading } = useContext(LoadingContext)
 
-    Modal.setAppElement('#modals')
+    Modal.setAppElement('#loading')
     const customStyles = {
         overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.6)',

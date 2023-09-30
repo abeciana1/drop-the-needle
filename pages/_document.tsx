@@ -10,6 +10,7 @@ export default function Document() {
       </Head>
         <body className='w-fit min-w-full'>
         <div id="modals" />
+        <div id='loading'/>
           <Main />
           <NextScript />
         </body>
