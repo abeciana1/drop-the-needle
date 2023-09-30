@@ -22,7 +22,6 @@ const AddTrackForm = ({
         formState: { errors },
     } = useForm()
     const [ edit, setEdit ] = useState(false)
-    // const { data: { id } } = useSession()
     const { data: session } = useSession()
     console.log('session', session)
 
