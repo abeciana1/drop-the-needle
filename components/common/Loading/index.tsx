@@ -8,7 +8,7 @@ const LoadingInstance = () => {
     Modal.setAppElement('#loading')
     const customStyles = {
         overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
         zIndex: '9999'
         },
         content: {
@@ -18,29 +18,30 @@ const LoadingInstance = () => {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        borderRadius: '0.5rem',
-        border: '2px solid #343434',
         width: 'auto',
-        maxHeight: '100vh'
+        maxHeight: '100vh',
+        backgroundColor: 'transparent',
+        border: 'none'
         }
     }
 
+    console.log('isLoading', isLoading)
     return (
         <>
-        {isLoading &&
-            <Modal
-                isOpen={isLoading} 
-                style={customStyles}
-                shouldCloseOnEsc={false}
-                shouldCloseOnOverlayClick={false}
-            >
-                <section className="loading-container">
-                    <div className="box1"/>
-                    <div className="box2"/>
-                    <div className="box3"/>
-                </section>
-            </Modal>
-        }
+            {isLoading &&
+                <Modal
+                    isOpen={isLoading} 
+                    style={customStyles}
+                    shouldCloseOnEsc={false}
+                    shouldCloseOnOverlayClick={false}
+                >
+                    <section className="loading-container">
+                        <div className="box1"/>
+                        <div className="box2"/>
+                        <div className="box3"/>
+                    </section>
+                </Modal>
+            }
         </>
     )
 
