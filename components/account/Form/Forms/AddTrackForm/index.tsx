@@ -23,18 +23,17 @@ const AddTrackForm = ({
     } = useForm()
     const [ edit, setEdit ] = useState(false)
     const { data: session } = useSession()
-    console.log('session', session)
+
 
     const submit = (data: any) => {
         if (window) {
             let phId = window.location.pathname.split('/')[3]
-            console.log(window.location)
             submitHandler({
                 ...data,
-                // participantId: 0,
-                powerHourId: phId,
+                powerHourId: Number(phId),
                 participantId: session?.user?.id
             })
+            setEdit(!edit)
         }
     }
 
