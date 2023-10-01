@@ -1,9 +1,9 @@
-import { useContext } from 'react'
-import { LoadingContext } from '@/context/loading-context'
 import Modal from 'react-modal'
+import { LoadingInstanceI } from '@/interfaces'
 
-const LoadingInstance = () => {
-    const { isLoading } = useContext(LoadingContext)
+const LoadingInstance = ({
+    isLoading
+}: LoadingInstanceI) => {
 
     Modal.setAppElement('#loading')
     const customStyles = {
@@ -26,22 +26,18 @@ const LoadingInstance = () => {
     }
 
     return (
-        <>
-            {isLoading &&
-                <Modal
-                    isOpen={isLoading} 
-                    style={customStyles}
-                    shouldCloseOnEsc={false}
-                    shouldCloseOnOverlayClick={false}
-                >
-                    <section className="loading-container">
-                        <div className="box1"/>
-                        <div className="box2"/>
-                        <div className="box3"/>
-                    </section>
-                </Modal>
-            }
-        </>
+        <Modal
+            isOpen={isLoading} 
+            style={customStyles}
+            shouldCloseOnEsc={false}
+            shouldCloseOnOverlayClick={false}
+        >
+            <section className="loading-container">
+                <div className="box1"/>
+                <div className="box2"/>
+                <div className="box3"/>
+            </section>
+        </Modal>
     )
 
 }
