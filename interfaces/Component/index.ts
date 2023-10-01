@@ -98,3 +98,7 @@ export interface ModalI extends OnClickButtonI, ChildrenI {
     setRender: (arg: boolean) => void;
     icon?: React.ElementType;
 }
+
+export interface LoadingInstanceI {
+    isLoading: boolean;
+}

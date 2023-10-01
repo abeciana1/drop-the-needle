@@ -32,7 +32,8 @@ export type {
     TrackListI,
     TrackI,
     TrackPresentI,
-    ModalI
+    ModalI,
+    LoadingInstanceI
 } from '@/interfaces/Component'
 
 export type {
