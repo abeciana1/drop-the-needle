@@ -1,3 +1,5 @@
 export const SUCCESS = 'SUCCESS'
 export const FAILURE = 'FAILURE'
 export const LOADING = 'LOADING'
+export const SET_INSTANCE = 'SET_INSTANCE'
+export const CLEAR_INSTANCE = 'CLEAR_INSTANCE'
