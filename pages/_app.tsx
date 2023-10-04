@@ -3,16 +3,18 @@ import '@/styles/expand-button.css'
 import '@/styles/loading-animation.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
-import ModalInstanceStore from '@/context/instance-context'
-import { LoadingInstance } from '@/components/common'
+import ModalInstance from '@/components/common/ModalInstance'
+import { Provider } from 'react-redux'
+import store from '@/redux/store'
 
 export default function App({ Component, pageProps }: AppProps) {
   
   return (
     <SessionProvider session={pageProps.session}>
-      <ModalInstanceStore>
+      <Provider store={store}>
+        <ModalInstance />
         <Component {...pageProps} />
-      </ModalInstanceStore>
+      </Provider>
     </SessionProvider>
   )
 }
