@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import {
-    ModalComp,
     SubmitButton
 } from '@/components/common'
 import {
@@ -26,23 +24,12 @@ const UpdateTrackForm = ({
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const [ edit, setEdit ] = useState(false)
 
     const submit = (data: any) => {
-        setEdit(!edit)
         submitHandler(data)
     }
     
     return(
-    <ModalComp
-        shouldCloseOnOverlayClick={false}
-        shouldCloseOnEsc={false}
-        onClick={() => setEdit(true)}
-        render={edit}
-        setRender={setEdit}
-        text="Edit"
-        bgColor='ceruleanBlue'
-    >
         <FormContainer
             onSubmit={handleSubmit(submit)}
         >
@@ -143,7 +130,6 @@ const UpdateTrackForm = ({
                 />
             </div>
         </FormContainer>
-    </ModalComp>
     )
 }
 
