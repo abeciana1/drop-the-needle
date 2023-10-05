@@ -9,7 +9,7 @@ interface StateI {
 const instanceInitialState: StateI = {
     display: false,
     name: '',
-    data: {}
+    data: null
 }
 
 const instanceSlice = createSlice({
