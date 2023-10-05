@@ -5,13 +5,16 @@ import {
     UpdateTrackForm
 } from '@/components/account'
 import {
-    ExpandBtn
+    ExpandBtn,
+    OnClickButton
 } from '@/components/common'
 import {
     AiFillDelete,
     AiFillFolderOpen
 } from 'react-icons/ai'
 import axios from 'axios'
+import { useAppDispatch } from '@/redux/hooks'
+import { setInstance } from '@/redux/slices/instanceSlice'
 
 const Track = ({
     song,
@@ -20,6 +23,7 @@ const Track = ({
     index,
     removeHandler
 }: TrackI) => {
+    const dispatch = useAppDispatch()
     const [ openTrack, setOpen ] = useState(false)
     
     const {
@@ -76,6 +80,23 @@ const Track = ({
         }
     }
 
+    const renderUpdateTrackForm = () => {
+        dispatch(setInstance({
+            display: true,
+            name: 'updateTrack',
+            data: {
+                title: trackObj.trackTitle,
+                artist: trackObj.trackArtist,
+                startTime: trackObj.trackStartTime,
+                endTime: trackObj.trackEndTime,
+                album: trackObj.trackAlbum,
+                year: trackObj.trackYear,
+                youtubeLink: trackObj.trackYouTubeLink,
+                submitHandler: updateSubmitHandler
+            }
+        }))
+    }
+
     return(
         <li
             className="px-5 py-5 focus:border-2 focus:border-ceruleanBlue border-altBlack border-2 border-b-2"
@@ -84,7 +105,6 @@ const Track = ({
             {...provided.dragHandleProps}
         >
             <div 
-
                 className='flex flex-wrap items-center justify-between'
             >
                 <div
@@ -120,15 +140,10 @@ const Track = ({
                         <div><span className='font-medium'>Start: </span>{trackObj?.trackStartTime}</div>
                         <div><span className='font-medium'>End: </span>{trackObj?.trackEndTime}</div>
                         <div className='mt-7'>
-                            <UpdateTrackForm
-                                title={trackObj?.trackTitle}
-                                artist={trackObj?.trackArtist}
-                                startTime={trackObj?.trackStartTime}
-                                endTime={trackObj?.trackEndTime}
-                                album={trackObj?.trackAlbum}
-                                year={trackObj?.trackYear}
-                                youtubeLink={trackObj?.trackYouTubeLink}
-                                submitHandler={updateSubmitHandler}
+                            <OnClickButton
+                                text="Edit"
+                                bgColor='ceruleanBlue'
+                                onClick={renderUpdateTrackForm}
                             />
                         </div>
                     </div>
