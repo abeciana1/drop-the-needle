@@ -31,3 +31,4 @@ export {
     ShareBtn
 } from '@/components/common/ExpandButton'
 export { default as LoadingInstance } from '@/components/common/Loading'
+export { default as ModalInstance } from '@/components/common/ModalInstance'
