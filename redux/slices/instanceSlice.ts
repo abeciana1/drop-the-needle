@@ -1,12 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+interface StateI {
+    display: boolean;
+    name: string;
+    data: any;
+}
+
+const instanceInitialState: StateI = {
+    display: false,
+    name: '',
+    data: {}
+}
+
 const instanceSlice = createSlice({
     name: 'instance',
-    initialState: {
-        display: false,
-        name: '',
-        data: {}
-    },
+    initialState: instanceInitialState,
     reducers: {
         setInstance: (state, action) => {
             state.display = true,
