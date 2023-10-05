@@ -9,7 +9,10 @@ import {
 } from '@/components/common'
 import { AiOutlineClose } from 'react-icons/ai'
 import { clearInstance } from '@/redux/slices/instanceSlice'
-import { UpdateTrackForm } from '@/components/account'
+import {
+    UpdateTrackForm,
+    AddTrackForm
+} from '@/components/account'
 
 const ModalInstance = () => {
     Modal.setAppElement('#modals')
@@ -72,6 +75,11 @@ const ModalInstance = () => {
                             year={instanceState.data?.year}
                             youtubeLink={instanceState.data.youtubeLink}
                             submitHandler={instanceState?.data.updateSubmitHandler}
+                        />
+                    }
+                    {instanceState.name === 'addTrack' &&
+                        <AddTrackForm
+                            submitHandler={instanceState.data.submitHandler}
                         />
                     }
                 </Modal>
