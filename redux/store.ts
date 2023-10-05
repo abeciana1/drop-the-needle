@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import thunk from 'redux-thunk'
 import loadingReducer from '@/redux/slices/loadingSlice'
 import instanceReducer from '@/redux/slices/instanceSlice'
+
+const middlewareEnhancer = [thunk]
 
 const store =  configureStore({
     reducer: {
@@ -8,8 +11,8 @@ const store =  configureStore({
         instance: instanceReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-        serializableCheck: false
-    }),
+        serializableCheck: false,
+    }).concat(middlewareEnhancer),
     devTools: process.env.NODE_ENV !== 'production'
 })
 
