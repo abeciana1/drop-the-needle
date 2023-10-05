@@ -48,7 +48,7 @@ const ModalInstance = () => {
             {(isLoading && instanceState.display === false) &&
                 <LoadingInstance isLoading={isLoading} />
             }
-            {(instanceState.display && isLoading === false) &&
+            {(instanceState.display && isLoading === false && !!instanceState.data) &&
                 <Modal
                     isOpen={instanceState.display} 
                     onRequestClose={closeModal} 
