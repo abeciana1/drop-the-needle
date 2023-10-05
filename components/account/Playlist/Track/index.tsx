@@ -13,7 +13,10 @@ import {
 } from 'react-icons/ai'
 import axios from 'axios'
 import { useAppDispatch } from '@/redux/hooks'
-import { setInstance } from '@/redux/slices/instanceSlice'
+import {
+    setInstance,
+    clearInstance
+} from '@/redux/slices/instanceSlice'
 
 const Track = ({
     song,
@@ -61,6 +64,7 @@ const Track = ({
             trackAlbum: data?.songAlbum,
             trackYear: data?.songYear
         })
+        dispatch(clearInstance())
         await axios.patch(`/api/track/${id}`, {
             title: data?.songTitle,
             artist: data?.songArtist,
