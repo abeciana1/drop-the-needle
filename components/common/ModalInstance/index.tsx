@@ -9,13 +9,13 @@ import {
 } from '@/components/common'
 import { AiOutlineClose } from 'react-icons/ai'
 import { clearInstance } from '@/redux/slices/instanceSlice'
+import { UpdateTrackForm } from '@/components/account'
 
 const ModalInstance = () => {
     Modal.setAppElement('#modals')
     const isLoading = useAppSelector(state => state.loading.isLoading)
     const instanceState = useAppSelector(state => state.instance)
     const dispatch = useAppDispatch()
-    console.log('isLoading', isLoading)
 
     const customStyles = {
         overlay: {
@@ -62,7 +62,18 @@ const ModalInstance = () => {
                             onClick={closeModal}
                         />
                     </div>
-                    
+                    {instanceState.name === 'updateTrack' &&
+                        <UpdateTrackForm
+                            title={instanceState.data?.title}
+                            artist={instanceState.data?.artist}
+                            startTime={instanceState.data?.startTime}
+                            endTime={instanceState.data?.endTime}
+                            album={instanceState.data?.album}
+                            year={instanceState.data?.year}
+                            youtubeLink={instanceState.data.youtubeLink}
+                            submitHandler={instanceState?.data.updateSubmitHandler}
+                        />
+                    }
                 </Modal>
             }
         </>
