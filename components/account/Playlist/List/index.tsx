@@ -2,15 +2,23 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { TrackListI, SongI } from '@/interfaces'
 import {
     Track,
-    AddTrackForm
 } from '@/components/account'
+import {
+    OnClickButton
+} from '@/components/common'
 import { AiOutlinePlus } from 'react-icons/ai'
+import { useAppDispatch } from '@/redux/hooks'
+import {
+    setInstance,
+    clearInstance
+} from '@/redux/slices/instanceSlice'
 
 const TrackList = ({
     songs,
     removeHandler,
     addTrackHandler
 }: TrackListI) => {
+    const dispatch = useAppDispatch()
 
     const handleOnDragEnd = (result: any) => {
         console.log({result})
@@ -22,13 +30,25 @@ const TrackList = ({
         // reorderSongs(playlist.playlist.id, parseInt(result.draggableId), result.destination.index)
     }
 
+    const renderAddTrackForm = () => {
+        dispatch(setInstance({
+            display: true,
+            name: 'addTrack',
+            data: {
+                submitHandler: addTrackHandler
+            }
+        }))
+    }
+
     return(
         <section>
             <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
                 (Click on the track to expand details)
-                <AddTrackForm
+                <OnClickButton
+                    text='Add track'
                     icon={AiOutlinePlus}
-                    submitHandler={addTrackHandler}
+                    bgColor='ceruleanBlue'
+                    onClick={renderAddTrackForm}
                 />
             </div>
             <DragDropContext
