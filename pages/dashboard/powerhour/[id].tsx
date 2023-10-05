@@ -135,12 +135,7 @@ const PowerHourDynamic = () => {
 
     const addTrackHandler = (trackData: TrackDataI) => {
         console.log('trackData', trackData)
-        // * post req to db
-        // * backend post req
-            // * create new track 
-            // * order number pushed to back -> orderNumber === ph.length - 1
-        // * Add host id to payload to axios post req
-            // * use useSession from navbar
+        // * order number pushed to back -> orderNumber === ph.length - 1
         // * add power hour id to payload
         // * Create react portal hovering overlay -> loading animation
         // let newSongList:[] = [...songList, trackData]
