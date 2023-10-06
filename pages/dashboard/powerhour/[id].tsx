@@ -25,6 +25,14 @@ import {
 } from "react-icons/hi"
 import { useRouter } from 'next/router'
 import { TrackDataI } from '@/interfaces'
+import {
+    fetchPowerHour,
+    fetchSongs
+} from '@/redux/actions/playlist-actions'
+import {
+    useAppSelector,
+    useAppDispatch
+} from '@/redux/hooks'
 
 const phPublishStatuses = [
     {
@@ -38,99 +46,78 @@ const phPublishStatuses = [
 ]
 
 const PowerHourDynamic = () => {
+    const dispatch = useAppDispatch()
     const router = useRouter()
-    const [ songList, setSongList ] = useState([])
-    
-    useEffect(() => {
-        if (window) {
-            let id = window.location.pathname.split('/')[3]
-            axios.get("/api/powerhour/get-songs/" + id)
-            .then((response) => {
-                setSongList(response?.data?.sortedSongs)
-            })
-            .catch(err => console.error({err}))
-        }
-    }, [])
+    const powerHour = useAppSelector(state => state.powerHour.powerHour)
+    const songs = useAppSelector(state => state.powerHour.songs)
 
     useEffect(() => {
         if (window) {
             let id = window.location.pathname.split('/')[3]
-            axios.get("/api/powerhour/" + id)
-            .then((res) => {
-                setPowerHour(res?.data?.powerHour)
-            })
-            .catch(err => console.error({err}))
+            dispatch(fetchPowerHour(id))
+            
         }
     }, [])
 
-    const [ powerHourObj, setPowerHour ] = useState({
-        id: 0,
-        title: '',
-        description: '',
-        cover_image: '',
-        date_time: '',
-        privateStatus: false,
-        publishStatus: false,
-        participants: [],
-        songLimit: 0
-    })
-
-    let currentIdx = powerHourObj?.publishStatus ? 0 : 1
+    let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
 
     const trackRemoveHandler = async (index: number) => {
+        // todo create deleteSongAction
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
-            let newSongs = [...songList]
+            let newSongs = [...songs]
             newSongs.splice(index, 1)
-            setSongList(newSongs)
+            // setSongList(newSongs)
             await axios.delete('/api/track/' + index)
         }
     }
 
     const deleteHandler = async () => {
+        // todo create deleteAction
         if (confirm('Are you sure you want to delete this power hour?')) {
             router.push('/dashboard')
-            await axios.delete('/api/track/' + powerHourObj.id)
+            await axios.delete('/api/track/' + powerHour.id)
         }
     }
 
     const handlePowerHourPublishStatus = async () => {
         if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
-            await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
+            await axios.patch(`/api/powerhour/${powerHour?.id}`, {
                 publishStatus: phPublishStatuses[1].bool
             })
         } else {
             setPubStatus(phPublishStatuses[0])
-            await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
+            await axios.patch(`/api/powerhour/${powerHour?.id}`, {
                 publishStatus: phPublishStatuses[0].bool
             })
         }
     }
 
-    const users = powerHourObj?.participants?.map((participant: any) => participant?.user)
+    const users = powerHour?.participants?.map((participant: any) => participant?.user)
 
     const updatePlaylistSubmitHandler = async (data: any) => {
-        setPowerHour({
-            ...powerHourObj,
-            title: data?.title,
-            description: data?.description,
-            date_time: data?.dateTime,
-            privateStatus: data?.privateStatus === 'true',
-            publishStatus: data?.publishStatus === 'true',
-            songLimit: data?.songLimit
-        })
-        await axios.patch(`/api/powerhour/${powerHourObj?.id}`, {
-            title: data?.title,
-            description: data?.description,
-            date_time: new Date(data?.dateTime),
-            privateStatus: data?.privateStatus === 'true',
-            publishStatus: data?.publishStatus === 'true',
-            songLimit: data?.songLimit
-        })
-        .then(res => console.log('res', res))
-        .catch(err => console.error({err}))
+        //todo create updatePowerHourAction
+        // setPowerHour({
+        //     ...powerHour,
+        //     title: data?.title,
+        //     description: data?.description,
+        //     date_time: data?.dateTime,
+        //     privateStatus: data?.privateStatus === 'true',
+        //     publishStatus: data?.publishStatus === 'true',
+        //     songLimit: data?.songLimit
+        // })
+        // await axios.patch(`/api/powerhour/${powerHour?.id}`, {
+        //     title: data?.title,
+        //     description: data?.description,
+        //     date_time: new Date(data?.dateTime),
+        //     privateStatus: data?.privateStatus === 'true',
+        //     publishStatus: data?.publishStatus === 'true',
+        //     songLimit: data?.songLimit
+        // })
+        // .then(res => console.log('res', res))
+        // .catch(err => console.error({err}))
     }
 
     const addTrackHandler = (trackData: TrackDataI) => {
@@ -168,29 +155,29 @@ const PowerHourDynamic = () => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
-                    {powerHourObj &&
+                    {powerHour &&
                         <section className="flex flex-col md:flex-row justify-around items-center pt-20">
                             <Image
-                                src={powerHourObj?.cover_image }
+                                src={powerHour?.cover_image }
                                 width={250}
                                 height={250}
-                                alt={powerHourObj?.title}
+                                alt={powerHour?.title}
                                 priority
                             />
                             <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
-                                <H1 color={2} text={powerHourObj?.title} />
-                                {powerHourObj?.date_time &&
-                                    <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHourObj?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHourObj?.date_time), 'America/New_York', 'p zzz')}</div>
+                                <H1 color={2} text={powerHour?.title} />
+                                {powerHour?.date_time &&
+                                    <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHour?.date_time), 'America/New_York', 'p zzz')}</div>
                                 }
-                                <div className='text-altBlack text-xl'>{powerHourObj?.description}</div>
+                                <div className='text-altBlack text-xl'>{powerHour?.description}</div>
                                 <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
                                     <UpdatePowerHourForm
-                                        title={powerHourObj?.title}
-                                        description={powerHourObj?.description}
-                                        dateTime={powerHourObj?.date_time}
-                                        privateStatus={powerHourObj?.privateStatus}
-                                        publishStatus={powerHourObj?.publishStatus}
-                                        songLimit={powerHourObj?.songLimit}
+                                        title={powerHour?.title}
+                                        description={powerHour?.description}
+                                        dateTime={powerHour?.date_time}
+                                        privateStatus={powerHour?.privateStatus}
+                                        publishStatus={powerHour?.publishStatus}
+                                        songLimit={powerHour?.songLimit}
                                         submitHandler={updatePlaylistSubmitHandler}
                                     />
                                     <OnClickButton
@@ -222,10 +209,10 @@ const PowerHourDynamic = () => {
                             <div className='text-altBlack text-2xl font-medium'>Promotion and sharing coming soon</div>
                         </section>
                     </Grid3Column>
-                    <div className="my-5 font-medium">Song limit per user: {powerHourObj?.songLimit}</div>
+                    <div className="my-5 font-medium">Song limit per user: {powerHour?.songLimit}</div>
                     <TrackList
                         removeHandler={trackRemoveHandler}
-                        songs={songList}
+                        songs={songs}
                         addTrackHandler={addTrackHandler}
                     />
                 </ComponentMargin>
