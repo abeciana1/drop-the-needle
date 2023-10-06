@@ -1,14 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, type ThunkAction, type Action } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 import loadingReducer from '@/redux/slices/loadingSlice'
 import instanceReducer from '@/redux/slices/instanceSlice'
+import powerHourReducer from '@/redux/slices/powerHourSlice'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const middlewareEnhancer = [thunk]
 
 const store =  configureStore({
     reducer: {
         loading: loadingReducer,
-        instance: instanceReducer
+        instance: instanceReducer,
+        powerHour: powerHourReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false,
@@ -18,5 +21,13 @@ const store =  configureStore({
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
+
+export type ReduxStore = typeof store
+export type ReduxThunkAction<ReturnType = void> = ThunkAction<
+    ReturnType,
+    RootState,
+    any,
+    Action
+>
 
 export default store
