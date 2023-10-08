@@ -27,12 +27,14 @@ import { useRouter } from 'next/router'
 import { TrackDataI } from '@/interfaces'
 import {
     fetchPowerHour,
-    fetchSongs
+    fetchSongs,
+    updatePowerHour
 } from '@/redux/actions/playlist-actions'
 import {
     useAppSelector,
     useAppDispatch
 } from '@/redux/hooks'
+import { clearInstance } from '@/redux/slices/instanceSlice'
 
 const phPublishStatuses = [
     {
@@ -50,16 +52,16 @@ const PowerHourDynamic = () => {
     const router = useRouter()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
-    console.log(songs)
-
-    useEffect(() => {
-        dispatch(fetchPowerHour(router.query.id as string))
-        dispatch(fetchSongs(router.query.id as string))
-    }, [router])
-
+    console.log(powerHour)
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
+    useEffect(() => {
+        if (window) {
+            dispatch(fetchPowerHour(window.location.pathname.split('/')[3]))
+            dispatch(fetchSongs(window.location.pathname.split('/')[3]))
+        }
+    }, [])
 
     const trackRemoveHandler = async (index: number) => {
         // todo create deleteSongAction
@@ -96,26 +98,8 @@ const PowerHourDynamic = () => {
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
 
     const updatePlaylistSubmitHandler = async (data: any) => {
-        //todo create updatePowerHourAction
-        // setPowerHour({
-        //     ...powerHour,
-        //     title: data?.title,
-        //     description: data?.description,
-        //     date_time: data?.dateTime,
-        //     privateStatus: data?.privateStatus === 'true',
-        //     publishStatus: data?.publishStatus === 'true',
-        //     songLimit: data?.songLimit
-        // })
-        // await axios.patch(`/api/powerhour/${powerHour?.id}`, {
-        //     title: data?.title,
-        //     description: data?.description,
-        //     date_time: new Date(data?.dateTime),
-        //     privateStatus: data?.privateStatus === 'true',
-        //     publishStatus: data?.publishStatus === 'true',
-        //     songLimit: data?.songLimit
-        // })
-        // .then(res => console.log('res', res))
-        // .catch(err => console.error({err}))
+        dispatch(clearInstance())
+        dispatch(updatePowerHour(powerHour?.id, data))
     }
 
     const addTrackHandler = (trackData: TrackDataI) => {
