@@ -50,14 +50,12 @@ const PowerHourDynamic = () => {
     const router = useRouter()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
+    console.log(songs)
 
     useEffect(() => {
-        if (window) {
-            let id = window.location.pathname.split('/')[3]
-            dispatch(fetchPowerHour(id))
-            
-        }
-    }, [])
+        dispatch(fetchPowerHour(router.query.id as string))
+        dispatch(fetchSongs(router.query.id as string))
+    }, [router])
 
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
@@ -155,40 +153,37 @@ const PowerHourDynamic = () => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
-                    {powerHour &&
-                        <section className="flex flex-col md:flex-row justify-around items-center pt-20">
-                            <Image
-                                src={powerHour?.cover_image }
-                                width={250}
-                                height={250}
-                                alt={powerHour?.title}
-                                priority
-                            />
-                            <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
-                                <H1 color={2} text={powerHour?.title} />
-                                {powerHour?.date_time &&
-                                    <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHour?.date_time), 'America/New_York', 'p zzz')}</div>
-                                }
-                                <div className='text-altBlack text-xl'>{powerHour?.description}</div>
-                                <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
-                                    <UpdatePowerHourForm
-                                        title={powerHour?.title}
-                                        description={powerHour?.description}
-                                        dateTime={powerHour?.date_time}
-                                        privateStatus={powerHour?.privateStatus}
-                                        publishStatus={powerHour?.publishStatus}
-                                        songLimit={powerHour?.songLimit}
-                                        submitHandler={updatePlaylistSubmitHandler}
-                                    />
-                                    <OnClickButton
-                                        text='Delete Power Hour'
-                                        bgColor='vermillion'
-                                        onClick={deleteHandler}
-                                    />
-                                </div>
-                            </section>
+                    <section className="flex flex-col md:flex-row justify-around items-center pt-20">
+                    <Image
+                        src={powerHour?.cover_image}
+                        width={250}
+                        height={250}
+                        alt={powerHour?.title}
+                    />
+                        <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
+                            <H1 color={2} text={powerHour?.title} />
+                            {powerHour?.date_time &&
+                                <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHour?.date_time), 'America/New_York', 'p zzz')}</div>
+                            }
+                            <div className='text-altBlack text-xl'>{powerHour?.description}</div>
+                            <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
+                                <UpdatePowerHourForm
+                                    title={powerHour?.title}
+                                    description={powerHour?.description}
+                                    dateTime={powerHour?.date_time}
+                                    privateStatus={powerHour?.privateStatus}
+                                    publishStatus={powerHour?.publishStatus}
+                                    songLimit={powerHour?.songLimit}
+                                    submitHandler={updatePlaylistSubmitHandler}
+                                />
+                                <OnClickButton
+                                    text='Delete Power Hour'
+                                    bgColor='vermillion'
+                                    onClick={deleteHandler}
+                                />
+                            </div>
                         </section>
-                    }
+                    </section>
                     <Grid3Column>
                         <SingleSelectField
                             icon={selectedPubStatus?.bool ? HiEye : HiEyeOff}
