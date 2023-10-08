@@ -23,10 +23,10 @@ const AccordionDataList = ({
                 ['text-base']: size === 'md',
                 ['text-lg']: size === 'lg'
             })}>
-            <div className="flex items-center gap-2">
+            <span className="flex items-center gap-2">
                 <Icon className="h-5 w-5" />
-                <div className="font-medium">{ heading }</div>
-            </div>
+                <span className="font-medium">{ heading }</span>
+            </span>
             <HiChevronUp
                 strokeWidth="2.5"
                 className={`${
