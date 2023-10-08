@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import { AddTrackFormI } from '@/interfaces'
 import { useForm } from "react-hook-form"
 import {
-    ModalComp,
     SubmitButton
 } from '@/components/common'
 import {
@@ -11,10 +9,12 @@ import {
 } from '@/components/account'
 import { ErrorMessage } from "@hookform/error-message"
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const AddTrackForm = ({
     submitHandler
 }: AddTrackFormI) => {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -24,14 +24,12 @@ const AddTrackForm = ({
 
 
     const submit = (data: any) => {
-        if (window) {
-            let phId = window.location.pathname.split('/')[3]
-            submitHandler({
-                ...data,
-                powerHourId: Number(phId),
-                participantId: session?.user?.id
-            })
-        }
+        let phId = Number(router.query.id)
+        submitHandler({
+            ...data,
+            powerHourId: Number(phId),
+            participantId: session?.user?.id
+        })
     }
 
     return (
