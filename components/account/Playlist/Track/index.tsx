@@ -131,7 +131,7 @@ const Track = ({
                         text="Remove"
                         icon={AiFillDelete}
                         backgroundColor='vermillion'
-                        onClick={() => removeHandler(index)}
+                        onClick={() => removeHandler(index, song?.id)}
                         size={8}
                     />
                 </span>
