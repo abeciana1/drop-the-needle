@@ -9,9 +9,10 @@ import {
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
 import {
-    setInstance,
-    clearInstance
+    setInstance
 } from '@/redux/slices/instanceSlice'
+import { reorderSongsAction } from '@/redux/actions/song-actions'
+import { useRouter } from "next/router";
 
 const TrackList = ({
     songs,
@@ -19,15 +20,12 @@ const TrackList = ({
     addTrackHandler
 }: TrackListI) => {
     const dispatch = useAppDispatch()
+    const router = useRouter()
 
     const handleOnDragEnd = (result: any) => {
         console.log({result})
         if (!result.destination) return;
-        let items = songs
-        const [reorderedItem] = items.splice(result.source.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-        // setSongs(items);
-        // reorderSongs(playlist.playlist.id, parseInt(result.draggableId), result.destination.index)
+        reorderSongsAction(Number(router.query.id), result)
     }
 
     const renderAddTrackForm = () => {
@@ -66,7 +64,7 @@ const TrackList = ({
                                     return (
                                         <Draggable
                                             key={song?.id}
-                                            draggableId={song?.id.toString()}
+                                            draggableId={song?.id?.toString()}
                                             index={index}
                                         >
                                             {(provided) => (
