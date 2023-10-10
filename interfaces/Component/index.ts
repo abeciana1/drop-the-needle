@@ -72,7 +72,7 @@ export interface AccordionDataI {
 
 export interface TrackListI {
     songs: SongI[];
-    removeHandler: (id: number) => void;
+    removeHandler: (index: number, id: number) => void;
     addTrackHandler: (trackData: TrackDataI) => void;
 }
 
@@ -81,7 +81,7 @@ export interface TrackI {
     user: string;
     index: number;
     provided: any;
-    removeHandler: (id: number) => void;
+    removeHandler: (index: number, id: number) => void;
 }
 
 export interface TrackPresentI {
