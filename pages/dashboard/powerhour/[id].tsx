@@ -31,6 +31,10 @@ import {
     updatePowerHour
 } from '@/redux/actions/playlist-actions'
 import {
+    addTrackAction,
+    deleteTrackAction
+} from '@/redux/actions/song-actions'
+import {
     useAppSelector,
     useAppDispatch
 } from '@/redux/hooks'
@@ -52,7 +56,6 @@ const PowerHourDynamic = () => {
     const router = useRouter()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
-    console.log(powerHour)
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
 
@@ -63,13 +66,9 @@ const PowerHourDynamic = () => {
         }
     }, [])
 
-    const trackRemoveHandler = async (index: number) => {
-        // todo create deleteSongAction
+    const trackRemoveHandler = async (index: number, id: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
-            let newSongs = [...songs]
-            newSongs.splice(index, 1)
-            // setSongList(newSongs)
-            await axios.delete('/api/track/' + index)
+            dispatch(deleteTrackAction(index, id))
         }
     }
 
@@ -77,7 +76,7 @@ const PowerHourDynamic = () => {
         // todo create deleteAction
         if (confirm('Are you sure you want to delete this power hour?')) {
             router.push('/dashboard')
-            await axios.delete('/api/track/' + powerHour.id)
+            await axios.delete('/api/powerhour/' + powerHour.id)
         }
     }
 
@@ -103,13 +102,8 @@ const PowerHourDynamic = () => {
     }
 
     const addTrackHandler = (trackData: TrackDataI) => {
-        console.log('trackData', trackData)
-        // * order number pushed to back -> orderNumber === ph.length - 1
-        // * add power hour id to payload
-        // * Create react portal hovering overlay -> loading animation
-        // let newSongList:[] = [...songList, trackData]
-        // setSongList(newSongList)
-        //! axios post req
+        dispatch(clearInstance())
+        dispatch(addTrackAction(trackData, (songs?.length + 1)))
     }
 
 //     <FileUpload
