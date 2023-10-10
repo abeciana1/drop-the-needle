@@ -9,9 +9,9 @@ import {
     success,
     failure
 } from '@/redux/slices/loadingSlice'
-import { AppDispatch, ReduxThunkAction } from '@/redux/store'
+import { AppDispatch } from '@/redux/store'
 
-export const fetchPowerHour = (id: string): ReduxThunkAction => {
+export const fetchPowerHour = (id: string) => {
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         try {
@@ -38,7 +38,7 @@ export const fetchSongs = (id: string) => {
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
-            console.error('fetchPowerHour', error);
+            console.error('fetchSong', error);
         }
     }
 }
@@ -61,7 +61,7 @@ export const updatePowerHour = (id: number, data: any) => {
             })
         } catch (err) {
             dispatch(failure({ error: 'Failed to update power hour data' }))
-            console.log(err)
+            console.log('updatePowerHour', err)
         }
     }
 }
