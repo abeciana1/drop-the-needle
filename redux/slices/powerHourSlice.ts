@@ -23,6 +23,12 @@ const powerHourSlice = createSlice({
         },
         clearSongs: (state) => {
             state.songs = {}
+        },
+        addSong: (state, action) => {
+            state.songs = state.songs.push(action.payload)
+        },
+        deleteSong: (state, action) => {
+            state.songs = action.payload
         }
     }
 })
@@ -31,7 +37,9 @@ export const {
     setPowerHour,
     clearPowerHour,
     setSongs,
-    patchPowerHour
+    patchPowerHour,
+    addSong,
+    deleteSong
 } = powerHourSlice.actions
 
 export default powerHourSlice.reducer
