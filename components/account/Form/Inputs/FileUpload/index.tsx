@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { FileUploadI } from '@/interfaces'
 
 const FileUpload = ({
@@ -10,23 +9,6 @@ const FileUpload = ({
     acceptedFileTypes,
     registerOptions
 }: FileUploadI) => {
-    const [ val, setVal ] = useState(value)
-
-    const fileUploadChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e?.target?.value !== value) setVal(e.target.value)
-        // let formData = new FormData()
-        // if (e?.target?.files) {
-        //     formData.append('input', e?.target?.files[0])
-        //     axios.post(process.env.HYGRAPH_UPLOAD_URL as string, {
-        //         headers: {
-        //             "Content-Type": "multipart/form-data",
-        //         }
-        //     })
-        //     .then(res => console.log('res', res))
-        //     .catch(err => console.error('upload', err))
-        // }
-    }
-
     return (
         <div className="py-3 w-64 sm:w-full">
             <label className="">{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
@@ -39,7 +21,6 @@ const FileUpload = ({
                     })}
                     type='file'
                     hidden
-                    onChange={fileUploadChangeHandler}
                     accept={acceptedFileTypes}
                 />
                 <label
@@ -48,7 +29,7 @@ const FileUpload = ({
                 >
                     Choose a file 
                 </label>
-                <label>{val?.substring(0,20) + '...'}</label>
+                <label>{value?.substring(0,20) + '...'}</label>
             </div>
         </div>
     )
