@@ -24,3 +24,7 @@ export interface UpdatePowerHourFormI {
 export interface AddTrackFormI {
     submitHandler: (trackData: TrackDataI) => void;
 }
+
+export interface UpdateCoverImageFormI {
+    coverImage: string;
+}
