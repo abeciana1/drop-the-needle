@@ -33,13 +33,15 @@ const UpdateCoverImageForm = ({
 
     return (
         <>
-            <Image
-                src={coverImageSrc}
-                width={250}
-                height={250}
-                alt='Preview image'
-                className='mx-auto'
-            />
+            <div className="pt-3">
+                <Image
+                    src={coverImageSrc}
+                    width={250}
+                    height={250}
+                    alt='Preview image'
+                    className='mx-auto'
+                />
+            </div>
             <FormContainer onSubmit={handleSubmit(submitHandler)}>
                 <FileUpload
                     label='Cover image'
@@ -63,6 +65,7 @@ const UpdateCoverImageForm = ({
                 <div className="py-3">
                     <SubmitButton
                         bgColor='vermillion'
+                        text='Upload'
                     />
                 </div>
             </FormContainer>
