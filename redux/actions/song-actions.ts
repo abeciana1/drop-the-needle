@@ -8,7 +8,8 @@ import { AppDispatch } from '@/redux/store'
 import { TrackDataI } from '@/interfaces'
 import {
     addSong,
-    deleteSong
+    deleteSong,
+    reorderSongs
 } from '@/redux/slices/powerHourSlice'
 import store from '@/redux/store'
 
@@ -53,12 +54,23 @@ export const reorderSongsAction = (id: number, result: any) => {
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         const songsState = store.getState().powerHour.songs
-        let items = [...songsState]
-        const [reorderedItem] = items?.splice(result?.source?.index, 1);
-        items.splice(result.destination.index, 0, reorderedItem);
-        // await axios.patch('/api/powerhour/reorder-songs/' + id, {})
-        // ! patch
-            //* type -> up, down
-            //* 
+        let foundSong = songsState[result.source.index]
+        let newSongList = [...songsState]
+        const [reorderedItem] = newSongList?.splice(result?.source?.index, 1);
+        newSongList.splice(result.destination.index, 0, reorderedItem);
+        await axios.patch('/api/powerhour/reorder-songs/' + id, {
+            type: result.destination.index > result.source.index ? 'down' : 'up',
+            trackId: foundSong.id,
+            sourceOrderNumber: (result.source.index + 1),
+            destinationOrderNumber: (result.destination.index + 1)
+        })
+        .then(response => {
+            if (response?.status !== 200) {
+                dispatch(failure({ error: 'Unable to reorder songs' }))
+            } else { 
+                dispatch(success())
+                dispatch(reorderSongs(newSongList))
+            }
+        })
     }
 }
