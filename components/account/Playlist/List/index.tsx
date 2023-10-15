@@ -13,6 +13,7 @@ import {
 } from '@/redux/slices/instanceSlice'
 import { reorderSongsAction } from '@/redux/actions/song-actions'
 import { useRouter } from "next/router";
+import { reorderSongs } from '@/redux/slices/powerHourSlice'
 
 const TrackList = ({
     songs,
@@ -23,9 +24,8 @@ const TrackList = ({
     const router = useRouter()
 
     const handleOnDragEnd = (result: any) => {
-        console.log({result})
         if (!result.destination) return;
-        reorderSongsAction(Number(router.query.id), result)
+        dispatch(reorderSongsAction(Number(router.query.id), result))
     }
 
     const renderAddTrackForm = () => {
