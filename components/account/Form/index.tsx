@@ -12,5 +12,6 @@ export {
 export {
     UpdateTrackForm,
     UpdatePowerHourForm,
-    AddTrackForm
+    AddTrackForm,
+    UpdateCoverImageForm
 } from '@/components/account/Form/Forms'
