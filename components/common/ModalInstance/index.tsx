@@ -11,7 +11,8 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { clearInstance } from '@/redux/slices/instanceSlice'
 import {
     UpdateTrackForm,
-    AddTrackForm
+    AddTrackForm,
+    UpdateCoverImageForm
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -80,6 +81,11 @@ const ModalInstance = () => {
                     {instanceState.name === 'addTrack' &&
                         <AddTrackForm
                             submitHandler={instanceState.data.submitHandler}
+                        />
+                    }
+                    {instanceState.name === 'updateCoverImg' &&
+                        <UpdateCoverImageForm
+                            coverImage={instanceState.data.coverImage}
                         />
                     }
                 </Modal>
