@@ -1,58 +1,69 @@
-import { useState } from 'react'
 import { ErrorMessage } from "@hookform/error-message"
-import { useForm } from "react-hook-form"
+import {
+    useForm,
+    useWatch
+} from "react-hook-form"
 import {
     FormContainer,
     FileUpload
 } from '@/components/account'
 import { UpdateCoverImageFormI } from '@/interfaces'
-import { useRouter } from 'next/router'
-import {
-    SubmitButton
-} from '@/components/common'
+import { SubmitButton } from '@/components/common'
 import Image from 'next/image'
+import { updatePowerHourImgAction } from '@/redux/actions/playlist-actions'
+import { useAppDispatch } from '@/redux/hooks'
+import { useRouter } from 'next/router'
+import { clearInstance } from '@/redux/slices/instanceSlice'
 
 const UpdateCoverImageForm = ({
     coverImage
 }: UpdateCoverImageFormI) => {
+    const dispatch = useAppDispatch()
     const router = useRouter()
     const {
         register,
         handleSubmit,
         formState: { errors },
+        control
     } = useForm()
-    const [ coverImageSrc, setSrc ] = useState(coverImage)
+    const onChangeValue = useWatch({
+        control,
+        name: 'coverImage',
+        defaultValue: coverImage
+    })
 
-    const submitHandler = (data: any) => {
-        let coverImgFile = data.coverImage[0]
-        if (coverImgFile) {
-            // let phId = Number(router.query.id)
-            setSrc(URL.createObjectURL(coverImgFile))
-        }
+    const submitHandler = async (data: any) => {
+        const formData = new FormData()
+        formData.append('file', data.coverImage[0])
+        formData.append('folder', 'dtn-image')
+        formData.append('upload_preset', 'dtn-img')
+        formData.append('asset_folder', 'dtn-image')
+        formData.append('filename_override', data.coverImage[0].name.split('.')[0])
+        dispatch(updatePowerHourImgAction(formData, router.query.id as string))
+        dispatch(clearInstance())
     }
 
     return (
         <>
             <div className="pt-3">
                 <Image
-                    src={coverImageSrc}
+                    src={onChangeValue === coverImage ? onChangeValue : URL?.createObjectURL(onChangeValue[0])}
                     width={250}
                     height={250}
                     alt='Preview image'
-                    className='mx-auto'
+                    className='mx-auto w-60 h-60'
                 />
             </div>
             <FormContainer onSubmit={handleSubmit(submitHandler)}>
                 <FileUpload
                     label='Cover image'
-                    value={coverImageSrc}
+                    value={onChangeValue === coverImage ? onChangeValue : URL?.createObjectURL(onChangeValue[0])}
                     name='coverImage'
                     fieldRequired={true}
                     register={register}
                     registerOptions={{
                         validate: {
                             acceptedFormats: (files: File[]) => {
-                                console.log(files)
                                 return ["image/jpeg", "image/png", "image/webp"].includes(
                                     files[0]?.type
                                 ) || "Only PNG, JPEG, or WEBP"
