@@ -65,3 +65,35 @@ export const updatePowerHour = (id: number, data: any) => {
         }
     }
 }
+
+export const updatePowerHourImgAction = (file: any, phId: string) => {
+    return async function (dispatch: AppDispatch) {
+        let newImgLink = ''
+        dispatch(loading())
+        await fetch(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, {
+            method: 'POST',
+            body: file
+        })
+        .then(response => response.json())
+        .then(data => {
+            newImgLink = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${data.version}/${data.public_id}.webp`
+        })
+        .catch(error => {
+            console.error('error', error)
+        })
+        if (newImgLink) {
+            try {
+                axios.patch('/api/powerhour/' + phId, {
+                    cover_image: newImgLink
+                })
+                .then(res => {
+                    dispatch(patchPowerHour(res.data.powerHour))
+                    dispatch(success())
+                })
+            } catch (error) {
+                console.error('err', error)
+                dispatch(failure({ error: 'Failed to update cover image.' }))
+            }
+        }
+    }
+}
