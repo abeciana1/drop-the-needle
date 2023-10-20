@@ -115,7 +115,6 @@ const PowerHourDynamic = () => {
             name: 'updateCoverImg',
             data: {
                 coverImage: powerHour?.cover_image,
-                // submitHandler: submitUpdateCoverImg
             }
         }))
     }
@@ -135,6 +134,7 @@ const PowerHourDynamic = () => {
                             width={250}
                             height={250}
                             alt={powerHour?.title}
+                            className='w-60 h-60'
                         />
                         <button
                             onClick={renderUpdateCoverImg}
