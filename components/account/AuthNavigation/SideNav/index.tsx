@@ -29,6 +29,10 @@ const SideNav = () => {
         await signOut({ callbackUrl: '/' })
     }
 
+    const createNewPHHandler = () => {
+        console.log('create')
+    }
+
     return (
         <aside className="relative z-50">
             {(isOpen || isDesktop) &&
@@ -46,9 +50,9 @@ const SideNav = () => {
                                 linkText='My Power Hours'
                                 icon={AiOutlineBars}
                             />
-                            <SideNavItemLink
-                                href='dashboard/powerhour/create'
-                                linkText='Create New'
+                            <SideNavItemButton
+                                onClick={createNewPHHandler}
+                                text='Create new power hour'
                                 icon={AiFillEdit}
                             />
                         </ul>
