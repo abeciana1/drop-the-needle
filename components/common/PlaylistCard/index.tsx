@@ -18,10 +18,10 @@ const PlaylistCard = ({
             <Image
                 src={cover_image}
                 priority
-                className=""
                 alt={title}
                 width={225}
                 height={225}
+                className='w-56 h-56'
             />
             {title}
         </Link>
