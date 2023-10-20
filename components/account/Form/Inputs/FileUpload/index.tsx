@@ -14,7 +14,7 @@ const FileUpload = ({
             <label className="">{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
             <div className='flex justify-between ring-2 border-slate-200 rounded-lg focus:ring-royalBlue items-center'>
                 <input
-                    id='file-input'
+                    id='fileInput'
                     {...register(name, {
                         required: fieldRequired,
                         ...registerOptions
@@ -24,7 +24,7 @@ const FileUpload = ({
                     accept={acceptedFileTypes}
                 />
                 <label
-                    htmlFor='file-input'
+                    htmlFor='fileInput'
                     className='py-1 px-3 sm:text-xl w-fit rounded-lg text-center bg-ceruleanBlue text-altWhite'
                 >
                     Choose a file 
