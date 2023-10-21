@@ -120,9 +120,6 @@ const PowerHourDynamic = () => {
         }))
     }
 
-    // const submitUpdateCoverImg = () => {
-    // }
-
     return (
         <>
             <SEO />
