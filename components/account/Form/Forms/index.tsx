@@ -2,3 +2,4 @@ export { default as UpdateTrackForm } from '@/components/account/Form/Forms/Upda
 export { default as UpdatePowerHourForm} from '@/components/account/Form/Forms/UpdatePowerHourForm'
 export { default as AddTrackForm } from '@/components/account/Form/Forms/AddTrackForm'
 export { default as UpdateCoverImageForm } from '@/components/account/Form/Forms/UpdateCoverImageForm'
+export { default as AddPowerHourForm } from '@/components/account/Form/Forms/AddPowerHourForm'

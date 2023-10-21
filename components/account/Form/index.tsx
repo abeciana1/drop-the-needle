@@ -13,5 +13,6 @@ export {
     UpdateTrackForm,
     UpdatePowerHourForm,
     AddTrackForm,
-    UpdateCoverImageForm
+    UpdateCoverImageForm,
+    AddPowerHourForm
 } from '@/components/account/Form/Forms'
