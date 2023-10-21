@@ -15,8 +15,14 @@ import {
     ToggleButton
 } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
+import { setInstance } from '@/redux/slices/instanceSlice'
+import {
+    useAppSelector,
+    useAppDispatch
+} from '@/redux/hooks'
 
 const SideNav = () => {
+    const dispatch = useAppDispatch()
     const [ isOpen, setOpen ] = useState(false)
 
     const {
@@ -31,6 +37,11 @@ const SideNav = () => {
 
     const createNewPHHandler = () => {
         console.log('create')
+        dispatch(setInstance({
+            display: true,
+            name: 'phCreateor',
+            data: {}
+        }))
     }
 
     return (
