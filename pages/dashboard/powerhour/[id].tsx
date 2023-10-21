@@ -112,6 +112,7 @@ const PowerHourDynamic = () => {
 
     const renderUpdateCoverImg = () => {
         dispatch(setInstance({
+            display: true,
             name: 'updateCoverImg',
             data: {
                 coverImage: powerHour?.cover_image,
