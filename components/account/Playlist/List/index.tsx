@@ -8,12 +8,9 @@ import {
 } from '@/components/common'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
-import {
-    setInstance
-} from '@/redux/slices/instanceSlice'
+import { setInstance } from '@/redux/slices/instanceSlice'
 import { reorderSongsAction } from '@/redux/actions/song-actions'
 import { useRouter } from "next/router";
-import { reorderSongs } from '@/redux/slices/powerHourSlice'
 
 const TrackList = ({
     songs,
