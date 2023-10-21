@@ -12,7 +12,8 @@ import { clearInstance } from '@/redux/slices/instanceSlice'
 import {
     UpdateTrackForm,
     AddTrackForm,
-    UpdateCoverImageForm
+    UpdateCoverImageForm,
+    AddPowerHourForm
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -87,6 +88,9 @@ const ModalInstance = () => {
                         <UpdateCoverImageForm
                             coverImage={instanceState.data.coverImage}
                         />
+                    }
+                    {instanceState.name === 'phCreateor' &&
+                        <AddPowerHourForm/>
                     }
                 </Modal>
             }
