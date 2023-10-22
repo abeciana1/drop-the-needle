@@ -10,6 +10,7 @@ import {
     failure
 } from '@/redux/slices/loadingSlice'
 import { AppDispatch } from '@/redux/store'
+import useRouter from 'next/router'
 
 export const fetchPowerHour = (id: string) => {
     return async function (dispatch: AppDispatch) {
@@ -100,6 +101,31 @@ export const updatePowerHourImgAction = (file: any, phId: string) => {
 
 export const createPowerHourAction = (powerHourData: any, userId: number) => {
     return (dispatch: AppDispatch) => {
-        
+        try {
+            axios.post('/api/powerhour/new', {
+                data: {
+                    userId: userId,
+                    powerHourData: {
+                        title: powerHourData.title,
+                        description: powerHourData.description,
+                        cover_image: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1697937069/dtn-image/g2mkvb7takf9pojc4ium.webp',
+                        date_time: new Date(powerHourData.dateTime),
+                        privateStatus: powerHourData.privateStatus === 'true',
+                        publishStatus: powerHourData.publishStatus === 'true',
+                        songLimit: Number(powerHourData.songLimit)
+                    }
+                }
+            })
+            .then(response => {
+                // response.data.newPowerHour.id
+                if (response.status === 200) {
+                    window.location.href = `/dashboard/powerhour/${response.data.newPowerHour.id}`
+                    dispatch(success())
+                }
+            })
+        } catch (error) {
+            console.log('err', error)
+            dispatch(failure({ error: 'Failed to update cover image.' }))
+        }
     }
 }
