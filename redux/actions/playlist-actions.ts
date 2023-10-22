@@ -10,7 +10,6 @@ import {
     failure
 } from '@/redux/slices/loadingSlice'
 import { AppDispatch } from '@/redux/store'
-import useRouter from 'next/router'
 
 export const fetchPowerHour = (id: string) => {
     return async function (dispatch: AppDispatch) {
