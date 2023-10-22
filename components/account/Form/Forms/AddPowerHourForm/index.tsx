@@ -11,6 +11,8 @@ import { ErrorMessage } from "@hookform/error-message"
 import { useSession } from 'next-auth/react'
 import { createPowerHourAction } from '@/redux/actions/playlist-actions'
 import { useAppDispatch } from '@/redux/hooks'
+import { clearInstance } from '@/redux/slices/instanceSlice'
+import { loading } from '@/redux/slices/loadingSlice'
 
 const AddPowerHourForm = () => {
     const dispatch = useAppDispatch()
@@ -32,10 +34,10 @@ const AddPowerHourForm = () => {
     })
     const { data: session } = useSession()
 
-    console.log('privateWatch', privateWatch)
-
     const submitHandler = (data: any) => {
+        dispatch(loading())
         dispatch(createPowerHourAction(data, session?.user?.id as number))
+        dispatch(clearInstance())
     }
 
     return (
