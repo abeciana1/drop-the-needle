@@ -60,7 +60,7 @@ export const getServerSideProps = async (context: NextPageContext) => {
 
     return {
         props: {
-            powerHours: data?.powerHours
+            powerHours: data?.powerHours?.hosted
         }
     }
 }

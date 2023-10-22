@@ -58,10 +58,9 @@ export const getServerSideProps = async (context: NextPageContext) => {
     let {data} = await axios.post('http://localhost:3000/api/powerhour/get-participants', {
         params: session?.user?.email
     })
-
     return {
         props: {
-            powerHours: data?.powerHours
+            powerHours: data?.powerHours?.participants
         }
     }
 }
