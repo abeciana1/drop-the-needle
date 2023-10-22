@@ -97,3 +97,9 @@ export const updatePowerHourImgAction = (file: any, phId: string) => {
         }
     }
 }
+
+export const createPowerHourAction = (powerHourData: any, userId: number) => {
+    return (dispatch: AppDispatch) => {
+        
+    }
+}
