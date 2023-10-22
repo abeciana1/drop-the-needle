@@ -19,7 +19,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 select: {
                     id: true,
                     title: true,
-                    cover_image: true
+                    cover_image: true,
+                    date_time: true
                 }
             }
         }
