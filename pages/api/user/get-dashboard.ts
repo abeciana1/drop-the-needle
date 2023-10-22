@@ -13,7 +13,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         select: {
                             id: true,
                             title: true,
-                            cover_image: true
+                            cover_image: true,
+                            date_time: true
                         }
                     }
                 }
@@ -24,7 +25,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         select: {
                             id: true,
                             title: true,
-                            cover_image: true
+                            cover_image: true,
+                            date_time: true
                         }
                     }
                 }
