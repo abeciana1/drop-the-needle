@@ -16,6 +16,7 @@ export type DashPowerHourType = {
     title: string;
     cover_image: string;
     publicLink: boolean;
+    date_time: string;
 }
 
 export type InputType = {
