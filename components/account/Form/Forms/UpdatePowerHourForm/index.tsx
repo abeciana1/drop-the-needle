@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useForm } from "react-hook-form"
+import { useForm, useWatch } from "react-hook-form"
 import {
     ModalComp,
     SubmitButton
@@ -28,7 +28,18 @@ const UpdatePowerHourForm = ({
         register,
         handleSubmit,
         formState: { errors },
+        control
     } = useForm()
+    const publishWatch = useWatch({
+        control,
+        name: 'publishStatus',
+        defaultValue: 'false'
+    })
+    const privateWatch = useWatch({
+        control,
+        name: 'privateStatus',
+        defaultValue: 'false'
+    })
     const [ edit, setEdit ] = useState(false)
     let formattedDate;
 
@@ -83,13 +94,12 @@ const UpdatePowerHourForm = ({
                 />
                 <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
                 <Select
-                    currentSelection={`Your power hour is currently: ${publishStatus ? 'Published' : 'Not Published'}`}
+                    currentSelection={`Your power hour is currently: ${publishWatch ? 'Published' : 'Not Published'}`}
                     label='Publish status'
                     name='publishStatus'
                     fieldRequired={true}
                     register={register}
                     options={[
-                        {value: 'select', text: '-- Select a status --'},
                         {value: 'true', text: 'Published'},
                         {value: 'false', text: 'Not Published'}
                     ]}
@@ -107,13 +117,12 @@ const UpdatePowerHourForm = ({
                 />
                 <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
                 <Select
-                    currentSelection={`Your power hour is currently ${privateStatus ? 'private' : 'public'}`}
+                    currentSelection={`Your power hour is currently ${privateWatch ? 'Private' : 'Public'}`}
                     label='Privacy status'
                     name='privateStatus'
                     fieldRequired={true}
                     register={register}
                     options={[
-                        {value: 'select', text: '-- Select a status --'},
                         {value: 'true', text: 'Public'},
                         {value: 'false', text: 'Private'}
                     ]}

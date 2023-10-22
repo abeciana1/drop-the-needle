@@ -1,22 +1,41 @@
-import { useForm } from "react-hook-form"
+import { useForm, useWatch } from "react-hook-form"
 import { SubmitButton } from '@/components/common'
 import {
     FormContainer,
-    Input
+    Input,
+    TextArea,
+    DatePicker,
+    Select
 } from '@/components/account'
 import { ErrorMessage } from "@hookform/error-message"
 import { useSession } from 'next-auth/react'
+import { createPowerHourAction } from '@/redux/actions/playlist-actions'
+import { useAppDispatch } from '@/redux/hooks'
 
 const AddPowerHourForm = () => {
+    const dispatch = useAppDispatch()
     const {
         register,
         handleSubmit,
         formState: { errors },
+        control
     } = useForm()
+    const publishWatch = useWatch({
+        control,
+        name: 'publishStatus',
+        defaultValue: 'false'
+    })
+    const privateWatch = useWatch({
+        control,
+        name: 'privateStatus',
+        defaultValue: 'false'
+    })
     const { data: session } = useSession()
 
-    const submitHandler = (data: any) => {
+    console.log('privateWatch', privateWatch)
 
+    const submitHandler = (data: any) => {
+        dispatch(createPowerHourAction(data, session?.user?.id as number))
     }
 
     return (
@@ -28,7 +47,100 @@ const AddPowerHourForm = () => {
                 register={register}
             />
             <ErrorMessage name='title' errors={errors} as='div' className='text-vermillion'/>
-            
+            <TextArea
+                label='Description'
+                name='description'
+                fieldRequired='This field is required.'
+                register={register}
+            />
+            <ErrorMessage name='description' errors={errors} as='div' className='text-vermillion'/>
+            <DatePicker
+                label='Event date'
+                name='dateTime'
+                fieldRequired='This field is required.'
+                register={register}
+            />
+            <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
+            <Select
+                currentSelection={`Your power hour is currently: ${publishWatch ? 'Published' : 'Not Published'}`}
+                label='Publish status'
+                name='publishStatus'
+                fieldRequired={true}
+                register={register}
+                options={[
+                    {value: 'true', text: 'Published'},
+                    {value: 'false', text: 'Not Published'}
+                ]}
+                registerOptions={{
+                    value: publishWatch,
+                    validate: {
+                        value: (value: string) => {
+                            if (value === 'select') {
+                                return 'Please select a status'
+                            } else {
+                                return true
+                            }
+                        }
+                    }
+                }}
+            />
+            <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
+            <Select
+                currentSelection={`Your power hour is currently ${privateWatch ? 'Private' : 'Public'}`}
+                label='Privacy status'
+                name='privateStatus'
+                fieldRequired={true}
+                register={register}
+                options={[
+                    {value: 'true', text: 'Public'},
+                    {value: 'false', text: 'Private'}
+                ]}
+                registerOptions={{
+                    value: privateWatch,
+                    validate: {
+                        value: (value: string) => {
+                            if (value === 'select') {
+                                return 'Please select a status'
+                            } else {
+                                return true
+                            }
+                        }
+                    }
+                }}
+            />
+            <ErrorMessage name='privateStatus' errors={errors} as='div' className='text-vermillion'/>
+            <Input
+                label='Song limit per user'
+                name='songLimit'
+                type='number'
+                fieldRequired='This field is required.'
+                register={register}
+                registerOptions={{
+                    minLength: {
+                        value: 1,
+                        message: 'This field requires a minimum of 1 digit.'
+                    },
+                    maxLength: {
+                        value: 2,
+                        message: 'This field may not exceed more than 2 digits.'
+                    },
+                    validate: {
+                        value: (value: number) => {
+                            if (value < 0) {
+                                return 'This field allows only positive values.'
+                            } else {
+                                return true
+                            }
+                        }
+                    }
+                }}
+            />
+            <ErrorMessage name='songLimit' errors={errors} as='div' className='text-vermillion'/>
+            <div className="py-3">
+                <SubmitButton
+                    bgColor='vermillion'
+                />
+            </div>
         </FormContainer>
     )
 }
