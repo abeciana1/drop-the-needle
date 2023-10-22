@@ -2,25 +2,21 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    let user = await prisma?.user?.findFirst({
+    let powerHours = await prisma?.user?.findFirst({
         where: {
             email: req?.body?.params
         },
         select: {
-            id: true
-        }
-    })
-    let powerHours = await prisma?.participant?.findMany({
-        where: {
-            userId: user?.id
-        },
-        include: {
-            powerHour: {
+            participants: {
                 select: {
-                    id: true,
-                    title: true,
-                    cover_image: true,
-                    date_time: true
+                    powerHour: {
+                        select: {
+                            id: true,
+                            title: true,
+                            cover_image: true,
+                            date_time: true
+                        }
+                    }
                 }
             }
         }
