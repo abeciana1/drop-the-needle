@@ -18,7 +18,7 @@ import {
 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react'
-
+import { formatInTimeZone } from 'date-fns-tz'
 
 const DashboardIdxPage = ({user}: UserI) => {
     const {
@@ -47,6 +47,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
+                                        date_time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                         publicLink={false}
                                     />
                                 ))}
@@ -79,6 +80,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
                                         publicLink={false}
+                                        date_time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                     />
                                 ))}
                             </PlaylistCardGroup>
