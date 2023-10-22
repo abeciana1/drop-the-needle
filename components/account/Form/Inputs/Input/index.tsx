@@ -19,7 +19,7 @@ export const Input = ({
                     required: fieldRequired,
                     ...registerOptions
                 })}
-                className="py-1 pl-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
+                className="py-1 px-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
                 type={type}
             />
 
