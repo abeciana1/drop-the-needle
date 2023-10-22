@@ -10,8 +10,6 @@ const Select = ({
     registerOptions,
     options
 }: SelectI) => {
-    console.log('registerOptions', registerOptions)
-
     return (
         <div className="py-3">
             <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
