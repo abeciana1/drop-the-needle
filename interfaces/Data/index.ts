@@ -14,7 +14,7 @@ interface PowerHourMetaI {
     cover_image: string;
     publicLink?: boolean;
     songLimit: number;
-    date_time: string;
+    date_time: Date;
 }
 
 export interface DashPowerHourI {
