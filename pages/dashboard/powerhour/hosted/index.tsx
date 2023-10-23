@@ -14,6 +14,7 @@ import {
     DashPowerHourI,
     PowerHourGroupI
 } from '@/interfaces';
+import { formatInTimeZone } from 'date-fns-tz'
 
 const HostedPowerHoursPage = ({
     powerHours
@@ -39,6 +40,8 @@ const HostedPowerHoursPage = ({
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
+                                        date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                        time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                         publicLink={false}
                                     />
                                 ))}

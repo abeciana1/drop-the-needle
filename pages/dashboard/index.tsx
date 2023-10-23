@@ -26,6 +26,7 @@ const DashboardIdxPage = ({user}: UserI) => {
         hosted,
         participants
     } = user
+    console.log('participants', participants)
     return (
         <>
             <SEO
@@ -47,7 +48,8 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
-                                        date_time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                        date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                        time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                         publicLink={false}
                                     />
                                 ))}
@@ -80,7 +82,8 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
                                         publicLink={false}
-                                        date_time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                        date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                        time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                     />
                                 ))}
                             </PlaylistCardGroup>
