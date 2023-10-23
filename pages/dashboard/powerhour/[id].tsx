@@ -147,7 +147,7 @@ const PowerHourDynamic = () => {
                         <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
                             <H1 color={2} text={powerHour?.title} />
                             {powerHour?.date_time &&
-                                <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), 'America/Los_Angeles', 'MM/dd/yyyy — p zzz') + " / " + formatInTimeZone(new Date(powerHour?.date_time), 'America/New_York', 'p zzz')}</div>
+                                <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy — p zzz')}</div>
                             }
                             <div className='text-altBlack text-xl'>{powerHour?.description}</div>
                             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
