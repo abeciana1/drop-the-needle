@@ -8,7 +8,8 @@ const PlaylistCard = ({
     title,
     cover_image,
     publicLink = false,
-    date_time
+    date,
+    time
 }: DashPowerHourType) => {
     return (
         <Link
@@ -27,7 +28,8 @@ const PlaylistCard = ({
             <div className='text-center'>
                 {title}
             </div>
-            <div className='text-center'>{date_time}</div>
+            <div className='text-center'>{date}</div>
+            <div className='text-center'>{time}</div>
         </Link>
     )
 }
