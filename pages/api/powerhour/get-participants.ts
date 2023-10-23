@@ -8,6 +8,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         },
         select: {
             participants: {
+                orderBy: {
+                    powerHour: {
+                        date_time: 'asc'
+                    }
+                },
                 select: {
                     powerHour: {
                         select: {

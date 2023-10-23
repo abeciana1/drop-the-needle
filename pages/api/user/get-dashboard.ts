@@ -8,6 +8,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         },
         include: {
             hosted: {
+                orderBy: {
+                    powerHour: {
+                        date_time: 'asc'
+                    }
+                },
                 select: {
                     powerHour: {
                         select: {
@@ -20,6 +25,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
             },
             participants: {
+                orderBy: {
+                    powerHour: {
+                        date_time: 'asc'
+                    }
+                },
                 select: {
                     powerHour: {
                         select: {
