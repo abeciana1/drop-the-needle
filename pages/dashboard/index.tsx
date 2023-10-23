@@ -26,7 +26,6 @@ const DashboardIdxPage = ({user}: UserI) => {
         hosted,
         participants
     } = user
-    console.log('participants', participants)
     return (
         <>
             <SEO
