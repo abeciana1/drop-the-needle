@@ -6,14 +6,17 @@ export const Input = ({
     fieldRequired,
     name,
     register,
-    registerOptions
+    registerOptions,
+    hideLabel = false
 }: InputType) => {
 
     return (
         <div
             className="py-3"
         >
-            <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
+            {!hideLabel &&
+                <label>{ label }{fieldRequired && <span className='text-vermillion'>*</span>}</label>
+            }
             <input
                 {...register(name, {
                     required: fieldRequired,
@@ -21,6 +24,7 @@ export const Input = ({
                 })}
                 className="py-1 px-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
                 type={type}
+                aria-label={label}
             />
 
         </div>
