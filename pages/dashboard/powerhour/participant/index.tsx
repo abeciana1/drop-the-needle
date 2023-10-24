@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import {
     SEO,
     DashPageLayout,
@@ -6,7 +7,7 @@ import {
     PlaylistCard,
     PlaylistCardGroup
 } from '@/components/common'
-import { H1 } from '@/components/styled'
+import { H1, H2 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
@@ -19,6 +20,12 @@ import { formatInTimeZone } from 'date-fns-tz'
 const ParticipantPowerHoursPage = ({
     powerHours
 }: PowerHourGroupI) => {
+    const upcomingPowerHours = useMemo(() => {
+        return powerHours.filter(({powerHour}: any) => new Date(powerHour.date_time).valueOf() - new Date().valueOf() > 0)
+    }, [])
+    const pastPowerHours = useMemo(() => {
+        return powerHours.filter(({powerHour}: any) => new Date().valueOf() - new Date(powerHour.date_time).valueOf() > 0)
+    }, [])
     return(
         <>
             <SEO
@@ -34,19 +41,36 @@ const ParticipantPowerHoursPage = ({
                 <ComponentMargin bgColor='jaffa-200'>
                     <>
                         {powerHours?.length > 0 &&
-                            <PlaylistCardGroup>
-                                {powerHours?.map(({powerHour}: DashPowerHourI) => (
-                                    <PlaylistCard
-                                        key={powerHour.id}
-                                        id={powerHour.id}
-                                        title={powerHour.title}
-                                        cover_image={powerHour.cover_image}
-                                        date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
-                                        time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
-                                        publicLink
-                                    />
-                                ))}
-                            </PlaylistCardGroup>
+                            <>
+                                <H2 color={0} text='Upcoming'/>
+                                <PlaylistCardGroup>
+                                    {upcomingPowerHours?.map(({powerHour}: DashPowerHourI) => (
+                                        <PlaylistCard
+                                            key={powerHour.id}
+                                            id={powerHour.id}
+                                            title={powerHour.title}
+                                            cover_image={powerHour.cover_image}
+                                            date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                            time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                            publicLink
+                                        />
+                                    ))}
+                                </PlaylistCardGroup>
+                                <H2 color={0} text='Past'/>
+                                <PlaylistCardGroup>
+                                    {pastPowerHours?.map(({powerHour}: DashPowerHourI) => (
+                                        <PlaylistCard
+                                            key={powerHour.id}
+                                            id={powerHour.id}
+                                            title={powerHour.title}
+                                            cover_image={powerHour.cover_image}
+                                            date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                            time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                            publicLink
+                                        />
+                                    ))}
+                                </PlaylistCardGroup>
+                            </>
                         }
                     </>
                 </ComponentMargin>
