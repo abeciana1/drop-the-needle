@@ -21,6 +21,7 @@ export type DashPowerHourType = {
 }
 
 export type InputType = {
+    hideLabel?: boolean;
     name: string;
     type?: string;
     value?: string;
