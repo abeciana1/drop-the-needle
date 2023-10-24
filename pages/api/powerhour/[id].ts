@@ -17,6 +17,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                             }
                         }
                     }
+                },
+                hosts: {
+                    select: {
+                        user: {
+                            select: {
+                                id: true,
+                                name: true
+                            }
+                        }
+                    }
                 }
             }
         })
