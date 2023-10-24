@@ -7,6 +7,7 @@ import {
     PlaylistCard,
     PlaylistCardGroup
 } from '@/components/common'
+import { Input } from '@/components/account'
 import { H1, H2 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
@@ -16,10 +17,21 @@ import {
     PowerHourGroupI
 } from '@/interfaces';
 import { formatInTimeZone } from 'date-fns-tz'
+import { useForm, useWatch } from "react-hook-form"
 
 const ParticipantPowerHoursPage = ({
     powerHours
 }: PowerHourGroupI) => {
+    const {
+        register,
+        control
+    } = useForm()
+    const searchWatch = useWatch({
+        control,
+        name: 'searchInput',
+        defaultValue: ''
+    })
+
     const upcomingPowerHours = useMemo(() => {
         return powerHours.filter(({powerHour}: any) => new Date(powerHour.date_time).valueOf() - new Date().valueOf() > 0)
     }, [])
@@ -32,19 +44,24 @@ const ParticipantPowerHoursPage = ({
                 title='Participating Power Hours'
             />
             <DashPageLayout>
-                <ComponentMargin>
-                    <section className='md:ml-10'>
-                        <H1 color={0} text={'Participating Power Hours'} />
-                    </section>
-                </ComponentMargin>
-                <WavySection color='jaffa-200' type={1} />
+                <WavySection color='altWhite' bgColor='jaffa-200' type={2} />
                 <ComponentMargin bgColor='jaffa-200'>
+                    <H1 color={0} text={'Participating Power Hours'} />
+                    <section className='py-3'>
+                        <Input
+                            hideLabel
+                            label='Search...'
+                            name='searchInput'
+                            fieldRequired={false}
+                            register={register}
+                        />
+                    </section>  
                     <>
                         {powerHours?.length > 0 &&
                             <>
                                 <H2 color={0} text='Upcoming'/>
                                 <PlaylistCardGroup>
-                                    {upcomingPowerHours?.map(({powerHour}: DashPowerHourI) => (
+                                    {upcomingPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
                                         <PlaylistCard
                                             key={powerHour.id}
                                             id={powerHour.id}
@@ -58,7 +75,7 @@ const ParticipantPowerHoursPage = ({
                                 </PlaylistCardGroup>
                                 <H2 color={0} text='Past'/>
                                 <PlaylistCardGroup>
-                                    {pastPowerHours?.map(({powerHour}: DashPowerHourI) => (
+                                    {pastPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
                                         <PlaylistCard
                                             key={powerHour.id}
                                             id={powerHour.id}
