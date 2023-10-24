@@ -51,6 +51,7 @@ const ParticipantPowerHoursPage = ({
                         <Input
                             hideLabel
                             label='Search...'
+                            placeholder='Search...'
                             name='searchInput'
                             fieldRequired={false}
                             register={register}
