@@ -1,3 +1,4 @@
+import { use, useMemo } from 'react'
 import {
     SEO,
     DashPageLayout,
@@ -6,7 +7,8 @@ import {
     PlaylistCard,
     PlaylistCardGroup
 } from '@/components/common'
-import { H1 } from '@/components/styled'
+import { Input } from '@/components/account'
+import { H1, H2 } from '@/components/styled'
 import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
@@ -15,37 +17,79 @@ import {
     PowerHourGroupI
 } from '@/interfaces';
 import { formatInTimeZone } from 'date-fns-tz'
+import { useForm, useWatch } from "react-hook-form"
 
 const HostedPowerHoursPage = ({
     powerHours
 }: PowerHourGroupI) => {
+    const {
+        register,
+        control
+    } = useForm()
+    const searchWatch = useWatch({
+        control,
+        name: 'searchInput',
+        defaultValue: ''
+    })
 
+    const upcomingPowerHours = useMemo(() => {
+        return powerHours.filter(({powerHour}: any) => new Date(powerHour.date_time).valueOf() - new Date().valueOf() > 0)
+    }, [])
+
+    const pastPowerHours = useMemo(() => {
+        return powerHours.filter(({powerHour}: any) => new Date().valueOf() - new Date(powerHour.date_time).valueOf() > 0)
+    }, [])
+    
     return(
         <>
             <SEO
                 title='Hosted Power Hours'
             />
             <DashPageLayout>
-                <ComponentMargin>
-                    <H1 color={0} text={'Hosted Power Hours'} />
-                </ComponentMargin>
-                <WavySection color='jaffa-200' type={1} />
+                <WavySection color='altWhite' bgColor='jaffa-200' type={2} />
                 <ComponentMargin bgColor='jaffa-200'>
+                    <H1 color={0} text={'Hosted Power Hours'} />
+                    <section className='py-3'>
+                        <Input
+                            hideLabel
+                            label='Search...'
+                            name='searchInput'
+                            fieldRequired={false}
+                            register={register}
+                        />
+                    </section>  
                     <>
                         {powerHours?.length > 0 &&
-                            <PlaylistCardGroup>
-                                {powerHours?.map(({powerHour}: DashPowerHourI) => (
-                                    <PlaylistCard
-                                        key={powerHour.id}
-                                        id={powerHour.id}
-                                        title={powerHour.title}
-                                        cover_image={powerHour.cover_image}
-                                        date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
-                                        time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
-                                        publicLink={false}
-                                    />
-                                ))}
-                            </PlaylistCardGroup>
+                            <>
+                                <H2 color={0} text='Upcoming'/>
+                                <PlaylistCardGroup>
+                                    {upcomingPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
+                                        <PlaylistCard
+                                            key={powerHour.id}
+                                            id={powerHour.id}
+                                            title={powerHour.title}
+                                            cover_image={powerHour.cover_image}
+                                            date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                            time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                            publicLink={false}
+                                        />
+                                    ))}
+                                </PlaylistCardGroup>
+                                <H2 color={0} text='Past'/>
+                                <PlaylistCardGroup>
+                                    {pastPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
+                                        <PlaylistCard
+                                            key={powerHour.id}
+                                            id={powerHour.id}
+                                            title={powerHour.title}
+                                            cover_image={powerHour.cover_image}
+                                            date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                            time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                            publicLink={false}
+                                        />
+                                    ))}
+                                </PlaylistCardGroup>
+                            </>
                         }
                     </>
                 </ComponentMargin>
