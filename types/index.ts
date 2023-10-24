@@ -26,6 +26,7 @@ export type InputType = {
     type?: string;
     value?: string;
     label: Path<FormValuesI>;
+    placeholder?: string;
     fieldRequired: boolean | string;
     register: UseFormRegister<FormValuesI>;
     registerOptions?: {

@@ -7,7 +7,8 @@ export const Input = ({
     name,
     register,
     registerOptions,
-    hideLabel = false
+    hideLabel = false,
+    placeholder = ''
 }: InputType) => {
 
     return (
@@ -22,6 +23,7 @@ export const Input = ({
                     required: fieldRequired,
                     ...registerOptions
                 })}
+                placeholder={placeholder}
                 className="py-1 px-4 ring-2 ring-slate-200 rounded-lg focus:ring-royalBlue text-xl w-full"
                 type={type}
                 aria-label={label}
