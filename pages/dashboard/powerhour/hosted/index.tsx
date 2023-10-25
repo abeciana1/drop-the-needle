@@ -73,6 +73,7 @@ const HostedPowerHoursPage = ({
                                             date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                             time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                             publicLink={false}
+                                            hostedLink
                                         />
                                     ))}
                                 </PlaylistCardGroup>
@@ -87,6 +88,7 @@ const HostedPowerHoursPage = ({
                                             date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                             time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                             publicLink={false}
+                                            hostedLink
                                         />
                                     ))}
                                 </PlaylistCardGroup>

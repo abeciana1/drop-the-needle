@@ -70,7 +70,8 @@ const ParticipantPowerHoursPage = ({
                                             cover_image={powerHour.cover_image}
                                             date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                             time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
-                                            publicLink
+                                            publicLink={false}
+                                            hostedLink={false}
                                         />
                                     ))}
                                 </PlaylistCardGroup>
@@ -84,7 +85,8 @@ const ParticipantPowerHoursPage = ({
                                             cover_image={powerHour.cover_image}
                                             date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                             time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
-                                            publicLink
+                                            publicLink={false}
+                                            hostedLink={false}
                                         />
                                     ))}
                                 </PlaylistCardGroup>
