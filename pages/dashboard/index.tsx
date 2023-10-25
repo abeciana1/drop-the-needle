@@ -50,6 +50,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                         time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                         publicLink={false}
+                                        hostedLink
                                     />
                                 ))}
                             </PlaylistCardGroup>
@@ -80,9 +81,10 @@ const DashboardIdxPage = ({user}: UserI) => {
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
-                                        publicLink={false}
                                         date={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                         time={formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
+                                        publicLink={false}
+                                        hostedLink={false}
                                     />
                                 ))}
                             </PlaylistCardGroup>
