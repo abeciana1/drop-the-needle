@@ -43,6 +43,7 @@ import {
     setInstance,
     clearInstance
 } from '@/redux/slices/instanceSlice'
+import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
 
 const phPublishStatuses = [
     {
@@ -62,11 +63,20 @@ const HostedPowerHourDynamic = () => {
     const songs = useAppSelector(state => state.powerHour.songs)
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
+    const [ isClient, setClient ] = useState(false)
 
     useEffect(() => {
-        if (window) {
+        setClient(true)
+        if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
             dispatch(fetchSongs(window.location.pathname.split('/')[4]))
+        }
+    }, [isClient])
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearPowerHour())
+            dispatch(clearSongs())
         }
     }, [])
 

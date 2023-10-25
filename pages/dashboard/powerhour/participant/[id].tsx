@@ -27,6 +27,7 @@ import {
     useAppDispatch
 } from '@/redux/hooks'
 import { clearInstance } from '@/redux/slices/instanceSlice'
+import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
 
 const ParticipantPowerHourDynamic = () => {
     const dispatch = useAppDispatch()
@@ -41,6 +42,13 @@ const ParticipantPowerHourDynamic = () => {
             dispatch(fetchSongs(window.location.pathname.split('/')[4]))
         }
     }, [isClient])
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearPowerHour())
+            dispatch(clearSongs())
+        }
+    }, [])
 
     const trackRemoveHandler = async (index: number, id: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
