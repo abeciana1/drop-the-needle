@@ -43,7 +43,8 @@ export const {
     patchPowerHour,
     addSong,
     deleteSong,
-    reorderSongs
+    reorderSongs,
+    clearSongs
 } = powerHourSlice.actions
 
 export default powerHourSlice.reducer
