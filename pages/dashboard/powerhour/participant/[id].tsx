@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
     DashPageLayout,
     SEO,
@@ -27,19 +27,20 @@ import {
     useAppDispatch
 } from '@/redux/hooks'
 import { clearInstance } from '@/redux/slices/instanceSlice'
-// import { useRouter } from 'next/router'
 
 const ParticipantPowerHourDynamic = () => {
     const dispatch = useAppDispatch()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
+    const [ isClient, setClient ] = useState(false)
 
     useEffect(() => {
-        if (window) {
+        setClient(true)
+        if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
             dispatch(fetchSongs(window.location.pathname.split('/')[4]))
         }
-    }, [])
+    }, [isClient])
 
     const trackRemoveHandler = async (index: number, id: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
