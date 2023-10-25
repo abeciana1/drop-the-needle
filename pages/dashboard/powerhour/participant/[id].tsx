@@ -55,7 +55,7 @@ const phPublishStatuses = [
     }
 ]
 
-const PowerHourDynamic = () => {
+const ParticipantPowerHourDynamic = () => {
     const dispatch = useAppDispatch()
     const router = useRouter()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
@@ -65,8 +65,8 @@ const PowerHourDynamic = () => {
 
     useEffect(() => {
         if (window) {
-            dispatch(fetchPowerHour(window.location.pathname.split('/')[3]))
-            dispatch(fetchSongs(window.location.pathname.split('/')[3]))
+            dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
+            dispatch(fetchSongs(window.location.pathname.split('/')[4]))
         }
     }, [])
 
@@ -200,4 +200,4 @@ const PowerHourDynamic = () => {
     )
 }
 
-export default PowerHourDynamic
+export default ParticipantPowerHourDynamic
