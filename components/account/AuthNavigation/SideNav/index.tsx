@@ -36,7 +36,6 @@ const SideNav = () => {
     }
 
     const createNewPHHandler = () => {
-        console.log('create')
         dispatch(setInstance({
             display: true,
             name: 'phCreateor',
