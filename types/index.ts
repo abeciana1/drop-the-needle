@@ -18,6 +18,7 @@ export type DashPowerHourType = {
     publicLink: boolean;
     date: string;
     time: string;
+    hostedLink: boolean;
 }
 
 export type InputType = {
