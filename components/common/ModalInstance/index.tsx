@@ -13,7 +13,8 @@ import {
     UpdateTrackForm,
     AddTrackForm,
     UpdateCoverImageForm,
-    AddPowerHourForm
+    AddPowerHourForm,
+    UpdatePowerHourForm
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -91,6 +92,17 @@ const ModalInstance = () => {
                     }
                     {instanceState.name === 'phCreateor' &&
                         <AddPowerHourForm/>
+                    }
+                    {instanceState.name === 'updatePowerHour' &&
+                        <UpdatePowerHourForm
+                            id={instanceState.data?.id}
+                            title={instanceState.data?.title}
+                            description={instanceState.data.description}
+                            dateTime={instanceState.data.dateTime}
+                            privateStatus={instanceState.data?.privateStatus}
+                            publishStatus={instanceState.data?.publishStatus}
+                            songLimit={instanceState.data.songLimit}
+                        />
                     }
                 </Modal>
             }
