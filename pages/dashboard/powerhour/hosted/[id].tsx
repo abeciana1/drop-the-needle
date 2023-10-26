@@ -24,12 +24,12 @@ import {
     HiOutlineUserCircle,
     HiPhotograph
 } from "react-icons/hi"
+import { AiFillEdit } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import { TrackDataI } from '@/interfaces'
 import {
     fetchPowerHour,
-    fetchSongs,
-    updatePowerHour
+    fetchSongs
 } from '@/redux/actions/playlist-actions'
 import {
     addTrackAction,
@@ -110,11 +110,6 @@ const HostedPowerHourDynamic = () => {
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
 
-    const updatePlaylistSubmitHandler = async (data: any) => {
-        dispatch(clearInstance())
-        dispatch(updatePowerHour(powerHour?.id, data))
-    }
-
     const addTrackHandler = (trackData: TrackDataI) => {
         dispatch(clearInstance())
         dispatch(addTrackAction(trackData, (songs?.length + 1)))
@@ -126,6 +121,22 @@ const HostedPowerHourDynamic = () => {
             name: 'updateCoverImg',
             data: {
                 coverImage: powerHour?.cover_image,
+            }
+        }))
+    }
+
+    const renderUpdatePowerHour = () => {
+        dispatch(setInstance({
+            display: true,
+            name: 'updatePowerHour',
+            data: {
+                id: powerHour.id,
+                title: powerHour.title,
+                description: powerHour.description,
+                dateTime: powerHour.date_time,
+                privateStatus: powerHour.privateStatus,
+                publishStatus: powerHour.publishStatus,
+                songLimit: powerHour.songLimit
             }
         }))
     }
@@ -161,14 +172,11 @@ const HostedPowerHourDynamic = () => {
                             }
                             <div className='text-altBlack text-xl'>{powerHour?.description}</div>
                             <div className='flex flex-col lg:flex-row gap-5 lg:gap-10'>
-                                <UpdatePowerHourForm
-                                    title={powerHour?.title}
-                                    description={powerHour?.description}
-                                    dateTime={powerHour?.date_time}
-                                    privateStatus={powerHour?.privateStatus}
-                                    publishStatus={powerHour?.publishStatus}
-                                    songLimit={powerHour?.songLimit}
-                                    submitHandler={updatePlaylistSubmitHandler}
+                                <OnClickButton
+                                    text='Edit Power Hour'
+                                    bgColor='ceruleanBlue'
+                                    icon={AiFillEdit}
+                                    onClick={renderUpdatePowerHour}
                                 />
                                 <OnClickButton
                                     text='Delete Power Hour'
