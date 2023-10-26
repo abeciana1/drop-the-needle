@@ -15,7 +15,8 @@ import { useRouter } from "next/router";
 const TrackList = ({
     songs,
     removeHandler,
-    addTrackHandler
+    addTrackHandler,
+    participantList = false
 }: TrackListI) => {
     const dispatch = useAppDispatch()
     const router = useRouter()
@@ -38,7 +39,7 @@ const TrackList = ({
     return(
         <section>
             <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
-                (Click on the track to expand details)
+                {songs?.length > 0 && '(Click on the blue button to expand details)'}
                 <OnClickButton
                     text='Add track'
                     icon={AiOutlinePlus}
@@ -46,42 +47,67 @@ const TrackList = ({
                     onClick={renderAddTrackForm}
                 />
             </div>
-            <DragDropContext
-                onDragEnd={(result) => handleOnDragEnd(result)}
-            >
-                {songs?.length > 0 &&
-                    <Droppable droppableId="droppable-list">
-                        {(provided) => (
-                            <ul
-                                className="border-altBlack border-4 rounded-lg divide-altBlack"
-                                ref={provided.innerRef}
-                                {...provided.droppableProps}
-                            >
-                                {songs?.map((song: SongI, index: number) => {
-                                    return (
-                                        <Draggable
-                                            key={song?.id}
-                                            draggableId={song?.id?.toString()}
-                                            index={index}
-                                        >
-                                            {(provided) => (
-                                                <Track
-                                                    removeHandler={removeHandler}
-                                                    song={song}
-                                                    user={song?.participant?.user?.name} 
-                                                    provided={provided}
-                                                    index={index}
-                                                />
-                                            )}
-                                        </Draggable>
-                                    )
-                                })}
-                                {provided.placeholder}
-                            </ul>
-                        )}
-                    </Droppable>
-                }
-            </DragDropContext>
+            {(participantList && songs?.length > 0) &&
+                <ul className="border-altBlack border-4 rounded-lg divide-altBlack">
+                    {songs.map((song: SongI, index: number) => (
+                        <li
+                            key={song.id}
+                            className="px-5 py-5 focus:border-2 focus:border-ceruleanBlue border-altBlack border-2 border-b-2"
+                        >
+                            <Track
+                                removeHandler={removeHandler}
+                                song={song}
+                                user={song?.participant?.user?.name}
+                                index={index}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            }
+            {!participantList &&
+                <DragDropContext
+                    onDragEnd={(result) => handleOnDragEnd(result)}
+                >
+                    {songs?.length > 0 &&
+                        <Droppable droppableId="droppable-list">
+                            {(provided) => (
+                                <ul
+                                    className="border-altBlack border-4 rounded-lg divide-altBlack"
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                >
+                                    {songs?.map((song: SongI, index: number) => {
+                                        return (
+                                            <Draggable
+                                                key={song?.id}
+                                                draggableId={song?.id?.toString()}
+                                                index={index}
+                                            >
+                                                {(provided) => (
+                                                    <li
+                                                        className="px-5 py-5 focus:border-2 focus:border-ceruleanBlue border-altBlack border-2 border-b-2"
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                    >
+                                                        <Track
+                                                            removeHandler={removeHandler}
+                                                            song={song}
+                                                            user={song?.participant?.user?.name}
+                                                            index={index}
+                                                        />
+                                                    </li>
+                                                )}
+                                            </Draggable>
+                                        )
+                                    })}
+                                    {provided.placeholder}
+                                </ul>
+                            )}
+                        </Droppable>
+                    }
+                </DragDropContext>
+            }
         </section>
     )
 }
