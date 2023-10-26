@@ -43,7 +43,7 @@ export const fetchSongs = (id: string) => {
     }
 }
 
-export const updatePowerHour = (id: number, data: any) => {
+export const updatePowerHourAction = (id: number, data: any) => {
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         try {
