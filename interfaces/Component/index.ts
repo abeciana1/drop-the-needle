@@ -74,13 +74,13 @@ export interface TrackListI {
     songs: SongI[];
     removeHandler: (index: number, id: number) => void;
     addTrackHandler: (trackData: TrackDataI) => void;
+    participantList?: boolean;
 }
 
 export interface TrackI {
     song: SongI;
     user: string;
     index: number;
-    provided: any;
     removeHandler: (index: number, id: number) => void;
 }
 
