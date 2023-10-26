@@ -23,8 +23,6 @@ const UpdatePowerHourForm = ({
     publishStatus,
     songLimit
 }: UpdatePowerHourFormI) => {
-    console.log('privateStatus', privateStatus)
-    console.log('publishStatus!', publishStatus === true ? 'true' : 'false')
     const dispatch = useAppDispatch()
     const {
         register,
