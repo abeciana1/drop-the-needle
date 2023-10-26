@@ -64,7 +64,7 @@ const AddPowerHourForm = () => {
             />
             <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
             <Select
-                currentSelection={`Your power hour is currently: ${publishWatch ? 'Published' : 'Not Published'}`}
+                currentSelection={`Your power hour is currently: ${publishWatch === 'true' ? 'Published' : 'Not Published'}`}
                 label='Publish status'
                 name='publishStatus'
                 fieldRequired={true}
@@ -88,7 +88,7 @@ const AddPowerHourForm = () => {
             />
             <ErrorMessage name='publishStatus' errors={errors} as='div' className='text-vermillion'/>
             <Select
-                currentSelection={`Your power hour is currently ${privateWatch ? 'Private' : 'Public'}`}
+                currentSelection={`Your power hour is currently ${privateWatch === 'true' ? 'Private' : 'Public'}`}
                 label='Privacy status'
                 name='privateStatus'
                 fieldRequired={true}
