@@ -12,13 +12,13 @@ export interface UpdateTrackFormI {
 }
 
 export interface UpdatePowerHourFormI {
+    id: number;
     title: string;
     description: string;
     dateTime: Date | string;
     privateStatus: boolean;
     publishStatus: boolean;
     songLimit: number;
-    submitHandler: (data: any) => void;
 }
 
 export interface AddTrackFormI {
