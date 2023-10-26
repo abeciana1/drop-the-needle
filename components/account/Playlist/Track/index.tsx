@@ -21,7 +21,6 @@ import {
 const Track = ({
     song,
     user,
-    provided,
     index,
     removeHandler
 }: TrackI) => {
@@ -101,12 +100,7 @@ const Track = ({
     }
 
     return(
-        <li
-            className="px-5 py-5 focus:border-2 focus:border-ceruleanBlue border-altBlack border-2 border-b-2"
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-        >
+        <>
             <div 
                 className='flex flex-wrap items-center justify-between'
             >
@@ -158,8 +152,8 @@ const Track = ({
                         />
                     </div>
                 </section>
-                }
-        </li>
+            }
+        </>
     )
 }
 
