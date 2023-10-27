@@ -13,6 +13,7 @@ model User {
   email        String @unique
   hosted       Host[]
   participants Participant[]
+  invites Invite[]
 }
 
 model Host {
@@ -45,6 +46,7 @@ model PowerHour {
   hosts          Host[]
   participants   Participant[]
   PowerHourSongs PowerHourSong[]
+  invites Invite[]
   @@map("powerHours")
 }
 
@@ -63,4 +65,15 @@ model PowerHourSong {
   powerHour  PowerHour @relation(fields: [powerHourId], references: [id])
   participantId Int
   participant Participant @relation(fields: [participantId], references: [id])
+}
+
+model Invite {
+  id          Int       @id @default(autoincrement())
+  rsvpYes Boolean @default(false)
+  rsvpNo Boolean @default(false)
+  rsvpMaybe Boolean @default(false)
+  userId      Int
+  powerHourId Int
+  powerHour   PowerHour @relation(fields: [powerHourId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
 }
