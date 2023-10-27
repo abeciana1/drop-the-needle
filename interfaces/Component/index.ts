@@ -73,7 +73,6 @@ export interface AccordionDataI {
 export interface TrackListI {
     songs: SongI[];
     removeHandler: (index: number, id: number) => void;
-    addTrackHandler: (trackData: TrackDataI) => void;
     participantList?: boolean;
 }
 
@@ -101,4 +100,8 @@ export interface ModalI extends OnClickButtonI, ChildrenI {
 
 export interface LoadingInstanceI {
     isLoading: boolean;
+}
+
+export interface DisclaimerI {
+    message: string;
 }
