@@ -26,7 +26,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             }
         })
-        // let sortedSongs = powerHourSongs?.PowerHourSongs.sort((a, b) => a.orderNumber - b.orderNumber)
         res.status(200).json({ powerHourSongs })
     }
 }
