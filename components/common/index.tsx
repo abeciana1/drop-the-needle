@@ -32,3 +32,4 @@ export {
 } from '@/components/common/ExpandButton'
 export { default as LoadingInstance } from '@/components/common/Loading'
 export { default as ModalInstance } from '@/components/common/ModalInstance'
+export { default as DisclaimerModal } from '@/components/common/Modal/Disclaimer'
