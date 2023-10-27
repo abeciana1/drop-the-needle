@@ -34,7 +34,7 @@ export const fetchSongs = (id: string) => {
             await axios.get('/api/powerhour/get-songs/' + id)
             .then(res => {
                 dispatch(success())
-                dispatch(setSongs(res.data.sortedSongs))
+                dispatch(setSongs(res.data.powerHourSongs.PowerHourSongs))
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
