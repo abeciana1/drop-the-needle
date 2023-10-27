@@ -14,10 +14,7 @@ import Image from 'next/image'
 import { formatInTimeZone } from 'date-fns-tz'
 import { HiOutlineUserCircle } from "react-icons/hi"
 import { TrackDataI } from '@/interfaces'
-import {
-    fetchPowerHour,
-    fetchSongs
-} from '@/redux/actions/playlist-actions'
+import { fetchPowerHour } from '@/redux/actions/playlist-actions'
 import {
     addTrackAction,
     deleteTrackAction
@@ -28,20 +25,28 @@ import {
 } from '@/redux/hooks'
 import { clearInstance } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
+import { fetchUserSongsAction } from '@/redux/actions/user-actions'
+import { useSession } from 'next-auth/react'
 
 const ParticipantPowerHourDynamic = () => {
     const dispatch = useAppDispatch()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
     const [ isClient, setClient ] = useState(false)
+    const { data: session } = useSession()
 
     useEffect(() => {
         setClient(true)
         if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
-            dispatch(fetchSongs(window.location.pathname.split('/')[4]))
         }
     }, [isClient])
+
+    useEffect(() => {
+        if (session && powerHour) {
+            dispatch(fetchUserSongsAction(Number(session?.user?.id), Number(powerHour.id)))
+        }
+    }, [session, powerHour])
 
     useEffect(() => {
         return () => {
@@ -62,6 +67,10 @@ const ParticipantPowerHourDynamic = () => {
         dispatch(clearInstance())
         dispatch(addTrackAction(trackData, (songs?.length + 1)))
     }
+
+    // todo limit addTrackHandler based on el length
+    // todo Create modal disclaimer  -> reached power hour song limit
+    // todo 
 
     return (
         <>
@@ -103,6 +112,7 @@ const ParticipantPowerHourDynamic = () => {
                         removeHandler={trackRemoveHandler}
                         songs={songs}
                         addTrackHandler={addTrackHandler}
+                        participantList
                     />
                 </ComponentMargin>
             </DashPageLayout>
