@@ -5,7 +5,8 @@ import {
 } from '@/redux/hooks'
 import {
     LoadingInstance,
-    ExpandBtn
+    ExpandBtn,
+    DisclaimerModal
 } from '@/components/common'
 import { AiOutlineClose } from 'react-icons/ai'
 import { clearInstance } from '@/redux/slices/instanceSlice'
@@ -102,6 +103,11 @@ const ModalInstance = () => {
                             privateStatus={instanceState.data?.privateStatus}
                             publishStatus={instanceState.data?.publishStatus}
                             songLimit={instanceState.data.songLimit}
+                        />
+                    }
+                    {instanceState.name === 'disclaimer' &&
+                        <DisclaimerModal
+                            message={instanceState.data?.message}
                         />
                     }
                 </Modal>
