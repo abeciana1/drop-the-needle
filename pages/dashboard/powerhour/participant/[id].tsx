@@ -90,10 +90,6 @@ const ParticipantPowerHourDynamic = () => {
         }
     }
 
-    // todo limit addTrackHandler based on el length
-    // todo Create modal disclaimer  -> reached power hour song limit
-    // todo 
-
     return (
         <>
             <SEO />
