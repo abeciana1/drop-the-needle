@@ -3,19 +3,13 @@ import { TrackListI, SongI } from '@/interfaces'
 import {
     Track,
 } from '@/components/account'
-import {
-    OnClickButton
-} from '@/components/common'
-import { AiOutlinePlus } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
-import { setInstance } from '@/redux/slices/instanceSlice'
 import { reorderSongsAction } from '@/redux/actions/song-actions'
 import { useRouter } from "next/router";
 
 const TrackList = ({
     songs,
     removeHandler,
-    addTrackHandler,
     participantList = false
 }: TrackListI) => {
     const dispatch = useAppDispatch()
@@ -26,27 +20,8 @@ const TrackList = ({
         dispatch(reorderSongsAction(Number(router.query.id), result))
     }
 
-    const renderAddTrackForm = () => {
-        dispatch(setInstance({
-            display: true,
-            name: 'addTrack',
-            data: {
-                submitHandler: addTrackHandler
-            }
-        }))
-    }
-
     return(
         <section>
-            <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
-                {songs?.length > 0 && '(Click on the blue button to expand details)'}
-                <OnClickButton
-                    text='Add track'
-                    icon={AiOutlinePlus}
-                    bgColor='ceruleanBlue'
-                    onClick={renderAddTrackForm}
-                />
-            </div>
             {(participantList && songs?.length > 0) &&
                 <ul className="border-altBlack border-4 rounded-lg divide-altBlack">
                     {songs.map((song: SongI, index: number) => (
