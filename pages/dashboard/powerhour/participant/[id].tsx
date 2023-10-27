@@ -3,7 +3,8 @@ import {
     DashPageLayout,
     SEO,
     ComponentMargin,
-    Grid2Column
+    Grid2Column,
+    OnClickButton
 } from '@/components/common'
 import { H1 } from '@/components/styled'
 import {
@@ -13,6 +14,7 @@ import {
 import Image from 'next/image'
 import { formatInTimeZone } from 'date-fns-tz'
 import { HiOutlineUserCircle } from "react-icons/hi"
+import { AiOutlinePlus } from 'react-icons/ai'
 import { TrackDataI } from '@/interfaces'
 import { fetchPowerHour } from '@/redux/actions/playlist-actions'
 import {
@@ -23,7 +25,7 @@ import {
     useAppSelector,
     useAppDispatch
 } from '@/redux/hooks'
-import { clearInstance } from '@/redux/slices/instanceSlice'
+import { clearInstance, setInstance } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
 import { fetchUserSongsAction } from '@/redux/actions/user-actions'
 import { useSession } from 'next-auth/react'
@@ -68,6 +70,26 @@ const ParticipantPowerHourDynamic = () => {
         dispatch(addTrackAction(trackData, (songs?.length + 1)))
     }
 
+    const renderAddTrackForm = () => {
+        if (songs.length === powerHour.songLimit) {
+            dispatch(setInstance({
+                display: true,
+                name: 'disclaimer',
+                data: {
+                    message: `Sorry you've reached the song limit of ${powerHour.songLimit} song${powerHour.songLimit > 1 ? 's' : ''} for this power hour.`
+                }
+            }))
+        } else {
+            dispatch(setInstance({
+                display: true,
+                name: 'addTrack',
+                data: {
+                    submitHandler: addTrackHandler
+                }
+            }))
+        }
+    }
+
     // todo limit addTrackHandler based on el length
     // todo Create modal disclaimer  -> reached power hour song limit
     // todo 
@@ -79,13 +101,15 @@ const ParticipantPowerHourDynamic = () => {
                 <ComponentMargin>
                     <section className="flex flex-col md:flex-row justify-around items-center pt-20">
                     <div className="relative">
-                        <Image
-                            src={powerHour?.cover_image}
-                            width={250}
-                            height={250}
-                            alt={powerHour?.title}
-                            className='w-60 h-60'
-                        />
+                        {powerHour?.cover_image &&
+                            <Image
+                                src={powerHour?.cover_image}
+                                width={250}
+                                height={250}
+                                alt={powerHour?.title}
+                                className='w-60 h-60'
+                            />
+                        }
                     </div>
                         <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
                             <H1 color={2} text={powerHour?.title} />
@@ -108,10 +132,18 @@ const ParticipantPowerHourDynamic = () => {
                         </section>
                     </Grid2Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHour?.songLimit}</div>
+                    <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
+                        {songs?.length > 0 && '(Click on the blue button to expand details)'}
+                        <OnClickButton
+                            text='Add track'
+                            icon={AiOutlinePlus}
+                            bgColor='ceruleanBlue'
+                            onClick={renderAddTrackForm}
+                        />
+                    </div>
                     <TrackList
                         removeHandler={trackRemoveHandler}
                         songs={songs}
-                        addTrackHandler={addTrackHandler}
                         participantList
                     />
                 </ComponentMargin>
