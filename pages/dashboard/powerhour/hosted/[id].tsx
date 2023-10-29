@@ -12,8 +12,7 @@ import {
 import {
     SingleSelectField,
     AccordionDataList,
-    TrackList,
-    UpdatePowerHourForm
+    TrackList
 } from '@/components/account'
 import axios from 'axios'
 import Image from 'next/image'
@@ -26,7 +25,6 @@ import {
 } from "react-icons/hi"
 import { AiFillEdit } from 'react-icons/ai'
 import { useRouter } from 'next/router'
-import { TrackDataI } from '@/interfaces'
 import {
     fetchPowerHour,
     fetchSongs
@@ -44,6 +42,8 @@ import {
     clearInstance
 } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
+import { AiOutlinePlus } from 'react-icons/ai'
+import { TrackDataI } from '@/interfaces'
 
 const phPublishStatuses = [
     {
@@ -110,11 +110,6 @@ const HostedPowerHourDynamic = () => {
 
     const users = powerHour?.participants?.map((participant: any) => participant?.user)
 
-    const addTrackHandler = (trackData: TrackDataI) => {
-        dispatch(clearInstance())
-        dispatch(addTrackAction(trackData, (songs?.length + 1)))
-    }
-
     const renderUpdateCoverImg = () => {
         dispatch(setInstance({
             display: true,
@@ -137,6 +132,21 @@ const HostedPowerHourDynamic = () => {
                 privateStatus: powerHour.privateStatus,
                 publishStatus: powerHour.publishStatus,
                 songLimit: powerHour.songLimit
+            }
+        }))
+    }
+    
+    const addTrackHandler = (trackData: TrackDataI) => {
+        dispatch(clearInstance())
+        dispatch(addTrackAction(trackData, (songs?.length + 1)))
+    }
+
+    const renderAddTrackForm = () => {
+        dispatch(setInstance({
+            display: true,
+            name: 'addTrack',
+            data: {
+                submitHandler: addTrackHandler
             }
         }))
     }
@@ -207,10 +217,18 @@ const HostedPowerHourDynamic = () => {
                         </section>
                     </Grid3Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHour?.songLimit}</div>
+                    <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
+                        {songs?.length > 0 && '(Click on the blue button to expand details)'}
+                        <OnClickButton
+                            text='Add track'
+                            icon={AiOutlinePlus}
+                            bgColor='ceruleanBlue'
+                            onClick={renderAddTrackForm}
+                        />
+                    </div>
                     <TrackList
                         removeHandler={trackRemoveHandler}
                         songs={songs}
-                        addTrackHandler={addTrackHandler}
                     />
                 </ComponentMargin>
             </DashPageLayout>
