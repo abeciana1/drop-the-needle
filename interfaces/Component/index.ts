@@ -105,3 +105,22 @@ export interface LoadingInstanceI {
 export interface DisclaimerI {
     message: string;
 }
+
+export interface InviteCardI {
+    id: number;
+    index: number;
+    title: string;
+    description: string;
+    cover_image: string;
+    date: string;
+    time: string;
+    rsvpYes: boolean;
+    rsvpNo: boolean;
+    rsvpMaybe: boolean;
+    songLimit: number;
+}
+
+export interface PillTagI {
+    text: string;
+    color: string;
+}
