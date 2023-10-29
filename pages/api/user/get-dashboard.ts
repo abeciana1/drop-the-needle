@@ -40,6 +40,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         }
                     }
                 }
+            },
+            invites: {
+                orderBy: {
+                    powerHour: {
+                        date_time: 'asc'
+                    }
+                },
+                include: {
+                    powerHour: {
+                        select: {
+                            id: true,
+                            title: true,
+                            description: true,
+                            cover_image: true,
+                            date_time: true,
+                            songLimit: true
+                        }
+                    }
+                }
             }
         }
     })
