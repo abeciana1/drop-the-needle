@@ -1,17 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 export const prisma = new PrismaClient();
-import { faker } from '@faker-js/faker';
+// import { faker } from '@faker-js/faker';
 
 // * destroy records
-// const destroyAllRecords = async () => {
-//     await prisma.user.deleteMany()
-//     await prisma.powerHour.deleteMany()
-//     await prisma.host.deleteMany()
-//     await prisma.participant.deleteMany()
-//     await prisma.powerHourSong.deleteMany()
-// }
+const destroyAllRecords = async () => {
+    // await prisma.user.deleteMany()
+    // await prisma.powerHour.deleteMany()
+    // await prisma.host.deleteMany()
+    // await prisma.participant.deleteMany()
+    // await prisma.powerHourSong.deleteMany()
+    await prisma.invite.deleteMany()
+}
 
-// console.log('all records destroyed', destroyAllRecords())
+console.log('all records destroyed', destroyAllRecords())
 
 // let user = {
 //     name: 'Alex',
@@ -22,15 +23,7 @@ import { faker } from '@faker-js/faker';
 // let userObj = await prisma.user.create({
 //     data: user
 // })
-// console.log('creating power hour')
-// let powerHourObj = await prisma.powerHour.create({
-//     data: {
-//         title: 'Power Hour 1',
-//         description: 'Power Hour 1',
-//         date_time: new Date,
-//         cover_image: 'https://en.wikipedia.org/wiki/Abbey_Road#/media/File:Beatles_-_Abbey_Road.jpg'
-//     }
-// })
+
 // console.log('creating participant')
 // let participantObj = await prisma.participant.create({
 //     data: {
@@ -84,23 +77,84 @@ import { faker } from '@faker-js/faker';
 //     })
 // }
 const main = async () => {
-    console.log('create invite 1')
+    console.log('creating power hour')
+    let powerHourObj1 = await prisma.powerHour.create({
+        data: {
+            title: 'Power Hour 1',
+            description: 'Power Hour 1',
+            date_time: new Date,
+            cover_image: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1697937069/dtn-image/g2mkvb7takf9pojc4ium.webp',
+        }
+    })
+    await prisma.host.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj1.id
+        }
+    })
+    await prisma.participant.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj1.id
+        }
+    })
+    let powerHourObj2 = await prisma.powerHour.create({
+        data: {
+            title: 'Power Hour 1',
+            description: 'Power Hour 1',
+            date_time: new Date,
+            cover_image: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1697937069/dtn-image/g2mkvb7takf9pojc4ium.webp',
+        }
+    })
+    await prisma.host.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj2.id
+        }
+    })
+    await prisma.participant.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj2.id
+        }
+    })
+    let powerHourObj3 = await prisma.powerHour.create({
+        data: {
+            title: 'Power Hour 1',
+            description: 'Power Hour 1',
+            date_time: new Date,
+            cover_image: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1697937069/dtn-image/g2mkvb7takf9pojc4ium.webp',
+        }
+    })
+    await prisma.host.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj3.id
+        }
+    })
+    await prisma.participant.create({
+        data: {
+            userId: 2,
+            powerHourId: powerHourObj3.id
+        }
+    })
+    console.log('create invites')
     await prisma.invite.create({
         data: {
             userId: 1,
-            powerHourId: 1
+            powerHourId: powerHourObj1.id
         }
     })
     await prisma.invite.create({
         data: {
             userId: 1,
-            powerHourId: 2
+            powerHourId: powerHourObj2.id
         }
     })
     await prisma.invite.create({
         data: {
             userId: 1,
-            powerHourId: 3
+            powerHourId: powerHourObj3.id
         }
     })
 }
