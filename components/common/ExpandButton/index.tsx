@@ -25,6 +25,7 @@ export const ExpandBtn = ({
                 ['bg-ceruleanBlue text-altWhite']: backgroundColor === 'ceruleanBlue',
                 ['bg-vermillion text-altWhite']: backgroundColor === 'vermillion',
                 ['bg-altGreen-400 text-altWhite']: backgroundColor === 'bg-altGreen-400',
+                ['bg-green-400 text-altBlack']: backgroundColor === 'bg-green-400',
                 ['rounded-lg focus:px-4']: open
             })}
             onMouseEnter={() => setClose(true)}
