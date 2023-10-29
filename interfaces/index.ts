@@ -34,7 +34,9 @@ export type {
     TrackPresentI,
     ModalI,
     LoadingInstanceI,
-    DisclaimerI
+    DisclaimerI,
+    InviteCardI,
+    PillTagI
 } from '@/interfaces/Component'
 
 export type {
@@ -44,7 +46,8 @@ export type {
     SongI,
     PowerHourGroupI,
     PowerHourDynamicPageI,
-    TrackDataI
+    TrackDataI,
+    UserInvitesI
 } from '@/interfaces/Data'
 
 export type {
@@ -60,5 +63,6 @@ export type {
     UpdateTrackFormI,
     UpdatePowerHourFormI,
     AddTrackFormI,
-    UpdateCoverImageFormI
+    UpdateCoverImageFormI,
+    InviteFormI
 } from '@/interfaces/Form/Forms'
