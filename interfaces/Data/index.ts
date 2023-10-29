@@ -5,7 +5,12 @@ export interface UserI {
         email: string;
         hosted: DashPowerHourI[];
         participants: DashPowerHourI[];
+        invites: UserInvitesI[]
     }
+}
+
+interface PowerHourInviteI extends PowerHourMetaI {
+    description: string;
 }
 
 interface PowerHourMetaI {
@@ -19,6 +24,13 @@ interface PowerHourMetaI {
 
 export interface DashPowerHourI {
     powerHour: PowerHourMetaI
+}
+
+export interface UserInvitesI {
+    rsvpYes: boolean;
+    rsvpNo: boolean;
+    rsvpMaybe: boolean;
+    powerHour: PowerHourInviteI
 }
 
 export interface PowerHourGroupI { // for cards
