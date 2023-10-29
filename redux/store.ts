@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import loadingReducer from '@/redux/slices/loadingSlice'
 import instanceReducer from '@/redux/slices/instanceSlice'
 import powerHourReducer from '@/redux/slices/powerHourSlice'
+import inviteReducer from '@/redux/slices/inviteSlice'
 
 const middlewareEnhancer = [thunk]
 
@@ -10,7 +11,8 @@ const store =  configureStore({
         reducer: {
             loading: loadingReducer,
             instance: instanceReducer,
-            powerHour: powerHourReducer
+            powerHour: powerHourReducer,
+            invites: inviteReducer
         },
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: false,
