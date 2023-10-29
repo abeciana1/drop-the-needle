@@ -28,3 +28,16 @@ export interface AddTrackFormI {
 export interface UpdateCoverImageFormI {
     coverImage: string;
 }
+
+export interface InviteFormI {
+    id: number,
+    index: number;
+    title: string;
+    description: string;
+    songLimit: number;
+    date: string;
+    time: string;
+    rsvpYes: boolean;
+    rsvpNo: boolean;
+    rsvpMaybe: boolean;
+}
