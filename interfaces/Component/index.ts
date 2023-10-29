@@ -2,7 +2,7 @@ import React from 'react'
 import {
     ImageType
 } from '@/types';
-import { SongI, OnClickButtonI, TrackDataI } from '@/interfaces'
+import { SongI, OnClickButtonI } from '@/interfaces'
 
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
@@ -108,6 +108,7 @@ export interface DisclaimerI {
 
 export interface InviteCardI {
     id: number;
+    inviteId: number;
     index: number;
     title: string;
     description: string;

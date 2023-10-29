@@ -16,6 +16,7 @@ import { patchInvite } from '@/redux/slices/inviteSlice'
 
 const InviteForm = ({
     id,
+    inviteId,
     index,
     title,
     description,
@@ -84,6 +85,11 @@ const InviteForm = ({
             <div className="text-xl">Power Hour description: { description }</div>
             <div className="py-3 text-xl">Date: { date }</div>
             <div className="py-3 text-xl">Time { time }</div>
+            {rsvpYes &&
+                <div>
+                    You can visit the power hour page <a href=''>here</a>.
+                </div>
+            }
             <section className='flex gap-5 justify-center'>
                 <ExpandBtn
                     text='Yes'

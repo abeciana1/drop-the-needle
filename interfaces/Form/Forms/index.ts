@@ -31,6 +31,7 @@ export interface UpdateCoverImageFormI {
 
 export interface InviteFormI {
     id: number,
+    inviteId: number;
     index: number;
     title: string;
     description: string;

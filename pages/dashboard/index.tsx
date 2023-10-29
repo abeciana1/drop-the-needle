@@ -143,6 +143,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                             <InviteCard
                                                 key={invite?.powerHour.id}
                                                 index={index}
+                                                inviteId={invite?.id}
                                                 id={invite?.powerHour.id}
                                                 title={invite?.powerHour.title}
                                                 description={invite?.powerHour?.description}
