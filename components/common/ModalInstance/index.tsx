@@ -15,7 +15,8 @@ import {
     AddTrackForm,
     UpdateCoverImageForm,
     AddPowerHourForm,
-    UpdatePowerHourForm
+    UpdatePowerHourForm,
+    InviteForm
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -108,6 +109,20 @@ const ModalInstance = () => {
                     {instanceState.name === 'disclaimer' &&
                         <DisclaimerModal
                             message={instanceState.data?.message}
+                        />
+                    }
+                    {instanceState.name === 'inviteModal' &&
+                        <InviteForm
+                            id={instanceState.data.id}
+                            index={instanceState.data.index}
+                            title={instanceState.data.title}
+                            description={instanceState.data.description}
+                            date={instanceState.data.date}
+                            time={instanceState.data.time}
+                            rsvpYes={instanceState.data.rsvpYes}
+                            rsvpNo={instanceState.data.rsvpNo}
+                            rsvpMaybe={instanceState.data.rsvpMaybe}
+                            songLimit={instanceState.data.songLimit}
                         />
                     }
                 </Modal>
