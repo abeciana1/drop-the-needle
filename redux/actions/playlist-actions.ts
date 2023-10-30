@@ -116,7 +116,6 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
                 }
             })
             .then(response => {
-                // response.data.newPowerHour.id
                 if (response.status === 200) {
                     window.location.href = `/dashboard/powerhour/${response.data.newPowerHour.id}`
                     dispatch(success())
@@ -125,6 +124,43 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
         } catch (error) {
             console.log('err', error)
             dispatch(failure({ error: 'Failed to update cover image.' }))
+        }
+    }
+}
+
+export const createParticipantAction = (powerHourId: number, userId: number) => {
+    return async (dispatch: AppDispatch) => {
+        dispatch(loading())
+        try {
+            await axios.post('/api/participant/new', {
+                powerHourId: powerHourId,
+                userId: userId
+            })
+            .then(res => {
+                console.log('createParticipantAction', res)
+                window.location.pathname = `/dashboard/powerhour/participant/${encodeURI(powerHourId.toString())}`
+                dispatch(success())
+            })
+        } catch (error) {
+            console.error('err', error)
+        }
+    }
+}
+
+export const deleteParticipantAction = (powerHourId: number, userId: number) => {
+    return async (dispatch: AppDispatch) => {
+        try {
+            dispatch(loading())
+            await axios.post('/api/participant/delete', {
+                powerHourId: powerHourId,
+                userId: userId
+            })
+            .then(res => {
+                console.log('deleteParticipantAction', res)
+                dispatch(success())
+            })
+        } catch (error) {
+            console.error('err', error)
         }
     }
 }
