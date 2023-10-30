@@ -114,6 +114,7 @@ const ModalInstance = () => {
                     {instanceState.name === 'inviteModal' &&
                         <InviteForm
                             id={instanceState.data.id}
+                            userId={instanceState.data.userId}
                             inviteId={instanceState.data.inviteId}
                             index={instanceState.data.index}
                             title={instanceState.data.title}
