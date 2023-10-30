@@ -6,6 +6,7 @@ import { setInstance } from "@/redux/slices/instanceSlice"
 import {
     useAppDispatch
 } from '@/redux/hooks'
+import { PillTag } from '@/components/account';
 
 const PlaylistCard = ({
     id,
@@ -47,6 +48,8 @@ export default PlaylistCard
 export const InviteCard = ({
     id,
     index,
+    inviteId,
+    userId,
     title,
     description,
     cover_image,
@@ -64,6 +67,8 @@ export const InviteCard = ({
             name: 'inviteModal',
             data: {
                 id: id,
+                inviteId: inviteId,
+                userId: userId,
                 index: index,
                 title: title,
                 description: description,
@@ -77,23 +82,38 @@ export const InviteCard = ({
     }
 
     return (
-        <div
-            onClick={renderInviteModal}
-            className="text-xl font-semiBold"
-        >
-            <Image
-                src={cover_image}
-                priority
-                alt={title}
-                width={225}
-                height={225}
-                className='w-56 h-56 mx-auto'
-            />
-            <div className='text-center'>
-                {title}
+        <>
+            <div>
+                <div className="text-center">
+                    {(rsvpYes && !rsvpNo && !rsvpMaybe) &&
+                        <PillTag text='Attending' color='green' />
+                    }
+                    {(!rsvpYes && rsvpNo && !rsvpMaybe) &&
+                        <PillTag text='Not attending' color='red' />
+                    }
+                    {(!rsvpYes && !rsvpNo && rsvpMaybe) &&
+                        <PillTag text='Might attend' color='blue' />
+                    }
+                    {(!rsvpYes && !rsvpNo && !rsvpMaybe) &&
+                        <PillTag text='Undecided' color='gray' />
+                    }
+                </div>
+                <div onClick={renderInviteModal} className="text-xl font-semiBold">
+                    <Image
+                        src={cover_image}
+                        priority
+                        alt={title}
+                        width={225}
+                        height={225}
+                        className='w-56 h-56 mx-auto'
+                    />
+                    <div className='text-center'>
+                        {title}
+                    </div>
+                    <div className='text-center'>{date}</div>
+                    <div className='text-center'>{time}</div>
+                </div>
             </div>
-            <div className='text-center'>{date}</div>
-            <div className='text-center'>{time}</div>
-        </div>
+        </>
     )
 }
