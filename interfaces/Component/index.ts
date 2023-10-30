@@ -109,6 +109,7 @@ export interface DisclaimerI {
 export interface InviteCardI {
     id: number;
     inviteId: number;
+    userId: number;
     index: number;
     title: string;
     description: string;
