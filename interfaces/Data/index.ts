@@ -28,6 +28,7 @@ export interface DashPowerHourI {
 
 export interface UserInvitesI {
     id: number;
+    userId: number;
     rsvpYes: boolean;
     rsvpNo: boolean;
     rsvpMaybe: boolean;
