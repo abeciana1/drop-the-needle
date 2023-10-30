@@ -8,15 +8,15 @@ import {
 } from 'react-icons/ai'
 import { PillTag } from '@/components/account'
 import { useAppDispatch } from '@/redux/hooks'
-import {
-    setInstance,
-    clearInstance
-} from '@/redux/slices/instanceSlice'
+import { clearInstance } from '@/redux/slices/instanceSlice'
 import { patchInvite } from '@/redux/slices/inviteSlice'
+import { updateInvitesAction } from '@/redux/actions/invite-actions'
+import { createParticipantAction, deleteParticipantAction } from'@/redux/actions/playlist-actions'
 
 const InviteForm = ({
     id,
     inviteId,
+    userId,
     index,
     title,
     description,
@@ -28,7 +28,6 @@ const InviteForm = ({
 }: InviteFormI) => {
     const [ isClient, setClient ] = useState(false)
     const dispatch = useAppDispatch()
-
     useEffect(() => {
         if (isClient) {
             setClient(true)
@@ -36,18 +35,28 @@ const InviteForm = ({
     }, [isClient])
 
     const rsvpYesHandler = () => {
-        if (isClient) {
-            // * set location href
+        dispatch(createParticipantAction(id, userId))
+        dispatch(clearInstance())
+        if (!rsvpYes) {
+            dispatch(patchInvite({
+                index: index,
+                rsvpYes: true,
+                rsvpNo: false,
+                rsvpMaybe: false
+            }))
+            dispatch(updateInvitesAction(inviteId, {
+                rsvpYes: true,
+                rsvpNo: false,
+                rsvpMaybe: false
+            }))
+
         }
-        dispatch(patchInvite({
-            index: index,
-            rsvpYes: true,
-            rsvpNo: false,
-            rsvpMaybe: false
-        }))
     }
 
     const rsvpNoHandler = () => {
+        if (rsvpYes) {
+            dispatch(deleteParticipantAction(id, userId))
+        }
         dispatch(clearInstance())
         dispatch(patchInvite({
             index: index,
@@ -55,12 +64,25 @@ const InviteForm = ({
             rsvpNo: true,
             rsvpMaybe: false
         }))
+        dispatch(updateInvitesAction(inviteId, {
+            rsvpYes: false,
+            rsvpNo: true,
+            rsvpMaybe: false
+        }))
     }
 
     const rsvpMaybeHandler = () => {
+        if (rsvpYes) {
+            dispatch(deleteParticipantAction(id, userId))
+        }
         dispatch(clearInstance())
         dispatch(patchInvite({
             index: index,
+            rsvpYes: false,
+            rsvpNo: false,
+            rsvpMaybe: true
+        }))
+        dispatch(updateInvitesAction(inviteId, {
             rsvpYes: false,
             rsvpNo: false,
             rsvpMaybe: true
@@ -86,8 +108,8 @@ const InviteForm = ({
             <div className="py-3 text-xl">Date: { date }</div>
             <div className="py-3 text-xl">Time { time }</div>
             {rsvpYes &&
-                <div>
-                    You can visit the power hour page <a href=''>here</a>.
+                <div className="py-3 text-xl">
+                    You can visit the power hour page <a className="text-ceruleanBlue" href={`/dashboard/powerhour/participant/${encodeURI(id.toString())}`} title={'link to' + title + ' - participant page'}>here</a>.
                 </div>
             }
             <section className='flex gap-5 justify-center'>
