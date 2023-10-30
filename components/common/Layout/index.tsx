@@ -133,7 +133,7 @@ export const PlaylistCardGroup = ({
     children
 }: ChildrenI) => {
     return(
-        <section className='py-5 grid grid-cols-3'>
+        <section className='py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {children}
         </section>
     )
