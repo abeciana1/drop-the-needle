@@ -31,7 +31,6 @@ import {
 const DashboardIdxPage = ({user}: UserI) => {
     const dispatch = useAppDispatch()
     const invitesState = useAppSelector(state => state?.invites?.invites)
-    console.log('state', invitesState)
     const {
         name,
         hosted,
@@ -58,7 +57,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                 <ComponentMargin bgColor='jaffa-200'>
                     <H2 color={0} text={'My Hosted Power Hours'} />
                     <>
-                        {hosted?.length < 0 &&
+                        {hosted?.length < 1 &&
                             <div className='py-3 text-xl font-medium'>You are currently not hosting any power hours.</div>
                         }
                         {hosted?.length > 0 &&
@@ -77,17 +76,15 @@ const DashboardIdxPage = ({user}: UserI) => {
                                 ))}
                             </PlaylistCardGroup>
                         }
-                    </>
-                    <>
-                        {hosted?.length > 3 &&
-                        <div className='ml-10'>
-                                <LinkLookLikeButton
-                                    href='dashboard/powerhour/hosted'
-                                    text='View more'
-                                    bgColor='altBlack'
-                                    ctaArrow={true}
-                                />
-                        </div>
+                        {hosted?.length > 0 &&
+                            <div className='flex justify-center md:justify-start md:ml-10'>
+                                    <LinkLookLikeButton
+                                        href='dashboard/powerhour/hosted'
+                                        text='View all'
+                                        bgColor='blue'
+                                        ctaArrow={true}
+                                    />
+                            </div>
                         }
                     </>
                 </ComponentMargin>
@@ -95,7 +92,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                 <ComponentMargin bgColor='ceruleanBlue'>
                     <H2 color={0} text={'Participation'} />
                     <>
-                        {participants?.length < 0 &&
+                        {participants?.length < 1 &&
                             <div className='py-3 text-xl font-medium'>You are currently not participating in any power hours.</div>
                         }
                         {participants?.length > 0 &&
@@ -114,17 +111,15 @@ const DashboardIdxPage = ({user}: UserI) => {
                                 ))}
                             </PlaylistCardGroup>
                         }
-                    </>
-                    <>
-                        {participants?.length > 3 &&
-                        <div className='ml-10'>
-                            <LinkLookLikeButton
-                                href='dashboard/powerhour/participant'
-                                text='View more'
-                                bgColor='gold'
-                                ctaArrow={true}
-                            />
-                        </div>
+                        {participants?.length > 0 &&
+                            <div className='flex justify-center md:justify-start md:ml-10'>
+                                <LinkLookLikeButton
+                                    href='dashboard/powerhour/participant'
+                                    text='View all'
+                                    bgColor='gold'
+                                    ctaArrow={true}
+                                />
+                            </div>
                         }
                     </>
                 </ComponentMargin>
@@ -132,7 +127,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                 <ComponentMargin bgColor='vermillion-200'>
                     <H2 text={'Invitations'} />
                     <>
-                        {invitesState?.length < 0 &&
+                        {invitesState?.length < 1 &&
                             <div className='py-3 text-xl font-medium'>You currently do not have any invitations.</div>
                         }
                         {invitesState?.length > 0 &&
@@ -141,9 +136,10 @@ const DashboardIdxPage = ({user}: UserI) => {
                                     return (
                                         <>
                                             <InviteCard
-                                                key={invite?.powerHour.id}
+                                                key={invite?.id}
                                                 index={index}
                                                 inviteId={invite?.id}
+                                                userId={invite?.userId}
                                                 id={invite?.powerHour.id}
                                                 title={invite?.powerHour.title}
                                                 description={invite?.powerHour?.description}
@@ -160,12 +156,12 @@ const DashboardIdxPage = ({user}: UserI) => {
                                 })}
                             </PlaylistCardGroup>
                         }
-                        {invitesState?.length > 3 &&
-                            <div className='ml-10'>
+                        {invitesState.length > 0 &&
+                            <div className='flex justify-center md:justify-start md:ml-10'>
                                 <LinkLookLikeButton
                                     href='dashboard/powerhour/invites'
-                                    text='View more'
-                                    bgColor='gold'
+                                    text='View all'
+                                    bgColor='blue'
                                     ctaArrow={true}
                                 />
                             </div>
