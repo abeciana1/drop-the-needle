@@ -17,8 +17,8 @@ export const fetchPowerHour = (id: string) => {
         try {
             await axios.get('/api/powerhour/' + id)
             .then(res => {
-                dispatch(success())
                 dispatch(setPowerHour(res.data.powerHour))
+                dispatch(success())
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
@@ -33,8 +33,8 @@ export const fetchSongs = (id: string) => {
         try {
             await axios.get('/api/powerhour/get-songs/' + id)
             .then(res => {
-                dispatch(success())
                 dispatch(setSongs(res.data.powerHourSongs.PowerHourSongs))
+                dispatch(success())
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
@@ -50,14 +50,14 @@ export const updatePowerHourAction = (id: number, data: any) => {
             await axios.patch(`/api/powerhour/${id}`, {
                 title: data?.title,
                 description: data?.description,
-                date_time: new Date(data?.dateTime),
+                date_time: new Date(data?.date_time),
                 privateStatus: data?.privateStatus === 'true',
                 publishStatus: data?.publishStatus === 'true',
                 songLimit: data?.songLimit
             })
             .then(res => {
-                dispatch(success())
                 dispatch(patchPowerHour(res.data.powerHour))
+                dispatch(success())
             })
         } catch (err) {
             dispatch(failure({ error: 'Failed to update power hour data' }))
