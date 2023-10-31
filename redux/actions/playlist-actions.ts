@@ -2,7 +2,8 @@ import axios from 'axios'
 import {
     setPowerHour,
     setSongs,
-    patchPowerHour
+    patchPowerHour,
+    setUnsortedSongs
 } from '@/redux/slices/powerHourSlice'
 import {
     loading,
@@ -34,6 +35,7 @@ export const fetchSongs = (id: string) => {
             await axios.get('/api/powerhour/get-songs/' + id)
             .then(res => {
                 dispatch(setSongs(res.data.powerHourSongs.PowerHourSongs))
+                dispatch(setUnsortedSongs(res.data.unsortedSongs.PowerHourSongs))
                 dispatch(success())
             })
         } catch (error) {
