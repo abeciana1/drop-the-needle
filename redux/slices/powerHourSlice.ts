@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
 const initialState: {powerHour: any, songs: any} = {
     powerHour: null,
@@ -25,13 +25,26 @@ const powerHourSlice = createSlice({
             state.songs = {}
         },
         addSong: (state, action) => {
-            state.songs = state.songs.push(action.payload)
+            let newStateSongs = [... current(state.songs)]
+            state.songs = newStateSongs.concat(action.payload)
         },
         deleteSong: (state, action) => {
             state.songs = action.payload
         },
         reorderSongs: (state, action) => {
             state.songs = action.payload
+        },
+        patchSong: (state, action) => {
+            state.songs[action.payload.index] = {
+                ...state.songs[action.payload.index],
+                title: action.payload.data.title,
+                artist: action.payload.data.artist,
+                album: action.payload.data.album,
+                startTime: action.payload.data.startTime,
+                endTime: action.payload.data.endTime,
+                youtubeLink: action.payload.data.youtubeLink,
+                year: action.payload.data.year
+            }
         }
     }
 })
@@ -44,7 +57,8 @@ export const {
     addSong,
     deleteSong,
     reorderSongs,
-    clearSongs
+    clearSongs,
+    patchSong
 } = powerHourSlice.actions
 
 export default powerHourSlice.reducer
