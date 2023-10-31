@@ -26,54 +26,14 @@ const Track = ({
 }: TrackI) => {
     const dispatch = useAppDispatch()
     const [ openTrack, setOpen ] = useState(false)
-    
-    const {
-        id,
-        title,
-        artist,
-        startTime,
-        endTime,
-        youtubeLink,
-        album,
-        year
-    } = song
-
-    const [ trackObj, setTrackObj ] = useState({
-        trackTitle: title,
-        trackArtist: artist,
-        trackStartTime: startTime,
-        trackEndTime: endTime,
-        trackYouTubeLink: youtubeLink,
-        trackAlbum: album,
-        trackYear: year
-    })
+    // console.log('title - orderNumber', song?.title, song?.orderNumber)
 
     const toggleOpenDetails = () => {
         setOpen(!openTrack)
     }
 
     const updateSubmitHandler = async (data: any) => {
-        setTrackObj({
-            ...trackObj,
-            trackTitle: data?.songTitle,
-            trackArtist: data?.songArtist,
-            trackStartTime: data?.songStartTime,
-            trackEndTime: data?.songEndTime,
-            trackYouTubeLink: data?.songLink,
-            trackAlbum: data?.songAlbum,
-            trackYear: data?.songYear
-        })
         dispatch(clearInstance())
-        await axios.patch(`/api/track/${id}`, {
-            title: data?.songTitle,
-            artist: data?.songArtist,
-            startTime: data?.songStartTime,
-            endTime: data?.songEndTime,
-            youtubeLink: data?.songLink,
-            album: data?.songAlbum,
-            year: data?.songYear
-        })
-        .catch(err => console.error({err}))
     }
 
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -87,13 +47,13 @@ const Track = ({
             display: true,
             name: 'updateTrack',
             data: {
-                title: trackObj.trackTitle,
-                artist: trackObj.trackArtist,
-                startTime: trackObj.trackStartTime,
-                endTime: trackObj.trackEndTime,
-                album: trackObj.trackAlbum,
-                year: trackObj.trackYear,
-                youtubeLink: trackObj.trackYouTubeLink,
+                title: song.title,
+                artist: song.artist,
+                startTime: song.startTime,
+                endTime: song.endTime,
+                album: song.album,
+                year: song.year,
+                youtubeLink: song.youtubeLink,
                 submitHandler: updateSubmitHandler
             }
         }))
@@ -108,9 +68,9 @@ const Track = ({
                     tabIndex={0}
                     onKeyDown={focusTrackHandler}
                 >
-                    <span className='font-bold'>&quot;{trackObj?.trackTitle}&quot;</span>
+                    <span className='font-bold'>&quot;{song?.title}&quot;</span>
                     <span> - </span>
-                    <span className='italic'>{trackObj?.trackArtist} ({trackObj?.trackAlbum}, {trackObj?.trackYear?.substring(0,4).concat("")})</span>
+                    <span className='italic'>{song?.artist} ({song?.album}, {song?.year})</span>
                     <span className='ml-5'>{user}</span>
                 </div>
                 <span className='flex mt-5 md:mt-0 gap-5'>
@@ -134,8 +94,8 @@ const Track = ({
                 <section className='flex flex-col md:flex-row justify-between py-5'>
                     <div>
                         <div className='font-bold'>Timestamps:</div>
-                        <div><span className='font-medium'>Start: </span>{trackObj?.trackStartTime}</div>
-                        <div><span className='font-medium'>End: </span>{trackObj?.trackEndTime}</div>
+                        <div><span className='font-medium'>Start: </span>{song?.startTime}</div>
+                        <div><span className='font-medium'>End: </span>{song?.endTime}</div>
                         <div className='mt-7'>
                             <OnClickButton
                                 text="Edit"
@@ -146,9 +106,9 @@ const Track = ({
                     </div>
                     <div className="pt-3 md:pt-0">
                         <TrackPresent
-                            link={youtubeLink}
-                            startTime={trackObj?.trackStartTime}
-                            endTime={trackObj?.trackEndTime}
+                            link={song?.youtubeLink}
+                            startTime={song?.startTime}
+                            endTime={song?.endTime}
                         />
                     </div>
                 </section>
