@@ -40,8 +40,6 @@ const UpdatePowerHourForm = ({
         name: 'privateStatus',
         defaultValue: privateStatus === true ? 'true' : 'false'
     })
-    console.log('publishWatch', publishWatch)
-    console.log('privateWatch', privateWatch)
     let formattedDate;
 
     const submit = (data: any) => {
