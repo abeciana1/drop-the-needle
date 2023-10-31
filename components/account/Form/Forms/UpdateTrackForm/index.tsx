@@ -8,6 +8,11 @@ import {
 } from '@/components/account'
 import { UpdateTrackFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
+import { useAppDispatch } from '@/redux/hooks'
+import {
+    setInstance,
+    clearInstance
+} from '@/redux/slices/instanceSlice'
 
 const UpdateTrackForm = ({
     title,
@@ -19,13 +24,15 @@ const UpdateTrackForm = ({
     youtubeLink,
     submitHandler
 }: UpdateTrackFormI) => {
+    const dispatch = useAppDispatch()
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors }
     } = useForm()
 
     const submit = (data: any) => {
+        dispatch(clearInstance())
         submitHandler(data)
     }
     
