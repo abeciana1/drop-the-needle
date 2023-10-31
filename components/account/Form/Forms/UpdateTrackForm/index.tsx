@@ -9,10 +9,7 @@ import {
 import { UpdateTrackFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
 import { useAppDispatch } from '@/redux/hooks'
-import {
-    setInstance,
-    clearInstance
-} from '@/redux/slices/instanceSlice'
+import { clearInstance } from '@/redux/slices/instanceSlice'
 
 const UpdateTrackForm = ({
     title,
