@@ -67,7 +67,7 @@ const ParticipantPowerHourDynamic = () => {
 
     const addTrackHandler = (trackData: TrackDataI) => {
         dispatch(clearInstance())
-        dispatch(addTrackAction(trackData, (songs?.length + 1)))
+        dispatch(addTrackAction(trackData))
     }
 
     const renderAddTrackForm = () => {
