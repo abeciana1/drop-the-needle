@@ -17,7 +17,7 @@ export const fetchUserSongsAction = (userId: number, phId: number) => {
             })
             .then(response => {
                 dispatch(success())
-                dispatch(setSongs(response?.data?.songs))
+                dispatch(setSongs(response?.data?.userSongs?.PowerHourSongs))
             })
             .catch((err) => {
                 console.log('err', err)
