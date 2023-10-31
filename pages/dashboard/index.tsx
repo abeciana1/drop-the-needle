@@ -156,7 +156,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                 })}
                             </PlaylistCardGroup>
                         }
-                        {invitesState.length > 0 &&
+                        {invitesState?.length > 0 || invitesState === null &&
                             <div className='flex justify-center md:justify-start md:ml-10'>
                                 <LinkLookLikeButton
                                     href='dashboard/powerhour/invites'
