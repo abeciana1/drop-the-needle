@@ -9,6 +9,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             },
             select: {
                 PowerHourSongs: {
+                    where: {
+                        orderNumber: {
+                            gt: 0
+                        }
+                    },
                     include: {
                         participant: {
                             select: {
