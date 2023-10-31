@@ -60,7 +60,7 @@ model PowerHourSong {
   album String @default("")
   year String @default("")
   powerHourId Int
-  orderNumber Int
+  orderNumber Int @default(0)
   createdAt   DateTime  @default(now())
   powerHour  PowerHour @relation(fields: [powerHourId], references: [id])
   participantId Int
