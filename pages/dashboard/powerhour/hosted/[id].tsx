@@ -87,7 +87,6 @@ const HostedPowerHourDynamic = () => {
     }
 
     const deleteHandler = async () => {
-        // todo create deleteAction
         if (confirm('Are you sure you want to delete this power hour?')) {
             router.push('/dashboard')
             await axios.delete('/api/powerhour/' + powerHour.id)
@@ -158,22 +157,26 @@ const HostedPowerHourDynamic = () => {
                 <ComponentMargin>
                     <section className="flex flex-col md:flex-row justify-around items-center pt-20">
                     <div className="relative">
-                        <Image
-                            src={powerHour?.cover_image}
-                            width={250}
-                            height={250}
-                            alt={powerHour?.title}
-                            className='w-60 h-60'
-                        />
-                        <button
-                            onClick={renderUpdateCoverImg}
-                            className='absolute bottom-0 right-0 bg-ceruleanBlue h-10 w-10'
-                        >
-                            <HiPhotograph
-                                fill='#f8f8f8'
-                                className="h-8 w-8 mx-auto"
-                            />
-                        </button>
+                        {powerHour?.cover_image &&
+                            <>
+                                <Image
+                                    src={powerHour?.cover_image}
+                                    width={250}
+                                    height={250}
+                                    alt={powerHour?.title}
+                                    className='w-60 h-60'
+                                />
+                                <button
+                                    onClick={renderUpdateCoverImg}
+                                    className='absolute bottom-0 right-0 bg-ceruleanBlue h-10 w-10'
+                                >
+                                    <HiPhotograph
+                                        fill='#f8f8f8'
+                                        className="h-8 w-8 mx-auto"
+                                    />
+                                </button>
+                            </>
+                        }
                     </div>
                         <section className="space-y-2.5 pt-10 md:pt-0 pl-5">
                             <H1 color={2} text={powerHour?.title} />
