@@ -31,7 +31,35 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             }
         })
-        res.status(200).json({ powerHourSongs })
+        const unsortedSongs = await prisma?.powerHour?.findFirst({
+            where: {
+                id: Number(req?.query?.id)
+            },
+            select: {
+                PowerHourSongs: {
+                    where: {
+                        orderNumber: {
+                            lt: 1
+                        }
+                    },
+                    include: {
+                        participant: {
+                            select: {
+                                user: {
+                                    select: {
+                                        name: true
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    orderBy: {
+                        createdAt: 'asc'
+                    }
+                }
+            }
+        })
+        res.status(200).json({ powerHourSongs, unsortedSongs })
     }
 }
 
