@@ -41,7 +41,7 @@ import {
     setInstance,
     clearInstance
 } from '@/redux/slices/instanceSlice'
-import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
+import { clearPowerHour, clearSongs, clearUnsortedSongs } from '@/redux/slices/powerHourSlice'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { TrackDataI } from '@/interfaces'
 
@@ -77,6 +77,7 @@ const HostedPowerHourDynamic = () => {
         return () => {
             dispatch(clearPowerHour())
             dispatch(clearSongs())
+            dispatch(clearUnsortedSongs())
         }
     }, [])
 
