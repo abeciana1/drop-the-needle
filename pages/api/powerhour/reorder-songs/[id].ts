@@ -36,8 +36,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                         }
                     }
                 },
-                include: {
-                    PowerHourSongs: true
+                select: {
+                    PowerHourSongs: {
+                        orderBy: {
+                            orderNumber: 'asc'
+                        }
+                    }
                 }
             })
             res.status(200).json({ reorderedSongs })
@@ -71,6 +75,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                                     increment: 1
                                 }
                             }
+                        }
+                    }
+                },
+                select: {
+                    PowerHourSongs: {
+                        orderBy: {
+                            orderNumber: 'asc'
                         }
                     }
                 }
