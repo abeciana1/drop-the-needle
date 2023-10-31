@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             select: {
                 PowerHourSongs: {
                     orderBy: {
-                        orderNumber: 'asc'
+                        createdAt: 'asc'
                     }
                 }
             }
