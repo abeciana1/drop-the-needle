@@ -20,7 +20,6 @@ const AddTrackForm = ({
     } = useForm()
     const { data: session } = useSession()
 
-
     const submit = (data: any) => {
         let phId = Number(router.query.id)
         submitHandler({
