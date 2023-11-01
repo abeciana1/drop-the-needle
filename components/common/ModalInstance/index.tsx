@@ -72,6 +72,8 @@ const ModalInstance = () => {
                     </div>
                     {instanceState.name === 'updateTrack' &&
                         <UpdateTrackForm
+                            id={instanceState.data.id}
+                            index={instanceState.data.index}
                             title={instanceState.data?.title}
                             artist={instanceState.data?.artist}
                             startTime={instanceState.data?.startTime}
@@ -79,7 +81,6 @@ const ModalInstance = () => {
                             album={instanceState.data?.album}
                             year={instanceState.data?.year}
                             youtubeLink={instanceState.data.youtubeLink}
-                            submitHandler={instanceState?.data.updateSubmitHandler}
                         />
                     }
                     {instanceState.name === 'addTrack' &&

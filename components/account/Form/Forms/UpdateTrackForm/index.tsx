@@ -10,16 +10,18 @@ import { UpdateTrackFormI } from '@/interfaces'
 import { ErrorMessage } from "@hookform/error-message"
 import { useAppDispatch } from '@/redux/hooks'
 import { clearInstance } from '@/redux/slices/instanceSlice'
+import { patchSongAction } from '@/redux/actions/song-actions'
 
 const UpdateTrackForm = ({
+    id,
+    index,
     title,
     artist,
     startTime,
     endTime,
     album,
     year,
-    youtubeLink,
-    submitHandler
+    youtubeLink
 }: UpdateTrackFormI) => {
     const dispatch = useAppDispatch()
     const {
@@ -30,7 +32,7 @@ const UpdateTrackForm = ({
 
     const submit = (data: any) => {
         dispatch(clearInstance())
-        submitHandler(data)
+        dispatch(patchSongAction(index, id, data))
     }
     
     return(
