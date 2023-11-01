@@ -32,9 +32,9 @@ const Track = ({
         setOpen(!openTrack)
     }
 
-    const updateSubmitHandler = async (data: any) => {
-        dispatch(clearInstance())
-    }
+    // const updateSubmitHandler = async (data: any) => {
+    //     dispatch(clearInstance())
+    // }
 
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
         if(e.code === "Enter") {
@@ -47,6 +47,8 @@ const Track = ({
             display: true,
             name: 'updateTrack',
             data: {
+                id: song.id,
+                index: index,
                 title: song.title,
                 artist: song.artist,
                 startTime: song.startTime,
@@ -54,7 +56,6 @@ const Track = ({
                 album: song.album,
                 year: song.year,
                 youtubeLink: song.youtubeLink,
-                submitHandler: updateSubmitHandler
             }
         }))
     }
