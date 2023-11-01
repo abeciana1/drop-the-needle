@@ -95,20 +95,20 @@ export const patchSongAction = (index: number, songId: number, data: any) => {
             data: data
         }))
         try {
-            await axios.patch('/api/track' + songId, {
-                title: data?.songTitle,
-                artist: data?.songArtist,
-                startTime: data?.songStartTime,
-                endTime: data?.songEndTime,
-                youtubeLink: data?.songLink,
-                album: data?.songAlbum,
-                year: data?.songYear
+            await axios.patch('/api/track/' + songId, {
+                title: data?.title,
+                artist: data?.artist,
+                startTime: data?.startTime,
+                endTime: data?.endTime,
+                youtubeLink: data?.youtubeLink,
+                album: data?.album,
+                year: data?.year
             })
-            .then(response => {
-                console.log('track patch', response)
+            .then(() => {
                 dispatch(success())
             })
         } catch (err) {
+            dispatch(failure({ error: 'Failed to update track' }))
             console.error({ err })
         }
     }
