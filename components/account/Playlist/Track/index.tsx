@@ -32,10 +32,6 @@ const Track = ({
         setOpen(!openTrack)
     }
 
-    // const updateSubmitHandler = async (data: any) => {
-    //     dispatch(clearInstance())
-    // }
-
     const focusTrackHandler = (e: React.KeyboardEvent<HTMLElement>) => {
         if(e.code === "Enter") {
             setOpen(!openTrack)
