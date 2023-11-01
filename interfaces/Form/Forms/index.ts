@@ -1,6 +1,8 @@
 import { TrackDataI } from "@/interfaces"
 
 export interface UpdateTrackFormI {
+    id: number;
+    index: number;
     title: string;
     artist: string;
     startTime: string;
@@ -8,7 +10,6 @@ export interface UpdateTrackFormI {
     album: string;
     year: string;
     youtubeLink: string;
-    submitHandler: (data: any) => void;
 }
 
 export interface UpdatePowerHourFormI {
