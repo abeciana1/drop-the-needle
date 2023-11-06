@@ -26,7 +26,7 @@ const Track = ({
 }: TrackI) => {
     const dispatch = useAppDispatch()
     const [ openTrack, setOpen ] = useState(false)
-    // console.log('title - orderNumber', song?.title, song?.orderNumber)
+    console.log('title - orderNumber', song?.title, song?.orderNumber)
 
     const toggleOpenDetails = () => {
         setOpen(!openTrack)
