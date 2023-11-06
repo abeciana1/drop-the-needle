@@ -27,6 +27,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                             }
                         }
                     }
+                },
+                invites: {
+                    select: {
+                        rsvpYes: true,
+                        rsvpNo: true,
+                        rsvpMaybe: true,
+                        user: {
+                            select: {
+                                id: true,
+                                name: true
+                            }
+                        }
+                    }
                 }
             }
         })
