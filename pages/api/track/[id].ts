@@ -12,12 +12,49 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         })
         res.status(200).json({ track })
     } else if (req.method === 'DELETE') {
-        let track = await prisma.powerHourSong.delete({
+        let track = await prisma?.powerHourSong?.findFirst({
             where: {
                 id: trackId
             }
         })
-        res.status(200).json({ track })
+        if (track?.hasOwnProperty('orderNumber') && track?.orderNumber > 0) {
+            let updatedPowerHour = await prisma.powerHour.update({
+                where: {
+                    id: Number(track?.powerHourId)
+                },
+                data: {
+                    PowerHourSongs: {
+                        updateMany: {
+                            where: {
+                                orderNumber: {
+                                    gt: Number(track?.orderNumber)
+                                }
+                            },
+                            data: {
+                                orderNumber: {
+                                    decrement: 1
+                                }
+                            }
+                        }
+                    }
+                },
+                select: {
+                    PowerHourSongs: true
+                }
+            })
+            await prisma.powerHourSong.delete({
+                where: {
+                    id: trackId
+                }
+            })
+            res.status(200).json({ updatedPowerHour })
+        } else {
+            await prisma.powerHourSong.delete({
+                where: {
+                    id: trackId
+                }
+            })
+        }
     }
 }
 
