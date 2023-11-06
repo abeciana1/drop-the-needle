@@ -51,7 +51,12 @@ export const deleteTrackAction = (index: number, id: number) => {
             newSongs.splice(index, 1)
             dispatch(deleteSong(newSongs))
             await axios.delete('/api/track/' + id)
-            dispatch(success())
+            .then(response => {
+                if (response.data.hasOwnProperty('updatedPowerHour')) {
+                    dispatch(reorderSongs(response.data.updatedPowerHour.PowerHourSongs))
+                }
+                dispatch(success())
+            })
         } catch (err) {
             dispatch(failure({ error: 'Failed to delete track' }))
             console.log('deleteTrackAction', err);
@@ -67,7 +72,6 @@ export const reorderSongsAction = (id: number, result: ResultI) => {
         let newSongList = [...songsState]
         const [reorderedItem] = newSongList?.splice(result?.source?.index, 1);
         newSongList.splice(result.destination.index, 0, reorderedItem);
-
         dispatch(reorderSongs(newSongList))
         try {
             await axios.patch('/api/powerhour/reorder-songs/' + id, {
@@ -77,9 +81,8 @@ export const reorderSongsAction = (id: number, result: ResultI) => {
                 destinationOrderNumber: (result.destination.index + 1)
             })
             .then(response => {
-                console.log('response', response)
+                dispatch(reorderSongs(response.data.reorderedSongs.PowerHourSongs))
                 dispatch(success())
-                // dispatch(reorderSongs(newSongList))
             })
         } catch {
             dispatch(failure({ error: 'Unable to reorder songs' }))
