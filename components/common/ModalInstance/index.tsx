@@ -16,7 +16,8 @@ import {
     UpdateCoverImageForm,
     AddPowerHourForm,
     UpdatePowerHourForm,
-    InviteForm
+    InviteForm,
+    TrackPresent
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -127,6 +128,18 @@ const ModalInstance = () => {
                             rsvpMaybe={instanceState.data.rsvpMaybe}
                             songLimit={instanceState.data.songLimit}
                         />
+                    }
+                    {instanceState.name === 'videoModal' &&
+                        <div className='mt-5'>
+                            <TrackPresent
+                                link={instanceState.data.link}
+                                startTime={instanceState.data.startTime}
+                                endTime={instanceState.data.endTime}
+                            />
+                        </div>
+                    }
+                    {instanceState.name === 'vidSongAdd' &&
+                        <></>
                     }
                 </Modal>
             }
