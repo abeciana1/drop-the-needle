@@ -22,8 +22,13 @@ const TrackPresent = ({
     }
 
     const linkConverter = () => {
-        let youtubeId = link.split("=")
-        let convertedLink = `https://www.youtube.com/embed/${youtubeId[1]}?start=${convertedStartTime}&end=${convertedEndTime}`
+        let convertedLink;
+        if (link.indexOf('=') > -1) {
+            let youtubeId = link.split("=")
+            convertedLink = `https://www.youtube.com/embed/${youtubeId[1]}?start=${convertedStartTime}&end=${convertedEndTime}`
+        } else {
+            convertedLink = `https://www.youtube.com/embed/${link}?start=${convertedStartTime}&end=${convertedEndTime}`
+        }
         return convertedLink
     }
 
