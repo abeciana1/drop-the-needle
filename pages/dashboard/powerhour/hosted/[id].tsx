@@ -23,7 +23,7 @@ import {
     HiOutlineUserCircle,
     HiPhotograph
 } from "react-icons/hi"
-import { AiFillEdit } from 'react-icons/ai'
+import { AiFillEdit, AiOutlinePlus } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import {
     fetchPowerHour,
@@ -42,7 +42,6 @@ import {
     clearInstance
 } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs, clearUnsortedSongs } from '@/redux/slices/powerHourSlice'
-import { AiOutlinePlus } from 'react-icons/ai'
 import { TrackDataI } from '@/interfaces'
 
 const phPublishStatuses = [
