@@ -88,3 +88,23 @@ export interface TrackDataI {
     endTime: string;
     orderNumber: number;
 }
+
+export interface YouTubeVideoI {
+    id: string;
+    title: string;
+    link: string;
+    thumbnail: string;
+    channel: {
+        id: string;
+        name: string;
+        link: string;
+        handle: string | null;
+        verified: string | null | boolean;
+        thumbnail: string;
+    };
+    description: string;
+    views: number;
+    uploaded: string;
+    duration: number;
+    durationString: string;
+}
