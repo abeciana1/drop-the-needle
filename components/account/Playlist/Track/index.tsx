@@ -11,12 +11,8 @@ import {
     AiFillDelete,
     AiFillFolderOpen
 } from 'react-icons/ai'
-import axios from 'axios'
 import { useAppDispatch } from '@/redux/hooks'
-import {
-    setInstance,
-    clearInstance
-} from '@/redux/slices/instanceSlice'
+import { setInstance } from '@/redux/slices/instanceSlice'
 
 const Track = ({
     song,
