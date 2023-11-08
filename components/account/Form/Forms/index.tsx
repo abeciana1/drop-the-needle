@@ -4,3 +4,4 @@ export { default as AddTrackForm } from '@/components/account/Form/Forms/AddTrac
 export { default as UpdateCoverImageForm } from '@/components/account/Form/Forms/UpdateCoverImageForm'
 export { default as AddPowerHourForm } from '@/components/account/Form/Forms/AddPowerHourForm'
 export { default as InviteForm } from '@/components/account/Form/Forms/InviteForm'
+export { default as YouTubeSearchForm } from '@/components/account/Form/Forms/YouTubeSearchForm'
