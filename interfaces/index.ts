@@ -47,7 +47,8 @@ export type {
     PowerHourGroupI,
     PowerHourDynamicPageI,
     TrackDataI,
-    UserInvitesI
+    UserInvitesI,
+    YouTubeVideoI
 } from '@/interfaces/Data'
 
 export type {
