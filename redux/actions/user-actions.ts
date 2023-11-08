@@ -36,7 +36,6 @@ export const searchYouTubeAction = (searchTerm: string) => {
                 searchTerm: searchTerm
             })
             .then(response => {
-                // console.log('response', response)
                 dispatch(setVideos(response?.data?.videos))
                 dispatch(success())
             })
