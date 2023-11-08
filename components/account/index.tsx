@@ -20,7 +20,8 @@ export {
     AddTrackForm,
     UpdateCoverImageForm,
     AddPowerHourForm,
-    InviteForm
+    InviteForm,
+    YouTubeSearchForm
 } from '@/components/account/Form'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'
@@ -31,3 +32,4 @@ export {
 } from '@/components/account/Playlist'
 
 export { default as PillTag } from '@/components/account/PillTag'
+export { default as YouTubeCard } from '@/components/account/YouTubeCard'
