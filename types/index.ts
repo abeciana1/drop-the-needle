@@ -1,7 +1,8 @@
 import { Path, UseFormRegister } from "react-hook-form";
 import {
     FormValuesI,
-    NumberValidation
+    NumberValidation,
+    YouTubeVideoI
 } from '@/interfaces'
 
 export type ImageType = {
@@ -57,3 +58,5 @@ export type OptionType = {
     value: string;
     text: string
 }
+
+export type YouTubeVideoType = Pick<YouTubeVideoI, "id" | "title" | "link" | "thumbnail" | "description" | "durationString">
