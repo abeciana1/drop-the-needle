@@ -7,7 +7,8 @@ import {
     AiFillLayout,
     AiOutlineBars,
     AiFillEdit,
-    AiOutlineLogout
+    AiOutlineLogout,
+    AiOutlineSearch
 } from 'react-icons/ai'
 import { signOut } from "next-auth/react"
 import {
@@ -16,10 +17,7 @@ import {
 } from '@/components/common'
 import useResponsiveness from '@/hooks/useResponsiveness'
 import { setInstance } from '@/redux/slices/instanceSlice'
-import {
-    useAppSelector,
-    useAppDispatch
-} from '@/redux/hooks'
+import { useAppDispatch } from '@/redux/hooks'
 
 const SideNav = () => {
     const dispatch = useAppDispatch()
@@ -64,6 +62,11 @@ const SideNav = () => {
                                 onClick={createNewPHHandler}
                                 text='Create new power hour'
                                 icon={AiFillEdit}
+                            />
+                            <SideNavItemLink
+                                href='dashboard/search'
+                                linkText='Search YouTube'
+                                icon={AiOutlineSearch}
                             />
                         </ul>
                         <SideNavItemButton
