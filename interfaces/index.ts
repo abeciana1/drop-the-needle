@@ -36,7 +36,8 @@ export type {
     LoadingInstanceI,
     DisclaimerI,
     InviteCardI,
-    PillTagI
+    PillTagI,
+    YouTubeCardI
 } from '@/interfaces/Component'
 
 export type {
@@ -48,7 +49,8 @@ export type {
     PowerHourDynamicPageI,
     TrackDataI,
     UserInvitesI,
-    YouTubeVideoI
+    YouTubeVideoI,
+    UserPowerHourI
 } from '@/interfaces/Data'
 
 export type {
@@ -65,5 +67,6 @@ export type {
     UpdatePowerHourFormI,
     AddTrackFormI,
     UpdateCoverImageFormI,
-    InviteFormI
+    InviteFormI,
+    AddVideoPHFormI
 } from '@/interfaces/Form/Forms'
