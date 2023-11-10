@@ -1,8 +1,13 @@
 import React from 'react'
 import {
-    ImageType
+    ImageType,
+    OptionType
 } from '@/types';
-import { SongI, OnClickButtonI } from '@/interfaces'
+import {
+    SongI,
+    OnClickButtonI,
+    UserPowerHourI
+} from '@/interfaces'
 
 export interface ChildrenI {
     children: React.ReactElement | React.ReactElement[];
@@ -125,4 +130,15 @@ export interface InviteCardI {
 export interface PillTagI {
     text: string;
     color: string;
+}
+
+export interface YouTubeCardI {
+    id: string;
+    title: string;
+    thumbnail: string;
+    link: string;
+    description: string;
+    durationString: string;
+    mappedPowerHours: OptionType[];
+    userPowerHours: UserPowerHourI[];
 }
