@@ -1,9 +1,11 @@
-import { YouTubeVideoType } from '@/types'
+import { YouTubeCardI } from '@/interfaces'
 import Image from 'next/image'
 import { ExpandBtn } from '@/components/common'
 import { AiFillPlayCircle, AiOutlinePlus } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
 import { setInstance } from '@/redux/slices/instanceSlice'
+// import { useMemo } from 'react'
+// import { useAppSelector } from '@/redux/hooks'
 
 interface DurationBoxI {
     duration: string;
@@ -23,8 +25,10 @@ const YouTubeCard = ({
     link,
     thumbnail,
     description,
-    durationString
-}: YouTubeVideoType) => {
+    durationString,
+    mappedPowerHours,
+    userPowerHours
+}: YouTubeCardI) => {
     const dispatch = useAppDispatch()
 
     const renderVideoModal = () => {
@@ -32,7 +36,7 @@ const YouTubeCard = ({
             display: true,
             name: 'videoModal',
             data: {
-                link: id,
+                link: `https://www.youtube.com/watch?v=${id}`,
                 startTime: '0:00',
                 endTime: durationString
             }
@@ -40,11 +44,25 @@ const YouTubeCard = ({
     }
 
     const renderVideoAddModal = () => {
-        dispatch(setInstance({
-            display: true,
-            name: 'vidSongAdd', 
-            data: {}
-        }))
+        if (mappedPowerHours.length < 1) {
+            dispatch(setInstance({
+                display: true,
+                name: 'disclaimer',
+                data: {
+                    message: 'Sorry you\'re not participating in any power hours at the moment. Please remember to RSVP to any pending invitations you may have.'
+                }
+            }))
+        } else {
+            dispatch(setInstance({
+                display: true,
+                name: 'vidSongAdd', 
+                data: {
+                    youTubeLink: `https://www.youtube.com/watch?v=${id}`,
+                    mappedPowerHours: mappedPowerHours,
+                    userPowerHours: userPowerHours
+                }
+            }))
+        }
     }
 
     return(
