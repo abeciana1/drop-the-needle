@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from 'react'
 import {
     SEO,
     DashPageLayout,
@@ -12,33 +13,39 @@ import {
     YouTubeCard
 } from '@/components/account'
 import { YouTubeVideoType } from '@/types'
-import  { YouTubeVideoI } from '@/interfaces'
-import { useAppSelector } from '@/redux/hooks'
+import {
+    useAppSelector,
+    useAppDispatch
+} from '@/redux/hooks'
+import { useSession } from 'next-auth/react'
+import { fetchUserPowerHoursAction } from '@/redux/actions/user-actions'
 
 const YouTubeSearchPage = () => {
+    const dispatch = useAppDispatch()
     const videos = useAppSelector(state => state.user.videos)
+    const { data: session } = useSession()
+    const userPowerHours = useAppSelector(state => state.user.powerHours)
+    console.log(userPowerHours)
 
-    // const videos: any = [
-    //     {
-    //         "id": "AW55J2zE3N4",
-    //         "title": "The Beatles - Now And Then (Official Audio)",
-    //         "link": "https://youtu.be/AW55J2zE3N4",
-    //         "thumbnail": "https://i.ytimg.com/vi/AW55J2zE3N4/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCDwTHv74wLfKXAqMl4xioIOQChtQ",
-    //         "channel": {
-    //             "id": "UCc4K7bAqpdBP8jh1j9XZAww",
-    //             "name": "The Beatles",
-    //             "link": "https://www.youtube.com/channel/UCc4K7bAqpdBP8jh1j9XZAww",
-    //             "handle": null,
-    //             "verified": true,
-    //             "thumbnail": "https://yt3.ggpht.com/ytc/APkrFKZaa3FGlL9nr6YnH8_PtgOmEkTxh9C6r77YA6lkxw=s0?imgmax=0"
-    //         },
-    //         "description": "Now and Then's eventful journey to fruition took place over five decades and is the product of conversations and collaborations ...",
-    //         "views": 6455190,
-    //         "uploaded": "4 days ago",
-    //         "duration": 249,
-    //         "durationString": "4:09"
-    //     }
-    // ]
+    // * create filtered power hours with useMemo
+
+    const mappedPowerHours = useMemo(() => {
+        // * use filtered power hours
+        // return userPowerHours.filter(( participant: any ) => {
+        //     return new Date().valueOf() - new Date(participant.powerHour.date_time).valueOf() > 0
+        // })
+        if (userPowerHours) {
+            return userPowerHours.map((participant: any, index: number) => {
+                return {value: index, text: participant?.powerHour?.title}
+            })
+        }
+    }, [userPowerHours])
+
+    useEffect(() => {
+        if (session) {
+            dispatch(fetchUserPowerHoursAction(session?.user?.id))
+        }   
+    }, [session])
 
     return(
         <>
@@ -62,6 +69,8 @@ const YouTubeSearchPage = () => {
                                 thumbnail={video.thumbnail}
                                 description={video.description}
                                 durationString={video.durationString}
+                                mappedPowerHours={mappedPowerHours}
+                                userPowerHours={userPowerHours}
                             />
                         )
                     })}
