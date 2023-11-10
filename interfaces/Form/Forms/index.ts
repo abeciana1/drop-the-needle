@@ -1,4 +1,5 @@
-import { TrackDataI } from "@/interfaces"
+import { TrackDataI, UserPowerHourI } from "@/interfaces"
+import { OptionType } from '@/types'
 
 export interface UpdateTrackFormI {
     id: number;
@@ -43,4 +44,10 @@ export interface InviteFormI {
     rsvpYes: boolean;
     rsvpNo: boolean;
     rsvpMaybe: boolean;
+}
+
+export interface AddVideoPHFormI {
+    link: string;
+    mappedPowerHours: OptionType[]
+    userPowerHours: UserPowerHourI[];
 }
