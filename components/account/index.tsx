@@ -21,7 +21,8 @@ export {
     UpdateCoverImageForm,
     AddPowerHourForm,
     InviteForm,
-    YouTubeSearchForm
+    YouTubeSearchForm,
+    AddVideoPHForm
 } from '@/components/account/Form'
 
 export { default as AccordionDataList } from '@/components/account/AccordionDataList'

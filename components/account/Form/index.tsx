@@ -16,5 +16,6 @@ export {
     UpdateCoverImageForm,
     AddPowerHourForm,
     InviteForm,
-    YouTubeSearchForm
+    YouTubeSearchForm,
+    AddVideoPHForm
 } from '@/components/account/Form/Forms'
