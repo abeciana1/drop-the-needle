@@ -1,3 +1,5 @@
+import { YouTubeVideoType } from '@/types'
+
 export interface UserI {
     user: {
         id: number;
@@ -87,6 +89,8 @@ export interface TrackDataI {
     startTime: string;
     endTime: string;
     orderNumber: number;
+    powerHourId: number;
+    participantId: number;
 }
 
 export interface YouTubeVideoI {
@@ -107,4 +111,17 @@ export interface YouTubeVideoI {
     uploaded: string;
     duration: number;
     durationString: string;
+}
+
+export interface UserPowerHourI {
+    id: number;
+    powerHour: {
+        date_time: string;
+        id: number;
+        songLimit: number;
+        title: string;
+    },
+    _count: {
+        PowerHourSongs: number;
+    }
 }
