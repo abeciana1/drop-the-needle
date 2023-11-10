@@ -17,7 +17,8 @@ import {
     AddPowerHourForm,
     UpdatePowerHourForm,
     InviteForm,
-    TrackPresent
+    TrackPresent,
+    AddVideoPHForm
 } from '@/components/account'
 
 const ModalInstance = () => {
@@ -139,7 +140,11 @@ const ModalInstance = () => {
                         </div>
                     }
                     {instanceState.name === 'vidSongAdd' &&
-                        <></>
+                        <AddVideoPHForm
+                            link={instanceState.data.youTubeLink}
+                            mappedPowerHours={instanceState.data.mappedPowerHours}
+                            userPowerHours={instanceState.data.userPowerHours}
+                        />
                     }
                 </Modal>
             }
