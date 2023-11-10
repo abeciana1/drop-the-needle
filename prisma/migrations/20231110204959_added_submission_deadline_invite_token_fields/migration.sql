@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "powerHours" ADD COLUMN     "inviteToken" TEXT NOT NULL DEFAULT '',
+ADD COLUMN     "submissionDeadline" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
