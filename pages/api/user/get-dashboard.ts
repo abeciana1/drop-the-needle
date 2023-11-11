@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/hooks/prisma'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    let user = await prisma?.user?.findFirst({
+    let user = await prisma?.user?.findUnique({
         where: {
             email: req?.body?.params
         },
