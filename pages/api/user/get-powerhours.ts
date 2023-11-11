@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                             select: {
                                 id: true,
                                 title: true,
-                                date_time: true,
+                                submissionDeadline: true,
                                 songLimit: true
                             }
                         },
