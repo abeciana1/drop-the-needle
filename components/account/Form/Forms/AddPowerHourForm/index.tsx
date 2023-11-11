@@ -63,6 +63,13 @@ const AddPowerHourForm = () => {
                 register={register}
             />
             <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
+            <DatePicker
+                label='Submission deadline date'
+                name='submissionDeadline'
+                fieldRequired='This field is required.'
+                register={register}
+            />
+            <ErrorMessage name='submissionDeadline' errors={errors} as='div' className='text-vermillion'/>
             <Select
                 currentSelection={`Your power hour is currently: ${publishWatch === 'true' ? 'Published' : 'Not Published'}`}
                 label='Publish status'
