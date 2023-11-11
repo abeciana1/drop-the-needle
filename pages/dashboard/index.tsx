@@ -178,16 +178,19 @@ export default DashboardIdxPage
 
 export const getServerSideProps = async (context: NextPageContext) => {
     const session = await getSession(context)
-    console.log('ssr session', session)
     if (session) {
-        let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+        await axios.post('http://localhost:3000/api/user/get-dashboard', {
             params: session?.user?.email
         })
-        return {
-            props: {
-                user: data?.user
+        .then(response => {
+            if (response.status === 200) {
+                return {
+                    props: {
+                        user: response.data?.user
+                    }
+                }
             }
-        }
+        })
     } else {
         return {
             redirect: {
