@@ -36,6 +36,7 @@ const ParticipantPowerHourDynamic = () => {
     const songs = useAppSelector(state => state.powerHour.songs)
     const [ isClient, setClient ] = useState(false)
     const { data: session } = useSession()
+    console.log('powerHour', powerHour)
 
     useEffect(() => {
         setClient(true)
@@ -71,7 +72,7 @@ const ParticipantPowerHourDynamic = () => {
     }
 
     const renderAddTrackForm = () => {
-        if (songs.length === powerHour.songLimit) {
+        if (songs?.length === powerHour?.songLimit || (new Date(powerHour.submissionDate).valueOf() - new Date().valueOf() >= 0)) {
             dispatch(setInstance({
                 display: true,
                 name: 'disclaimer',
