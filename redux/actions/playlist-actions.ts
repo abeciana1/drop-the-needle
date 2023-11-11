@@ -23,7 +23,6 @@ export const fetchPowerHour = (id: string) => {
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
-            console.error('fetchPowerHour', error);
         }
     }
 }
@@ -40,7 +39,6 @@ export const fetchSongs = (id: string) => {
             })
         } catch (error) {
             dispatch(failure({ error: 'Failed to fetch power hour data' }))
-            console.error('fetchSong', error);
         }
     }
 }
@@ -53,6 +51,7 @@ export const updatePowerHourAction = (id: number, data: any) => {
                 title: data?.title,
                 description: data?.description,
                 date_time: new Date(data?.date_time),
+                submissionDeadline: new Date(data?.submissionDeadline),
                 privateStatus: data?.privateStatus === 'true',
                 publishStatus: data?.publishStatus === 'true',
                 songLimit: data?.songLimit
@@ -63,7 +62,6 @@ export const updatePowerHourAction = (id: number, data: any) => {
             })
         } catch (err) {
             dispatch(failure({ error: 'Failed to update power hour data' }))
-            console.log('updatePowerHour', err)
         }
     }
 }
@@ -93,7 +91,6 @@ export const updatePowerHourImgAction = (file: any, phId: string) => {
                     dispatch(success())
                 })
             } catch (error) {
-                console.error('err', error)
                 dispatch(failure({ error: 'Failed to update cover image.' }))
             }
         }
@@ -111,6 +108,7 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
                         description: powerHourData.description,
                         cover_image: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1697937069/dtn-image/g2mkvb7takf9pojc4ium.webp',
                         date_time: new Date(powerHourData.dateTime),
+                        submissionDeadline: new Date(powerHourData?.submissionDeadline),
                         privateStatus: powerHourData.privateStatus === 'true',
                         publishStatus: powerHourData.publishStatus === 'true',
                         songLimit: Number(powerHourData.songLimit)
@@ -124,7 +122,6 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
                 }
             })
         } catch (error) {
-            console.log('err', error)
             dispatch(failure({ error: 'Failed to update cover image.' }))
         }
     }
@@ -158,7 +155,6 @@ export const deleteParticipantAction = (powerHourId: number, userId: number) => 
                 userId: userId
             })
             .then(res => {
-                console.log('deleteParticipantAction', res)
                 dispatch(success())
             })
         } catch (error) {
