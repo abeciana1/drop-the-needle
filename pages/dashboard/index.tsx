@@ -28,6 +28,7 @@ import {
     useAppDispatch
 } from '@/redux/hooks'
 
+
 const DashboardIdxPage = ({user}: UserI) => {
     const dispatch = useAppDispatch()
     const invitesState = useAppSelector(state => state?.invites?.invites)
@@ -176,13 +177,23 @@ const DashboardIdxPage = ({user}: UserI) => {
 export default DashboardIdxPage
 
 export const getServerSideProps = async (context: NextPageContext) => {
-    const session = await getSession(context);
-    let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
-        params: session?.user?.email
-    })
-    return {
-        props: {
-            user: data?.user
+    const session = await getSession(context)
+    console.log('ssr session', session)
+    if (session) {
+        let {data} = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+            params: session?.user?.email
+        })
+        return {
+            props: {
+                user: data?.user
+            }
+        }
+    } else {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: true
+            }
         }
     }
 }
