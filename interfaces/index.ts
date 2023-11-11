@@ -14,7 +14,8 @@ export type {
     ToggleButtonI,
     SubmitButtonI,
     ExpandButtonPropsI,
-    ShareButtonPropsI
+    ShareButtonPropsI,
+    CopyButtonI
 } from '@/interfaces/Button'
 
 export type {
@@ -37,7 +38,8 @@ export type {
     DisclaimerI,
     InviteCardI,
     PillTagI,
-    YouTubeCardI
+    YouTubeCardI,
+    PowerHourPromoI
 } from '@/interfaces/Component'
 
 export type {
