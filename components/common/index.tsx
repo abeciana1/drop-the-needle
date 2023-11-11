@@ -21,7 +21,8 @@ export {default as SEO} from '@/components/common/SEO'
 export {
     EventClickButton,
     OnClickButton,
-    SubmitButton
+    SubmitButton,
+    CopyButton
 } from '@/components/common/Button'
 export { default as AccountDD } from '@/components/common/Navigation/AccountDD'
 export { default as PlaylistCard } from '@/components/common/PlaylistCard'
@@ -34,3 +35,4 @@ export {
 export { default as LoadingInstance } from '@/components/common/Loading'
 export { default as ModalInstance } from '@/components/common/ModalInstance'
 export { default as DisclaimerModal } from '@/components/common/Modal/Disclaimer'
+export { default as PowerHourPromo } from '@/components/common/Modal/PowerHourPromo'
