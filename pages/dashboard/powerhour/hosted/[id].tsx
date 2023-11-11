@@ -23,7 +23,7 @@ import {
     HiOutlineUserCircle,
     HiPhotograph
 } from "react-icons/hi"
-import { AiFillEdit, AiOutlinePlus } from 'react-icons/ai'
+import { AiFillEdit, AiOutlinePlus, AiFillSound } from 'react-icons/ai'
 import { useRouter } from 'next/router'
 import {
     fetchPowerHour,
@@ -128,6 +128,7 @@ const HostedPowerHourDynamic = () => {
                 title: powerHour.title,
                 description: powerHour.description,
                 dateTime: powerHour.date_time,
+                submissionDeadline: powerHour.submissionDeadline,
                 privateStatus: powerHour.privateStatus,
                 publishStatus: powerHour.publishStatus,
                 songLimit: powerHour.songLimit
@@ -146,6 +147,16 @@ const HostedPowerHourDynamic = () => {
             name: 'addTrack',
             data: {
                 submitHandler: addTrackHandler
+            }
+        }))
+    }
+
+    const renderPromotePowerHour = () => {
+        dispatch(setInstance({
+            display: true,
+            name: 'promotePowerHour',
+            data: {
+                inviteToken: isClient ? `${window.origin}/dashboard?=${powerHour.inviteToken}` : ''
             }
         }))
     }
@@ -215,9 +226,12 @@ const HostedPowerHourDynamic = () => {
                             size='md'
                             property='name'
                         />
-                        <section>
-                            <div className='text-altBlack text-2xl font-medium'>Promotion and sharing coming soon</div>
-                        </section>
+                        <OnClickButton
+                            text='Promote power hour'
+                            bgColor='green'
+                            icon={AiFillSound}
+                            onClick={renderPromotePowerHour}
+                        />
                     </Grid3Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHour?.songLimit}</div>
                     <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
