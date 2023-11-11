@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import cx from 'classnames'
 import { FaArrowRight } from 'react-icons/fa'
+import { AiOutlineCopy } from 'react-icons/ai'
 import {
     EventOnClickBtnI,
     OnClickButtonI,
-    SubmitButtonI
+    SubmitButtonI,
+    CopyButtonI
 } from '@/interfaces'
 
 export const EventClickButton = ({
@@ -57,7 +60,9 @@ export const OnClickButton = ({
                 ['text-altBlack bg-altWhite']: bgColor === 'altWhite',
                 ['text-altWhite bg-vermillion']: bgColor === 'vermillion',
                 ['text-altBlack bg-gold']: bgColor === 'gold',
-                ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue'
+                ['text-altWhite bg-ceruleanBlue']: bgColor === 'ceruleanBlue',
+                ['text-altBlack bg-jaffa']: bgColor === 'jaffa',
+                ['text-altBlack bg-green-400']: bgColor === 'green'
             })}
         >
             {icon &&
@@ -102,6 +107,40 @@ export const SubmitButton = ({
                 })}
             >
                 {text}
+            </button>
+        </div>
+    )
+}
+
+export const CopyButton = ({
+    text
+}: CopyButtonI) => {
+    const [ copied, setCopy ] = useState(false)
+
+    const copyHandler = () => {
+        if (navigator) {
+            setCopy(true)
+            navigator.clipboard.writeText(text)
+        }
+    }
+
+    return(
+        <div className="text-center">
+            <button
+                onClick={copyHandler}
+                className={cx('flex items-center my-5 mx-auto w-64 text-lg font-medium ring-2 ring-slate-200 py-1 px-4 rounded-lg truncate', {
+                    ['justify-center bg-green-400']: copied
+                })}
+            >
+                {!copied ? text?.substring(0,21) + '... ' : 'Copied!'}
+                {!copied &&
+                    <span>
+                        <AiOutlineCopy
+                            strokeWidth='2.5'
+                            className="h-5 w-5 mx-auto ml-1.5"
+                        />
+                    </span>
+                }
             </button>
         </div>
     )
