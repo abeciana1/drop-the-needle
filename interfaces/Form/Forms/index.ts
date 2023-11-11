@@ -18,6 +18,7 @@ export interface UpdatePowerHourFormI {
     title: string;
     description: string;
     dateTime: Date | string;
+    submissionDeadline: Date | string;
     privateStatus: boolean;
     publishStatus: boolean;
     songLimit: number;
