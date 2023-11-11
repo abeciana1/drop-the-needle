@@ -142,3 +142,7 @@ export interface YouTubeCardI {
     mappedPowerHours: OptionType[];
     userPowerHours: UserPowerHourI[];
 }
+
+export interface PowerHourPromoI {
+    inviteToken: string;
+}
