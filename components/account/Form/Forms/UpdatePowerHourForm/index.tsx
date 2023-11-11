@@ -21,7 +21,8 @@ const UpdatePowerHourForm = ({
     dateTime,
     privateStatus,
     publishStatus,
-    songLimit
+    songLimit,
+    submissionDeadline
 }: UpdatePowerHourFormI) => {
     const dispatch = useAppDispatch()
     const {
@@ -41,6 +42,7 @@ const UpdatePowerHourForm = ({
         defaultValue: privateStatus === true ? 'true' : 'false'
     })
     let formattedDate;
+    let submittedFormattedDate;
 
     const submit = (data: any) => {
         dispatch(clearInstance())
@@ -49,6 +51,7 @@ const UpdatePowerHourForm = ({
             description: data.description,
             date_time: data.dateTime,
             privateStatus: data.privateStatus,
+            submissionDeadline: data.submissionDeadline,
             publishStatus: data.publishStatus,
             songLimit: data.songLimit
         }))
@@ -56,6 +59,9 @@ const UpdatePowerHourForm = ({
     
     if (dateTime) {
         formattedDate = format(new Date(dateTime), 'yyyy-MM-dd HH:mm')
+    }
+    if (submissionDeadline) {
+        submittedFormattedDate = format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm')
     }
 
     return (
@@ -90,6 +96,16 @@ const UpdatePowerHourForm = ({
                 }}
             />
             <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
+            <DatePicker
+                label='Submission deadline date'
+                name='submissionDeadline'
+                fieldRequired='This field is required.'
+                register={register}
+                registerOptions={{
+                    value: submittedFormattedDate,
+                }}
+            />
+            <ErrorMessage name='submissionDeadline' errors={errors} as='div' className='text-vermillion'/>
             <Select
                 currentSelection={`Your power hour is currently: ${publishWatch === 'true' ? 'Published' : 'Not Published'}`}
                 label='Publish status'
