@@ -48,3 +48,7 @@ export interface ShareButtonPropsI extends ExpandButtonPropsI {
     body?: any;
     sms?: boolean;
 }
+
+export interface CopyButtonI {
+    text: string;
+}
