@@ -28,7 +28,7 @@ export const options: AuthOptions = {
                 token.accessToken = account.access_token
             }
             if (profile) {
-                let user = await prisma.user.findFirst({
+                let user = await prisma.user.findUnique({
                     where: {
                         email: profile.email
                     }
