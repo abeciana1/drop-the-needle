@@ -6,7 +6,8 @@ import {
 import {
     LoadingInstance,
     ExpandBtn,
-    DisclaimerModal
+    DisclaimerModal,
+    PowerHourPromo
 } from '@/components/common'
 import { AiOutlineClose } from 'react-icons/ai'
 import { clearInstance } from '@/redux/slices/instanceSlice'
@@ -104,6 +105,7 @@ const ModalInstance = () => {
                             title={instanceState.data?.title}
                             description={instanceState.data.description}
                             dateTime={instanceState.data.dateTime}
+                            submissionDeadline={instanceState.data.submissionDeadline}
                             privateStatus={instanceState.data?.privateStatus}
                             publishStatus={instanceState.data?.publishStatus}
                             songLimit={instanceState.data.songLimit}
@@ -144,6 +146,11 @@ const ModalInstance = () => {
                             link={instanceState.data.youTubeLink}
                             mappedPowerHours={instanceState.data.mappedPowerHours}
                             userPowerHours={instanceState.data.userPowerHours}
+                        />
+                    }
+                    {instanceState.name === 'promotePowerHour' &&
+                        <PowerHourPromo
+                            inviteToken={instanceState.data.inviteToken}
                         />
                     }
                 </Modal>
