@@ -19,7 +19,7 @@ import {
     H1,
     H2
 } from '@/components/styled'
-import { NextPageContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react'
 import { formatInTimeZone } from 'date-fns-tz'
 import { setInvites, deleteInvites } from '@/redux/slices/inviteSlice'
@@ -27,6 +27,7 @@ import {
     useAppSelector,
     useAppDispatch
 } from '@/redux/hooks'
+import requireAuthentication from '@/middleware/authMiddleware'
 
 
 const DashboardIdxPage = ({user}: UserI) => {
@@ -176,27 +177,19 @@ const DashboardIdxPage = ({user}: UserI) => {
 
 export default DashboardIdxPage
 
-export const getServerSideProps = async (context: NextPageContext) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const authResult = await requireAuthentication(context)
+    if (!authResult.authed) {
+        return authResult
+    }
     const session = await getSession(context)
-    if (session) {
-        await axios.post('http://localhost:3000/api/user/get-dashboard', {
-            params: session?.user?.email
-        })
-        .then(response => {
-            if (response.status === 200) {
-                return {
-                    props: {
-                        user: response.data?.user
-                    }
-                }
-            }
-        })
-    } else {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: true
-            }
+    console.log('dash session',session)
+    const { data } = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+        params: session?.user?.email
+    })    
+    return {
+        props: {
+            user: data?.user
         }
     }
 }
