@@ -9,7 +9,6 @@ import {
 } from '@/components/common'
 import { Input } from '@/components/account'
 import { H1, H2 } from '@/components/styled'
-import { NextPageContext } from 'next';
 import axios from 'axios';
 import { getSession } from 'next-auth/react'
 import {
@@ -18,6 +17,8 @@ import {
 } from '@/interfaces';
 import { formatInTimeZone } from 'date-fns-tz'
 import { useForm, useWatch } from "react-hook-form"
+import { GetServerSidePropsContext } from 'next';
+import requireAuthentication from '@/middleware/authMiddleware'
 
 const HostedPowerHoursPage = ({
     powerHours
@@ -102,12 +103,15 @@ const HostedPowerHoursPage = ({
     )
 }
 
-export const getServerSideProps = async (context: NextPageContext) => {
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const authResult = await requireAuthentication(context)
+    if (!authResult.authed) {
+        return authResult
+    }
     const session = await getSession(context);
     let {data} = await axios.post('http://localhost:3000/api/powerhour/get-hosted', {
         params: session?.user?.email
     })
-
     return {
         props: {
             powerHours: data?.powerHours?.hosted

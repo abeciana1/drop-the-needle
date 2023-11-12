@@ -19,6 +19,8 @@ import {
 } from '@/redux/hooks'
 import { useSession } from 'next-auth/react'
 import { fetchUserPowerHoursAction } from '@/redux/actions/user-actions'
+import { GetServerSidePropsContext } from 'next';
+import requireAuthentication from '@/middleware/authMiddleware'
 
 const YouTubeSearchPage = () => {
     const dispatch = useAppDispatch()
@@ -78,6 +80,13 @@ const YouTubeSearchPage = () => {
             </DashPageLayout>
         </>
     )
+}
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const authResult = await requireAuthentication(context)
+    if (!authResult.authed) {
+        return authResult
+    }
 }
 
 export default YouTubeSearchPage

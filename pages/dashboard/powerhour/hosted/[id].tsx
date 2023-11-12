@@ -43,6 +43,8 @@ import {
 } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs, clearUnsortedSongs } from '@/redux/slices/powerHourSlice'
 import { TrackDataI } from '@/interfaces'
+import { GetServerSidePropsContext } from 'next';
+import requireAuthentication from '@/middleware/authMiddleware'
 
 const phPublishStatuses = [
     {
@@ -251,6 +253,13 @@ const HostedPowerHourDynamic = () => {
             </DashPageLayout>
         </>
     )
+}
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const authResult = await requireAuthentication(context)
+    if (!authResult.authed) {
+        return authResult
+    }
 }
 
 export default HostedPowerHourDynamic

@@ -183,7 +183,6 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         return authResult
     }
     const session = await getSession(context)
-    console.log('dash session',session)
     const { data } = await axios.post('http://localhost:3000/api/user/get-dashboard', {
         params: session?.user?.email
     })    

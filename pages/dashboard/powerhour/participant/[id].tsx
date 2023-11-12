@@ -29,6 +29,8 @@ import { clearInstance, setInstance } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs } from '@/redux/slices/powerHourSlice'
 import { fetchUserSongsAction } from '@/redux/actions/user-actions'
 import { useSession } from 'next-auth/react'
+import { GetServerSidePropsContext } from 'next';
+import requireAuthentication from '@/middleware/authMiddleware'
 
 const ParticipantPowerHourDynamic = () => {
     const dispatch = useAppDispatch()
@@ -147,6 +149,13 @@ const ParticipantPowerHourDynamic = () => {
             </DashPageLayout>
         </>
     )
+}
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const authResult = await requireAuthentication(context)
+    if (!authResult.authed) {
+        return authResult
+    }
 }
 
 export default ParticipantPowerHourDynamic
