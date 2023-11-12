@@ -3,6 +3,9 @@ import GoogleProvider from "next-auth/providers/google"
 import prisma from '@/hooks/prisma'
 
 export const options: AuthOptions = {
+    theme: {
+        logo: 'https://res.cloudinary.com/dymmbugh2/image/upload/v1699804689/xfxltvv1wocu1blrfsam.webp'
+    },
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
