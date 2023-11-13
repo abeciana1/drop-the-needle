@@ -1,5 +1,3 @@
-import { YouTubeVideoType } from '@/types'
-
 export interface UserI {
     user: {
         id: number;
@@ -13,6 +11,7 @@ export interface UserI {
 
 interface PowerHourInviteI extends PowerHourMetaI {
     description: string;
+    submissionDeadline: Date;
 }
 
 interface PowerHourMetaI {

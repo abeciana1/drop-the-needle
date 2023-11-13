@@ -119,6 +119,7 @@ export interface InviteCardI {
     title: string;
     description: string;
     cover_image: string;
+    submissionDeadline: string;
     date: string;
     time: string;
     rsvpYes: boolean;

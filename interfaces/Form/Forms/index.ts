@@ -45,6 +45,7 @@ export interface InviteFormI {
     rsvpYes: boolean;
     rsvpNo: boolean;
     rsvpMaybe: boolean;
+    submissionDeadline: string;
 }
 
 export interface AddVideoPHFormI {
