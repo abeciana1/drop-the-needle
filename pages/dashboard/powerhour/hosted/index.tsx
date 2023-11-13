@@ -114,7 +114,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     })
     return {
         props: {
-            powerHours: data?.powerHours?.hosted
+            powerHours: data?.powerHours?.[0]?.hosted
         }
     }
 }
