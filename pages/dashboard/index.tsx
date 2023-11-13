@@ -80,7 +80,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                             <PlaylistCardGroup>
                                 {hosted?.slice(0,3).map(({powerHour}: DashPowerHourI) => (
                                     <PlaylistCard
-                                        key={powerHour.id}
+                                        key={'hosted-' + powerHour.id}
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
@@ -115,7 +115,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                             <PlaylistCardGroup>
                                 {participants?.slice(0,3).map(({powerHour}: DashPowerHourI) => (
                                     <PlaylistCard
-                                        key={powerHour.id}
+                                        key={'participating-' + powerHour.id}
                                         id={powerHour.id}
                                         title={powerHour.title}
                                         cover_image={powerHour.cover_image}
@@ -152,7 +152,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                     return (
                                         <>
                                             <InviteCard
-                                                key={invite?.id}
+                                                key={'invite-' + invite?.id}
                                                 index={index}
                                                 inviteId={invite?.id}
                                                 userId={invite?.userId}
@@ -161,6 +161,7 @@ const DashboardIdxPage = ({user}: UserI) => {
                                                 description={invite?.powerHour?.description}
                                                 cover_image={invite?.powerHour.cover_image}
                                                 date={formatInTimeZone(new Date(invite?.powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
+                                                submissionDeadline={formatInTimeZone(new Date(invite?.powerHour?.submissionDeadline), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy')}
                                                 time={formatInTimeZone(new Date(invite?.powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'p zzz')}
                                                 songLimit={invite?.powerHour?.songLimit}
                                                 rsvpYes={invite?.rsvpYes}
