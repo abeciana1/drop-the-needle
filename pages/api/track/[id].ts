@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         })
         res.status(200).json({ track })
     } else if (req.method === 'DELETE') {
-        let track = await prisma?.powerHourSong?.findFirst({
+        let track = await prisma?.powerHourSong?.findUnique({
             where: {
                 id: trackId
             }

@@ -3,7 +3,7 @@ import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
-        const powerHourSongs = await prisma?.powerHour?.findFirst({
+        const powerHourSongs = await prisma?.powerHour?.findUnique({
             where: {
                 id: Number(req?.query?.id)
             },
@@ -31,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             }
         })
-        const unsortedSongs = await prisma?.powerHour?.findFirst({
+        const unsortedSongs = await prisma?.powerHour?.findUnique({
             where: {
                 id: Number(req?.query?.id)
             },
