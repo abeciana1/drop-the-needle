@@ -56,6 +56,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 description: true,
                                 cover_image: true,
                                 date_time: true,
+                                submissionDeadline: true,
                                 songLimit: true
                             }
                         }
