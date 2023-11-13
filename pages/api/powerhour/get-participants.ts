@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    let powerHours = await prisma?.user?.findFirst({
+    let powerHours = await prisma?.user?.findMany({
         where: {
             email: req?.body?.params
         },

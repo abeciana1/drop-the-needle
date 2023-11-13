@@ -3,7 +3,7 @@ import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        let userPowerHours = await prisma.user.findFirst({
+        let userPowerHours = await prisma.user.findMany({
             where: {
                 id: Number(req?.body?.userId)
             },

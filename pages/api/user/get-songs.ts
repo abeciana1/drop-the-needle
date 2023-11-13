@@ -3,7 +3,7 @@ import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        let userSongs = await prisma.participant.findFirst({
+        let userSongs = await prisma.participant.findMany({
             where: {
                 powerHourId: req?.body?.phId,
                 userId: req?.body?.userId
