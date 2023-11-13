@@ -11,6 +11,7 @@ import {
     failure
 } from '@/redux/slices/loadingSlice'
 import { AppDispatch } from '@/redux/store'
+import { addToInvites } from '@/redux/slices/inviteSlice'
 
 export const fetchPowerHour = (id: string) => {
     return async function (dispatch: AppDispatch) {
@@ -159,6 +160,27 @@ export const deleteParticipantAction = (powerHourId: number, userId: number) => 
             })
         } catch (error) {
             console.error('err', error)
+        }
+    }
+}
+
+export const createInvite = (inviteToken: string, userId: number) => {
+    return async (dispatch: AppDispatch) => {
+        try {
+            await axios.post('/api/invite/new', {
+                inviteToken: inviteToken,
+                userId: userId
+            })
+            .then(response => {
+                if (response.data.hasOwnProperty('message')) {
+                    alert(response.data.message)
+                }
+                if (response.data.hasOwnProperty('newInvite')) {
+                    dispatch(addToInvites(response.data.newInvite))
+                }
+            })
+        } catch (error) {
+            dispatch(failure({ error: 'Failed to create invite.' }))
         }
     }
 }
