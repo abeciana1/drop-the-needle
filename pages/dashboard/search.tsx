@@ -21,23 +21,32 @@ import { useSession } from 'next-auth/react'
 import { fetchUserPowerHoursAction } from '@/redux/actions/user-actions'
 import { GetServerSidePropsContext } from 'next';
 import requireAuthentication from '@/middleware/authMiddleware'
+import { clearVideos, clearUserPowerHours } from '@/redux/slices/userSlice'
 
 const YouTubeSearchPage = () => {
     const dispatch = useAppDispatch()
     const videos = useAppSelector(state => state.user.videos)
     const { data: session } = useSession()
     const userPowerHours = useAppSelector(state => state.user.powerHours)
-    console.log(userPowerHours)
 
-    // * create filtered power hours with useMemo
+    useEffect(() => {
+        return () => {
+            dispatch(clearVideos())
+            dispatch(clearUserPowerHours())
+        }
+    }, [])
+
+    const filteredPowerHours = useMemo(() => {
+        if (userPowerHours) {
+            return userPowerHours.filter(( participant: any ) => {
+                return new Date(participant.powerHour.submissionDeadline).valueOf() - new Date().valueOf() > 0
+            })
+        }
+    }, [userPowerHours])
 
     const mappedPowerHours = useMemo(() => {
-        // * use filtered power hours
-        // return userPowerHours.filter(( participant: any ) => {
-        //     return new Date().valueOf() - new Date(participant.powerHour.date_time).valueOf() > 0
-        // })
         if (userPowerHours) {
-            return userPowerHours.map((participant: any, index: number) => {
+            return filteredPowerHours.map((participant: any, index: number) => {
                 return {value: index, text: participant?.powerHour?.title}
             })
         }
@@ -72,7 +81,7 @@ const YouTubeSearchPage = () => {
                                 description={video.description}
                                 durationString={video.durationString}
                                 mappedPowerHours={mappedPowerHours}
-                                userPowerHours={userPowerHours}
+                                userPowerHours={filteredPowerHours}
                             />
                         )
                     })}
