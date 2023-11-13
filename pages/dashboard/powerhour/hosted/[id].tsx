@@ -68,6 +68,9 @@ const HostedPowerHourDynamic = () => {
 
     useEffect(() => {
         setClient(true)
+    }, [])
+
+    useEffect(() => {
         if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
             dispatch(fetchSongs(window.location.pathname.split('/')[4]))

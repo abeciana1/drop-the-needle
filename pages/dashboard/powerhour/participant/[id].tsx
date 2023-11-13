@@ -38,14 +38,16 @@ const ParticipantPowerHourDynamic = () => {
     const songs = useAppSelector(state => state.powerHour.songs)
     const [ isClient, setClient ] = useState(false)
     const { data: session } = useSession()
-    console.log('powerHour', powerHour)
 
     useEffect(() => {
         setClient(true)
+    }, [])
+
+    useEffect(() => {
         if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
         }
-    }, [])
+    }, [isClient])
 
     useEffect(() => {
         if (session && powerHour) {
