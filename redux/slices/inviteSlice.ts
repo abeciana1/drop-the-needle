@@ -21,7 +21,9 @@ const inviteSlice = createSlice({
                 rsvpNo: action.payload.rsvpNo,
                 rsvpMaybe: action.payload.rsvpMaybe,
             }
-            console.log('action', action.payload)
+        },
+        addToInvites: (state, action) => {
+            state.invites = [...state.invites, action.payload]
         }
     }
 })
@@ -29,7 +31,8 @@ const inviteSlice = createSlice({
 export const {
     setInvites,
     deleteInvites,
-    patchInvite
+    patchInvite,
+    addToInvites
 } = inviteSlice.actions
 
 export default inviteSlice.reducer
