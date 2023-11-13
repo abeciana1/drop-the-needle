@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
     SEO,
     PlaylistCard,
@@ -22,13 +22,13 @@ import {
 import { GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react'
 import { formatInTimeZone } from 'date-fns-tz'
-import { setInvites, deleteInvites } from '@/redux/slices/inviteSlice'
+import { setInvites } from '@/redux/slices/inviteSlice'
 import {
     useAppSelector,
     useAppDispatch
 } from '@/redux/hooks'
 import requireAuthentication from '@/middleware/authMiddleware'
-
+import { createInvite } from '@/redux/actions/playlist-actions'
 
 const DashboardIdxPage = ({user}: UserI) => {
     const dispatch = useAppDispatch()
@@ -39,6 +39,20 @@ const DashboardIdxPage = ({user}: UserI) => {
         participants,
         invites
     } = user
+    const [ isClient, setClient ] = useState(false)
+
+    useEffect(() => {
+        setClient(true)
+    }, [])
+    
+    useEffect(() => {
+        if (isClient) {
+            if (window.location.search.split('=')[1]) {
+                const inviteToken = window.location.search.split('=')[1]
+                dispatch(createInvite(inviteToken, user.id))
+            }
+        }
+    }, [isClient])
 
     useEffect(() => {
         if (invites) {
