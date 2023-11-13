@@ -130,6 +130,7 @@ const ModalInstance = () => {
                             rsvpNo={instanceState.data.rsvpNo}
                             rsvpMaybe={instanceState.data.rsvpMaybe}
                             songLimit={instanceState.data.songLimit}
+                            submissionDeadline={instanceState.data.submissionDeadline}
                         />
                     }
                     {instanceState.name === 'videoModal' &&

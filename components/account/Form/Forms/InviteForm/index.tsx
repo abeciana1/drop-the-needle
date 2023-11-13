@@ -24,7 +24,8 @@ const InviteForm = ({
     time,
     rsvpYes,
     rsvpNo,
-    rsvpMaybe
+    rsvpMaybe,
+    submissionDeadline
 }: InviteFormI) => {
     const [ isClient, setClient ] = useState(false)
     const dispatch = useAppDispatch()
@@ -105,6 +106,7 @@ const InviteForm = ({
             }
             <div className="text-2xl font-medium">RSVP for { title }</div>
             <div className="text-xl">Power Hour description: { description }</div>
+            <div className="py-3 text-xl">Submission deadline: { submissionDeadline }</div>
             <div className="py-3 text-xl">Date: { date }</div>
             <div className="py-3 text-xl">Time { time }</div>
             {rsvpYes &&

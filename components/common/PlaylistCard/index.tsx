@@ -57,7 +57,8 @@ export const InviteCard = ({
     time,
     rsvpYes,
     rsvpNo,
-    rsvpMaybe
+    rsvpMaybe,
+    submissionDeadline
 }: InviteCardI) => {
     const dispatch = useAppDispatch()
 
@@ -76,7 +77,8 @@ export const InviteCard = ({
                 time: time,
                 rsvpYes: rsvpYes,
                 rsvpNo: rsvpNo,
-                rsvpMaybe: rsvpMaybe
+                rsvpMaybe: rsvpMaybe,
+                submissionDeadline: submissionDeadline
             }
         }))
     }
