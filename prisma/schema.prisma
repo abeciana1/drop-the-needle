@@ -44,7 +44,7 @@ model PowerHour {
   publishStatus Boolean @default(false)
   songLimit Int @default(5)
   submissionDeadline DateTime @default(now())
-  inviteToken String @default("")
+  inviteToken String @default("") @unique
   hosts          Host[]
   participants   Participant[]
   PowerHourSongs PowerHourSong[]
