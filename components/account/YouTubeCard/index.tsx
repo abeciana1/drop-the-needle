@@ -4,8 +4,6 @@ import { ExpandBtn } from '@/components/common'
 import { AiFillPlayCircle, AiOutlinePlus } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
 import { setInstance } from '@/redux/slices/instanceSlice'
-// import { useMemo } from 'react'
-// import { useAppSelector } from '@/redux/hooks'
 
 interface DurationBoxI {
     duration: string;
