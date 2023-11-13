@@ -9,7 +9,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 userId: req?.body?.userId
             }
         })
-        console.log('participant', participant)
         res.status(200).json({ participant })
     }
 }
