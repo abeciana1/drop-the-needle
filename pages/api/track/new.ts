@@ -3,7 +3,7 @@ import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        let foundParticipant = await prisma.participant.findFirst({
+        let foundParticipant = await prisma.participant.findMany({
             where: {
                 userId: req.body.participantId,
                 powerHourId: req.body.powerHourId
@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 id: true
             }
         })
-        if (foundParticipant) {
+        if (foundParticipant[0]) {
             let newTrack = await prisma.powerHourSong.create({
                 data: {
                     title: req.body.title,
@@ -24,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                     year: req.body.year,
                     orderNumber: req.body.orderNumber,
                     powerHourId: req.body.powerHourId,
-                    participantId: foundParticipant.id
+                    participantId: foundParticipant[0].id
                 }
             })
             res.status(200).json({ newTrack })
