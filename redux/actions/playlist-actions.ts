@@ -12,6 +12,7 @@ import {
 } from '@/redux/slices/loadingSlice'
 import { AppDispatch } from '@/redux/store'
 import { addToInvites } from '@/redux/slices/inviteSlice'
+import { generateRandomString } from '@/utils'
 
 export const fetchPowerHour = (id: string) => {
     return async function (dispatch: AppDispatch) {
@@ -100,6 +101,7 @@ export const updatePowerHourImgAction = (file: any, phId: string) => {
 
 export const createPowerHourAction = (powerHourData: any, userId: number) => {
     return (dispatch: AppDispatch) => {
+        let token = generateRandomString()
         try {
             axios.post('/api/powerhour/new', {
                 data: {
@@ -112,7 +114,8 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
                         submissionDeadline: new Date(powerHourData?.submissionDeadline),
                         privateStatus: powerHourData.privateStatus === 'true',
                         publishStatus: powerHourData.publishStatus === 'true',
-                        songLimit: Number(powerHourData.songLimit)
+                        songLimit: Number(powerHourData.songLimit),
+                        inviteToken: token
                     }
                 }
             })
