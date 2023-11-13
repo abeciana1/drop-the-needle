@@ -156,6 +156,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
     if (!authResult.authed) {
         return authResult
     }
+    return { props: {}}
 }
 
 export default ParticipantPowerHourDynamic
