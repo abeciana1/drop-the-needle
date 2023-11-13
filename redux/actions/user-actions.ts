@@ -18,7 +18,7 @@ export const fetchUserSongsAction = (userId: number, phId: number) => {
             })
             .then(response => {
                 dispatch(success())
-                dispatch(setSongs(response?.data?.userSongs?.PowerHourSongs))
+                dispatch(setSongs(response?.data?.userSongs?.[0]?.PowerHourSongs))
             })
             .catch((err) => {
                 console.log('err', err)
@@ -53,7 +53,7 @@ export const fetchUserPowerHoursAction = (userId: number) => {
                 userId: userId
             })
             .then(response => {
-                dispatch(setUserPowerHours(response.data.userPowerHours.participants))
+                dispatch(setUserPowerHours(response.data.userPowerHours[0].participants))
                 dispatch(success())
             })
         } catch (err) {
