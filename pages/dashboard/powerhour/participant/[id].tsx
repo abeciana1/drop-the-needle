@@ -45,7 +45,7 @@ const ParticipantPowerHourDynamic = () => {
         if (isClient) {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
         }
-    }, [isClient])
+    }, [])
 
     useEffect(() => {
         if (session && powerHour) {
