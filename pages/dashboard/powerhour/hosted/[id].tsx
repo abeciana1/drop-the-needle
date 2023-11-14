@@ -157,13 +157,23 @@ const HostedPowerHourDynamic = () => {
     }
 
     const renderPromotePowerHour = () => {
-        dispatch(setInstance({
-            display: true,
-            name: 'promotePowerHour',
-            data: {
-                inviteToken: isClient ? `${window.origin}/dashboard?=${powerHour.inviteToken}` : ''
-            }
-        }))
+        if (!powerHour.privateStatus || !powerHour.publishStatus) {
+            dispatch(setInstance({
+                display: true,
+                name: 'disclaimer',
+                data: {
+                    message: 'Your power hour needs to be published and public to invite people.'
+                }
+            }))
+        } else {
+            dispatch(setInstance({
+                display: true,
+                name: 'promotePowerHour',
+                data: {
+                    inviteToken: isClient ? `${window.origin}/dashboard?=${powerHour.inviteToken}` : ''
+                }
+            }))
+        }
     }
 
     return (
