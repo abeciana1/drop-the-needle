@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form"
+import { useForm, useWatch } from "react-hook-form"
 import {
     SubmitButton
 } from '@/components/common'
@@ -11,6 +11,7 @@ import { ErrorMessage } from "@hookform/error-message"
 import { useAppDispatch } from '@/redux/hooks'
 import { clearInstance } from '@/redux/slices/instanceSlice'
 import { patchSongAction } from '@/redux/actions/song-actions'
+import { timeConverter } from '@/utils'
 
 const UpdateTrackForm = ({
     id,
@@ -27,8 +28,14 @@ const UpdateTrackForm = ({
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        control
     } = useForm()
+    const startTimeWatch = useWatch({
+        control,
+        name: 'startTime',
+        defaultValue: startTime
+    })
 
     const submit = (data: any) => {
         dispatch(clearInstance())
@@ -126,6 +133,15 @@ const UpdateTrackForm = ({
                     pattern: {
                         value: /^[0-9]:[0-5][0-9]$/gi,
                         message: "This field requires a pattern like — 1:55"
+                    },
+                    validate: {
+                        value: (value: string) => {
+                            let convertedStartTime = timeConverter(startTimeWatch)
+                            let convertedEndTime = timeConverter(value)
+                            if (convertedStartTime > convertedEndTime) {
+                                return 'Sorry, your end time can\'t be less than the start time.'
+                            }
+                        }
                     }
                 }}
             />

@@ -1,5 +1,5 @@
 import { AddTrackFormI } from '@/interfaces'
-import { useForm } from "react-hook-form"
+import { useForm, useWatch } from "react-hook-form"
 import { SubmitButton } from '@/components/common'
 import {
     FormContainer,
@@ -8,6 +8,7 @@ import {
 import { ErrorMessage } from "@hookform/error-message"
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
+import { timeConverter } from '@/utils'
 
 const AddTrackForm = ({
     submitHandler
@@ -17,7 +18,13 @@ const AddTrackForm = ({
         register,
         handleSubmit,
         formState: { errors },
+        control
     } = useForm()
+    const startTimeWatch = useWatch({
+        control,
+        name: 'startTime',
+        defaultValue: ''
+    })
     const { data: session } = useSession()
 
     const submit = (data: any) => {
@@ -89,6 +96,7 @@ const AddTrackForm = ({
                 fieldRequired='This field is required.'
                 register={register}
                 registerOptions={{
+                    value: startTimeWatch,
                     pattern: {
                         value: /^[0-9]:[0-5][0-9]$/gi,
                         message: "This field requires a pattern like — 1:55"
@@ -105,6 +113,15 @@ const AddTrackForm = ({
                     pattern: {
                         value: /^[0-9]:[0-5][0-9]$/gi,
                         message: "This field requires a pattern like — 1:55"
+                    },
+                    validate: {
+                        value: (value: string) => {
+                            let convertedStartTime = timeConverter(startTimeWatch)
+                            let convertedEndTime = timeConverter(value)
+                            if (convertedStartTime > convertedEndTime) {
+                                return 'Sorry, your end time can\'t be less than the start time.'
+                            }
+                        }
                     }
                 }}
             />
