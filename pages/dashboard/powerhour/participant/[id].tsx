@@ -100,7 +100,7 @@ const ParticipantPowerHourDynamic = () => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
-                    <section className="flex flex-col md:flex-row justify-around items-center pt-20">
+                    <section className="flex flex-col md:flex-row justify-around gap-10 items-center pt-20">
                     <div className="relative">
                         {powerHour?.cover_image &&
                             <Image
@@ -117,7 +117,7 @@ const ParticipantPowerHourDynamic = () => {
                             {powerHour?.date_time &&
                                 <div className='text-altBlack text-2xl'>{formatInTimeZone(new Date(powerHour?.date_time), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy — p zzz')}</div>
                             }
-                            <div className='text-altBlack text-xl'>{powerHour?.description}</div>
+                            <div className='text-altBlack text-xl flex flex-wrap max-w-[30rem]'>{powerHour?.description}</div>
                         </section>
                     </section>
                     <Grid2Column>
