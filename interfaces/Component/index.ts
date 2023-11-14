@@ -146,4 +146,5 @@ export interface YouTubeCardI {
 
 export interface PowerHourPromoI {
     inviteToken: string;
+    listenLink: string;
 }
