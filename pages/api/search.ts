@@ -1,5 +1,4 @@
 import { youtube } from 'scrape-youtube';
-// import * as yt from 'youtube-search-without-api-key';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
