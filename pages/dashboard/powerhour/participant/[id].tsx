@@ -128,9 +128,11 @@ const ParticipantPowerHourDynamic = () => {
                             size='md'
                             property='name'
                         />
-                        <section>
-                            <div className='text-altBlack text-2xl font-medium'>Promotion and sharing coming soon</div>
-                        </section>
+                        {powerHour?.submissionDeadline &&
+                            <section>
+                                <div className='text-altBlack text-2xl font-medium'>Submission deadline: <br/> {formatInTimeZone(new Date(powerHour?.submissionDeadline), Intl.DateTimeFormat().resolvedOptions().timeZone, 'MM/dd/yyyy — p zzz')}</div>
+                            </section>
+                        }
                     </Grid2Column>
                     <div className="my-5 font-medium">Song limit per user: {powerHour?.songLimit}</div>
                     <div className="font-medium flex md:flex-row flex-col-reverse justify-between md:items-end pb-2">
