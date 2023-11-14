@@ -170,7 +170,8 @@ const HostedPowerHourDynamic = () => {
                 display: true,
                 name: 'promotePowerHour',
                 data: {
-                    inviteToken: isClient ? `${window.origin}/dashboard?=${powerHour.inviteToken}` : ''
+                    inviteToken: isClient ? `${window.origin}/dashboard?=${powerHour.inviteToken}` : '',
+                    listenLink: isClient ? `${window.origin}/listen/${powerHour.id}` : ''
                 }
             }))
         }
