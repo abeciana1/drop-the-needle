@@ -152,6 +152,7 @@ const ModalInstance = () => {
                     {instanceState.name === 'promotePowerHour' &&
                         <PowerHourPromo
                             inviteToken={instanceState.data.inviteToken}
+                            listenLink={instanceState.data.listenLink}
                         />
                     }
                 </Modal>
