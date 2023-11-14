@@ -15,14 +15,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 id: true
             }
         })
-        let mappedIds = inviteIdList.map(({id}: {id: number}) => id)
-        await prisma?.invite?.deleteMany({
-            where: {
-                id: {
-                    in: mappedIds
+        if (inviteIdList.length > 0) {
+            let mappedIds = inviteIdList.map(({id}: {id: number}) => id)
+            await prisma?.invite?.deleteMany({
+                where: {
+                    id: {
+                        in: mappedIds
+                    }
                 }
-            }
-        })
+            })
+        }
 
         let user = await prisma?.user?.findUnique({
             where: {
