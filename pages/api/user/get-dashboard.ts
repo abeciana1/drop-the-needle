@@ -3,6 +3,27 @@ import prisma from '@/hooks/prisma'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
+        let inviteIdList = await prisma?.invite?.findMany({
+            where: {
+                powerHour: {
+                    submissionDeadline: {
+                        lte: new Date()
+                    }
+                }
+            },
+            select: {
+                id: true
+            }
+        })
+        let mappedIds = inviteIdList.map(({id}: {id: number}) => id)
+        await prisma?.invite?.deleteMany({
+            where: {
+                id: {
+                    in: mappedIds
+                }
+            }
+        })
+
         let user = await prisma?.user?.findUnique({
             where: {
                 email: req?.body?.params
