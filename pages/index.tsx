@@ -24,7 +24,6 @@ export default function Home() {
         description='Start curating and compiling power hours with ease from YouTube videos.'
       />
       <CommonPageLayout footerColor='vermillion-200'>
-
         <ComponentMargin>
           <HeroSectionBlendImage
             heading='Drop The Needle'
