@@ -157,7 +157,7 @@ const HostedPowerHourDynamic = () => {
     }
 
     const renderPromotePowerHour = () => {
-        if (!powerHour.privateStatus || !powerHour.publishStatus) {
+        if (!powerHour.publishStatus) {
             dispatch(setInstance({
                 display: true,
                 name: 'disclaimer',
