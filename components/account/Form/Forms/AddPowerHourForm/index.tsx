@@ -30,7 +30,7 @@ const AddPowerHourForm = () => {
     const privateWatch = useWatch({
         control,
         name: 'privateStatus',
-        defaultValue: 'false'
+        defaultValue: 'true'
     })
     const { data: session } = useSession()
 
@@ -101,8 +101,8 @@ const AddPowerHourForm = () => {
                 fieldRequired={true}
                 register={register}
                 options={[
-                    {value: 'true', text: 'Public'},
-                    {value: 'false', text: 'Private'}
+                    {value: 'false', text: 'Public'},
+                    {value: 'true', text: 'Private'}
                 ]}
                 registerOptions={{
                     value: privateWatch,

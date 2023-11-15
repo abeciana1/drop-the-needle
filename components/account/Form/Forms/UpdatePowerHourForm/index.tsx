@@ -128,8 +128,8 @@ const UpdatePowerHourForm = ({
                 fieldRequired={true}
                 register={register}
                 options={[
-                    {value: 'true', text: 'Public'},
-                    {value: 'false', text: 'Private'}
+                    {value: 'false', text: 'Public'},
+                    {value: 'true', text: 'Private'}
                 ]}
                 registerOptions={{
                     value: privateWatch
