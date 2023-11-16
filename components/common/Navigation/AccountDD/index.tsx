@@ -53,7 +53,7 @@ const AccountDD = () => {
                     </li>
                     <li>
                         <Link
-                            href={encodeURI('/dashboard/power-hours')}
+                            href={encodeURI('/dashboard/powerhour/hosted')}
                             className='hover:underline decoration-2 underline-offset-4'
                         >
                             My Power Hours
