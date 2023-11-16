@@ -11,10 +11,10 @@ import { H1, H2 } from '@/components/styled'
 import { Input } from '@/components/account'
 import { useForm, useWatch } from "react-hook-form"
 import axios from 'axios'
-import { PowerHourGroupI, DashPowerHourI } from '@/interfaces'
+import { PowerHourGroupI } from '@/interfaces'
 import { formatInTimeZone } from 'date-fns-tz'
 
-const ListenIdx = ({ powerHours }: any) => {
+const ListenIdx = ({ powerHours }: PowerHourGroupI) => {
     console.log('powerHours', powerHours)
     const {
         register,
