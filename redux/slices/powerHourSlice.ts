@@ -2,7 +2,7 @@ import { createSlice, current } from '@reduxjs/toolkit'
 
 const initialState: {powerHour: any, songs: any, unsortedSongs: any} = {
     powerHour: null,
-    songs: null,
+    songs: [],
     unsortedSongs: null
 }
 
@@ -26,10 +26,10 @@ const powerHourSlice = createSlice({
             state.unsortedSongs = action.payload
         },
         clearUnsortedSongs: (state) => {
-            state.unsortedSongs = null
+            state.unsortedSongs = []
         },
         clearSongs: (state) => {
-            state.songs = null
+            state.songs = []
         },
         addSong: (state, action) => {
             let newStateSongs = [... current(state.songs)]
