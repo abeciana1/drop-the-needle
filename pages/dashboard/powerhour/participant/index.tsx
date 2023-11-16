@@ -63,7 +63,7 @@ const ParticipantPowerHoursPage = ({
                             <>
                                 <H2 color={0} text='Upcoming'/>
                                 <PlaylistCardGroup>
-                                    {upcomingPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
+                                    {upcomingPowerHours?.filter(({powerHour}: DashPowerHourI) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
                                         <PlaylistCard
                                             key={powerHour.id}
                                             id={powerHour.id}
@@ -78,7 +78,7 @@ const ParticipantPowerHoursPage = ({
                                 </PlaylistCardGroup>
                                 <H2 color={0} text='Past'/>
                                 <PlaylistCardGroup>
-                                    {pastPowerHours?.filter(({powerHour}: any) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
+                                    {pastPowerHours?.filter(({powerHour}: DashPowerHourI) => powerHour.title.toLowerCase().includes(searchWatch.toLowerCase()))?.map(({powerHour}: DashPowerHourI) => (
                                         <PlaylistCard
                                             key={powerHour.id}
                                             id={powerHour.id}
