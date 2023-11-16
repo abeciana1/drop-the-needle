@@ -17,7 +17,7 @@ const PlaylistCard = ({
     time,
     hostedLink = false
 }: DashPowerHourType) => {
-    let href = `/${publicLink ? 'listen' : 'dashboard'}/powerhour/${publicLink ? '' : 'participant/'}${encodeURI(id.toString())}`
+    let href = `/${publicLink ? 'listen/' : 'dashboard/powerhour/participant/'}${encodeURI(id.toString())}`
     let hostedHref = `/dashboard/powerhour/hosted/${encodeURI(id.toString())}`
 
     return (
