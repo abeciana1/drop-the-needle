@@ -26,7 +26,6 @@ interface PowerHourDataCollectionI {
 }
 
 const ListenIdx = ({ powerHours }: PowerHourDataCollectionI) => {
-    console.log('powerHours', powerHours)
     const {
         register,
         control
