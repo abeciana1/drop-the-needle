@@ -14,7 +14,18 @@ import axios from 'axios'
 import { PowerHourGroupI } from '@/interfaces'
 import { formatInTimeZone } from 'date-fns-tz'
 
-const ListenIdx = ({ powerHours }: PowerHourGroupI) => {
+interface PowerHourDataI {
+    id: number;
+    cover_image: string;
+    title: string;
+    date_time: Date;
+}
+
+interface PowerHourDataCollectionI {
+    powerHours: PowerHourDataI[]
+}
+
+const ListenIdx = ({ powerHours }: PowerHourDataCollectionI) => {
     console.log('powerHours', powerHours)
     const {
         register,
@@ -27,7 +38,7 @@ const ListenIdx = ({ powerHours }: PowerHourGroupI) => {
     })
 
     const searchFilteredPhs = useMemo(() => {
-        return powerHours?.filter((powerHour: any) => powerHour?.title?.toLowerCase().includes(searchWatch.toLowerCase()))
+        return powerHours?.filter((powerHour: PowerHourDataI) => powerHour?.title?.toLowerCase().includes(searchWatch.toLowerCase()))
     }, [searchWatch])
     
     return(
@@ -53,7 +64,7 @@ const ListenIdx = ({ powerHours }: PowerHourGroupI) => {
                         {searchFilteredPhs?.length > 0 &&
                             <>
                                 <PlaylistCardGroup>
-                                    {searchFilteredPhs?.map((powerHour: any) => {
+                                    {searchFilteredPhs?.map((powerHour: PowerHourDataI) => {
                                         return (
                                             <PlaylistCard
                                                 key={powerHour.id}
