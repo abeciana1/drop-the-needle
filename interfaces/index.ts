@@ -52,7 +52,9 @@ export type {
     TrackDataI,
     UserInvitesI,
     YouTubeVideoI,
-    UserPowerHourI
+    UserPowerHourI,
+    HostPartUserI,
+    PowerHourSongI
 } from '@/interfaces/Data'
 
 export type {

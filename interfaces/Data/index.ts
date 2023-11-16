@@ -124,3 +124,22 @@ export interface UserPowerHourI {
         PowerHourSongs: number;
     }
 }
+
+export interface HostPartUserI {
+    user: {
+        id: number;
+        name: string;
+    }
+}
+
+export interface PowerHourSongI {
+    id: number;
+    title: string;
+    artist: string;
+    youtubeLink: string;
+    startTime: string;
+    endTime: string;
+    album: string;
+    year: string;
+    participant: HostPartUserI;
+}
