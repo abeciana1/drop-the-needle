@@ -38,3 +38,4 @@ export { default as DisclaimerModal } from '@/components/common/Modal/Disclaimer
 export { default as PowerHourPromo } from '@/components/common/Modal/PowerHourPromo'
 export { default as SongPresent } from '@/components/common/SongPresent'
 export { default as Drawer } from '@/components/common/Drawer'
+export { default as SongSelectOption } from '@/components/common/SongSelectOption'
