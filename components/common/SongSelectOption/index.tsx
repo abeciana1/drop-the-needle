@@ -13,7 +13,7 @@ const SongSelectOption = ({
     return(
         <li
             onClick={() => songJumpHandler(idx)}
-            className={cx('cursor-pointer relative pt-5 flex flex-col justify-center mx-auto w-72 p-3 rounded-lg', {
+            className={cx('cursor-pointer relative flex flex-col justify-center mx-auto w-72 p-3 rounded-lg', {
             ['bg-green-400']: idx === currentIdx
         })}>
             <div className='flex items-center justify-between'>
