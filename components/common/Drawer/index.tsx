@@ -7,7 +7,8 @@ import { CiLogout, CiLogin } from "react-icons/ci";
 import { DrawerI } from '@/interfaces'
 
 const Drawer = ({
-    panelTitle
+    panelTitle,
+    children
 }: DrawerI) => {
     const [open, setOpen] = useState(true)
 
@@ -28,8 +29,6 @@ const Drawer = ({
             }
             <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={setOpen}>
-            <div className="fixed inset-0 overflow-hidden">
-                <div className="absolute inset-0 overflow-hidden">
                 <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                     <Transition.Child
                     as={Fragment}
@@ -55,14 +54,14 @@ const Drawer = ({
                             />
                         </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6 overflow-y-auto">
-                            Your content
+                            {children}
                         </div>
                         </div>
                     </Dialog.Panel>
                     </Transition.Child>
                 </div>
+                <div className="absolute inset-0 overflow-hidden">
                 </div>
-            </div>
             </Dialog>
         </Transition.Root>
         </Fragment>
