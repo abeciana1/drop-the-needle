@@ -10,6 +10,7 @@ import { H1, H2, H3 } from '@/components/styled'
 import { HostPartUserI, PowerHourSongI } from '@/interfaces'
 import { setSongs, clearSongs } from '@/redux/slices/powerHourSlice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
+import { Drawer } from '@/components/common'
 
 interface ListenPowerHourI {
     powerHour: {
@@ -66,6 +67,13 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                 title={powerHour.title}
                 description={powerHour.description}
             />
+            <Drawer
+                panelTitle='Song selection'
+            >
+                <ul>
+                    
+                </ul>
+            </Drawer>
             <CommonPageLayout>
                 <section className='text-center py-10 leading-loose'>
                     <H1 text={'Presenting ' + powerHour.title} />
@@ -74,7 +82,7 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                         <H3 text={'Contributions from ' + peopleOxfordComma(cleanedParticipants)} />
                     }
                 </section>
-                {(songsState && songsState.length > 0 && songsState.length !== currentIdx) &&
+                {/* {(songsState && songsState.length > 0 && songsState.length !== currentIdx) &&
                     <section data-pos='current' className='mx-auto'>
                         <SongPresent
                             title={songsState[currentIdx].title}
@@ -92,7 +100,7 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                 }
                 {songsState.length === currentIdx &&
                     <div className="text-center text-5xl lg:text-6xl font-bold py-1">The End</div>
-                }
+                } */}
             </CommonPageLayout>
         </Fragment>
     )
@@ -102,7 +110,6 @@ export default ListenDynamicPage
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
     const powerHour = await axios.get('http://localhost:3000/api/powerhour/listen/' + context?.query?.id)
-    console.log('powerHour.data.powerHour', powerHour.data.powerHour)
     return {
         props: {
             powerHour: powerHour.data.powerHour
