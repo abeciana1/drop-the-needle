@@ -5,10 +5,12 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { SideNavItemButton } from '@/components/account'
 import { CiLogin } from "react-icons/ci";
 import { DrawerI } from '@/interfaces'
+import cx from 'classnames'
 
 const Drawer = ({
     panelTitle,
-    children
+    children,
+    posLeft = true
 }: DrawerI) => {
     const [open, setOpen] = useState(true)
 
@@ -19,7 +21,10 @@ const Drawer = ({
     return(
         <Fragment>
             {!open &&
-                <div className='bg-altBlack p-2 rounded-full left-0 top-1/2 fixed'>
+                <div className={cx('bg-altBlack p-2 rounded-full top-1/2 fixed', {
+                    ['left-0']: posLeft,
+                    ['right-0']: !posLeft
+                })}>
                     <SideNavItemButton
                         text='Open song selection'
                         icon={CiLogin}
@@ -29,15 +34,18 @@ const Drawer = ({
             }
             <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-50" onClose={setOpen}>
-                <div className="pointer-events-none fixed inset-y-0 left-0 flex max-w-full">
+                <div className={cx("pointer-events-none fixed inset-y-0 flex max-w-full", {
+                    ['left-0']: posLeft,
+                    ['right-0']: !posLeft
+                })}>
                     <Transition.Child
                     as={Fragment}
                     enter="transform transition ease-in-out duration-500 sm:duration-700"
-                    enterFrom="-translate-x-full"
+                    enterFrom={(posLeft ? '-' : '') + "translate-x-full"}
                     enterTo="translate-x-0"
                     leave="transform transition ease-in-out duration-500 sm:duration-700"
                     leaveFrom="translate-x-0"
-                    leaveTo="-translate-x-full"
+                    leaveTo={(posLeft ? '-' : '') + "translate-x-full"}
                     >
                     <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
                         <div className="flex h-full flex-col overflow-y-auto bg-white py-6 shadow-xl">
