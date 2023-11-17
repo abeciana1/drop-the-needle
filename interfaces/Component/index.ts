@@ -165,6 +165,7 @@ export interface SongPresentI {
 export interface DrawerI {
     panelTitle: string;
     children: React.ReactNode;
+    posLeft?: boolean;
 }
 
 export interface SongSelectOptionI {
