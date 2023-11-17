@@ -41,7 +41,8 @@ export type {
     YouTubeCardI,
     PowerHourPromoI,
     SongPresentI,
-    DrawerI
+    DrawerI,
+    SongSelectOptionI
 } from '@/interfaces/Component'
 
 export type {
