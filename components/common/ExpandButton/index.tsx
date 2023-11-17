@@ -33,6 +33,7 @@ export const ExpandBtn = ({
             onFocus={() => setClose(true)}
             onBlur={() => setClose(false)}
         >
+            <span className='sr-only'>{text}</span>
             <Icon strokeWidth="2.5" 
                 className={cx('h-5 w-5', {
                 ['mx-auto']: open === false
