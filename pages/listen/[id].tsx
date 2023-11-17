@@ -38,7 +38,6 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
     const dispatch = useAppDispatch()
     const songsState = useAppSelector(state => state.powerHour.songs)
     const [ currentIdx, setCurrentIdx ] = useState(0)
-    console.log('songState', songsState)
 
     const cleanedHosts = useMemo(() => {
         return powerHour.hosts.map((host: HostPartUserI) => host.user.name)
