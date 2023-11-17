@@ -1,12 +1,15 @@
-import { Fragment, useMemo } from 'react'
+import { Fragment, useMemo, useEffect, useState } from 'react'
 import { GetServerSidePropsContext } from 'next';
 import axios from 'axios'
 import {
     SEO,
-    CommonPageLayout
+    CommonPageLayout,
+    SongPresent
 } from '@/components/common'
 import { H1, H2, H3 } from '@/components/styled'
 import { HostPartUserI, PowerHourSongI } from '@/interfaces'
+import { setSongs, clearSongs } from '@/redux/slices/powerHourSlice'
+import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 
 interface ListenPowerHourI {
     powerHour: {
@@ -32,7 +35,10 @@ const peopleOxfordComma = (people: any) => {
 }
 
 const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
-    console.log('powerHour', powerHour)
+    const dispatch = useAppDispatch()
+    const songsState = useAppSelector(state => state.powerHour.songs)
+    const [ currentIdx, setCurrentIdx ] = useState(0)
+    console.log('songState', songsState)
 
     const cleanedHosts = useMemo(() => {
         return powerHour.hosts.map((host: HostPartUserI) => host.user.name)
@@ -40,6 +46,20 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
     const cleanedParticipants = useMemo(() => {
         return powerHour.participants.map((participant: HostPartUserI) => participant.user.name)
     }, [])
+
+    useEffect(() => {
+        dispatch(setSongs(powerHour.PowerHourSongs))
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            dispatch(clearSongs())
+        }
+    }, [])
+
+    const handleSwitch = () => {
+        setCurrentIdx(currentIdx + 1)
+    }
 
     return(
         <Fragment>
@@ -55,6 +75,25 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                         <H3 text={'Contributions from ' + peopleOxfordComma(cleanedParticipants)} />
                     }
                 </section>
+                {(songsState && songsState.length > 0 && songsState.length !== currentIdx) &&
+                    <section data-pos='current' className='mx-auto'>
+                        <SongPresent
+                            title={songsState[currentIdx].title}
+                            artist={songsState[currentIdx].artist}
+                            album={songsState[currentIdx].album}
+                            year={songsState[currentIdx].year}
+                            link={songsState[currentIdx].youtubeLink}
+                            startTime={songsState[currentIdx].startTime}
+                            endTime={songsState[currentIdx].endTime}
+                            user={songsState[currentIdx].participant.user.name}
+                            idx={currentIdx}
+                            handleSwitch={handleSwitch}
+                        />
+                    </section>
+                }
+                {songsState.length === currentIdx &&
+                    <div className="text-center text-5xl lg:text-6xl font-bold py-1">The End</div>
+                }
             </CommonPageLayout>
         </Fragment>
     )
