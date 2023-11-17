@@ -148,3 +148,16 @@ export interface PowerHourPromoI {
     inviteToken: string;
     listenLink: string;
 }
+
+export interface SongPresentI {
+    title: string;
+    artist: string;
+    album: string;
+    year: string;
+    link: string;
+    user: string;
+    startTime: string;
+    endTime: string;
+    idx: number;
+    handleSwitch: () => void;
+}

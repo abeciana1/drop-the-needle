@@ -39,7 +39,8 @@ export type {
     InviteCardI,
     PillTagI,
     YouTubeCardI,
-    PowerHourPromoI
+    PowerHourPromoI,
+    SongPresentI
 } from '@/interfaces/Component'
 
 export type {
