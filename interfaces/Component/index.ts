@@ -166,3 +166,12 @@ export interface DrawerI {
     panelTitle: string;
     children: React.ReactNode;
 }
+
+export interface SongSelectOptionI {
+    title: string;
+    artist: string;
+    idx: number;
+    participant: string;
+    currentIdx: number;
+    songJumpHandler: (index: number) => void;
+}
