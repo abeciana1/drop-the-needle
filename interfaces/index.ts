@@ -40,7 +40,8 @@ export type {
     PillTagI,
     YouTubeCardI,
     PowerHourPromoI,
-    SongPresentI
+    SongPresentI,
+    DrawerI
 } from '@/interfaces/Component'
 
 export type {

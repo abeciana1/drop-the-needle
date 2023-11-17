@@ -161,3 +161,8 @@ export interface SongPresentI {
     idx: number;
     handleSwitch: () => void;
 }
+
+export interface DrawerI {
+    panelTitle: string;
+    children: React.ReactNode;
+}
