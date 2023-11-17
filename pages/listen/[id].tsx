@@ -4,13 +4,14 @@ import axios from 'axios'
 import {
     SEO,
     CommonPageLayout,
-    SongPresent
+    SongPresent,
+    SongSelectOption,
+    Drawer
 } from '@/components/common'
 import { H1, H2, H3 } from '@/components/styled'
 import { HostPartUserI, PowerHourSongI } from '@/interfaces'
 import { setSongs, clearSongs } from '@/redux/slices/powerHourSlice'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
-import { Drawer } from '@/components/common'
 
 interface ListenPowerHourI {
     powerHour: {
@@ -61,18 +62,37 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
         setCurrentIdx(currentIdx + 1)
     }
 
+    const songJumpHandler = (index: number) => {
+        setCurrentIdx(index)
+    }
+
     return(
         <Fragment>
             <SEO
                 title={powerHour.title}
                 description={powerHour.description}
             />
+
             <Drawer
                 panelTitle='Song selection'
             >
-                <ul>
-                    
-                </ul>
+                {songsState && songsState?.length > 0 &&
+                    <ul className='list-none'>
+                        {songsState.map((song: any, index: number) => {
+                            return(
+                                <SongSelectOption
+                                    key={'song-' + song.title + '-' + index}
+                                    title={song.title}
+                                    artist={song.artist}
+                                    idx={index}
+                                    currentIdx={currentIdx}
+                                    participant={song.participant.user.name}
+                                    songJumpHandler={songJumpHandler}
+                                />
+                            )
+                        })}
+                    </ul>
+                }
             </Drawer>
             <CommonPageLayout>
                 <section className='text-center py-10 leading-loose'>
@@ -82,7 +102,7 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                         <H3 text={'Contributions from ' + peopleOxfordComma(cleanedParticipants)} />
                     }
                 </section>
-                {/* {(songsState && songsState.length > 0 && songsState.length !== currentIdx) &&
+                {(songsState && songsState.length > 0 && songsState.length !== currentIdx) &&
                     <section data-pos='current' className='mx-auto'>
                         <SongPresent
                             title={songsState[currentIdx].title}
@@ -100,7 +120,7 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                 }
                 {songsState.length === currentIdx &&
                     <div className="text-center text-5xl lg:text-6xl font-bold py-1">The End</div>
-                } */}
+                }
             </CommonPageLayout>
         </Fragment>
     )
