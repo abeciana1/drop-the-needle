@@ -72,7 +72,6 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
                 title={powerHour.title}
                 description={powerHour.description}
             />
-
             <Drawer
                 panelTitle='Song selection'
             >
