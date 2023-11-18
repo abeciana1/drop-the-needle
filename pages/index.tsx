@@ -15,6 +15,7 @@ import {
   FaUsers,
   FaShareAlt
 } from "react-icons/fa"
+import { GetServerSidePropsContext } from 'next';
 
 export default function Home() {
 
@@ -83,4 +84,13 @@ export default function Home() {
       </CommonPageLayout>
     </Fragment>
   )
+}
+
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  
+  return {
+      props: {
+          
+      }
+  }
 }
