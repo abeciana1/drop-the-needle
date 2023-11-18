@@ -13,6 +13,10 @@ export interface OnClickIconButtonI extends OnClickButtonI {
     icon: React.ElementType;
 }
 
+export interface SideNavButtonI extends OnClickIconButtonI {
+    reverseTooltip?: boolean;
+}
+
 export interface EventOnClickBtnI extends DefaultButtonI {
     onClick: (e: Event) => void;
 }
