@@ -15,7 +15,8 @@ export type {
     SubmitButtonI,
     ExpandButtonPropsI,
     ShareButtonPropsI,
-    CopyButtonI
+    CopyButtonI,
+    SideNavButtonI
 } from '@/interfaces/Button'
 
 export type {
@@ -42,7 +43,8 @@ export type {
     PowerHourPromoI,
     SongPresentI,
     DrawerI,
-    SongSelectOptionI
+    SongSelectOptionI,
+    UnsortedTrackI
 } from '@/interfaces/Component'
 
 export type {
