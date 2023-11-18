@@ -3,16 +3,17 @@ import { Dialog, Transition } from '@headlessui/react'
 import { ExpandBtn } from '@/components/common'
 import { AiOutlineClose } from 'react-icons/ai'
 import { SideNavItemButton } from '@/components/account'
-import { CiLogin } from "react-icons/ci";
+import { CiLogin, CiLogout } from "react-icons/ci";
 import { DrawerI } from '@/interfaces'
 import cx from 'classnames'
 
 const Drawer = ({
     panelTitle,
     children,
-    posLeft = true
+    posLeft = true,
+    reverseTooltip = false
 }: DrawerI) => {
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
     const toggleOpen = () => {
         setOpen(true)
@@ -27,8 +28,9 @@ const Drawer = ({
                 })}>
                     <SideNavItemButton
                         text='Open song selection'
-                        icon={CiLogin}
+                        icon={posLeft ? CiLogin : CiLogout}
                         onClick={toggleOpen}
+                        reverseTooltip={reverseTooltip}
                     />
                 </div>
             }
