@@ -143,3 +143,14 @@ export interface PowerHourSongI {
     year: string;
     participant: HostPartUserI;
 }
+
+export interface PowerHourDataI {
+    id: number;
+    cover_image: string;
+    title: string;
+    date_time: Date;
+}
+
+export interface PowerHourDataCollectionI {
+    powerHours: PowerHourDataI[]
+}
