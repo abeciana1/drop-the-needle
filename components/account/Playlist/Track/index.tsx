@@ -13,12 +13,16 @@ import {
 } from 'react-icons/ai'
 import { useAppDispatch } from '@/redux/hooks'
 import { setInstance } from '@/redux/slices/instanceSlice'
+import { IoArrowUndo } from "react-icons/io5";
+import { switchTrackAction, deleteSwitchSongAction } from '@/redux/actions/song-actions'
 
 const Track = ({
     song,
     user,
     index,
-    removeHandler
+    removeHandler,
+    songCount,
+    participantTrack
 }: TrackI) => {
     const dispatch = useAppDispatch()
     const [ openTrack, setOpen ] = useState(false)
@@ -51,11 +55,25 @@ const Track = ({
         }))
     }
 
+    const addSongToUnsorted = () => {
+        dispatch(switchTrackAction(song?.id, 0, songCount, song))
+        dispatch(deleteSwitchSongAction(index, false))
+    }
+
     return(
         <>
             <div 
                 className='flex flex-wrap items-center justify-between'
             >
+                {!participantTrack &&
+                    <ExpandBtn
+                        text='Move to unsorted list'
+                        icon={IoArrowUndo}
+                        backgroundColor='bg-altGreen-400'
+                        onClick={addSongToUnsorted}
+                        size={14.5}
+                    />
+                }
                 <div
                     tabIndex={0}
                     onKeyDown={focusTrackHandler}
@@ -74,11 +92,11 @@ const Track = ({
                         size={7}
                     />
                     <ExpandBtn
-                        text="Remove"
+                        text="Delete"
                         icon={AiFillDelete}
                         backgroundColor='vermillion'
                         onClick={() => removeHandler(index, song?.id)}
-                        size={8}
+                        size={7}
                     />
                 </span>
             </div>
