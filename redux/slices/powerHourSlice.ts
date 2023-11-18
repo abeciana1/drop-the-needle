@@ -3,7 +3,7 @@ import { createSlice, current } from '@reduxjs/toolkit'
 const initialState: {powerHour: any, songs: any, unsortedSongs: any} = {
     powerHour: null,
     songs: [],
-    unsortedSongs: null
+    unsortedSongs: []
 }
 
 const powerHourSlice = createSlice({
@@ -38,12 +38,27 @@ const powerHourSlice = createSlice({
         deleteSong: (state, action) => {
             state.songs = action.payload
         },
+        deleteUnsortedSong: (state, action) => {
+            state.unsortedSongs = action.payload
+        },
         reorderSongs: (state, action) => {
             state.songs = action.payload
         },
         patchSong: (state, action) => {
             state.songs[action.payload.index] = {
                 ...state.songs[action.payload.index],
+                title: action.payload.data.title,
+                artist: action.payload.data.artist,
+                album: action.payload.data.album,
+                startTime: action.payload.data.startTime,
+                endTime: action.payload.data.endTime,
+                youtubeLink: action.payload.data.youtubeLink,
+                year: action.payload.data.year
+            }
+        },
+        patchUnsortedSong: (state, action) => {
+            state.unsortedSongs[action.payload.index] = {
+                ...state.unsortedSongs[action.payload.index],
                 title: action.payload.data.title,
                 artist: action.payload.data.artist,
                 album: action.payload.data.album,
@@ -67,7 +82,9 @@ export const {
     clearSongs,
     patchSong,
     setUnsortedSongs,
-    clearUnsortedSongs
+    clearUnsortedSongs,
+    deleteUnsortedSong,
+    patchUnsortedSong
 } = powerHourSlice.actions
 
 export default powerHourSlice.reducer
