@@ -1,4 +1,4 @@
-export const generateRandomString = (length=8)=>Math.random().toString(20).substr(2, length)
+export const generateRandomString = (length=8)=>Math.random().toString(20).substring(2, length)
 
 export const timeConverter = (time: string) => {
     let timeSplit = time.split(':')
@@ -10,3 +10,5 @@ export const timeConverter = (time: string) => {
     }
     return seconds
 }
+
+export const appUrl = process.env.NODE_ENV === 'development' ? process.env.NEXTAUTH_URL : process.env.PROD_URL
