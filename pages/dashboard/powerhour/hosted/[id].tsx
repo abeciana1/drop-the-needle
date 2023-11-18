@@ -4,7 +4,8 @@ import {
     SEO,
     ComponentMargin,
     Grid3Column,
-    OnClickButton
+    OnClickButton,
+    Drawer
 } from '@/components/common'
 import {
     H1
@@ -12,7 +13,8 @@ import {
 import {
     SingleSelectField,
     AccordionDataList,
-    TrackList
+    TrackList,
+    UnsortedTrack
 } from '@/components/account'
 import axios from 'axios'
 import Image from 'next/image'
@@ -42,7 +44,7 @@ import {
     clearInstance
 } from '@/redux/slices/instanceSlice'
 import { clearPowerHour, clearSongs, clearUnsortedSongs } from '@/redux/slices/powerHourSlice'
-import { TrackDataI } from '@/interfaces'
+import { TrackDataI, SongI } from '@/interfaces'
 import { GetServerSidePropsContext } from 'next';
 import requireAuthentication from '@/middleware/authMiddleware'
 
@@ -62,6 +64,7 @@ const HostedPowerHourDynamic = () => {
     const router = useRouter()
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
+    const unsortedSongs = useAppSelector(state => state.powerHour.unsortedSongs)
     let currentIdx = powerHour?.publishStatus ? 0 : 1
     const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
     const [ isClient, setClient ] = useState(false)
@@ -182,6 +185,23 @@ const HostedPowerHourDynamic = () => {
             <SEO />
             <DashPageLayout>
                 <ComponentMargin>
+                    <>
+                        {unsortedSongs.length > 0 &&
+                            <Drawer reverseTooltip panelTitle='Unsorted song list' posLeft={false}>
+                                <ul className='list-none'>
+                                    {unsortedSongs?.map((song: SongI, index: number) => (
+                                        <UnsortedTrack
+                                            key={song?.id}
+                                            song={song}
+                                            user={song?.participant?.user?.name}
+                                            index={index}
+                                            songCount={songs?.length}
+                                        />
+                                    ))}
+                                </ul>
+                            </Drawer>
+                        }
+                    </>
                     <section className="flex flex-col md:flex-row justify-around gap-10 items-center pt-20">
                         <div className="relative">
                             {powerHour?.cover_image &&
