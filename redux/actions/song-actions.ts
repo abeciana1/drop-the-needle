@@ -5,12 +5,14 @@ import {
     failure
 } from '@/redux/slices/loadingSlice'
 import { AppDispatch } from '@/redux/store'
-import { TrackDataI } from '@/interfaces'
+import { TrackDataI, SongI } from '@/interfaces'
 import {
     addSong,
     deleteSong,
     reorderSongs,
-    patchSong
+    patchSong,
+    deleteUnsortedSong,
+    patchUnsortedSong
 } from '@/redux/slices/powerHourSlice'
 import store from '@/redux/store'
 
@@ -113,6 +115,62 @@ export const patchSongAction = (index: number, songId: number, data: any) => {
         } catch (err) {
             dispatch(failure({ error: 'Failed to update track' }))
             console.error({ err })
+        }
+    }
+}
+
+export const deleteSwitchSongAction = (index: number, unsorted: boolean) => {
+    return async (dispatch: AppDispatch) => {
+        if (unsorted) {
+            const songs = store.getState().powerHour.unsortedSongs
+            let newSongs = [...songs]
+            newSongs.splice(index, 1)
+            dispatch(deleteUnsortedSong(newSongs))
+        } else {
+            const songs = store.getState().powerHour.songs
+            let newSongs = [...songs]
+            newSongs.splice(index, 1)
+            dispatch(deleteSong(newSongs))
+        }
+    }
+}
+
+export const switchTrackAction = (songId: number, orderNumber: number, index: number, song: SongI) => {
+    return async (dispatch: AppDispatch) => {
+        dispatch(loading())
+        try {
+            if (orderNumber > 0) {
+                dispatch(patchSong({
+                    index: index,
+                    data: song
+                }))
+            } else {
+                console.log('here')
+                dispatch(patchUnsortedSong({
+                    index: index,
+                    data: song
+                }))
+            }
+            await axios.patch('/api/track/' + songId, {
+                orderNumber: orderNumber
+            })
+            .then(response => {
+                dispatch(success())
+                if (orderNumber > 1) {
+                    dispatch(patchSong({
+                        index: index,
+                        data: response.data.track
+                    }))
+                } else {
+                    dispatch(patchUnsortedSong({
+                        index: index,
+                        data: response.data.track
+                    }))
+                }
+            })
+        } catch (err) {
+            dispatch(failure({ error: 'Failed to update track' }))
+            console.log('err', err)
         }
     }
 }
