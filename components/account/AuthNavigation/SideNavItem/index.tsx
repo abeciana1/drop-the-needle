@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import {
     NavItemIconI,
-    OnClickIconButtonI
+    OnClickIconButtonI,
+    SideNavButtonI
 } from '@/interfaces'
 
 export const SideNavItemLink = ({
@@ -39,8 +40,9 @@ export const SideNavItemLink = ({
 export const SideNavItemButton = ({
     text,
     onClick,
-    icon
-}: OnClickIconButtonI) => {
+    icon,
+    reverseTooltip = false
+}: SideNavButtonI) => {
     const [ hover, setHover ] = useState(false)
     const Icon = icon as React.ElementType
 
@@ -50,6 +52,12 @@ export const SideNavItemButton = ({
             onMouseLeave={() => setHover(false)}
             className="list-none flex items-center"
         >
+            {(hover && reverseTooltip) &&
+                <div
+                    data-testid="tooltip"
+                    className='fixed right-16 font-medium text-altWhite bg-altBlack px-2 py-1 rounded-lg min-w-fit text-center'
+                >{text}</div>
+            }
             <button
                 data-testid={text}
                 onClick={onClick}
@@ -57,7 +65,7 @@ export const SideNavItemButton = ({
             >
                 <Icon size={'2.25rem'} />
             </button>
-            {hover &&
+            {(hover && !reverseTooltip) &&
                 <div
                     data-testid="tooltip"
                     className='fixed ml-16 font-medium text-altWhite bg-altBlack px-2 py-1 rounded-lg min-w-fit text-center'
