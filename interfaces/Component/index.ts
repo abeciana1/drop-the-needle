@@ -81,10 +81,15 @@ export interface TrackListI {
     participantList?: boolean;
 }
 
-export interface TrackI {
+export interface UnsortedTrackI {
     song: SongI;
     user: string;
     index: number;
+    songCount: number;
+}
+
+export interface TrackI extends UnsortedTrackI {
+    participantTrack: boolean;
     removeHandler: (index: number, id: number) => void;
 }
 
@@ -166,6 +171,7 @@ export interface DrawerI {
     panelTitle: string;
     children: React.ReactNode;
     posLeft?: boolean;
+    reverseTooltip?: boolean;
 }
 
 export interface SongSelectOptionI {
