@@ -3,7 +3,7 @@ import { TrackListI, SongI } from '@/interfaces'
 import {
     Track,
 } from '@/components/account'
-import { useAppDispatch } from '@/redux/hooks'
+import { useAppSelector, useAppDispatch } from '@/redux/hooks'
 import { reorderSongsAction } from '@/redux/actions/song-actions'
 import { useRouter } from "next/router";
 
@@ -13,6 +13,7 @@ const TrackList = ({
     participantList = false
 }: TrackListI) => {
     const dispatch = useAppDispatch()
+    const unsortedSongs = useAppSelector(state => state.powerHour.unsortedSongs)
     const router = useRouter()
 
     const handleOnDragEnd = (result: any) => {
@@ -34,6 +35,8 @@ const TrackList = ({
                                 song={song}
                                 user={song?.participant?.user?.name}
                                 index={index}
+                                participantTrack
+                                songCount={unsortedSongs?.length}
                             />
                         </li>
                     ))}
@@ -70,6 +73,8 @@ const TrackList = ({
                                                             song={song}
                                                             user={song?.participant?.user?.name}
                                                             index={index}
+                                                            songCount={unsortedSongs?.length}
+                                                            participantTrack={false}
                                                         />
                                                     </li>
                                                 )}
