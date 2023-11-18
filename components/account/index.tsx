@@ -29,7 +29,8 @@ export { default as AccordionDataList } from '@/components/account/AccordionData
 export {
     TrackList,
     Track,
-    TrackPresent
+    TrackPresent,
+    UnsortedTrack
 } from '@/components/account/Playlist'
 
 export { default as PillTag } from '@/components/account/PillTag'
