@@ -22,7 +22,7 @@ const SEO = ({
                 description: description,
                 images: [
                     {
-                        url: 'http://localhost:3000/api/og',
+                        url: 'https://drop-the-needle.vercel.app/api/og',
                         width: 800,
                         height: 600,
                         alt: 'Drop The Needle'

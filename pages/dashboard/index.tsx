@@ -198,7 +198,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         return authResult
     }
     const session = await getSession(context)
-    const { data } = await axios.post('http://localhost:3000/api/user/get-dashboard', {
+    const { data } = await axios.post(process.env.PROD_URL + '/api/user/get-dashboard', {
         params: session?.user?.email
     })    
     return {

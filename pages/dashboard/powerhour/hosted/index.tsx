@@ -109,7 +109,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         return authResult
     }
     const session = await getSession(context);
-    let {data} = await axios.post('http://localhost:3000/api/powerhour/get-hosted', {
+    let {data} = await axios.post(process.env.PROD_URL + '/api/powerhour/get-hosted', {
         params: session?.user?.email
     })
     return {

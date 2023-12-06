@@ -11,4 +11,4 @@ export const timeConverter = (time: string) => {
     return seconds
 }
 
-export const appUrl = process.env.NODE_ENV === 'development' ? process.env.NEXTAUTH_URL : process.env.PROD_URL
+// export const appUrl = process.env.NODE_ENV === 'development' ? process.env.NEXTAUTH_URL : process.env.PROD_URL

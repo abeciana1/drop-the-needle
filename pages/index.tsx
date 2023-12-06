@@ -18,7 +18,7 @@ import {
   FaShareAlt
 } from "react-icons/fa"
 import axios from 'axios'
-import { appUrl } from '@/utils'
+// import { appUrl } from '@/utils'
 import { PowerHourDataCollectionI, PowerHourDataI } from '@/interfaces'
 import { formatInTimeZone } from 'date-fns-tz'
 import { H2 } from '@/components/styled'
@@ -121,7 +121,7 @@ export default function Home({ powerHours }: PowerHourDataCollectionI) {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(appUrl + '/api/powerhour/get-all-public')
+  const { data } = await axios.get(process.env.PROD_URL + '/api/powerhour/get-all-public')
   return {
       props: {
         powerHours: data?.publicPowerHours
