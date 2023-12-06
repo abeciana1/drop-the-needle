@@ -56,7 +56,9 @@ export type {
     YouTubeVideoI,
     UserPowerHourI,
     HostPartUserI,
-    PowerHourSongI
+    PowerHourSongI,
+    PowerHourDataCollectionI,
+    PowerHourDataI
 } from '@/interfaces/Data'
 
 export type {

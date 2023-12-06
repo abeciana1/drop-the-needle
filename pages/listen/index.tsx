@@ -11,19 +11,8 @@ import { H1, H2 } from '@/components/styled'
 import { Input } from '@/components/account'
 import { useForm, useWatch } from "react-hook-form"
 import axios from 'axios'
-import { PowerHourGroupI } from '@/interfaces'
 import { formatInTimeZone } from 'date-fns-tz'
-
-interface PowerHourDataI {
-    id: number;
-    cover_image: string;
-    title: string;
-    date_time: Date;
-}
-
-interface PowerHourDataCollectionI {
-    powerHours: PowerHourDataI[]
-}
+import { PowerHourDataCollectionI, PowerHourDataI } from '@/interfaces'
 
 const ListenIdx = ({ powerHours }: PowerHourDataCollectionI) => {
     const {

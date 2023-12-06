@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 date_time: true
             },
             orderBy: {
-                date_time: 'asc'
+                date_time: 'desc'
             }
         })
         res.status(200).json({ publicPowerHours })
