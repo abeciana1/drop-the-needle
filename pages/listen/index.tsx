@@ -90,7 +90,7 @@ const ListenIdx = ({ powerHours }: PowerHourDataCollectionI) => {
 export default ListenIdx
 
 export const getServerSideProps = async () => {
-    const { data } = await axios.get(process.env.PROD_URL + '/api/powerhour/get-all-public')
+    const { data } = await axios.get(process.env.URL + '/api/powerhour/get-all-public')
     return {
         props: {
             powerHours: data?.publicPowerHours

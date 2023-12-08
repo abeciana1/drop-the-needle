@@ -128,7 +128,7 @@ const ListenDynamicPage = ({powerHour}: ListenPowerHourI) => {
 export default ListenDynamicPage
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-    const powerHour = await axios.get( process.env.PROD_URL + '/api/powerhour/listen/' + context?.query?.id)
+    const powerHour = await axios.get( process.env.URL + '/api/powerhour/listen/' + context?.query?.id)
     return {
         props: {
             powerHour: powerHour.data.powerHour

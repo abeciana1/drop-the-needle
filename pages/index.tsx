@@ -121,7 +121,7 @@ export default function Home({ powerHours }: PowerHourDataCollectionI) {
 }
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(process.env.PROD_URL + '/api/powerhour/get-all-public')
+  const { data } = await axios.get(process.env.URL + '/api/powerhour/get-all-public')
   return {
       props: {
         powerHours: data?.publicPowerHours
