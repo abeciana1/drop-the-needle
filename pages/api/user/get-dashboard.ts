@@ -34,7 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 hosted: {
                     orderBy: {
                         powerHour: {
-                            date_time: 'asc'
+                            date_time: 'desc'
                         }
                     },
                     select: {
@@ -51,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 participants: {
                     orderBy: {
                         powerHour: {
-                            date_time: 'asc'
+                            date_time: 'desc'
                         }
                     },
                     select: {
@@ -68,7 +68,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 invites: {
                     orderBy: {
                         powerHour: {
-                            date_time: 'asc'
+                            date_time: 'desc'
                         }
                     },
                     include: {
