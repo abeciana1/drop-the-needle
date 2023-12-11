@@ -51,11 +51,11 @@ const NavBar = () => {
                                 color='jaffa'
                                 linkText='Home'
                             />
-                            <NavItem
+                            {/* <NavItem
                                 href='participate'
                                 color='vermillion'
                                 linkText='Participate'
-                            />
+                            /> */}
                             <NavItem
                                 href='listen'
                                 color='altGreen'
