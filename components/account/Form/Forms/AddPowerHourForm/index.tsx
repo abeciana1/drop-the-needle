@@ -32,6 +32,11 @@ const AddPowerHourForm = () => {
         name: 'privateStatus',
         defaultValue: 'true'
     })
+    const eventDateWatch = useWatch({
+        control,
+        name: 'dateTime',
+        defaultValue: ''
+    })
     const { data: session } = useSession()
 
     const submitHandler = (data: any) => {
@@ -61,6 +66,9 @@ const AddPowerHourForm = () => {
                 name='dateTime'
                 fieldRequired='This field is required.'
                 register={register}
+                registerOptions={{
+                    value: eventDateWatch
+                }}
             />
             <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
             <DatePicker
@@ -68,6 +76,15 @@ const AddPowerHourForm = () => {
                 name='submissionDeadline'
                 fieldRequired='This field is required.'
                 register={register}
+                registerOptions={{
+                    validate: {
+                        value: (value: string) => {
+                            if (new Date(value).valueOf() > new Date(eventDateWatch).valueOf()) {
+                                return 'Sorry, your submission deadline can\'t be after your event date.'
+                            }
+                        }
+                    }
+                }}
             />
             <ErrorMessage name='submissionDeadline' errors={errors} as='div' className='text-vermillion'/>
             <Select
