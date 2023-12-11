@@ -41,8 +41,18 @@ const UpdatePowerHourForm = ({
         name: 'privateStatus',
         defaultValue: privateStatus === true ? 'true' : 'false'
     })
-    let formattedDate;
-    let submittedFormattedDate;
+    const eventDateWatch = useWatch({
+        control,
+        name: 'dateTime',
+        defaultValue: dateTime ? format(new Date(dateTime), 'yyyy-MM-dd HH:mm') : ''
+    })
+    const submissionDateWatch = useWatch({
+        control,
+        name: 'submissionDeadline',
+        defaultValue: submissionDeadline ? format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm') : ''
+    })
+    // let formattedDate;
+    // let submittedFormattedDate;
 
     const submit = (data: any) => {
         dispatch(clearInstance())
@@ -57,12 +67,12 @@ const UpdatePowerHourForm = ({
         }))
     }
     
-    if (dateTime) {
-        formattedDate = format(new Date(dateTime), 'yyyy-MM-dd HH:mm')
-    }
-    if (submissionDeadline) {
-        submittedFormattedDate = format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm')
-    }
+    // if (dateTime) {
+    //     formattedDate = format(new Date(dateTime), 'yyyy-MM-dd HH:mm')
+    // }
+    // if (submissionDeadline) {
+    //     submittedFormattedDate = format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm')
+    // }
 
     return (
         <FormContainer onSubmit={handleSubmit(submit)}>
@@ -92,7 +102,7 @@ const UpdatePowerHourForm = ({
                 fieldRequired='This field is required.'
                 register={register}
                 registerOptions={{
-                    value: formattedDate,
+                    value: eventDateWatch,
                 }}
             />
             <ErrorMessage name='dateTime' errors={errors} as='div' className='text-vermillion'/>
@@ -102,7 +112,14 @@ const UpdatePowerHourForm = ({
                 fieldRequired='This field is required.'
                 register={register}
                 registerOptions={{
-                    value: submittedFormattedDate,
+                    value: submissionDateWatch,
+                    validate: {
+                        value: (value: string) => {
+                            if (new Date(value).valueOf() > new Date(eventDateWatch).valueOf()) {
+                                return 'Sorry, your submission deadline can\'t be after your event date.'
+                            }
+                        }
+                    }
                 }}
             />
             <ErrorMessage name='submissionDeadline' errors={errors} as='div' className='text-vermillion'/>
