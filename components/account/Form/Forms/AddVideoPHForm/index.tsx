@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useForm, useWatch } from "react-hook-form"
 import { SubmitButton } from '@/components/common'
 import {
@@ -14,6 +13,7 @@ import {
 } from '@/redux/hooks'
 import { addTrackAction } from '@/redux/actions/song-actions'
 import { clearInstance } from "@/redux/slices/instanceSlice"
+import { timeConverter } from '@/utils'
 
 const AddVideoPHForm = ({
     link,
@@ -31,6 +31,11 @@ const AddVideoPHForm = ({
         control,
         name: 'powerHour',
         defaultValue: '0'
+    })
+    const startTimeWatch = useWatch({
+        control,
+        name: 'startTime',
+        defaultValue: ''
     })
     const { data: session } = useSession()
 
@@ -127,6 +132,7 @@ const AddVideoPHForm = ({
                 fieldRequired='This field is required.'
                 register={register}
                 registerOptions={{
+                    value: startTimeWatch,
                     pattern: {
                         value: /^[0-9]:[0-5][0-9]$/gi,
                         message: "This field requires a pattern like — 1:55"
@@ -143,6 +149,15 @@ const AddVideoPHForm = ({
                     pattern: {
                         value: /^[0-9]:[0-5][0-9]$/gi,
                         message: "This field requires a pattern like — 1:55"
+                    },
+                    validate: {
+                        value: (value: string) => {
+                            let convertedStartTime = timeConverter(startTimeWatch)
+                            let convertedEndTime = timeConverter(value)
+                            if (convertedStartTime > convertedEndTime) {
+                                return 'Sorry, your end time can\'t be less than the start time.'
+                            }
+                        }
                     }
                 }}
             />
