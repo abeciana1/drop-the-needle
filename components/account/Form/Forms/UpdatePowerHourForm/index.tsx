@@ -51,8 +51,6 @@ const UpdatePowerHourForm = ({
         name: 'submissionDeadline',
         defaultValue: submissionDeadline ? format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm') : ''
     })
-    // let formattedDate;
-    // let submittedFormattedDate;
 
     const submit = (data: any) => {
         dispatch(clearInstance())
@@ -66,13 +64,6 @@ const UpdatePowerHourForm = ({
             songLimit: data.songLimit
         }))
     }
-    
-    // if (dateTime) {
-    //     formattedDate = format(new Date(dateTime), 'yyyy-MM-dd HH:mm')
-    // }
-    // if (submissionDeadline) {
-    //     submittedFormattedDate = format(new Date(submissionDeadline), 'yyyy-MM-dd HH:mm')
-    // }
 
     return (
         <FormContainer onSubmit={handleSubmit(submit)}>
