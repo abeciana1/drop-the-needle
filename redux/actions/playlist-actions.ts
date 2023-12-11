@@ -122,7 +122,7 @@ export const createPowerHourAction = (powerHourData: any, userId: number) => {
             })
             .then(response => {
                 if (response.status === 200) {
-                    window.location.href = `/dashboard/powerhour/${response.data.newPowerHour.id}`
+                    window.location.href = `/dashboard/powerhour/hosted/${response.data.newPowerHour.id}`
                     dispatch(success())
                 }
             })
