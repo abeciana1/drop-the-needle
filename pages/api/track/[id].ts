@@ -3,9 +3,9 @@ import prisma from '@/hooks/prisma'
 import { runMiddleware } from '@/middleware/corsMiddleware'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    await runMiddleware(req, res)
     const trackId = Number(req?.query?.id)
     if (req.method === 'PATCH') {
-        await runMiddleware(req, res)
         let track = await prisma?.powerHourSong?.update({
             where: {
                 id: trackId
@@ -14,7 +14,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         })
         res.status(200).json({ track })
     } else if (req.method === 'DELETE') {
-        await runMiddleware(req, res)
         let track = await prisma?.powerHourSong?.findUnique({
             where: {
                 id: trackId
@@ -52,7 +51,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             })
             res.status(200).json({ updatedPowerHour })
         } else if (req.method === 'DELETE') {
-            await runMiddleware(req, res)
             await prisma.powerHourSong.delete({
                 where: {
                     id: trackId
