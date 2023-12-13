@@ -11,7 +11,9 @@ const cors = Cors({
         } else {
             callback(new Error('Not allowed by CORS'), false);
         }
-    }
+    },
+    credentials: true,
+    allowedHeaders: ['X-CSRF-Token', 'X-Requested-With', 'Accept', 'Content-Type', 'X-Api-Version']
 });
 
 export const runMiddleware = async (req: NextApiRequest, res: NextApiResponse) => {
