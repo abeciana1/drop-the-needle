@@ -43,7 +43,7 @@ export default function Home({ powerHours }: PowerHourDataCollectionI) {
             }}
             ctaButton
             ctaColor='gold'
-            ctaLink='participate'
+            ctaLink='api/auth/signin'
             ctaText='Join Now'
           />
         </ComponentMargin>
