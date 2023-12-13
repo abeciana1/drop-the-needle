@@ -1,7 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/hooks/prisma'
+import { runMiddleware } from '@/middleware/corsMiddleware'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    await runMiddleware(req, res)
     if (req.method === 'POST') {
         let newPowerHour = await prisma.powerHour.create({
             data: {
