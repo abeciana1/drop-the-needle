@@ -41,7 +41,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                     }
                 },
                 select: {
-                    PowerHourSongs: true
+                    PowerHourSongs: {
+                        where: {
+                            orderNumber: {
+                                gt: 0
+                            }
+                        },
+                        include: {
+                            participant: {
+                                select: {
+                                    user: {
+                                        select: {
+                                            name: true
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        orderBy: {
+                            orderNumber: 'asc'
+                        }
+                    }
                 }
             })
             await prisma.powerHourSong.delete({
@@ -50,7 +70,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             })
             res.status(200).json({ updatedPowerHour })
-        } else if (req.method === 'DELETE') {
+        // } else if (req.method === 'DELETE') {
+        } else {
             await prisma.powerHourSong.delete({
                 where: {
                     id: trackId
