@@ -29,6 +29,7 @@ type NextApiHandlerWithSession = (
 export const authMiddleware = (handler: NextApiHandlerWithSession): NextApiHandler => {
     return async (req, res) => {
         const session = await getSession({ req });
+        console.log('!!session', session)
         if (!session) {
             return res.status(401).json({ message: 'Unauthorized' });
         }
