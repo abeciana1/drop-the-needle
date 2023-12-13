@@ -52,6 +52,7 @@ export const deleteTrackAction = (index: number, id: number) => {
             let newSongs = [...songs]
             newSongs.splice(index, 1)
             dispatch(deleteSong(newSongs))
+            console.log('song state', songs)
             await axios.delete('/api/track/' + id)
             .then(response => {
                 if (response.data.hasOwnProperty('updatedPowerHour')) {
@@ -139,24 +140,23 @@ export const switchTrackAction = (songId: number, orderNumber: number, index: nu
     return async (dispatch: AppDispatch) => {
         dispatch(loading())
         try {
-            if (orderNumber > 0) {
-                dispatch(patchSong({
-                    index: index,
-                    data: song
-                }))
-            } else {
-                console.log('here')
-                dispatch(patchUnsortedSong({
-                    index: index,
-                    data: song
-                }))
-            }
             await axios.patch('/api/track/' + songId, {
                 orderNumber: orderNumber
             })
             .then(response => {
+                // if (orderNumber > 0) {
+                //     dispatch(patchSong({
+                //         index: index,
+                //         data: song
+                //     }))
+                // } else {
+                //     dispatch(patchUnsortedSong({
+                //         index: index,
+                //         data: song
+                //     }))
+                // }
                 dispatch(success())
-                if (orderNumber > 1) {
+                if (orderNumber > 0) {
                     dispatch(patchSong({
                         index: index,
                         data: response.data.track
