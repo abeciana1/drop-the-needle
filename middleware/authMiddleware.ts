@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext } from 'next';
+import { GetServerSidePropsContext, NextApiRequest, NextApiResponse, NextApiHandler } from 'next';
 import { getSession } from 'next-auth/react';
 
 const requireAuthentication = async (
@@ -20,3 +20,19 @@ const requireAuthentication = async (
 }
 
 export default requireAuthentication;
+
+type NextApiHandlerWithSession = (
+    req: NextApiRequest & { session?: ReturnType<typeof getSession> },
+    res: NextApiResponse
+) => void | Promise<void>;
+
+export const authMiddleware = (handler: NextApiHandlerWithSession): NextApiHandler => {
+    return async (req, res) => {
+        const session = await getSession({ req });
+        if (!session) {
+            return res.status(401).json({ message: 'Unauthorized' });
+        }
+    
+        return handler(req, res);
+    };
+};
