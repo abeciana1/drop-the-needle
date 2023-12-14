@@ -24,8 +24,6 @@ const Track = ({
     songCount,
     participantTrack
 }: TrackI) => {
-    console.log('song', song)
-    console.log('song ORDERNUMBER', song.orderNumber)
     const dispatch = useAppDispatch()
     const [ openTrack, setOpen ] = useState(false)
 
