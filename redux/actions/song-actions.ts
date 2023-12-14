@@ -71,7 +71,6 @@ export const deleteTrackAction = (index: number, id: number) => {
 }
 
 export const reorderSongsAction = (id: number, result: ResultI) => {
-    console.log('reorder action')
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         const songsState = store.getState().powerHour.songs
@@ -88,7 +87,6 @@ export const reorderSongsAction = (id: number, result: ResultI) => {
                 destinationOrderNumber: (result.destination.index + 1)
             })
             .then(response => {
-                console.log('reorder response', response.data.reorderedSongs.PowerHourSongs)
                 dispatch(reorderSongs(response.data.reorderedSongs.PowerHourSongs))
                 dispatch(success())
             })
