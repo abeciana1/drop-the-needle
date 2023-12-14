@@ -20,6 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             }
         })
         if (track?.hasOwnProperty('orderNumber') && track?.orderNumber > 0) {
+            console.log('track has order number and > 0')
             let updatedPowerHour = await prisma.powerHour.update({
                 where: {
                     id: Number(track?.powerHourId)
