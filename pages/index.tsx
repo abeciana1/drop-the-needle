@@ -89,7 +89,7 @@ export default function Home({ powerHours }: PowerHourDataCollectionI) {
           <h1>Features</h1>
           <Grid2Column>
             <Feature
-              title='YouTube Search (coming soon)'
+              title='YouTube Search'
               body='Search for YouTube videos with ease.'
               icon={FaYoutube}
               color='altWhite'
