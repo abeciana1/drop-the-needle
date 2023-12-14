@@ -61,7 +61,6 @@ export const deleteTrackAction = (index: number, id: number) => {
             })
         } catch (err) {
             dispatch(failure({ error: 'Failed to delete track' }))
-            console.log('deleteTrackAction', err);
         }
     }
 }
