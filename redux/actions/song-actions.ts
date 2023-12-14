@@ -45,17 +45,20 @@ export const addTrackAction = (data: TrackDataI, orderNumber?: number) => {
 }
 
 export const deleteTrackAction = (index: number, id: number) => {
+    console.log('delete action')
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         try {
             const songs = store.getState().powerHour.songs
+            console.log('song state')
             let newSongs = [...songs]
             newSongs.splice(index, 1)
             dispatch(deleteSong(newSongs))
-            console.log('song state', songs)
+            console.log('new song state', newSongs)
             await axios.delete('/api/track/' + id)
             .then(response => {
                 if (response.data.hasOwnProperty('updatedPowerHour')) {
+                    console.log('songs return response', response.data.updatedPowerHour.PowerHourSongs)
                     dispatch(reorderSongs(response.data.updatedPowerHour.PowerHourSongs))
                 }
                 dispatch(success())
@@ -68,6 +71,7 @@ export const deleteTrackAction = (index: number, id: number) => {
 }
 
 export const reorderSongsAction = (id: number, result: ResultI) => {
+    console.log('reorder action')
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         const songsState = store.getState().powerHour.songs
@@ -84,6 +88,7 @@ export const reorderSongsAction = (id: number, result: ResultI) => {
                 destinationOrderNumber: (result.destination.index + 1)
             })
             .then(response => {
+                console.log('reorder response', response.data.reorderedSongs.PowerHourSongs)
                 dispatch(reorderSongs(response.data.reorderedSongs.PowerHourSongs))
                 dispatch(success())
             })
@@ -140,21 +145,21 @@ export const switchTrackAction = (songId: number, orderNumber: number, index: nu
     return async (dispatch: AppDispatch) => {
         dispatch(loading())
         try {
+            if (orderNumber > 0) {
+                dispatch(patchSong({
+                    index: index,
+                    data: song
+                }))
+            } else {
+                dispatch(patchUnsortedSong({
+                    index: index,
+                    data: song
+                }))
+            }
             await axios.patch('/api/track/' + songId, {
                 orderNumber: orderNumber
             })
             .then(response => {
-                // if (orderNumber > 0) {
-                //     dispatch(patchSong({
-                //         index: index,
-                //         data: song
-                //     }))
-                // } else {
-                //     dispatch(patchUnsortedSong({
-                //         index: index,
-                //         data: song
-                //     }))
-                // }
                 dispatch(success())
                 if (orderNumber > 0) {
                     dispatch(patchSong({
