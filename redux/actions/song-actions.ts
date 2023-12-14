@@ -45,20 +45,16 @@ export const addTrackAction = (data: TrackDataI, orderNumber?: number) => {
 }
 
 export const deleteTrackAction = (index: number, id: number) => {
-    console.log('delete action')
     return async function (dispatch: AppDispatch) {
         dispatch(loading())
         try {
             const songs = store.getState().powerHour.songs
-            console.log('song state')
             let newSongs = [...songs]
             newSongs.splice(index, 1)
             dispatch(deleteSong(newSongs))
-            console.log('new song state', newSongs)
             await axios.delete('/api/track/' + id)
             .then(response => {
                 if (response.data.hasOwnProperty('updatedPowerHour')) {
-                    console.log('songs return response', response.data.updatedPowerHour.PowerHourSongs)
                     dispatch(reorderSongs(response.data.updatedPowerHour.PowerHourSongs))
                 }
                 dispatch(success())
