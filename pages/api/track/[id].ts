@@ -44,6 +44,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 select: {
                     PowerHourSongs: {
                         where: {
+                            id: {
+                                not: trackId 
+                            },
                             orderNumber: {
                                 gt: 0
                             }
