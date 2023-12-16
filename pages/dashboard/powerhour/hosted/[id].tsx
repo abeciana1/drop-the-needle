@@ -102,7 +102,6 @@ const HostedPowerHourDynamic = () => {
     }
 
     const handlePowerHourPublishStatus = async () => {
-        console.log('changed status')
         if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
             await axios.patch(`/api/powerhour/${powerHour?.id}`, {
