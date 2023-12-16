@@ -65,8 +65,7 @@ const HostedPowerHourDynamic = () => {
     const powerHour = useAppSelector(state => state.powerHour.powerHour)
     const songs = useAppSelector(state => state.powerHour.songs)
     const unsortedSongs = useAppSelector(state => state.powerHour.unsortedSongs)
-    let currentIdx = powerHour?.publishStatus ? 0 : 1
-    const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[currentIdx])
+    const [ selectedPubStatus, setPubStatus ] = useState(phPublishStatuses[0])
     const [ isClient, setClient ] = useState(false)
 
     useEffect(() => {
@@ -78,15 +77,16 @@ const HostedPowerHourDynamic = () => {
             dispatch(fetchPowerHour(window.location.pathname.split('/')[4]))
             dispatch(fetchSongs(window.location.pathname.split('/')[4]))
         }
-    }, [isClient])
-
-    useEffect(() => {
         return () => {
             dispatch(clearPowerHour())
             dispatch(clearSongs())
             dispatch(clearUnsortedSongs())
         }
-    }, [])
+    }, [isClient])
+
+    useEffect(() => {
+        setPubStatus(phPublishStatuses[powerHour?.publishStatus ? 0 : 1])
+    }, [powerHour])
 
     const trackRemoveHandler = async (index: number, id: number) => {
         if (confirm(`Are you sure you want to delete this song from this power hour?`)) {
@@ -102,6 +102,7 @@ const HostedPowerHourDynamic = () => {
     }
 
     const handlePowerHourPublishStatus = async () => {
+        console.log('changed status')
         if (selectedPubStatus?.status === 'Published') {
             setPubStatus(phPublishStatuses[1])
             await axios.patch(`/api/powerhour/${powerHour?.id}`, {
