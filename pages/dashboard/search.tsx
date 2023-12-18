@@ -69,7 +69,7 @@ const YouTubeSearchPage = () => {
                     <YouTubeSearchForm/>
                 </ComponentMargin>
                 <WavySection color='vermillion-200' type={3} />
-                <section className='px-5 sm:px-10 lg:px-20 xl:px-96 xl:grid xl:grid-cols-2'>
+                <section className='px-5 sm:px-10 lg:px-20 2xl:px-96 xl:grid xl:grid-cols-2'>
                     {videos && videos.map((video: YouTubeVideoType) => {
                         return (
                             <YouTubeCard
